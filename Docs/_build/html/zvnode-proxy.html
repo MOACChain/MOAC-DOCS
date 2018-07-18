@@ -1,0 +1,117 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>代理Vnode节点（VNODE-PROXY） &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="vnode-vnode-proxy">
+<h1>代理Vnode节点（VNODE-PROXY）<a class="headerlink" href="#vnode-vnode-proxy" title="Permalink to this headline">¶</a></h1>
+<p>在MOAC系统中，代理Vnode节点被用于提供子链调用服务和子链历史数据中转服务的节点。启动代理节点的方法和启动母链矿工节点的方法类似。但是，需要额外在vnodeconfig.json的VnodeBeneficialAddress里设置收益账号。</p>
+<p>当提供子链调用合约服务时，需要调用子链时的via字段，设置和VnodeBeneficialAddress相同，否则该节点将不会工作。</p>
+<p>在提供子链历史数据服务前，需要先向代理合约注册此节点以便被随机选中进行中转，方法如下：</p>
+<p>另附1添加代理Vnode节点的Javascript方法：</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">vnodeRegister</span> <span class="p">(</span><span class="n">baseAddr</span><span class="p">,</span><span class="n">basePasswd</span><span class="p">,</span> <span class="n">vnodeAddr</span><span class="p">,</span><span class="n">vnodeChain</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">chain3</span><span class="o">.</span><span class="n">personal</span><span class="o">.</span><span class="n">unlockAccount</span><span class="p">(</span><span class="n">baseAddr</span><span class="p">,</span><span class="n">basePasswd</span><span class="p">);</span>
+
+    <span class="n">sendtx</span><span class="p">(</span><span class="n">baseaddr</span><span class="p">,</span> <span class="n">vnodeChain</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;0x32434a2e000000000000000000000000&#39;</span> <span class="o">+</span> <span class="n">vnodeAddr</span> <span class="o">//</span><span class="n">数据1</span>
+    <span class="o">+</span><span class="s1">&#39;0000000000000000000000000000000000000000000000000000000000000040&#39;</span><span class="o">//</span><span class="n">数据2</span>
+    <span class="o">+</span><span class="s1">&#39;0000000000000000000000000000000000000000000000000000000000000013&#39;</span><span class="o">//</span><span class="n">数据3</span>
+    <span class="o">//</span><span class="mi">1</span> <span class="mi">9</span> <span class="mi">2</span> <span class="o">.</span> <span class="mi">1</span> <span class="mi">6</span> <span class="mi">8</span> <span class="o">.</span> <span class="mi">1</span> <span class="mi">0</span> <span class="o">.</span> <span class="mi">1</span> <span class="mi">6</span> <span class="p">:</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">6</span> <span class="mi">2</span>
+    <span class="o">+</span><span class="s1">&#39;3139322e3136382e31302e31363a353030363200000000000000000000000000&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">数据4</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>【说明】： * baseAddr、basePasswd：Dapp用户用来发送交易前账户解锁； *
+vnodeChain：部署VNODE-PROXY合约得到的合约地址； *
+vnodeAddr：vnodeconfig.json的VnodeBeneficialAddress *
+数据1：‘0x32434a2e ‘是VNODE-PROXY合约 中‘register(address vnode, string
+link)’通过hash算法Keccak256得到前4个字节，本例押金交1moac；本例带两个参数；
+* 数据2：string数据类型； * 数据3：string数据长度； *
+数据4：string内容</p>
+<p>另附2调用实例：</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>vnodeRegister (&#39;0x1b9ce7e......1e0e38913a56cd986786&#39;,
+‘123’,
+&#39;0x1b9ce7e4f156c1a28f......38913a56cd986786&#39;,
+&#39;0x979b01d62ae09dfce5......95541bd32580de66&#39;)
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/zvnode-proxy.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/zvnode-proxy.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,249 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>MOAC Pizza Alpha (Pangu 0.8.3 prerelease) &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="SCS" href="SCS.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="moac-pizza-alpha-pangu-0-8-3-prerelease">
+<h1>MOAC Pizza Alpha (Pangu 0.8.3 prerelease)<a class="headerlink" href="#moac-pizza-alpha-pangu-0-8-3-prerelease" title="Permalink to this headline">¶</a></h1>
+<p>–Debian/Ubuntu/CentOS– This version only work with “–dev” option, not
+working with mainnet or testnet yet.</p>
+<p>There are two tar files: pizzaAlpha.vnode.ubuntu.tar.gz. - vnode
+executables and files; pizzaAlpha.scs.ubuntu.tar.gz - three scs
+executables and files.</p>
+<ol class="arabic">
+<li><p class="first">Untar the file using tar, there are 4 directories:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vnode</span>
+<span class="n">scs1</span>
+<span class="n">scs2</span>
+<span class="n">scs3</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Start the vnode $ ./start_vnode.sh</p>
+<p>from another terminal, run moac again to attach the running node</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./attach.sh
+</pre></div>
+</div>
+<p>Check and create coinbase account</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">personal</span><span class="o">.</span><span class="n">newAccount</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>from console prompt, start mining by running</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">miner</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">After vnode started, start scs servers. You need at least 2 scs
+servers to form the microchain.</p>
+<p>from another terminal, change into scs1/bin run the executable</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$./scs1
+</pre></div>
+</div>
+<p>do the same for the other two, if connected with vnode, some info
+should be seen as the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">......</span>
+<span class="n">INFO</span> <span class="p">[</span><span class="mi">05</span><span class="o">-</span><span class="mi">23</span><span class="o">|</span><span class="mi">01</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">56.111</span><span class="p">]</span> <span class="mi">230</span><span class="p">:</span><span class="n">liveinfo</span><span class="p">:</span> <span class="p">{</span><span class="mi">1285</span><span class="p">}</span>
+<span class="n">INFO</span> <span class="p">[</span><span class="mi">05</span><span class="o">-</span><span class="mi">23</span><span class="o">|</span><span class="mi">01</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">00.111</span><span class="p">]</span> <span class="mi">221</span><span class="p">:</span><span class="n">liveinfo</span><span class="p">:</span> <span class="p">{</span><span class="mi">1286</span><span class="p">}</span>
+<span class="n">INFO</span> <span class="p">[</span><span class="mi">05</span><span class="o">-</span><span class="mi">23</span><span class="o">|</span><span class="mi">01</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">05.112</span><span class="p">]</span> <span class="mi">205</span><span class="p">:</span><span class="n">liveinfo</span><span class="p">:</span> <span class="p">{</span><span class="mi">1289</span><span class="p">}</span>
+<span class="n">INFO</span> <span class="p">[</span><span class="mi">05</span><span class="o">-</span><span class="mi">23</span><span class="o">|</span><span class="mi">01</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">08.111</span><span class="p">]</span> <span class="mi">206</span><span class="p">:</span><span class="n">liveinfo</span><span class="p">:</span> <span class="p">{</span><span class="mi">1290</span><span class="p">}</span>
+<span class="n">INFO</span> <span class="p">[</span><span class="mi">05</span><span class="o">-</span><span class="mi">23</span><span class="o">|</span><span class="mi">01</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">09.120</span><span class="p">]</span> <span class="mi">222</span><span class="p">:</span><span class="n">liveinfo</span><span class="p">:</span> <span class="p">{</span><span class="mi">1291</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The number in {} is the vnode block number. All 3 scs should have the
+same info.</p>
+</li>
+<li><p class="first">scs servers need some initial funds to work. Currently there are
+fixed address for the test scs servers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scs1</span><span class="o">=</span><span class="s2">&quot;0x027aee503f2e27fee5103df1796daeb6111e204d&quot;</span>
+<span class="n">scs2</span><span class="o">=</span><span class="s2">&quot;0xba3597b4c20f0477c4ebe7cf81c565e556bd52f9&quot;</span>
+<span class="n">scs3</span><span class="o">=</span><span class="s2">&quot;0x1675124b338671dd771a673c7d06606ae1cdd7b0&quot;</span>
+</pre></div>
+</div>
+<p>Otherwise you need to send some funds to the accounts. From prompt,
+load script</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">loadScript</span><span class="p">(</span><span class="s2">&quot;mctest.js&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="n">Send</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">scs1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="n">Send</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">scs2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="n">Send</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">scs3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Now start deploy the microchain from vnode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deploy_p1</span><span class="o">.</span><span class="n">js</span><span class="p">:</span> <span class="n">protocol</span> <span class="n">needed</span> <span class="k">for</span> <span class="n">microchain</span><span class="o">.</span>
+<span class="n">deploy_s1</span><span class="o">.</span><span class="n">js</span><span class="p">:</span> <span class="n">microchain</span> <span class="n">contract</span><span class="o">.</span>
+<span class="n">test_s1</span><span class="o">.</span><span class="n">js</span><span class="p">:</span> <span class="n">test</span> <span class="n">scripts</span> <span class="k">for</span> <span class="n">microchain</span><span class="o">.</span>
+
+
+<span class="o">&gt;</span> <span class="n">personal</span><span class="o">.</span><span class="n">unlockAccount</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">true</span>
+<span class="o">&gt;</span> <span class="n">loadScript</span><span class="p">(</span><span class="s2">&quot;deploy_p1.js&quot;</span><span class="p">)</span>
+<span class="n">null</span> <span class="p">[</span><span class="nb">object</span> <span class="n">Object</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Testnet deploy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Contract mined! address: 0xeaf8f52588af16aebb26c4ca8fb10d5e0b8b1d70 transactionHash: 0xf029d6168c289fac8322bb1925205c905f31a4cc45dc826f4e3b7200ceda3de5
+</pre></div>
+</div>
+</li>
+<li><p class="first">Load the subchain script file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; loadScript(&quot;deploy_s1.js&quot;)
+null [object Object]
+true
+Contract mined! address: 0x78934339dcb0642bdfd2afb3e028ee40be809280 transactionHash: 0x503fb3377866071a80e4f023c2cab4999876b93fbaa86dec54d73b1d4d8391a7
+</pre></div>
+</div>
+</li>
+<li><p class="first">Load the test script.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">loadScript</span><span class="p">(</span><span class="s2">&quot;test_s1.js&quot;</span><span class="p">)</span>
+        <span class="n">true</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Register scs servers in the pool:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">registertopool</span><span class="p">(</span><span class="n">scs1</span><span class="p">)</span>
+<span class="n">sending</span> <span class="n">from</span><span class="p">:</span><span class="mh">0xa8863fc8ce3816411378685223c03daae9770ebb</span> <span class="n">to</span><span class="p">:</span><span class="mh">0x08b95aebd9c3cfbea68631486cc76d7281c15a79</span> <span class="n">amount</span><span class="p">:</span><span class="mi">12</span> <span class="k">with</span> <span class="n">data</span><span class="p">:</span><span class="mh">0x4420e486000000000000000000000000a4e1e48c7b2b0bd7b2f202e0db0270a9678df266</span>
+<span class="n">undefined</span>
+<span class="o">&gt;</span> <span class="n">registertopool</span><span class="p">(</span><span class="n">scs2</span><span class="p">)</span>
+<span class="n">sending</span> <span class="n">from</span><span class="p">:</span><span class="mh">0xa8863fc8ce3816411378685223c03daae9770ebb</span> <span class="n">to</span><span class="p">:</span><span class="mh">0x2287b6c3643aa1d96ca5eb198f660c512bef28d1</span> <span class="n">amount</span><span class="p">:</span><span class="mi">12</span> <span class="k">with</span> <span class="n">data</span><span class="p">:</span><span class="mh">0x4420e486000000000000000000000000f1f5b7a35dff6400af7ab3ea54e4e637059ef909</span>
+<span class="n">undefined</span>
+</pre></div>
+</div>
+<p>You can see if the node is registered:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">subchainprotocolbase</span><span class="o">.</span><span class="n">scsCount</span><span class="p">()</span>
+    <span class="mi">2</span>
+</pre></div>
+</div>
+<p>For safety issues, scs servers need to wait for some blocks after
+register in the pool. You can find the info about a scs server by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">subchainprotocolbase</span><span class="o">.</span><span class="n">scsList</span><span class="p">(</span><span class="n">scs1</span><span class="p">)</span>
+<span class="p">[</span><span class="s2">&quot;0xecd1e094ee13d0b47b72f5c940c17bd0c7630326&quot;</span><span class="p">,</span> <span class="mi">12000000000000000000</span><span class="p">,</span> <span class="mi">942</span><span class="p">,</span> <span class="mf">1.15792089237316195423570985008687907853269984665640564039457584007913129639935e+77</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The number ‘942’ is the block number this scs server can join
+microchain, usually this is 50 blocks later after the scs registered
+in the pool.</p>
+</li>
+<li><p class="first">Open subchain for scs to join:</p>
+</li>
+</ol>
+<p>When there are more than 2 scs in the pool, you can start open the
+microchain for scs server to join You may need to unlock the
+mc.accounts[0] for this step.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">personal</span><span class="o">.</span><span class="n">unlockAccount</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">true</span>
+<span class="o">&gt;</span> <span class="n">registeropen</span><span class="p">()</span>
+<span class="n">miner</span><span class="o">.</span><span class="n">starsending</span> <span class="n">from</span><span class="p">:</span><span class="mh">0xa8863fc8ce3816411378685223c03daae9770ebb</span> <span class="n">to</span><span class="p">:</span><span class="mh">0x26c27eb5585d1e978d4da14f0eb2ee479d733a46</span> <span class="n">amount</span><span class="p">:</span><span class="mi">0</span> <span class="k">with</span> <span class="n">data</span><span class="p">:</span><span class="mh">0x5defc56c</span>
+<span class="n">undefined</span>
+</pre></div>
+</div>
+<p>There will be some confirmation tx send from vnode to scs servers. You
+can also check to see how many scs servers are selected in the
+microchain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">&gt;</span> <span class="n">subchainbase</span><span class="o">.</span><span class="n">nodeCount</span><span class="p">()</span>
+    <span class="mi">2</span>
+
+<span class="n">When</span> <span class="n">you</span> <span class="n">have</span> <span class="n">enough</span> <span class="n">scs</span> <span class="n">servers</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">close</span> <span class="n">registration</span> <span class="ow">and</span> <span class="n">start</span> <span class="n">the</span> <span class="n">microchain</span><span class="p">:</span>
+
+    <span class="o">&gt;</span> <span class="n">registerclose</span><span class="p">()</span>
+    <span class="n">sending</span> <span class="n">from</span><span class="p">:</span><span class="mh">0xa8863fc8ce3816411378685223c03daae9770ebb</span> <span class="n">to</span><span class="p">:</span><span class="mh">0xc3c6e85820d97477172498ce7aed37b0bb22e67e</span> <span class="n">amount</span><span class="p">:</span><span class="mi">0</span> <span class="k">with</span> <span class="n">data</span><span class="p">:</span><span class="mh">0x69f3576f</span>
+</pre></div>
+</div>
+<ol class="arabic" start="10">
+<li><p class="first">Subchain mining started: After these steps, scs server should have
+some info like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>INFO [05-23|01:23:01.754] 278:Commit new mining work   number=2 txs=0 elapsed=490.027µs
+INFO [05-23|01:23:01.755] 278:🔨 mined potential block    number=2 hash=0xa67b93923ba3ea9ff43f076c5839aa5ea31291c7cf71db1c80c18af2c1b9be1b
+INFO [05-23|01:23:11.781] 280:
+###### BLOCK Number: 3 ######
+block.Hash:       0xe0a8c81c8f3898721ea99cd569f0fc545af03ffb18679171cb2eaf79ec6ee672
+block.ParentHash: 0xa67b93923ba3ea9ff43f076c5839aa5ea31291c7cf71db1c80c18af2c1b9be1b
+SubchainAddr:     0xa107434b94c8c2690dbcff298434b91d22f767db
+##############################
+
+INFO [05-23|01:23:14.112] 208:liveinfo: {1321}
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="SCS.html" title="previous chapter">SCS</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/SCSCreateSteps.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/SCSCreateSteps.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

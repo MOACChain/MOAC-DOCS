@@ -1,0 +1,145 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SCS English Version &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MOAC相关文档" href="zMOACnodes.html" />
+    <link rel="prev" title="1. 区块链技术的痛点" href="zmethod.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="scs-english-version">
+<h1><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/SCS">SCS English Version</a><a class="headerlink" href="#scs-english-version" title="Permalink to this headline">¶</a></h1>
+<p>子链是MOAC区块链中非常重要的一个模块。其主要目的在于分流母链中的业务逻辑，把一些比较繁琐的业务操作放在子链中执行。</p>
+<p>子链由SCS节点组成，必须部署在母链Vnode上。</p>
+<p>子链支持分片，每个分片都能独立完成业务逻辑。</p>
+<p>子链中的节点随机组合，支持动态增减。</p>
+<p>同时，在主链上，我们增加了代理的Vnode节点来保证子链的稳定性，这部分我们会在最后介绍。</p>
+<p>当前，按功能分，有如下几种SCS节点类型： * 参与业务逻辑的SCS *
+用于业务监控的SCS * 准备参与业务逻辑的SCS</p>
+<p>下图为MOAC系统的示意图，子链在subchain1方框内 <a href="#id4"><span class="problematic" id="id5">|moac\_subchian|</span></a></p>
+<div class="section" id="id1">
+<h2>主要名词解释：<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><strong>DAPP用户：</strong> 使用子链DAPP的用户</p>
+<p><strong>DAPP项目方：</strong>
+子链DAPP的开发者。在本文档中，DAPP用户和项目方统称DAPP用户（开发者）</p>
+<p><strong>主网挖矿节点：</strong> 当前母链上运行的挖矿节点（MOAC-VNODE）</p>
+<p><strong>主网代理节点：</strong> 母链代理节点，用于提高子链节点的稳定性（VNODE-PROXY）</p>
+<p><strong>子链挖矿节点：</strong> 子链矿工节点，参与子链业务逻辑（SCS）</p>
+<p><strong>子链监控节点：</strong> 只用于查询子链业务状态，不参与共识（MONITOR）</p>
+<p><strong>智能合约：</strong> 当前有这样几种智能合约，本文档只解释与子链相关的智能合约</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>系统智能合约
+    * 主链系统合约
+    * 子链矿池智能合约subchainprotocolbase，用于子链SCS节点矿工加入矿工池
+    * 代理智能合约vnodeprotocolbase：用于母链vnode提供代理功能，加入代理池
+    * 子链控制合约subchainbase：用于子链控制逻辑，子链生成前和生成后的一系列控制逻辑
+子链DAPP智能合约：用于部署子链业务逻辑的合约
+</pre></div>
+</div>
+<p>DAPP用户部署子链时，只需要关注子链控制合约和子链DAPP智能合约。</p>
+</div>
+<div class="section" id="id2">
+<h2>子链的基本设计原理<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/部署子链协议合约">部署子链协议合约</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/部署子链合约">部署子链合约</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/选择scs节点">选择scs节点</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/子链创建过程">子链创建过程</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/子链运行流程">子链运行流程</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/子链刷新过程">子链刷新过程</a></p>
+</div>
+<div class="section" id="id3">
+<h2>子链的部署和运行<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/子链用户类别">子链用户类别</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/SCS矿工指南">子链SCS矿工指南</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/DAPP开发者指南">子链DAPP开发者指南</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/子链VNODE代理指南">子链VNODE代理指南</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SCS English Version</a><ul>
+<li><a class="reference internal" href="#id1">主要名词解释：</a></li>
+<li><a class="reference internal" href="#id2">子链的基本设计原理</a></li>
+<li><a class="reference internal" href="#id3">子链的部署和运行</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="zmethod.html" title="previous chapter">1. 区块链技术的痛点</a></li>
+      <li>Next: <a href="zMOACnodes.html" title="next chapter">MOAC相关文档</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/zmicrochain.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/zmicrochain.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

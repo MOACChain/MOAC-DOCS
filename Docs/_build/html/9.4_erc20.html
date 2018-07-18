@@ -1,0 +1,901 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>9.4_erc20代币说明 &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9.5_发行erc721通证" href="9.5_erc721.html" />
+    <link rel="prev" title="9.3_交易所" href="9.3_exchange.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="erc20">
+<h1>9.4_erc20代币说明<a class="headerlink" href="#erc20" title="Permalink to this headline">¶</a></h1>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>contract ERC20Token {
+  //Token的名字，比如Bitcoin, Ethereum, Mother Of All Chain
+  string  public name;
+  //Token的符号或者叫代码, 比如BTC, ETH, MOAC
+  string  public symbol;
+  //Token使用的小数点后几位，比如6，表示分配一个token的数量为1000000
+  uint    public decimals;
+  //Token的总供应量
+  uint256 public totalSupply;
+
+  //返回_owner帐户的帐户余额，即Token数量
+  function balanceOf(address _owner) public constant returns (uint256 balance);
+  //转移_value的token数量到地址_to, 并且必须触发Transfer事件
+  function transfer(address _to, uint256 _value) public returns (bool success);
+  //从地址_from发送数量为_value的token到地址_to, 必须触发Transfer事件
+  function transferFrom(address _from, address _to, uint256 _value) public returns (bool success);
+  //允许_spender多次取回您的帐户最高达_value的token数量
+  function approve(address _spender, uint256 _value) public returns (bool success);
+  //_spender仍然被允许从_owner提取的token数量
+  function allowance(address _owner, address _spender) public constant returns (uint256 remaining);
+  //当token被转移(包括0值)，必须被触发
+  event Transfer(address indexed _from, address indexed _to, uint256 _value);
+  //当任何成功调用approve(address _spender, uint256 _value)后，必须被触发
+  event Approval(address indexed _owner, address indexed _spender, uint256 _value);
+}
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2>开发erc20代币智能合约<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>比如使用zeppelin库进行开发</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">18</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="s2">&quot;zeppelin-solidity/contracts/token/PausableToken.sol&quot;</span><span class="p">;</span>
+
+<span class="n">contract</span> <span class="n">TestCoin</span> <span class="ow">is</span> <span class="n">PausableToken</span> <span class="p">{</span>
+  <span class="n">string</span> <span class="n">public</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Test&quot;</span><span class="p">;</span>
+  <span class="n">string</span> <span class="n">public</span> <span class="n">symbol</span> <span class="o">=</span> <span class="s2">&quot;TEST&quot;</span><span class="p">;</span>
+  <span class="n">uint</span> <span class="n">public</span> <span class="n">decimals</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+  <span class="n">uint</span> <span class="n">public</span> <span class="n">INITIAL_SUPPLY</span> <span class="o">=</span> <span class="mi">100000000</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="n">decimals</span><span class="p">);</span>
+
+  <span class="n">function</span> <span class="n">TestCoin</span><span class="p">()</span> <span class="n">public</span> <span class="p">{</span>
+    <span class="n">totalSupply</span> <span class="o">=</span> <span class="n">INITIAL_SUPPLY</span><span class="p">;</span>
+    <span class="n">balances</span><span class="p">[</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">]</span> <span class="o">=</span> <span class="n">INITIAL_SUPPLY</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>展开以后是这样的</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>pragma solidity ^0.4.13;
+
+library SafeMath {
+  function mul(uint256 a, uint256 b) internal pure returns (uint256) {
+    if (a == 0) {
+      return 0;
+    }
+    uint256 c = a * b;
+    assert(c / a == b);
+    return c;
+  }
+
+  function div(uint256 a, uint256 b) internal pure returns (uint256) {
+    // assert(b &gt; 0); // Solidity automatically throws when dividing by 0
+    uint256 c = a / b;
+    // assert(a == b * c + a % b); // There is no case in which this doesn&#39;t hold
+    return c;
+  }
+
+  function sub(uint256 a, uint256 b) internal pure returns (uint256) {
+    assert(b &lt;= a);
+    return a - b;
+  }
+
+  function add(uint256 a, uint256 b) internal pure returns (uint256) {
+    uint256 c = a + b;
+    assert(c &gt;= a);
+    return c;
+  }
+}
+
+contract Ownable {
+  address public owner;
+
+
+  event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
+
+  /**
+   * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+   * account.
+   */
+  function Ownable() public {
+    owner = msg.sender;
+  }
+
+
+  /**
+   * @dev Throws if called by any account other than the owner.
+   */
+  modifier onlyOwner() {
+    require(msg.sender == owner);
+    _;
+  }
+
+
+  /**
+   * @dev Allows the current owner to transfer control of the contract to a newOwner.
+   * @param newOwner The address to transfer ownership to.
+   */
+  function transferOwnership(address newOwner) public onlyOwner {
+    require(newOwner != address(0));
+    OwnershipTransferred(owner, newOwner);
+    owner = newOwner;
+  }
+
+}
+
+contract Pausable is Ownable {
+  event Pause();
+  event Unpause();
+
+  bool public paused = false;
+
+
+  /**
+   * @dev Modifier to make a function callable only when the contract is not paused.
+   */
+  modifier whenNotPaused() {
+    require(!paused);
+    _;
+  }
+
+  /**
+   * @dev Modifier to make a function callable only when the contract is paused.
+   */
+  modifier whenPaused() {
+    require(paused);
+    _;
+  }
+
+  /**
+   * @dev called by the owner to pause, triggers stopped state
+   */
+  function pause() onlyOwner whenNotPaused public {
+    paused = true;
+    Pause();
+  }
+
+  /**
+   * @dev called by the owner to unpause, returns to normal state
+   */
+  function unpause() onlyOwner whenPaused public {
+    paused = false;
+    Unpause();
+  }
+}
+
+contract ERC20Basic {
+  uint256 public totalSupply;
+  function balanceOf(address who) public view returns (uint256);
+  function transfer(address to, uint256 value) public returns (bool);
+  event Transfer(address indexed from, address indexed to, uint256 value);
+}
+
+contract BasicToken is ERC20Basic {
+  using SafeMath for uint256;
+
+  mapping(address =&gt; uint256) balances;
+
+  /**
+  * @dev transfer token for a specified address
+  * @param _to The address to transfer to.
+  * @param _value The amount to be transferred.
+  */
+  function transfer(address _to, uint256 _value) public returns (bool) {
+    require(_to != address(0));
+    require(_value &lt;= balances[msg.sender]);
+
+    // SafeMath.sub will throw if there is not enough balance.
+    balances[msg.sender] = balances[msg.sender].sub(_value);
+    balances[_to] = balances[_to].add(_value);
+    Transfer(msg.sender, _to, _value);
+    return true;
+  }
+
+  /**
+  * @dev Gets the balance of the specified address.
+  * @param _owner The address to query the the balance of.
+  * @return An uint256 representing the amount owned by the passed address.
+  */
+  function balanceOf(address _owner) public view returns (uint256 balance) {
+    return balances[_owner];
+  }
+
+}
+
+contract ERC20 is ERC20Basic {
+  function allowance(address owner, address spender) public view returns (uint256);
+  function transferFrom(address from, address to, uint256 value) public returns (bool);
+  function approve(address spender, uint256 value) public returns (bool);
+  event Approval(address indexed owner, address indexed spender, uint256 value);
+}
+
+contract StandardToken is ERC20, BasicToken {
+
+  mapping (address =&gt; mapping (address =&gt; uint256)) internal allowed;
+
+
+  /**
+   * @dev Transfer tokens from one address to another
+   * @param _from address The address which you want to send tokens from
+   * @param _to address The address which you want to transfer to
+   * @param _value uint256 the amount of tokens to be transferred
+   */
+  function transferFrom(address _from, address _to, uint256 _value) public returns (bool) {
+    require(_to != address(0));
+    require(_value &lt;= balances[_from]);
+    require(_value &lt;= allowed[_from][msg.sender]);
+
+    balances[_from] = balances[_from].sub(_value);
+    balances[_to] = balances[_to].add(_value);
+    allowed[_from][msg.sender] = allowed[_from][msg.sender].sub(_value);
+    Transfer(_from, _to, _value);
+    return true;
+  }
+
+  /**
+   * @dev Approve the passed address to spend the specified amount of tokens on behalf of msg.sender.
+   *
+   * Beware that changing an allowance with this method brings the risk that someone may use both the old
+   * and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this
+   * race condition is to first reduce the spender&#39;s allowance to 0 and set the desired value afterwards:
+   * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
+   * @param _spender The address which will spend the funds.
+   * @param _value The amount of tokens to be spent.
+   */
+  function approve(address _spender, uint256 _value) public returns (bool) {
+    allowed[msg.sender][_spender] = _value;
+    Approval(msg.sender, _spender, _value);
+    return true;
+  }
+
+  /**
+   * @dev Function to check the amount of tokens that an owner allowed to a spender.
+   * @param _owner address The address which owns the funds.
+   * @param _spender address The address which will spend the funds.
+   * @return A uint256 specifying the amount of tokens still available for the spender.
+   */
+  function allowance(address _owner, address _spender) public view returns (uint256) {
+    return allowed[_owner][_spender];
+  }
+
+  /**
+   * @dev Increase the amount of tokens that an owner allowed to a spender.
+   *
+   * approve should be called when allowed[_spender] == 0. To increment
+   * allowed value is better to use this function to avoid 2 calls (and wait until
+   * the first transaction is mined)
+   * From MonolithDAO Token.sol
+   * @param _spender The address which will spend the funds.
+   * @param _addedValue The amount of tokens to increase the allowance by.
+   */
+  function increaseApproval(address _spender, uint _addedValue) public returns (bool) {
+    allowed[msg.sender][_spender] = allowed[msg.sender][_spender].add(_addedValue);
+    Approval(msg.sender, _spender, allowed[msg.sender][_spender]);
+    return true;
+  }
+
+  /**
+   * @dev Decrease the amount of tokens that an owner allowed to a spender.
+   *
+   * approve should be called when allowed[_spender] == 0. To decrement
+   * allowed value is better to use this function to avoid 2 calls (and wait until
+   * the first transaction is mined)
+   * From MonolithDAO Token.sol
+   * @param _spender The address which will spend the funds.
+   * @param _subtractedValue The amount of tokens to decrease the allowance by.
+   */
+  function decreaseApproval(address _spender, uint _subtractedValue) public returns (bool) {
+    uint oldValue = allowed[msg.sender][_spender];
+    if (_subtractedValue &gt; oldValue) {
+      allowed[msg.sender][_spender] = 0;
+    } else {
+      allowed[msg.sender][_spender] = oldValue.sub(_subtractedValue);
+    }
+    Approval(msg.sender, _spender, allowed[msg.sender][_spender]);
+    return true;
+  }
+
+}
+
+contract PausableToken is StandardToken, Pausable {
+
+  function transfer(address _to, uint256 _value) public whenNotPaused returns (bool) {
+    return super.transfer(_to, _value);
+  }
+
+  function transferFrom(address _from, address _to, uint256 _value) public whenNotPaused returns (bool) {
+    return super.transferFrom(_from, _to, _value);
+  }
+
+  function approve(address _spender, uint256 _value) public whenNotPaused returns (bool) {
+    return super.approve(_spender, _value);
+  }
+
+  function increaseApproval(address _spender, uint _addedValue) public whenNotPaused returns (bool success) {
+    return super.increaseApproval(_spender, _addedValue);
+  }
+
+  function decreaseApproval(address _spender, uint _subtractedValue) public whenNotPaused returns (bool success) {
+    return super.decreaseApproval(_spender, _subtractedValue);
+  }
+}
+
+contract TestCoin is PausableToken {
+  string public name = &quot;Test Coin&quot;;
+  string public symbol = &quot;TEST&quot;;
+  uint public decimals = 6;
+  uint public INITIAL_SUPPLY = 100000000 * (10 ** decimals);
+
+  function TestCoin() public {
+    totalSupply = INITIAL_SUPPLY;
+    balances[msg.sender] = INITIAL_SUPPLY;
+  }
+}
+</pre></div>
+</div>
+<p>或者直接进行开发</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">16</span><span class="p">;</span>
+
+<span class="n">contract</span> <span class="n">ERC20Token</span> <span class="p">{</span>
+  <span class="n">uint256</span> <span class="n">public</span> <span class="n">totalSupply</span><span class="p">;</span>
+
+  <span class="n">function</span> <span class="n">balanceOf</span><span class="p">(</span><span class="n">address</span> <span class="n">_owner</span><span class="p">)</span> <span class="n">public</span> <span class="n">constant</span> <span class="n">returns</span> <span class="p">(</span><span class="n">uint256</span> <span class="n">balance</span><span class="p">);</span>
+  <span class="n">function</span> <span class="n">transfer</span><span class="p">(</span><span class="n">address</span> <span class="n">_to</span><span class="p">,</span> <span class="n">uint256</span> <span class="n">_value</span><span class="p">)</span> <span class="n">public</span> <span class="n">returns</span> <span class="p">(</span><span class="nb">bool</span> <span class="n">success</span><span class="p">);</span>
+  <span class="n">function</span> <span class="n">transferFrom</span><span class="p">(</span><span class="n">address</span> <span class="n">_from</span><span class="p">,</span> <span class="n">address</span> <span class="n">_to</span><span class="p">,</span> <span class="n">uint256</span> <span class="n">_value</span><span class="p">)</span> <span class="n">public</span> <span class="n">returns</span> <span class="p">(</span><span class="nb">bool</span> <span class="n">success</span><span class="p">);</span>
+
+  <span class="n">function</span> <span class="n">approve</span><span class="p">(</span><span class="n">address</span> <span class="n">_spender</span><span class="p">,</span> <span class="n">uint256</span> <span class="n">_value</span><span class="p">)</span> <span class="n">public</span> <span class="n">returns</span> <span class="p">(</span><span class="nb">bool</span> <span class="n">success</span><span class="p">);</span>
+
+  <span class="n">function</span> <span class="n">allowance</span><span class="p">(</span><span class="n">address</span> <span class="n">_owner</span><span class="p">,</span> <span class="n">address</span> <span class="n">_spender</span><span class="p">)</span> <span class="n">public</span> <span class="n">constant</span> <span class="n">returns</span> <span class="p">(</span><span class="n">uint256</span> <span class="n">remaining</span><span class="p">);</span>
+
+  <span class="n">event</span> <span class="n">Transfer</span><span class="p">(</span><span class="n">address</span> <span class="n">indexed</span> <span class="n">_from</span><span class="p">,</span> <span class="n">address</span> <span class="n">indexed</span> <span class="n">_to</span><span class="p">,</span> <span class="n">uint256</span> <span class="n">_value</span><span class="p">);</span>
+  <span class="n">event</span> <span class="n">Approval</span><span class="p">(</span><span class="n">address</span> <span class="n">indexed</span> <span class="n">_owner</span><span class="p">,</span> <span class="n">address</span> <span class="n">indexed</span> <span class="n">_spender</span><span class="p">,</span> <span class="n">uint256</span> <span class="n">_value</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">contract</span> <span class="n">TestToken</span> <span class="ow">is</span> <span class="n">ERC20Token</span> <span class="p">{</span>
+
+  <span class="n">string</span>  <span class="n">public</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Test Coin&quot;</span><span class="p">;</span>
+  <span class="n">string</span>  <span class="n">public</span> <span class="n">symbol</span> <span class="o">=</span> <span class="s2">&quot;TEST&quot;</span><span class="p">;</span>
+  <span class="n">uint8</span>   <span class="n">public</span> <span class="n">decimals</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+  <span class="n">uint256</span> <span class="n">public</span> <span class="n">INITIAL_SUPPLY</span> <span class="o">=</span> <span class="mi">100000000</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="n">uint256</span><span class="p">(</span><span class="n">decimals</span><span class="p">));</span>
+
+  <span class="n">mapping</span> <span class="p">(</span><span class="n">address</span> <span class="o">=&gt;</span> <span class="n">uint256</span><span class="p">)</span> <span class="n">balances</span><span class="p">;</span>
+  <span class="n">mapping</span> <span class="p">(</span><span class="n">address</span> <span class="o">=&gt;</span> <span class="n">mapping</span> <span class="p">(</span><span class="n">address</span> <span class="o">=&gt;</span> <span class="n">uint256</span><span class="p">))</span> <span class="n">allowed</span><span class="p">;</span>
+
+  <span class="n">constructor</span><span class="p">()</span> <span class="n">public</span> <span class="p">{</span>
+    <span class="n">totalSupply</span> <span class="o">=</span> <span class="n">INITIAL_SUPPLY</span><span class="p">;</span>
+    <span class="n">balances</span><span class="p">[</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">]</span> <span class="o">=</span> <span class="n">INITIAL_SUPPLY</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">function</span> <span class="n">transfer</span><span class="p">(</span><span class="n">address</span> <span class="n">_to</span><span class="p">,</span> <span class="n">uint256</span> <span class="n">_value</span><span class="p">)</span> <span class="n">public</span> <span class="n">returns</span> <span class="p">(</span><span class="nb">bool</span> <span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">require</span><span class="p">(</span><span class="n">balances</span><span class="p">[</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">_value</span> <span class="o">&amp;&amp;</span> <span class="n">balances</span><span class="p">[</span><span class="n">_to</span><span class="p">]</span> <span class="o">+</span> <span class="n">_value</span> <span class="o">&gt;</span> <span class="n">balances</span><span class="p">[</span><span class="n">_to</span><span class="p">]);</span>
+    <span class="n">require</span><span class="p">(</span><span class="n">_to</span> <span class="o">!=</span> <span class="mh">0x0</span><span class="p">);</span>
+    <span class="n">balances</span><span class="p">[</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">]</span> <span class="o">-=</span> <span class="n">_value</span><span class="p">;</span>
+    <span class="n">balances</span><span class="p">[</span><span class="n">_to</span><span class="p">]</span> <span class="o">+=</span> <span class="n">_value</span><span class="p">;</span>
+    <span class="n">emit</span> <span class="n">Transfer</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">,</span> <span class="n">_to</span><span class="p">,</span> <span class="n">_value</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">function</span> <span class="n">transferFrom</span><span class="p">(</span><span class="n">address</span> <span class="n">_from</span><span class="p">,</span> <span class="n">address</span> <span class="n">_to</span><span class="p">,</span> <span class="n">uint256</span> <span class="n">_value</span><span class="p">)</span> <span class="n">public</span> <span class="n">returns</span> <span class="p">(</span><span class="nb">bool</span> <span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">require</span><span class="p">(</span><span class="n">balances</span><span class="p">[</span><span class="n">_from</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">_value</span> <span class="o">&amp;&amp;</span> <span class="n">allowed</span><span class="p">[</span><span class="n">_from</span><span class="p">][</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">_value</span><span class="p">);</span>
+    <span class="n">balances</span><span class="p">[</span><span class="n">_to</span><span class="p">]</span> <span class="o">+=</span> <span class="n">_value</span><span class="p">;</span>
+    <span class="n">balances</span><span class="p">[</span><span class="n">_from</span><span class="p">]</span> <span class="o">-=</span> <span class="n">_value</span><span class="p">;</span>
+    <span class="n">allowed</span><span class="p">[</span><span class="n">_from</span><span class="p">][</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">]</span> <span class="o">-=</span> <span class="n">_value</span><span class="p">;</span>
+    <span class="n">emit</span> <span class="n">Transfer</span><span class="p">(</span><span class="n">_from</span><span class="p">,</span> <span class="n">_to</span><span class="p">,</span> <span class="n">_value</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">function</span> <span class="n">balanceOf</span><span class="p">(</span><span class="n">address</span> <span class="n">_owner</span><span class="p">)</span> <span class="n">public</span> <span class="n">constant</span> <span class="n">returns</span> <span class="p">(</span><span class="n">uint256</span> <span class="n">balance</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">balances</span><span class="p">[</span><span class="n">_owner</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="n">function</span> <span class="n">approve</span><span class="p">(</span><span class="n">address</span> <span class="n">_spender</span><span class="p">,</span> <span class="n">uint256</span> <span class="n">_value</span><span class="p">)</span> <span class="n">public</span> <span class="n">returns</span> <span class="p">(</span><span class="nb">bool</span> <span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">allowed</span><span class="p">[</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">][</span><span class="n">_spender</span><span class="p">]</span> <span class="o">=</span> <span class="n">_value</span><span class="p">;</span>
+    <span class="n">emit</span> <span class="n">Approval</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span><span class="p">,</span> <span class="n">_spender</span><span class="p">,</span> <span class="n">_value</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">function</span> <span class="n">allowance</span><span class="p">(</span><span class="n">address</span> <span class="n">_owner</span><span class="p">,</span> <span class="n">address</span> <span class="n">_spender</span><span class="p">)</span> <span class="n">public</span> <span class="n">constant</span> <span class="n">returns</span> <span class="p">(</span><span class="n">uint256</span> <span class="n">remaining</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">allowed</span><span class="p">[</span><span class="n">_owner</span><span class="p">][</span><span class="n">_spender</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="erc20-abibytecode">
+<h2>编译erc20代币智能合约，生成abi及bytecode<a class="headerlink" href="#erc20-abibytecode" title="Permalink to this headline">¶</a></h2>
+<p>使用remix编译</p>
+<p>复制abi及bytecode以便下一步创建智能合约</p>
+<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;constant&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;payable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;stateMutability&quot;</span><span class="p">:</span> <span class="s2">&quot;view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;constant&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_spender&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;address&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_value&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint256&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;approve&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;payable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;stateMutability&quot;</span><span class="p">:</span> <span class="s2">&quot;nonpayable&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;constant&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;totalSupply&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint256&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;payable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;stateMutability&quot;</span><span class="p">:</span> <span class="s2">&quot;view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;constant&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_from&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;address&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_to&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;address&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_value&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint256&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;transferFrom&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;payable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;stateMutability&quot;</span><span class="p">:</span> <span class="s2">&quot;nonpayable&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;constant&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;INITIAL_SUPPLY&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint256&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;payable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;stateMutability&quot;</span><span class="p">:</span> <span class="s2">&quot;view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;constant&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;decimals&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint8&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;payable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;stateMutability&quot;</span><span class="p">:</span> <span class="s2">&quot;view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;constant&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;TestCoin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;payable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;stateMutability&quot;</span><span class="p">:</span> <span class="s2">&quot;nonpayable&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;constant&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_owner&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;address&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;balanceOf&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;balance&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint256&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;payable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;stateMutability&quot;</span><span class="p">:</span> <span class="s2">&quot;view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;constant&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;symbol&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;payable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;stateMutability&quot;</span><span class="p">:</span> <span class="s2">&quot;view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;constant&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_to&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;address&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_value&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint256&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;transfer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;payable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;stateMutability&quot;</span><span class="p">:</span> <span class="s2">&quot;nonpayable&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;constant&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_owner&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;address&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_spender&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;address&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;allowance&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;remaining&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint256&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;payable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;stateMutability&quot;</span><span class="p">:</span> <span class="s2">&quot;view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;anonymous&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;indexed&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_from&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;address&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;indexed&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_to&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;address&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;indexed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_value&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint256&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Transfer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;event&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;anonymous&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;indexed&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_owner&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;address&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;indexed&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_spender&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;address&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;indexed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_value&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uint256&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Approval&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;event&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>bytecode为</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">60606040526040805190810160405280600981526020017</span><span class="n">f5465737420436f696e00000000000000000000000000000000000000000000008152506001908051906020019061004f9291906100e7565b506040805190810160405280600481526020017f54455354000000000000000000000000000000000000000000000000000000008152506002908051906020019061009b9291906100e7565b506006600360006101000a81548160ff021916908360ff160217905550600360009054906101000a900460ff1660ff16600a0a6305f5e1000260045534156100e257600080fd5b61018c565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061012857805160ff1916838001178555610156565b82800160010185558215610156579182015b8281111561015557825182559160200191906001019061013a565b5b5090506101639190610167565b5090565b61018991905b8082111561018557600081600090555060010161016d565b5090565b90565b610c5c8061019b6000396000f3006060604052600436106100af576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306fdde03146100b4578063095ea7b31461014257806318160ddd1461019c57806323b872dd146101c55780632ff2e9dc1461023e578063313ce56714610267578063410e7b421461029657806370a08231146102ab57806395d89b41146102f8578063a9059cbb14610386578063dd62ed3e146103e0575b600080fd5b34156100bf57600080fd5b6100c761044c565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101075780820151818401526020810190506100ec565b50505050905090810190601f1680156101345780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b341561014d57600080fd5b610182600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919080359060200190919050506104ea565b604051808215151515815260200191505060405180910390f35b34156101a757600080fd5b6101af6105dc565b6040518082815260200191505060405180910390f35b34156101d057600080fd5b610224600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803573ffffffffffffffffffffffffffffffffffffffff169060200190919080359060200190919050506105e2565b604051808215151515815260200191505060405180910390f35b341561024957600080fd5b61025161084e565b6040518082815260200191505060405180910390f35b341561027257600080fd5b61027a610854565b604051808260ff1660ff16815260200191505060405180910390f35b34156102a157600080fd5b6102a9610867565b005b34156102b657600080fd5b6102e2600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506108b8565b6040518082815260200191505060405180910390f35b341561030357600080fd5b61030b610901565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561034b578082015181840152602081019050610330565b50505050905090810190601f1680156103785780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b341561039157600080fd5b6103c6600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803590602001909190505061099f565b604051808215151515815260200191505060405180910390f35b34156103eb57600080fd5b610436600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610ba9565b6040518082815260200191505060405180910390f35b60018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104e25780601f106104b7576101008083540402835291602001916104e2565b820191906000526020600020905b8154815290600101906020018083116104c557829003601f168201915b505050505081565b600081600660003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925846040518082815260200191505060405180910390a36001905092915050565b60005481565b600081600560008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054101580156106af575081600660008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205410155b15156106ba57600080fd5b81600560008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254019250508190555081600560008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254039250508190555081600660008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825403925050819055508273ffffffffffffffffffffffffffffffffffffffff168473ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a3600190509392505050565b60045481565b600360009054906101000a900460ff1681565b600454600081905550600454600560003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002081905550565b6000600560008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050919050565b60028054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156109975780601f1061096c57610100808354040283529160200191610997565b820191906000526020600020905b81548152906001019060200180831161097a57829003601f168201915b505050505081565b600081600560003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205410158015610a6f5750600560008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205482600560008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205401115b1515610a7a57600080fd5b60008373ffffffffffffffffffffffffffffffffffffffff1614151515610aa057600080fd5b81600560003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254039250508190555081600560008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a36001905092915050565b6000600660008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050929150505600a165627a7a723058204eb2d8db44d1baf9e40dfa6641ad7d3320d483efe196f35150c97c3e2097dbbc0029</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="solc">
+<h2>命令行使用solc编译<a class="headerlink" href="#solc" title="Permalink to this headline">¶</a></h2>
+<p>运行如下命令，输出TestToken.abi及TestToken.bin到bin目录下，TestToken.abi里边放的就是abi的内容，TestToken.bin里边放的就是bytecode的内容。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solc</span> <span class="o">--</span><span class="nb">bin</span> <span class="o">--</span><span class="n">abi</span> <span class="o">-</span><span class="n">o</span> <span class="nb">bin</span> <span class="n">TestToken</span><span class="o">.</span><span class="n">sol</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>程序中使用solc编译<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">solc</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;solc&#39;</span><span class="p">);</span>
+
+<span class="n">var</span> <span class="n">cmds</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">argv</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="n">cmds</span> <span class="o">!=</span> <span class="n">null</span> <span class="o">&amp;&amp;</span> <span class="n">cmds</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">){</span>
+  <span class="n">var</span> <span class="n">file</span> <span class="o">=</span> <span class="n">cmds</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+  <span class="n">var</span> <span class="n">name</span> <span class="o">=</span> <span class="n">cmds</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+  <span class="n">var</span> <span class="n">content</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">readFileSync</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">toString</span><span class="p">();</span>
+
+  <span class="n">var</span> <span class="nb">input</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">file</span><span class="p">:</span> <span class="n">content</span>
+  <span class="p">};</span>
+
+  <span class="n">var</span> <span class="n">output</span> <span class="o">=</span> <span class="n">solc</span><span class="o">.</span><span class="n">compile</span><span class="p">({</span><span class="n">sources</span><span class="p">:</span> <span class="nb">input</span><span class="p">},</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;contracts&#39;</span><span class="p">,</span> <span class="n">Object</span><span class="o">.</span><span class="n">keys</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">contracts</span><span class="p">));</span>
+
+  <span class="n">var</span> <span class="n">ctt</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">contracts</span><span class="p">[</span><span class="n">name</span><span class="p">];</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">ctt</span> <span class="o">==</span> <span class="n">null</span><span class="p">){</span>
+      <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">var</span> <span class="n">bytecode</span> <span class="o">=</span> <span class="n">ctt</span><span class="o">.</span><span class="n">bytecode</span><span class="p">;</span>
+  <span class="n">var</span> <span class="n">abi</span> <span class="o">=</span> <span class="n">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">ctt</span><span class="o">.</span><span class="n">interface</span><span class="p">);</span>
+
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;bytecode&#39;</span><span class="p">,</span> <span class="n">bytecode</span><span class="p">);</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;abi&#39;</span><span class="p">,</span> <span class="n">ctt</span><span class="o">.</span><span class="n">interface</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>部署erc20代币智能合约<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>function createContract(chain3, account, abiString, bytecodeString){
+    var bytecode = &quot;0x&quot; + bytecodeString;
+    var abi = JSON.parse(abiString);
+
+    console.log(&#39;bytecode&#39;, bytecode);
+    console.log(&#39;abi&#39;, abiString);
+
+    var gasValue = chain3.mc.estimateGas({data: bytecode});
+    console.log(&quot;gas estimate on contract:&quot;, gasValue);
+
+    var address = account.address;
+    var secret = account.secret;
+
+    var txCount = chain3.mc.getTransactionCount(address);
+    console.log(&quot;get tx account&quot;, txCount)
+
+    var rawTx = {
+      from: address,
+      nonce: chain3.intToHex(txCount),
+      gasPrice: chain3.intToHex(25000000000),
+      gasLimit: chain3.intToHex(gasValue * 10), //&quot;* 10&quot;, 具体原因可查看 https://github.com/MOACChain/moac-core/issues/6, 后续问题修复后从文档中移掉 &quot;* 10&quot;
+      value: &#39;0x00&#39;,
+      data: bytecode
+    };
+
+    console.log(&#39;raw tx:&#39;, rawTx);
+    var tx = new chain3.transaction(rawTx);
+    console.log(&#39;version:&#39;, chain3.version.network);
+    tx.setChainId(chain3.version.network);
+    console.log(&quot;tx chain id:&quot;, tx.getChainId())
+
+    //Requires the private key
+    var privateKey = new Buffer(secret, &#39;hex&#39;);
+    console.log(tx.toJSON());
+
+    tx.sign(privateKey);
+    console.log(&quot;after signed:&quot;, tx.toJSON());
+
+    var signedTx = &#39;0x&#39; + tx.serialize().toString(&#39;hex&#39;);
+    console.log(&quot;send signed tx:&quot;, signedTx);
+    console.log(&quot;len&quot;, signedTx.length);
+
+    tx.verifySignature();
+    var recover = &#39;0x&#39; + tx.getSenderAddress().toString(&#39;hex&#39;);
+    console.log(&quot;recovered address:&quot;, recover);
+
+    chain3.mc.sendRawTransaction(signedTx, function(err, hash) {
+        if (!err){
+          console.log(&quot;succeed: &quot;, hash);
+          //等合约创建完成，返回合约地址
+          var filter = chain3.mc.filter(&#39;latest&#39;);
+          filter.watch(function(error, result) {
+            var receipt = chain3.mc.getTransactionReceipt(hash);
+            if (!error &amp;&amp; receipt &amp;&amp; receipt.transactionHash == hash) {
+              console.log(&quot;contract address: &quot;, receipt &amp;&amp; receipt.contractAddress);
+              filter.stopWatching();
+            }
+          });
+        }else{
+            console.log(&quot;error:&quot;, err.message);
+        }
+    });
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>调用erc20代币智能合约<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>一种方法是通过abi生成智能合约对象,
+直接通过对应合约方法进行call调用，如下例子说明查询erc20代币相应帐户对应的代币数量的例子.</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">callContract</span><span class="p">(</span><span class="n">chain3</span><span class="p">,</span> <span class="n">contractAddress</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">abiString</span><span class="p">){</span>
+  <span class="n">var</span> <span class="n">abi</span> <span class="o">=</span> <span class="n">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">abiString</span><span class="p">);</span>
+  <span class="n">var</span> <span class="n">contract</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span><span class="n">abi</span><span class="p">);</span>
+  <span class="n">var</span> <span class="n">token</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">contractAddress</span><span class="p">);</span>
+  <span class="n">token</span><span class="o">.</span><span class="n">balanceOf</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">result</span><span class="p">){</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>另外一种方法通过对交易签名进行调用,如下例子说明调用erc20代币的转帐交易的方法</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>function callContract(chain3, account, contractAddress, address, abiString){
+  var abi = JSON.parse(abiString);
+  var contract = chain3.mc.contract(abi);
+  var token = contract.at(contractAddress);
+
+  console.log(&#39;data&#39;, token.balanceOf.getData(address));
+  var privateKey = new Buffer(account.secret, &quot;hex&quot;);
+  var txCount = chain3.mc.getTransactionCount(account.address);
+  var rawTx = {
+    nonce: chain3.intToHex(txCount),
+    gasPrice: chain3.intToHex(25000000000),
+    gasLimit: chain3.intToHex(40000),
+    to: contractAddress,
+    data: token.transfer.getData(destinate, 100),
+  };
+  var tx = new chain3.transaction(rawTx);
+  tx.setChainId(chain3.version.network);
+  tx.sign(privateKey);
+  var signedTx = &#39;0x&#39; + tx.serialize().toString(&#39;hex&#39;);
+  chain3.mc.sendRawTransaction(signedTx, function(err, hash) {
+      if (!err){
+          console.log(&quot;succeed: &quot;, hash);
+      }else{
+          console.log(&quot;error:&quot;, err.message);
+      }
+  });
+}
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9.4_erc20代币说明</a><ul>
+<li><a class="reference internal" href="#id1">开发erc20代币智能合约</a></li>
+<li><a class="reference internal" href="#erc20-abibytecode">编译erc20代币智能合约，生成abi及bytecode</a></li>
+<li><a class="reference internal" href="#solc">命令行使用solc编译</a></li>
+<li><a class="reference internal" href="#id2">程序中使用solc编译</a></li>
+<li><a class="reference internal" href="#id3">部署erc20代币智能合约</a></li>
+<li><a class="reference internal" href="#id4">调用erc20代币智能合约</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="9.3_exchange.html" title="previous chapter">9.3_交易所</a></li>
+      <li>Next: <a href="9.5_erc721.html" title="next chapter">9.5_发行erc721通证</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/9.4_erc20.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/9.4_erc20.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

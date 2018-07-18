@@ -1,0 +1,325 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>1. 准备工作 &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. 区块链技术的痛点" href="zmethod.html" />
+    <link rel="prev" title="TODO" href="zdevelopchain.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>北京时间2018年4月30日22:00，MOAC公链正式上线。</p>
+<p>以下为MOAC Windows版系统安装及挖矿教程。</p>
+<div class="section" id="id1">
+<h1>1. 准备工作<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>从MOAC官网http://moac.io 或者 <a class="reference external" href="https://github.com/MOACChain/moac-core/">https://github.com/MOACChain/moac-core/</a>
+下载Windows版本的系统软件包。</p>
+<p>MOAC官网提供两种版本下载，MOAC-Pangu-0.8.2-Ubuntu.zip和MOAC-Pangu-0.8.2-Windows.zip。
+其中Pangu（盘古）为代号，0.8.2为版本号。</p>
+<p>该版本适用于Windows 7及以上系统。本文实际操作环境为：64位Windows 10
+中文版。</p>
+</div>
+<div class="section" id="moac">
+<h1>2. 产生本地MOAC节点<a class="headerlink" href="#moac" title="Permalink to this headline">¶</a></h1>
+<p>解压MOAC-Pangu-0.8.2-Windows.zip到本地硬盘。</p>
+<div class="section" id="id2">
+<h2>2.1 查看moac帮助<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>打开命令（cmd）终端，转到墨客解压目录，在命令行中执行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">moacPangu0</span><span class="o">.</span><span class="mf">8.2</span><span class="o">-</span><span class="n">win</span><span class="o">&gt;</span><span class="n">moac</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<p>显示帮助信息，包含但不限于以下内容：</p>
+<p>查看moac帮助</p>
+<p>打开命令（cmd）终端，转到墨客解压目录，在命令行中执行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\ <span class="n">moacPangu0</span><span class="o">.</span><span class="mf">8.2</span><span class="o">-</span><span class="n">win</span><span class="o">&gt;</span><span class="n">moac</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<p>显示帮助信息，包含但不限于以下内容：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Start</span> <span class="n">MOAC</span><span class="o">....</span> <span class="mi">2</span>
+<span class="n">NAME</span><span class="p">:</span>
+ <span class="n">moac</span> <span class="o">-</span> <span class="n">the</span> <span class="n">MOAC</span><span class="o">-</span><span class="n">core</span> <span class="n">command</span> <span class="n">line</span> <span class="n">interface</span>
+ <span class="n">Copyright</span> <span class="mi">2017</span> <span class="n">The</span> <span class="n">MOAC</span> <span class="n">Authors</span>
+<span class="n">USAGE</span><span class="p">:</span>
+ <span class="n">moac</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">command</span> <span class="p">[</span><span class="n">command</span> <span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="n">arguments</span><span class="o">...</span><span class="p">]</span>
+<span class="n">VERSION</span><span class="p">:</span>
+ <span class="mf">0.8</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">develop</span><span class="o">-</span><span class="n">ed4070bf</span>
+<span class="n">MOAC</span> <span class="n">CORE</span> <span class="n">OPTIONS</span><span class="p">:</span>
+<span class="o">--</span><span class="n">config</span> <span class="n">value</span>                      <span class="n">TOML</span> <span class="n">configuration</span> <span class="n">file</span>
+<span class="o">--</span><span class="n">datadir</span> <span class="s2">&quot;C:\Users\[userName]\AppData\Roaming\MoacNode&quot;</span> <span class="n">Data</span> <span class="n">directory</span> <span class="k">for</span> <span class="n">the</span> <span class="n">databases</span> <span class="ow">and</span> <span class="n">keystore</span>
+<span class="o">--</span><span class="n">keystore</span>                         <span class="n">Directory</span> <span class="k">for</span> <span class="n">the</span> <span class="n">keystore</span> <span class="p">(</span><span class="n">default</span> <span class="o">=</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">datadir</span><span class="p">)</span>
+<span class="o">--</span><span class="n">nousb</span>                           <span class="n">Disables</span> <span class="n">monitoring</span> <span class="k">for</span> <span class="ow">and</span> <span class="n">managing</span> <span class="n">USB</span> <span class="n">hardware</span> <span class="n">wallets</span>
+<span class="o">--</span><span class="n">networkid</span> <span class="n">value</span>                   <span class="n">Network</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">integer</span><span class="p">,</span> <span class="mi">1</span><span class="o">=</span><span class="n">Pangu</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">Testnet</span><span class="p">)</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">--</span><span class="n">testnet</span>                          <span class="n">MOAC</span> <span class="n">test</span> <span class="n">network</span><span class="p">:</span> <span class="n">pre</span><span class="o">-</span><span class="n">configured</span> <span class="n">proof</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">work</span> <span class="n">test</span> <span class="n">network</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>2.2 运行节点<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>打开命令（cmd）终端，转到墨客当前目录，在命令行中执行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\ <span class="n">moacPangu0</span><span class="o">.</span><span class="mf">8.2</span><span class="o">-</span><span class="n">win</span><span class="o">&gt;</span><span class="n">moac</span>
+</pre></div>
+</div>
+<p>显示如下信息：</p>
+<div class="figure" id="id15">
+<img alt="moac\_install\_win\_0" src="_images/moac_install_win_0.png" />
+<p class="caption"><span class="caption-text">moac_install_win_0</span></p>
+</div>
+<p>至最后三行显示如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INFO</span> <span class="p">[</span><span class="mi">04</span><span class="o">-</span><span class="mi">01</span><span class="o">|</span><span class="mi">20</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">42.851</span><span class="p">]</span> <span class="mi">1</span><span class="p">:[</span><span class="n">node</span><span class="o">/</span><span class="n">node</span><span class="o">.</span><span class="n">go</span><span class="o">-&gt;</span><span class="n">Node</span><span class="o">.</span><span class="n">startIPC</span><span class="p">]</span>
+<span class="n">INFO</span> <span class="p">[</span><span class="mi">04</span><span class="o">-</span><span class="mi">01</span><span class="o">|</span><span class="mi">20</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">42.852</span><span class="p">]</span> <span class="mi">145</span><span class="p">:</span><span class="n">IPC</span> <span class="n">endpoint</span> <span class="n">opened</span><span class="p">:</span> \\<span class="o">.</span>\<span class="n">pipe</span>\<span class="n">moac</span><span class="o">.</span><span class="n">ipc</span>
+<span class="n">INFO</span> <span class="p">[</span><span class="mi">04</span><span class="o">-</span><span class="mi">01</span><span class="o">|</span><span class="mi">20</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">12.846</span><span class="p">]</span> <span class="mi">152</span><span class="p">:</span><span class="n">Block</span> <span class="n">synchronisation</span> <span class="n">started</span>
+</pre></div>
+</div>
+<p>表示节点安装成功，如果网络正常，就开始同步区块。</p>
+<p>系统将MOAC节点默认安装在目录：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="p">[</span><span class="n">userName</span><span class="p">]</span>\<span class="n">AppData</span>\<span class="n">Roaming</span>\<span class="n">MoacNode</span>\
+</pre></div>
+</div>
+<p>该目录下包含两个文件夹：moac和keystore。</p>
+</div>
+<div class="section" id="moac-console">
+<h2>2.3 进入MOAC console界面<a class="headerlink" href="#moac-console" title="Permalink to this headline">¶</a></h2>
+<p>系统关机或主动关闭运行中的节点后，如果需要重新启动节点，在命令行中执行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\ <span class="n">moacPangu0</span><span class="o">.</span><span class="mf">8.2</span><span class="o">-</span><span class="n">win</span><span class="o">&gt;</span><span class="n">moac</span> <span class="n">console</span>
+</pre></div>
+</div>
+<p>之后一直滚屏以同步区块数据。</p>
+<p>打开另一个命令（cmd）终端，转到墨客当前目录，在命令行中执行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\ <span class="n">moacPangu0</span><span class="o">.</span><span class="mf">8.2</span><span class="o">-</span><span class="n">win</span><span class="o">&gt;</span><span class="n">moac</span> <span class="n">attach</span>
+</pre></div>
+</div>
+<div class="figure" id="id16">
+<img alt="moac\_install\_win\_1" src="_images/moac_install_win_1.png" />
+<p class="caption"><span class="caption-text">moac_install_win_1</span></p>
+</div>
+<p>该命令行不会主动滚屏，而是等待命令。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>3. 挖矿<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id5">
+<h2>3.1 建立新账户<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>挖矿前必须建立一个自己的账户。</p>
+<p>进入MOAC console界面，执行命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">personal</span><span class="o">.</span><span class="n">newAccount</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>系统会提示输入一个密码，例如”passwd”，并再次输入相同密码确认后，会显示一个以0x开头的字符串，即为MOAC帐号的公开地址。</p>
+<div class="figure" id="id17">
+<img alt="moac\_install\_win\_2" src="_images/moac_install_win_2.png" />
+<p class="caption"><span class="caption-text">moac_install_win_2</span></p>
+</div>
+<p>系统同时会在以下目录：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="p">[</span><span class="n">userName</span><span class="p">]</span>\<span class="n">AppData</span>\<span class="n">Roaming</span>\<span class="n">MoacNode</span>\<span class="n">testnet</span>\<span class="n">keystore</span>
+</pre></div>
+</div>
+<p>记录一个账号文件。请保存好该文件，并牢记密码，之后用于解密帐号和操作。</p>
+</div>
+<div class="section" id="id6">
+<h2>3.2 查看账户<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>进入MOAC console界面，执行命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mc</span><span class="o">.</span><span class="n">accounts</span>
+</pre></div>
+</div>
+<p>可以查看本节点下的所有账号。</p>
+</div>
+<div class="section" id="id7">
+<h2>3.3 查看账户余额<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>进入MOAC console界面，执行命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mc</span><span class="o">.</span><span class="n">getBalance</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>可以查看本节点下的账号余额。0表示第一个账户，也是默认挖矿账户。</p>
+<p>或者：导入“mctest.js”的情况下（见4.1），执行命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">checkBalance</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>该命令用于查看当前节点所有账号的余额。</p>
+</div>
+<div class="section" id="id8">
+<h2>3.4 查看挖矿状态<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>进入MOAC console界面，执行命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mc</span><span class="o">.</span><span class="n">mining</span>
+</pre></div>
+</div>
+<p>返回true表明节点正在挖矿，false表明节点没有挖矿。</p>
+</div>
+<div class="section" id="id9">
+<h2>3.5 开始挖矿<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>进入MOAC console界面，执行命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">miner</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>挖矿状态下，数据显示有明显不同。</p>
+<div class="figure" id="id18">
+<img alt="moac\_install\_win\_4" src="_images/moac_install_win_4.png" />
+<p class="caption"><span class="caption-text">moac_install_win_4</span></p>
+</div>
+<p>挖到矿之后，可以查看余额</p>
+<div class="figure" id="id19">
+<img alt="moac\_install\_win\_5" src="_images/moac_install_win_5.png" />
+<p class="caption"><span class="caption-text">moac_install_win_5</span></p>
+</div>
+<p>登录墨客区块链浏览器页面： <a class="reference external" href="http://explorer.moac.io">http://explorer.moac.io</a>。</p>
+<div class="figure" id="id20">
+<img alt="moac\_explorer\_0" src="_images/moac_explorer_main.png" />
+<p class="caption"><span class="caption-text">moac_explorer_0</span></p>
+</div>
+<p>在搜索栏输入你的挖矿账号地址，会显示该账号的余额等信息。</p>
+<div class="figure" id="id21">
+<img alt="moac\_explorer\_1" src="_images/moac_explorer_address.png" />
+<p class="caption"><span class="caption-text">moac_explorer_1</span></p>
+</div>
+<p>在搜索栏输入你挖到矿的区块号，会显示该区块的信息。</p>
+<p>Miner正是你的账号地址。</p>
+<div class="figure" id="id22">
+<img alt="moac\_explorer\_2" src="_images/moac_explorer_blocks.png" />
+<p class="caption"><span class="caption-text">moac_explorer_2</span></p>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>3.6 停止挖矿<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>进入MOAC console界面，执行命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">miner</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h1>4. 交易<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id12">
+<h2>4.1 读入测试函数<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>部分功能程序存储在mctest.js里。</p>
+<p>进入MOAC console界面，执行命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">loadScript</span><span class="p">(</span><span class="s2">&quot;mctest.js&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h2>4.2 交易条件<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<p>为执行交易，需要至少两个帐号，其中一个有足够的mc。</p>
+<p>如果没有目标账号，可以用步骤2.3.1的命令创建一个本地账号。并用命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mc</span><span class="o">.</span><span class="n">accounts</span>
+</pre></div>
+</div>
+<p>显示当前节点中存储的账号，应该至少有一个挖矿账号。</p>
+</div>
+<div class="section" id="id14">
+<h2>4.3 交易<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<p>进入MOAC console界面，执行命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Send</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;passwd&#39;</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这个过程需要第一个账号的密码。比如’passwd’，发送额为0.1 mc。</p>
+<div class="figure" id="id23">
+<img alt="moac\_install\_win\_6" src="_images/moac_install_win_6.png" />
+<p class="caption"><span class="caption-text">moac_install_win_6</span></p>
+</div>
+<p>在系统挖矿的情况下，发送应该在下一个区块产生时完成。</p>
+<p>系统显示的是以 <strong>sha（Sand）</strong> 为单位的余额， <strong>1 mc = 1e18 sha。</strong></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. 准备工作</a></li>
+<li><a class="reference internal" href="#moac">2. 产生本地MOAC节点</a><ul>
+<li><a class="reference internal" href="#id2">2.1 查看moac帮助</a></li>
+<li><a class="reference internal" href="#id3">2.2 运行节点</a></li>
+<li><a class="reference internal" href="#moac-console">2.3 进入MOAC console界面</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">3. 挖矿</a><ul>
+<li><a class="reference internal" href="#id5">3.1 建立新账户</a></li>
+<li><a class="reference internal" href="#id6">3.2 查看账户</a></li>
+<li><a class="reference internal" href="#id7">3.3 查看账户余额</a></li>
+<li><a class="reference internal" href="#id8">3.4 查看挖矿状态</a></li>
+<li><a class="reference internal" href="#id9">3.5 开始挖矿</a></li>
+<li><a class="reference internal" href="#id10">3.6 停止挖矿</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">4. 交易</a><ul>
+<li><a class="reference internal" href="#id12">4.1 读入测试函数</a></li>
+<li><a class="reference internal" href="#id13">4.2 交易条件</a></li>
+<li><a class="reference internal" href="#id14">4.3 交易</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="zdevelopchain.html" title="previous chapter">TODO</a></li>
+      <li>Next: <a href="zmethod.html" title="next chapter">1. 区块链技术的痛点</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/zinstall.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/zinstall.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

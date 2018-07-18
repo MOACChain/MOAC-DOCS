@@ -1,0 +1,111 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>基本指令 &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="环境安装" href="zAPI.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>基本指令<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>–testnet: 连接到MOAC测试网络；</p>
+<p>–rpc: 启用HTTP的RPC服务，以便非本机访问该MOAC节点服务；</p>
+<p>–rpcaddr value: 默认是”localhost”, 只能本机访问； 可通过设置
+为”0.0.0.0”, 以便非本机访问该MOAC节点服务,
+但现在RPC服务是基于HTTP的，是明文传输，需注意安全问题；</p>
+<p>–rpcport value: 默认是”8545”, 一般来说不用改，用默认端口即可；</p>
+<p>–rpcapi value:
+指定RPC要开放的API服务，默认为”chain3,mc,net”，常用的一般还会配置比如personal,admin,debug,miner,txpool,db,shh等，但是因为RPC服务是明文传输，所以，如果使用personal的时候，要注意安全问题；</p>
+<p>–rpccorsdomain value:
+一般来说，如果你知道要用这个选项的时候，使用”*”值即可，更详细可自行搜索“CORS是一个W3C标准，全称是”跨域资源共享”（Cross-origin
+resource sharing）”中相关关键词进一步了解；</p>
+<p>–jspath loadScript: 默认值为”.”, loadScript装载javascript文件的主目录；</p>
+<p>示例如下：</p>
+<p>./moac attach /xx/xxx/moac.ipc 通过本地ipc接口连接到MOAC节点</p>
+<p>./moac attach <a class="reference external" href="http://xxx.xxx.xxx.xxx:8545">http://xxx.xxx.xxx.xxx:8545</a>
+通过基于HTTP的RPC接口连接到本地或者远程MOAC节点</p>
+<p>./moac –testnet 启动MOAC测试节点</p>
+<p>./moac –testnet console 启动MOAC测试节点，并启动交互命令行</p>
+<p>./moac –testnet –rpc 启动MOAC测试节点，同时启动RPC服务</p>
+<p>./moac –testnet –rpc –rpcaddr=0.0.0.0
+–rpcapi=”db,mc,net,chain3,personal,debug” –rpccorsdomain=”*”
+启动MOAC测试节点，非本机可访问，非本机也可以使用personal及debug服务，同时提供跨域资源共享服务；</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="zAPI.html" title="previous chapter">环境安装</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/zcommand.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/zcommand.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,273 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>环境安装 &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="MOAC VNODE" href="VNODE.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>环境安装<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nodejs">
+<h2>nodejs安装<a class="headerlink" href="#nodejs" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nodejs</span><span class="o">.</span><span class="n">org</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>下载nodejs安装即可, node -v查看安装的版本，npm -v 查看npm版本。
+建议对nodejs进行简单的环境配置, 同时下载并安装git， 并通过git
+–version查看git版本。</p>
+</div>
+<div class="section" id="chain3">
+<h2>进行chain3库安装<a class="headerlink" href="#chain3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>npm install chain3 -g
+
+注意：某些情况下，Windows下需要用“以管理员身份运行”进入cmd界面，才能使用npm
+install 命令
+</pre></div>
+</div>
+</div>
+<div class="section" id="api">
+<h2>API使用准备<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">Chain3</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;chain3&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">chain3</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Chain3</span><span class="p">();</span>
+<span class="n">chain3</span><span class="o">.</span><span class="n">setProvider</span><span class="p">(</span><span class="n">new</span> <span class="n">chain3</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">HttpProvider</span><span class="p">(</span><span class="s1">&#39;http://xxx.xxx.xxx.xxx:xxxx&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>API介绍<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>chain3.version.network：查看当前MOAC网络ID</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">networkId</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">network</span><span class="p">;</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;network id:&#39;</span><span class="o">+</span> <span class="n">networkId</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>chain3.setProvider: 设置API访问MOAC节点方式</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chain3</span><span class="o">.</span><span class="n">setProvider</span><span class="p">(</span><span class="n">new</span> <span class="n">chain3</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">HttpProvider</span><span class="p">(</span><span class="s1">&#39;http://localhost:8545&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>chain3.sha3(string,options)</li>
+</ol>
+<p>参数：string：传入的需要使用Keccak-256 SHA3算法进行哈希运算的字符串
+options：可选项，如果要解析的是hex格式的十六进制字符串，需要设置为hex</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="nb">hash</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">sha3</span><span class="p">(</span><span class="s2">&quot;the string to be hashed&quot;</span><span class="p">);</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">hash</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">hashOfHash</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">sha3</span><span class="p">(</span><span class="nb">hash</span><span class="p">,{</span><span class="n">encoding</span><span class="p">:</span><span class="s1">&#39;hex&#39;</span><span class="p">});</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">hashOfHash</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>chain3.net.peerCount: 返回连接节点已连上的其他moac节点的数量</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">peerCount</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">net</span><span class="o">.</span><span class="n">peerCount</span><span class="p">;</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">peerCount</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>chain3.net.listening: 返回连接节点的listen状态</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">listenState</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">net</span><span class="o">.</span><span class="n">listening</span><span class="p">;</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">listenState</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>chain3.mc.coinbase: 节点配置的，如果挖矿成功奖励发送到该地址</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">nodeCoinbase</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">coinbase</span><span class="p">;</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">nodeCoinbase</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li>chain3.mc.mining: 节点的挖矿状态</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">miningState</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">mining</span><span class="p">;</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">miningState</span><span class="p">);</span>  <span class="o">//</span><span class="n">true</span> <span class="ow">or</span> <span class="n">false</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li>chain3.mc.accounts: 节点持有的账户列表</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">nodeAccounts</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">accounts</span><span class="p">;</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">nodeAccounts</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li>chain3.mc.blockNumber: 当前区块号</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">nowBlockNumber</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">blockNumber</span><span class="p">;</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">nowBlockNumber</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
+<li>chain3.mc.getBlockTransactionCount: 指定区块的交易数量</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">transactionCount</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">getBlockTransactionCount</span><span class="p">(</span><span class="mi">96160</span><span class="p">);</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">transactionCount</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="11">
+<li>chain3.mc.getBalance: 给定地址的余额</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>var balance = chain3.mc.getBalance(&quot;0x36eaa71d7383be53cb600743aad08a55222a4915&quot;);
+console.log(&quot;getBalance1&quot; + balance); //instanceof BigNumber
+console.log(&quot;getBalance2&quot; + balance.toString(10));
+//输出结果： getBalance1:3.04527226722e+21
+//         getBalance2:3045272267220000000000
+</pre></div>
+</div>
+<ol class="arabic simple" start="12">
+<li>chain3.mc.defaultBlock: 默认块设置</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>var defultBlock = chain3.mc.defaultBlock;
+console.log(&quot;defaultBlock&quot; + defultBlock);
+//默认值是latest，即最近刚出的区块
+chain3.mc.defaultBlock = 123;  //传入一个值来覆盖默认配置
+console.log(&quot;defaultBlock&quot; + defultBlock);
+</pre></div>
+</div>
+<ol class="arabic simple" start="13">
+<li>chain3.mc.gasPrice: 当前gas价格</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">gasPrice</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">gasPrice</span><span class="p">;</span><span class="o">//</span><span class="n">该值由最近几个块的gas价格的中值决定</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">gasPrice</span><span class="o">.</span><span class="n">toString</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="14">
+<li>chain3.mc.estimateGas: 执行一个消息调用或交易，返回使用的gas量</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>var result = chain3.mc.estimateGas({
+ to :&quot;0xf7ebc6b854a202efe08e91422a44ba2161ed50dc&quot;,
+ data: &#39;0x23455654&#39;
+    //gas: 11,          //可选参数，设定gas
+    //gasPrice: 11      //可选参数，设定gasPrice
+});
+console.log(&#39;estimateGas  :&#39;+ result);
+//输出结果：gasprice :20000000000
+//        estimateGas :1273
+</pre></div>
+</div>
+<ol class="arabic simple" start="15">
+<li>chain3.mc.getCode: 获取指定地址的代码（地址合约编译后的字节代码）</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">code</span>  <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">getCode</span><span class="p">(</span><span class="s2">&quot;0x0000000000000000000000000000000000000065&quot;</span><span class="p">);</span><span class="o">//</span><span class="n">contract</span> <span class="n">address</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="16">
+<li>chain3.mc.syncing: 如果正在同步，返回同步对象；否则返回false</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>var sync = chain3.mc.syncing;
+console.log(&#39;syncing  :&#39;+ sync );
+//如果正在同步，返回同步开始区块号、节点当前正在同步的区块号、预估要同步到的区块号
+</pre></div>
+</div>
+<ol class="arabic simple" start="17">
+<li>chain3.mc.getTransaction: 返回指定交易哈希值的交易</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">blockHash</span> <span class="o">=</span> <span class="s2">&quot;0xbeca9c6a3a2f7bde119193e802f9506cc0ae58f23aca59f7ac8bf98e4e2242b5&quot;</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">transaction</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">getTransaction</span><span class="p">(</span><span class="n">blockHash</span><span class="p">);</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;get transaction:&#39;</span><span class="o">+</span> <span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">transaction</span><span class="p">));</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="18">
+<li>chain3.mc.getBlock: 返回区块号或区块哈希值所对应的区块</li>
+</ol>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">getTheBlock</span> <span class="o">=</span> <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">getBlock</span><span class="p">(</span><span class="mi">96190</span><span class="p">);</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;get the block  :&#39;</span><span class="o">+</span> <span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">getTheBlock</span> <span class="p">));</span>
+</pre></div>
+</div>
+<p>//TODO 稍后更新</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">环境安装</a><ul>
+<li><a class="reference internal" href="#nodejs">nodejs安装</a></li>
+<li><a class="reference internal" href="#chain3">进行chain3库安装</a></li>
+<li><a class="reference internal" href="#api">API使用准备</a></li>
+<li><a class="reference internal" href="#id2">API介绍</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="VNODE.html" title="previous chapter">MOAC VNODE</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/zAPI.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/zAPI.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

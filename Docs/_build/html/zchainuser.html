@@ -1,0 +1,104 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>子链用户类别 &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SCS English Version" href="zmicrochain01.html" />
+    <link rel="prev" title="Backup模块" href="zbackupchain.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>子链用户类别<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>在初步了解了SCS的构成后，对于想参与到MOAC子链的人来说，有三种参与方式：
+* A、 SCS矿工：参与子链的节点共识并获得子链挖矿奖励； * B、
+DAPP开发者：作为子链DAPP开发者参与子链的业务逻辑开发； * C、
+VNODE代理：提供一个VNODE-PROXY，参与子链的匿名信息传递。</p>
+<p>在MOAC的生态设计中，参与子链的角色有不同的责任和收益。</p>
+<p>A.
+SCS矿工，需要在注册时付出一定数量的押金（一般来说要大于10MOAC），来进入矿工池等待参与子链运行；此外，scsid需要存入1个moac作为调用费用。一旦被选中参与子链运行，矿工将会在子链刷新的时候获得回报，参与的子链越多，获得的回报越多。但是，如果SCS节点的网络不稳定，或者尝试捣乱，该SCS将会被标记为坏节点，继而被踢出子链的运行，并扣除押金。子链刷新（flush）是指子链的状态需要在一定区块后，刷新状态到母链，并且结算相应的收益。</p>
+<p>B.
+DAPP开发者，在部署控制合约的时候，约定刷新周期，需要消耗gas，之后需要给合约账号打入一定数量的运行费用，这些费用将会在刷新的时候分发给矿工。</p>
+<p>C.
+Vnode代理，需要在注册的时候交押金，可以获得两种类型的奖励，一种是提供代理节点数据转发后的收益，此收益可通过调用代理合约withdraw实现，另一种是提供子链合约调用的节点收益，此收益会在刷新后收到。</p>
+<p>对于A和C，我们使用智能合约subchainprotocolbase和vnodeprotocolbase来部署建立两个池子，可供需要的参与者注册。详细方法将在下面叙述。</p>
+<p>当前阶段，我们建议参与者使用官方推荐的池子，这样可以保证节点被最大化的利用。商用后，用户可根据需要定制自己的池子，吸引参与者注册。</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="zbackupchain.html" title="previous chapter">Backup模块</a></li>
+      <li>Next: <a href="zmicrochain01.html" title="next chapter">SCS English Version</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/zchainuser.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/zchainuser.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

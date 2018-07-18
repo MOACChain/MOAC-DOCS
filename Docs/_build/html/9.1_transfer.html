@@ -1,0 +1,144 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>9.1_转账 &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How to Access Your Wallet" href="accessWallet.html" />
+    <link rel="prev" title="Welcome to MOAC documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>9.1_转账<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>function send(chain3, fromAddress, fromSecret, toAddress, amount){
+  var mc = chain3.mc;
+  //使用fromAddress的交易数作为唯一按顺序的nonce
+  var txCount = chain3.mc.getTransactionCount(fromAddress);
+
+  //设置gas的价格
+  var gasPrice = 2500000000;
+  //设置gas的最大的数量
+  var gasLimit = 40000;
+  //从最小单位sha转成moac单位
+  var value = chain3.toSha(amount, &#39;mc&#39;);
+
+  //开始组装转帐交易
+  var rawTx = {
+    to: toAddress,
+    nonce: chain3.intToHex(txCount),
+    gasPrice: chain3.intToHex(gasPrice),
+    gasLimit: chain3.intToHex(gasLimit),
+    value: chain3.intToHex(value)
+  };
+  var tx = new chain3.transaction(rawTx);
+  //设置转账交易的网络ID
+  tx.setChainId(chain3.version.network);
+  //打印出转账交易的JSON结构
+  console.log(&#39;tx&#39;, tx.toJSON());
+
+  //生成私钥的Buffer版本
+  var privateKey = new Buffer(fromSecret, &#39;hex&#39;);
+  //使用私钥对转账交易进行签名
+  tx.sign(privateKey);
+
+  //序列化签名后的转帐交易，准备发送
+  var signedTx = &#39;0x&#39; + tx.serialize().toString(&#39;hex&#39;);
+
+  //验证签名的转帐交易
+  tx.verifySignature();
+  var verify = &#39;0x&#39; + tx.getSenderAddress().toString(&#39;hex&#39;);
+  console.log(&quot;verify address:&quot;, verify);
+
+  //发送签名后的转帐交易到MOAC网络结点
+  mc.sendRawTransaction(signedTx, function(err, hash) {
+      if (!err){
+          //成功后，返回交易的Hash
+          //备注：这个成功只说明些交易被MOAC网络结点接受放到pending列表中
+          console.log(&quot;succeed: &quot;, hash);
+          return hash;
+      }else{
+          console.log(&quot;error:&quot;, err);
+      }
+  });
+}
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to MOAC documentation</a></li>
+      <li>Next: <a href="accessWallet.html" title="next chapter">How to Access Your Wallet</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/9.1_transfer.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/9.1_transfer.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

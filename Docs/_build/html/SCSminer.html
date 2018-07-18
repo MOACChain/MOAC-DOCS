@@ -1,0 +1,165 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>A1、下载SCS代码（或准备一个SCS盒子） &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="a1scs-scs">
+<h1>A1、下载SCS代码（或准备一个SCS盒子）<a class="headerlink" href="#a1scs-scs" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="a2scsuserconfig-json">
+<h1>A2、配置SCS配置文件userconfig.json，需要配置的内容如下<a class="headerlink" href="#a2scsuserconfig-json" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>VnodeServiceCfg：这个SCS需要连接的vnode的ip和port。如架构图，每个SCS需要连接一个MOAC-VNODE来进行通讯，所以如果你没有自己部署一个节点，需要从官方渠道来设置连接一个可用的MOAC-VNODE</li>
+<li>DataDir：SCS数据目录，以子链地址为文件夹存放子链数据。默认：./scsdata</li>
+<li>LogPath：SCS日志目录，以天为单位存放日志。默认：./logs</li>
+<li>Beneficiary：矿工收益账号。为了安全起见，我们建议采用与scsid不同的账号用来获取子链的收益（scsid将会在后面讲到）</li>
+<li>VnodeChainId：母链ID，当前，测试环境ID是101，正式环境ID是99，请按需设置，不要设置其他ID</li>
+<li>BondLimit：服务子链的押金上限。每个DAPP用户需要设置押金来为子链服务，矿工可以使用这个上限来选择不为押金高的子链服务。该押金将从register时候的保证金中扣除。（TODO）</li>
+</ol>
+</div>
+<div class="section" id="a3scs">
+<h1>A3、启动SCS<a class="headerlink" href="#a3scs" title="Permalink to this headline">¶</a></h1>
+<p>参数说明</p>
+<ul class="simple">
+<li>“-p [密码]” scsid的密码，不设置默认密码为 moacscsofflineaccountpwd</li>
+<li>“-rpcaddr [addr]” SCS开启rpc的ip</li>
+<li>“-rpcport [port]” SCS开启rpc的port</li>
+</ul>
+<p>启动后，SCS将会在当前目录下生成一个keystore目录，并在目录中新建一个账号，这个账号就是scsid，可在第一次启动时使用-p设置密码。如果想换一个scsid，则需要删除keystore中的内容重新启动。</p>
+<p>SCS的rpc功能是提供给DAPP用户查询用的（MONITOR），如果是矿工，可以不开启这个功能。</p>
+</div>
+<div class="section" id="a4scsscs">
+<h1>A4、将这个SCS注册到SCS池子中去<a class="headerlink" href="#a4scsscs" title="Permalink to this headline">¶</a></h1>
+<p>SCS根据子链矿池智能合约subchainprotocolbase进行注册，并缴纳保证金。在等待一定时间之后（通常是母链50个block），就进入子链矿池，成为该子链的候选SCS节点。</p>
+<p>只要性能允许，一个SCS可以参与多个子链的注册。</p>
+<p>注册子链协议Javascript方法：（请注意，所有js方法需要和MOAC-VNODE
+Console配合使用，之后的例子相同）</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">protocolRegister</span><span class="p">(</span><span class="n">baseAddr</span><span class="p">,</span><span class="n">basePasswd</span><span class="p">,</span><span class="n">protocolAddr</span><span class="p">,</span><span class="n">scsAddr</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">chain3</span><span class="o">.</span><span class="n">personal</span><span class="o">.</span><span class="n">unlockAccount</span><span class="p">(</span><span class="n">baseAddr</span><span class="p">,</span> <span class="n">basePasswd</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">sendtx</span><span class="p">(</span><span class="n">baseAddr</span><span class="p">,</span> <span class="n">protocolAddr</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span><span class="s1">&#39;0x4420e486000000000000000000000000&#39;</span> <span class="o">+</span> <span class="n">scsAddr</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>【说明】：</p>
+<ul class="simple">
+<li>baseAddr、basePasswd：moac主网端存在的一个账户及其密码，用来发送交易前账户解锁；</li>
+<li>protocolAddr：子链矿池合约subchainprotocolbase地址；</li>
+<li>scsAddr：scsid地址，放在“…/scsserver/scskeystore”目录下；</li>
+<li>保证金：这里最低交10个moac，实际根据协议合约的最低保证金要求，保证金交的越多，可以参与的子链数量越多；</li>
+<li>数据：‘0x4420e486’是子链矿池合约subchainprotocolbase中‘register(address
+scs)’通过hash算法Keccak256得到前4个字节；该函数带一个参数，每个参数占用32个字节，地址20字节，不足32字节则前补12字节00。这里不用修改。</li>
+</ul>
+<p>另附1调用实例：</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>protocolRegister (&#39;0x1b9ce7e4f1.......e38913a56cd986786&#39;,
+‘123’,
+&#39;0x09f0dfc09b......0b85e5189a7493671&#39;,
+&#39;f687272ae00f8cea......37dd9be30329d8cf&#39;)//不带0x开头
+</pre></div>
+</div>
+<p>另附2交易实例：</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">sendtx</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">tgtaddr</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">strData</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">sendTransaction</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="n">from</span><span class="p">:</span> <span class="n">src</span><span class="p">,</span>
+            <span class="n">value</span><span class="p">:</span><span class="n">chain3</span><span class="o">.</span><span class="n">toSha</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span><span class="s1">&#39;mc&#39;</span><span class="p">),</span>
+            <span class="n">to</span><span class="p">:</span> <span class="n">tgtaddr</span><span class="p">,</span>
+            <span class="n">gas</span><span class="p">:</span> <span class="s2">&quot;9000000&quot;</span><span class="p">,</span>
+            <span class="n">gasPrice</span><span class="p">:</span> <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">gasPrice</span><span class="p">,</span>
+            <span class="n">data</span><span class="p">:</span> <span class="n">strData</span>
+        <span class="p">});</span>
+
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;sending from:&#39;</span> <span class="o">+</span>   <span class="n">src</span> <span class="o">+</span> <span class="s1">&#39; to:&#39;</span> <span class="o">+</span> <span class="n">tgtaddr</span>  <span class="o">+</span> <span class="s1">&#39; with data:&#39;</span> <span class="o">+</span> <span class="n">strData</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>注意：注册时缴纳的保证金，将在SCS被选中做子链的时候临时扣除，用于做假惩罚。</p>
+<p>至此，矿工的前期工作全部完成，如果被选中参与子链的运行，将会在子链刷新之后，在Beneficiary中看到收益。</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">A1、下载SCS代码（或准备一个SCS盒子）</a></li>
+<li><a class="reference internal" href="#a2scsuserconfig-json">A2、配置SCS配置文件userconfig.json，需要配置的内容如下</a></li>
+<li><a class="reference internal" href="#a3scs">A3、启动SCS</a></li>
+<li><a class="reference internal" href="#a4scsscs">A4、将这个SCS注册到SCS池子中去</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/SCSminer.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/SCSminer.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

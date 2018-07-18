@@ -1,0 +1,116 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>子链刷新过程 &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="1. 关于墨客" href="zoverview.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>子链刷新过程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p><strong>【参数】</strong></p>
+<p><em>子链刷新的参数在subchainbase.sol中定义。参数列表如下：</em></p>
+<ul class="simple">
+<li>1.刷新周期Round数值：定义子链经过多少区块后刷新。假如子链有100个节点，每个节点依次产生block，定义Round数为5，则每过500block
+刷新一次。</li>
+<li>2.当前刷新id 索引：指定下次刷新的id 在Nodelist中 的索引值</li>
+<li>3.刷新过期数值expiration：指定的id在block [0,
+2*expiration]必须完成刷新，否则由下一个id重新发起刷新。</li>
+<li>4.刷新作假惩罚：如果节点在propose，dispute，或者vote阶段作假，将从预先缴纳的bond中扣除相应的惩罚数额（MOAC），并被踢出NodeList</li>
+</ul>
+<p><strong>【流程】</strong> * 1.Proposal的格式如下： <img alt="image0" src="https://raw.githubusercontent.com/wiki/moacchain/moac-core/image/flush-proposal.png" /></p>
+<ul class="simple">
+<li>2.刷新周期到的时候，SCS节点调用子链合约的createProposal，发起一个刷新请求交易flushTX</li>
+<li>3.V-node接受到flushTX后，处理相应的逻辑，并将推送消息到相应的scs
+node，告知有新的proposal。</li>
+<li>4.如果SCS node发现没有问题，它们不需要反应。</li>
+<li>5.如果SCS node发现这个proposal
+有问题，它可以发起一个新的proposal，并通过TX调用DisbuteProposal，之后触发v-node将推送消息到相应的scs
+node。一旦SCS节点收到消息，那么所有的SCS必须响应，一个SCS只能对其中的一个进行投票（由智能合约保证）。</li>
+<li>6.最初发起proposal和发起disbute的SCS节点设置timer，在指导的时间内，获得投票的结果。如果得票超过50%，那么这个节点就发起一个TX来调用子链合约的Approval
+function。</li>
+<li>7.合法的proposal被接受，并被记录到区块链中，错误的proposal和所有对错误的proposal进行投票的人将被扣掉相应的保证金。</li>
+</ul>
+<div class="figure">
+<img alt="" src="https://raw.githubusercontent.com/wiki/moacchain/moac-core/image/flush-flow.png" />
+</div>
+<p><em>子链刷新过程与SubchainBase合约的调用</em> <img alt="image1" src="https://raw.githubusercontent.com/wiki/moacchain/moac-core/image/subchain.png" /></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="zoverview.html" title="previous chapter">1. 关于墨客</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/zrefreshchain.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/zrefreshchain.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

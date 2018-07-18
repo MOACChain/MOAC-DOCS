@@ -1,0 +1,147 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>9.2_创建帐户 &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9.3_交易所" href="9.3_exchange.html" />
+    <link rel="prev" title="9.1_转账" href="9.1_transfer.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>9.2_创建帐户<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="console">
+<h2>使用console创建帐户<a class="headerlink" href="#console" title="Permalink to this headline">¶</a></h2>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>//输入密码后得到0x开头的字符串即为公钥账户(需要通过转换方可得到私钥)
+personal.newAccount（）
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>使用程序创建帐户<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>var crypto = require(&#39;crypto&#39;);
+var secp256k1 = require(&#39;secp256k1&#39;);
+var keccak = require(&#39;keccak&#39;);
+
+//获得随机的32个字节作为私钥，在使用中，请注意随机数来源的安全
+var privateKey = crypto.randomBytes(32);
+//获得公钥
+var publicKey = secp256k1.publicKeyCreate(privateKey, false).slice(1);
+//获得地址
+var address = keccak(&#39;keccak256&#39;).update(publicKey).digest().slice(-20);
+
+console.log(&#39;public key&#39;, publicKey.toString(&#39;hex&#39;));
+console.log(&#39;private key&#39;, privateKey.toString(&#39;hex&#39;));
+console.log(&#39;address&#39;, &#39;0x&#39; + address.toString(&#39;hex&#39;));
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>查询余额<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>function getBalance(chain3, address){
+  var mc = chain3.mc;
+  //获得帐户余额，以sha为单位
+  var amountSha = mc.getBalance(address);
+  //把sha为单位的余额转换成以moac为单位的余额
+  var amountMC = chain3.fromSha(amountSha, &#39;mc&#39;);
+  console.log(address + &quot;:&quot; + amountMC);
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>转帐<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">请参见转帐一节</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9.2_创建帐户</a><ul>
+<li><a class="reference internal" href="#console">使用console创建帐户</a></li>
+<li><a class="reference internal" href="#id2">使用程序创建帐户</a></li>
+<li><a class="reference internal" href="#id3">查询余额</a></li>
+<li><a class="reference internal" href="#id4">转帐</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="9.1_transfer.html" title="previous chapter">9.1_转账</a></li>
+      <li>Next: <a href="9.3_exchange.html" title="next chapter">9.3_交易所</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/9.2_wallet.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/9.2_wallet.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

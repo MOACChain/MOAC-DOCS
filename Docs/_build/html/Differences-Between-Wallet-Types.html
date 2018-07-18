@@ -1,0 +1,153 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Keystore File (UTC / JSON) &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating your own ERC20 Token on the MOAC blockchain" href="ERC20.html" />
+    <link rel="prev" title="Background" href="Design.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>What are the different types of private key formats that I can use to
+access my wallet?</p>
+<p>The MOAC is stored on the blockchain, your MOAC private key or Keystore
+File or whatever piece of information you have proves ownership of that
+MOAC, which allows you to move it.</p>
+<p>At the end of the day, you are always signing with your private key.</p>
+<p>However, for additional functionality (like protecting it with a
+password) there are formats &amp; ways of storing your private key:</p>
+<div class="section" id="keystore-file-utc-json">
+<h1>Keystore File (UTC / JSON)<a class="headerlink" href="#keystore-file-utc-json" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>This is encrypted by the password you chose.</li>
+<li>This is the recommended version to save.</li>
+<li>This Keystore file matches the format used by Mist so you can easily
+import it in the future.</li>
+<li>Make sure to have multiple backups.</li>
+</ul>
+<div class="figure" id="id1">
+<img alt="SaveKeystore" src="_images/CreateWalletSave.png" />
+<p class="caption"><span class="caption-text">SaveKeystore</span></p>
+</div>
+</div>
+<div class="section" id="private-key-unencrypted">
+<h1>Private Key (unencrypted)<a class="headerlink" href="#private-key-unencrypted" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>This is the unencrypted text version of your private key, meaning no
+password is necessary.</li>
+<li>If someone were to find your unencrypted private key, they could
+access your wallet without a password.</li>
+<li>For this reason, encrypted versions are typically recommended. To
+learn about how you can encrypt your private key, click here for more
+information.</li>
+<li>However, you should print the paper wallet or save this in an offline
+environment (like a piece of paper or USB drive). This ensures a lost
+password does not result in lost MOAC, and acts as another backup.</li>
+</ul>
+<div class="figure" id="id2">
+<img alt="PrivatekeyHide" src="_images/PrivatekeyHide.png" />
+<p class="caption"><span class="caption-text">PrivatekeyHide</span></p>
+</div>
+<p>You can check the actual conent of the private key but be sure not to
+discolose to anybody suspicious.</p>
+<div class="figure" id="id3">
+<img alt="Privatekey" src="_images/Privatekey.png" />
+<p class="caption"><span class="caption-text">Privatekey</span></p>
+</div>
+</div>
+<div class="section" id="metamask">
+<h1>MetaMask<a class="headerlink" href="#metamask" title="Permalink to this headline">¶</a></h1>
+<p>You can use Metamask to save your keypairs but currently MetaMask do not
+support MOAC transaction yet.</p>
+</div>
+<div class="section" id="ledger-or-trezor-or-digital-bitbox-hardware-wallets">
+<h1>Ledger or TREZOR or Digital Bitbox Hardware Wallets<a class="headerlink" href="#ledger-or-trezor-or-digital-bitbox-hardware-wallets" title="Permalink to this headline">¶</a></h1>
+<p>You can use TREZOR or Digital Bitbox Hardware Wallets to store the MOAC
+keypairs but they do not support MOAC transaction yet.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Keystore File (UTC / JSON)</a></li>
+<li><a class="reference internal" href="#private-key-unencrypted">Private Key (unencrypted)</a></li>
+<li><a class="reference internal" href="#metamask">MetaMask</a></li>
+<li><a class="reference internal" href="#ledger-or-trezor-or-digital-bitbox-hardware-wallets">Ledger or TREZOR or Digital Bitbox Hardware Wallets</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Design.html" title="previous chapter">Background</a></li>
+      <li>Next: <a href="ERC20.html" title="next chapter">Creating your own ERC20 Token on the MOAC blockchain</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Differences-Between-Wallet-Types.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/Differences-Between-Wallet-Types.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

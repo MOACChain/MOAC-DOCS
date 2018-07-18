@@ -1,0 +1,154 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SCS &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Safe Storage of Backups" href="saveAndBackup.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="scs">
+<h1>SCS<a class="headerlink" href="#scs" title="Permalink to this headline">¶</a></h1>
+<p>The executable SCS node program was released on Pizza Day.</p>
+<p>This release is alpha version of MOAC microchain. It is still under
+development but we want you to try and taste it with us. It is for
+programmers only.</p>
+<p>The package is Only to run at a single node mode for easy debugging. It
+contains both vnode and scs executables and necessary files</p>
+<p>Executables: Windows: pizzaAlpha.vnode.scs.widows.zip Ubuntu:
+pizzaAlpha.vnode.ubuntu.tar.gz, pizzaAlpha.scs.ubuntu.tar.gz</p>
+<p>We also have some video instructions for developers. Please let us know
+your thoughts and comments.</p>
+<p><strong>English tutorials:</strong></p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=6j3Vl2Un-kQ">Youtube</a>
+<a class="reference external" href="http://v.youku.com/v_show/id_XMzYyMTQzMTk1Mg==.html?spm=a2h3j.8428770.3416059.1">Youku</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/部署子链协议合约">SubChainProtocolBase</a></p>
+<p>启动 ./bin/moac –datadir “/tmp/moac/60/01” –networkid 1975
+–nodiscover –verbosity 4</p>
+<p>运行一个Vnode的控制窗 ./bin/moac attach /tmp/moac/60/01/moac.ipc</p>
+<p>运行SCS1</p>
+<p>./scs1/scsserver
+./go/src/github.com/innowells/moac-scs/build/bin/scsserver</p>
+<p>Start SCS2</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">scs2</span><span class="o">/</span><span class="n">scsserver</span>
+<span class="o">./</span><span class="n">go</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">innowells</span><span class="o">/</span><span class="n">moac</span><span class="o">-</span><span class="n">scs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">scsserver</span>
+</pre></div>
+</div>
+<p>=============== Test commands in the console ===============
+personal.newAccount(“123456”) miner.start()
+personal.unlockAccount(mc.accounts[0], “123456”, 0)
+scs1=”0xA6D018ae6981552Df5C39b5911bF7CA793D0405c”
+scs2=”0x700A559b7C5c3D5f79df9f7EfdD0bd068CBFad4e”
+mc.getBalance(scs1)/1000000000000000000
+mc.getBalance(scs2)/1000000000000000000
+mc.getBalance(mc.accounts[0])/1000000000000000000</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loadScript</span><span class="p">(</span><span class="s2">&quot;deploy_p1.js&quot;</span><span class="p">)</span>
+<span class="n">loadScript</span><span class="p">(</span><span class="s2">&quot;deploy_s1.js&quot;</span><span class="p">)</span>
+<span class="n">loadScript</span><span class="p">(</span><span class="s2">&quot;test_s1.js&quot;</span><span class="p">)</span>
+
+<span class="n">sendtx</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scs1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">sendtx</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scs2</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">mc</span><span class="o">.</span><span class="n">getBalance</span><span class="p">(</span><span class="n">scs1</span><span class="p">)</span><span class="o">/</span><span class="mi">1000000000000000000</span>
+<span class="n">mc</span><span class="o">.</span><span class="n">getBalance</span><span class="p">(</span><span class="n">scs2</span><span class="p">)</span><span class="o">/</span><span class="mi">1000000000000000000</span>
+
+<span class="n">registertopool</span><span class="p">(</span><span class="n">scs1</span><span class="p">)</span>
+<span class="n">registertopool</span><span class="p">(</span><span class="n">scs2</span><span class="p">)</span>
+<span class="n">subchainprotocolbase</span><span class="o">.</span><span class="n">scsCount</span><span class="p">()</span>
+<span class="n">subchainprotocolbase</span><span class="o">.</span><span class="n">scsList</span><span class="p">(</span><span class="n">scs1</span><span class="p">)</span>
+<span class="n">subchainprotocolbase</span><span class="o">.</span><span class="n">scsList</span><span class="p">(</span><span class="n">scs2</span><span class="p">)</span>
+
+<span class="n">miner</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">miner</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">registeropen</span><span class="p">()</span>
+<span class="n">subchainbase</span><span class="o">.</span><span class="n">nodeCount</span><span class="p">()</span>
+<span class="n">registerclose</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>General info</strong></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/部署子链合约">SubChainBase</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/选择scs节点">SCS node
+selection</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/子链创建过程">SCS
+creation</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/子链运行流程">SCS
+running</a></p>
+<p><a class="reference external" href="https://github.com/MOACChain/moac-core/wiki/子链刷新过程">SCS
+flushing</a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="saveAndBackup.html" title="previous chapter">Safe Storage of Backups</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/SCS.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/SCS.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

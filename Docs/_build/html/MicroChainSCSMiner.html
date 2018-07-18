@@ -1,0 +1,222 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>A1、Download SCS program ( Or power up a SCS hardware miner) &#8212; moac-core-master  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Please follow these steps to start your MicroChain mining:</p>
+<div class="section" id="a1download-scs-program-or-power-up-a-scs-hardware-miner">
+<h1>A1、Download SCS program ( Or power up a SCS hardware miner)<a class="headerlink" href="#a1download-scs-program-or-power-up-a-scs-hardware-miner" title="Permalink to this headline">¶</a></h1>
+<p>The initial SCS program has following files: README - A txt file
+contains instructions; config/userconfig.json - Configura file used with
+SCS, need to be customized before start SCS; scsserver/scsserver -
+Executable program of SCS</p>
+</div>
+<div class="section" id="a2cusomize-userconfig-json">
+<h1>A2、Cusomize userconfig.json<a class="headerlink" href="#a2cusomize-userconfig-json" title="Permalink to this headline">¶</a></h1>
+<p>The conten of the userconfig.json is as following:</p>
+<ol class="arabic simple">
+<li>VnodeServiceCfg：The VNODE IP and port SCS connects to. Each SCS
+needs to connect a VNODE to communicate with the MotherChain. You can
+setup a local VNODE or use a truste VNODE from other sources;</li>
+<li>DataDir：SCS data directory that holding the MicroChain data. Default
+is “./scsdata”;</li>
+<li>LogPath：SCS log directory, default is “./logs”;</li>
+<li>Beneficiary：Account holds the MicroChain mining rewards. Please
+don’t use the SCS account for this. We suggest you create this
+account separatly and don’t put the keystore file on SCS.</li>
+<li>VnodeChainId：network id with the MotherChain. Testnet = 101 and
+mainnet = 99. If you have a custome network, you need to make sure
+the vnode connect with has the same network id.</li>
+<li>Capability: desposit limit for a MicroChain. Since each MicroChain
+requires some desposit to join, you can set this number and only join
+the MicroChain with deposit requirement less than this limit.</li>
+<li>ReconnectInterval: If the connection is lost with vnode, SCS will try
+to connect with the vnode again. This is the number of seconds
+between each connection with vnode.</li>
+</ol>
+</div>
+<div class="section" id="a3start-scs">
+<h1>A3、Start SCS<a class="headerlink" href="#a3start-scs" title="Permalink to this headline">¶</a></h1>
+<p>Command options (SCS -h)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>-p [psd]           Start SCS with a password for the scsid keystore，default password is &quot;moacscsofflineaccountpwd&quot;
+-rpcaddr [addr]    SCS start with rpc ip
+-rpcport [port]    SCS start with rpc port
+</pre></div>
+</div>
+<p>After the first start，SCS generates a keystore with a password (default
+or provided by user). The address of this keystore is the scsid. This
+address won’t receive rewards. If user want to use a different scsid,
+should remove the keysore file and restart the SCS.</p>
+<p>SCS also has a rpc port. Currently the RPC only has monitoring services
+for DAPP developers.</p>
+</div>
+<div class="section" id="a4register-the-scs-into-a-scs-pool">
+<h1>A4、Register the SCS into a SCS pool<a class="headerlink" href="#a4register-the-scs-into-a-scs-pool" title="Permalink to this headline">¶</a></h1>
+<p>To participate in the MicroChain, SCS need to register itself into a SCS
+pool. When it registers, the SCS need to pay deposit as required by the
+SCS pool (defined in subchainprotocolbase.sol). After it is registered,
+it need to wait for some blocks (default is 50 blocks) to be chosen by
+MicroChains.</p>
+<p>One SCS can register multiple MicroChains.</p>
+<p>Javascript method to register the SCS: (used under VNODE console)</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">protocolRegister</span><span class="p">(</span><span class="n">baseAddr</span><span class="p">,</span><span class="n">basePasswd</span><span class="p">,</span><span class="n">protocolAddr</span><span class="p">,</span><span class="n">scsAddr</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">chain3</span><span class="o">.</span><span class="n">personal</span><span class="o">.</span><span class="n">unlockAccount</span><span class="p">(</span><span class="n">baseAddr</span><span class="p">,</span> <span class="n">basePasswd</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">sendtx</span><span class="p">(</span><span class="n">baseAddr</span><span class="p">,</span> <span class="n">protocolAddr</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span><span class="s1">&#39;0x4420e486000000000000000000000000&#39;</span> <span class="o">+</span> <span class="n">scsAddr</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Explainations</p>
+<ul class="simple">
+<li>baseAddr、basePasswd：MOAC VNODE account used to send TX;</li>
+<li>protocolAddr：The subchainprotocolbase contract address;</li>
+<li>scsAddr：scsid address, saved in “…/scsserver/scskeystore”;</li>
+<li>deposit: amount of MOAC to send to pools to join MicroChains;</li>
+<li>data：‘0x4420e486’ is a constant used to call the MicroChain. It was
+from the subchainprotocolbase function ‘register(address scs)’ .
+Don’t change it unless you know what you are doing here!</li>
+</ul>
+<p>Examples:</p>
+<p>register SCS</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span>protocolRegister (&#39;0x1b9ce7e4f1.......e38913a56cd986786&#39;,
+‘123’,
+&#39;0x09f0dfc09b......0b85e5189a7493671&#39;,
+&#39;f687272ae00f8cea......37dd9be30329d8cf&#39;)//without prefix &#39;0x&#39;
+</pre></div>
+</div>
+<p>Send a transaction</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">sendtx</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">tgtaddr</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">strData</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">sendTransaction</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="n">from</span><span class="p">:</span> <span class="n">src</span><span class="p">,</span>
+            <span class="n">value</span><span class="p">:</span><span class="n">chain3</span><span class="o">.</span><span class="n">toSha</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span><span class="s1">&#39;mc&#39;</span><span class="p">),</span>
+            <span class="n">to</span><span class="p">:</span> <span class="n">tgtaddr</span><span class="p">,</span>
+            <span class="n">gas</span><span class="p">:</span> <span class="s2">&quot;9000000&quot;</span><span class="p">,</span>
+            <span class="n">gasPrice</span><span class="p">:</span> <span class="n">chain3</span><span class="o">.</span><span class="n">mc</span><span class="o">.</span><span class="n">gasPrice</span><span class="p">,</span>
+            <span class="n">data</span><span class="p">:</span> <span class="n">strData</span>
+        <span class="p">});</span>
+
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;sending from:&#39;</span> <span class="o">+</span>   <span class="n">src</span> <span class="o">+</span> <span class="s1">&#39; to:&#39;</span> <span class="o">+</span> <span class="n">tgtaddr</span>  <span class="o">+</span> <span class="s1">&#39; with data:&#39;</span> <span class="o">+</span> <span class="n">strData</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>OK, now SCS miner finished setup and you can sit back and wait for your
+rewards. All the rewards can be seen after a MicroChain flushed its data
+into the MotherChain and you can see the balances changes in the
+Beneficiary account address.</p>
+<p>FAQ:</p>
+<ol class="arabic simple">
+<li>What’s the deposit for?</li>
+</ol>
+<p>The process for a SCS node to join a microChain is: make a safety
+deposit and register in the SCS pool. The amount of the deposit is a
+parameter that can be set in the microChain protocol. SCS cannot choose
+the microChain by itself.</p>
+<p>The microChain will choose in the SCS pool to form the microChain
+validators. By default, this process is random. The microChain creator
+can also change the selection process and only allow specific SCSs to
+join. When microChain generate a new block, if a SCS made bad decision,
+it will be punished with penalty of the deposit. The microChain will
+drop a SCS if it made many bad decisions.</p>
+<ol class="arabic" start="2">
+<li><p class="first">How secure are microchains against 51% attack? Or are there different
+security measures applied on microchain level?</p>
+<p>Generally there are two ways to prevent inside attackers in a public
+microChain. First, all the SCS join the SCS pool need to pay some
+deposits and will be kicked out of the microChain if it made enough
+bad decisions. This can cost the attacker more than they can earn in
+a public microChain. Second, the microChain was formed by randomly
+choosing SCSs from the SCS pool. Thus, it is very hard for the
+attacker to get enough SCSs to do the 51% attack (33% for PBFT). For
+a SCSs pool with 100 nodes, the attackers may need 51 nodes to
+perform the 51% attack for a microchip with only 20 nodes.</p>
+</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">A1、Download SCS program ( Or power up a SCS hardware miner)</a></li>
+<li><a class="reference internal" href="#a2cusomize-userconfig-json">A2、Cusomize userconfig.json</a></li>
+<li><a class="reference internal" href="#a3start-scs">A3、Start SCS</a></li>
+<li><a class="reference internal" href="#a4register-the-scs-into-a-scs-pool">A4、Register the SCS into a SCS pool</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/MicroChainSCSMiner.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Wenhan Jin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/MicroChainSCSMiner.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
