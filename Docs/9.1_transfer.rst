@@ -1,0 +1,55 @@
+9.1_转账
+-------------------------
+.. code:: javascript
+
+    function send(chain3, fromAddress, fromSecret, toAddress, amount){
+      var mc = chain3.mc;
+      //使用fromAddress的交易数作为唯一按顺序的nonce
+      var txCount = chain3.mc.getTransactionCount(fromAddress);
+
+      //设置gas的价格
+      var gasPrice = 2500000000;
+      //设置gas的最大的数量
+      var gasLimit = 40000;
+      //从最小单位sha转成moac单位
+      var value = chain3.toSha(amount, 'mc');
+
+      //开始组装转帐交易
+      var rawTx = {
+        to: toAddress,
+        nonce: chain3.intToHex(txCount),
+        gasPrice: chain3.intToHex(gasPrice),
+        gasLimit: chain3.intToHex(gasLimit),
+        value: chain3.intToHex(value)
+      };
+      var tx = new chain3.transaction(rawTx);
+      //设置转账交易的网络ID
+      tx.setChainId(chain3.version.network);
+      //打印出转账交易的JSON结构
+      console.log('tx', tx.toJSON());
+
+      //生成私钥的Buffer版本
+      var privateKey = new Buffer(fromSecret, 'hex');
+      //使用私钥对转账交易进行签名
+      tx.sign(privateKey);
+
+      //序列化签名后的转帐交易，准备发送
+      var signedTx = '0x' + tx.serialize().toString('hex');
+
+      //验证签名的转帐交易
+      tx.verifySignature();
+      var verify = '0x' + tx.getSenderAddress().toString('hex');
+      console.log("verify address:", verify);
+
+      //发送签名后的转帐交易到MOAC网络结点
+      mc.sendRawTransaction(signedTx, function(err, hash) {
+          if (!err){
+              //成功后，返回交易的Hash
+              //备注：这个成功只说明些交易被MOAC网络结点接受放到pending列表中
+              console.log("succeed: ", hash);
+              return hash;
+          }else{
+              console.log("error:", err);
+          }
+      });
+    }

@@ -1,0 +1,51 @@
+9.2_创建帐户
+^^^^^^^^^^^^
+
+使用console创建帐户
+'''''''''''''''''''
+
+.. code:: javascript
+
+    //输入密码后得到0x开头的字符串即为公钥账户(需要通过转换方可得到私钥)
+    personal.newAccount（）
+
+使用程序创建帐户
+''''''''''''''''
+
+.. code:: javascript
+
+    var crypto = require('crypto');
+    var secp256k1 = require('secp256k1');
+    var keccak = require('keccak');
+
+    //获得随机的32个字节作为私钥，在使用中，请注意随机数来源的安全
+    var privateKey = crypto.randomBytes(32);
+    //获得公钥
+    var publicKey = secp256k1.publicKeyCreate(privateKey, false).slice(1);
+    //获得地址
+    var address = keccak('keccak256').update(publicKey).digest().slice(-20);
+
+    console.log('public key', publicKey.toString('hex'));
+    console.log('private key', privateKey.toString('hex'));
+    console.log('address', '0x' + address.toString('hex'));
+
+查询余额
+''''''''''''''''
+
+.. code:: javascript
+
+    function getBalance(chain3, address){
+      var mc = chain3.mc;
+      //获得帐户余额，以sha为单位
+      var amountSha = mc.getBalance(address);
+      //把sha为单位的余额转换成以moac为单位的余额
+      var amountMC = chain3.fromSha(amountSha, 'mc');
+      console.log(address + ":" + amountMC);
+    }
+
+转帐
+'''''''
+
+::
+
+    请参见转帐一节
