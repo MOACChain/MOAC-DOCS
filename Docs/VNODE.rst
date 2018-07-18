@@ -1,7 +1,7 @@
 MOAC VNODE
 ^^^^^^^^^^
 
-1. `Design <Design>`__
+1. `:doc:`design`
 2. `Setup <Setup>`__
 3. `Command line commands <Commands>`__
 4. `Console commands <Console>`__
