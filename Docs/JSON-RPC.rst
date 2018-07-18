@@ -25,377 +25,127 @@
 
    -  `web3\_clientVersion <#web3_clientversion>`__
 
-      -  `Parameters <#parameters>`__
-      -  `Returns <#returns>`__
-      -  `Example <#example>`__
-
    -  `web3\_sha3 <#web3_sha3>`__
-
-      -  `Parameters <#parameters-1>`__
-      -  `Returns <#returns-1>`__
-      -  `Example <#example-1>`__
 
    -  `net\_version <#net_version>`__
 
-      -  `Parameters <#parameters-2>`__
-      -  `Returns <#returns-2>`__
-      -  `Example <#example-2>`__
-
    -  `net\_listening <#net_listening>`__
-
-      -  `Parameters <#parameters-3>`__
-      -  `Returns <#returns-3>`__
-      -  `Example <#example-3>`__
 
    -  `net\_peerCount <#net_peercount>`__
 
-      -  `Parameters <#parameters-4>`__
-      -  `Returns <#returns-4>`__
-      -  `Example <#example-4>`__
-
    -  `eth\_protocolVersion <#eth_protocolversion>`__
-
-      -  `Parameters <#parameters-5>`__
-      -  `Returns <#returns-5>`__
-      -  `Example <#example-5>`__
 
    -  `eth\_syncing <#eth_syncing>`__
 
-      -  `Parameters <#parameters-6>`__
-      -  `Returns <#returns-6>`__
-      -  `Example <#example-6>`__
-
    -  `eth\_coinbase <#eth_coinbase>`__
-
-      -  `Parameters <#parameters-7>`__
-      -  `Returns <#returns-7>`__
-      -  `Example <#example-7>`__
 
    -  `eth\_mining <#eth_mining>`__
 
-      -  `Parameters <#parameters-8>`__
-      -  `Returns <#returns-8>`__
-      -  `Example <#example-8>`__
-
    -  `eth\_hashrate <#eth_hashrate>`__
-
-      -  `Parameters <#parameters-9>`__
-      -  `Returns <#returns-9>`__
-      -  `Example <#example-9>`__
 
    -  `eth\_gasPrice <#eth_gasprice>`__
 
-      -  `Parameters <#parameters-10>`__
-      -  `Returns <#returns-10>`__
-      -  `Example <#example-10>`__
-
    -  `eth\_accounts <#eth_accounts>`__
 
-      -  `Parameters <#parameters-11>`__
-      -  `Returns <#returns-11>`__
-      -  `Example <#example-11>`__
-
    -  `eth\_blockNumber <#eth_blocknumber>`__
-
-      -  `Parameters <#parameters-12>`__
-      -  `Returns <#returns-12>`__
-      -  `Example <#example-12>`__
-
+   
    -  `eth\_getBalance <#eth_getbalance>`__
-
-      -  `Parameters <#parameters-13>`__
-      -  `Returns <#returns-13>`__
-      -  `Example <#example-13>`__
 
    -  `eth\_getStorageAt <#eth_getstorageat>`__
 
-      -  `Parameters <#parameters-14>`__
-      -  `Returns <#returns-14>`__
-      -  `Example <#example-14>`__
-
    -  `eth\_getTransactionCount <#eth_gettransactioncount>`__
-
-      -  `Parameters <#parameters-15>`__
-      -  `Returns <#returns-15>`__
-      -  `Example <#example-15>`__
 
    -  `eth\_getBlockTransactionCountByHash <#eth_getblocktransactioncountbyhash>`__
 
-      -  `Parameters <#parameters-16>`__
-      -  `Returns <#returns-16>`__
-      -  `Example <#example-16>`__
-
    -  `eth\_getBlockTransactionCountByNumber <#eth_getblocktransactioncountbynumber>`__
-
-      -  `Parameters <#parameters-17>`__
-      -  `Returns <#returns-17>`__
-      -  `Example <#example-17>`__
 
    -  `eth\_getUncleCountByBlockHash <#eth_getunclecountbyblockhash>`__
 
-      -  `Parameters <#parameters-18>`__
-      -  `Returns <#returns-18>`__
-      -  `Example <#example-18>`__
-
    -  `eth\_getUncleCountByBlockNumber <#eth_getunclecountbyblocknumber>`__
 
-      -  `Parameters <#parameters-19>`__
-      -  `Returns <#returns-19>`__
-      -  `Example <#example-19>`__
-
    -  `eth\_getCode <#eth_getcode>`__
-
-      -  `Parameters <#parameters-20>`__
-      -  `Returns <#returns-20>`__
-      -  `Example <#example-20>`__
-
+   
    -  `eth\_sign <#eth_sign>`__
-
-      -  `Parameters <#parameters-21>`__
-      -  `Returns <#returns-21>`__
-      -  `Example <#example-21>`__
 
    -  `eth\_sendTransaction <#eth_sendtransaction>`__
 
-      -  `Parameters <#parameters-22>`__
-      -  `Returns <#returns-22>`__
-      -  `Example <#example-22>`__
-
    -  `eth\_sendRawTransaction <#eth_sendrawtransaction>`__
-
-      -  `Parameters <#parameters-23>`__
-      -  `Returns <#returns-23>`__
-      -  `Example <#example-23>`__
-
+   
    -  `eth\_call <#eth_call>`__
-
-      -  `Parameters <#parameters-24>`__
-      -  `Returns <#returns-24>`__
-      -  `Example <#example-24>`__
-
+   
    -  `eth\_estimateGas <#eth_estimategas>`__
-
-      -  `Parameters <#parameters-25>`__
-      -  `Returns <#returns-25>`__
-      -  `Example <#example-25>`__
 
    -  `eth\_getBlockByHash <#eth_getblockbyhash>`__
 
-      -  `Parameters <#parameters-26>`__
-      -  `Returns <#returns-26>`__
-      -  `Example <#example-26>`__
-
    -  `eth\_getBlockByNumber <#eth_getblockbynumber>`__
-
-      -  `Parameters <#parameters-27>`__
-      -  `Returns <#returns-27>`__
-      -  `Example <#example-27>`__
 
    -  `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
 
-      -  `Parameters <#parameters-28>`__
-      -  `Returns <#returns-28>`__
-      -  `Example <#example-28>`__
-
    -  `eth\_getTransactionByBlockHashAndIndex <#eth_gettransactionbyblockhashandindex>`__
-
-      -  `Parameters <#parameters-29>`__
-      -  `Returns <#returns-29>`__
-      -  `Example <#example-29>`__
 
    -  `eth\_getTransactionByBlockNumberAndIndex <#eth_gettransactionbyblocknumberandindex>`__
 
-      -  `Parameters <#parameters-30>`__
-      -  `Returns <#returns-30>`__
-      -  `Example <#example-30>`__
-
    -  `eth\_getTransactionReceipt <#eth_gettransactionreceipt>`__
-
-      -  `Parameters <#parameters-31>`__
-      -  `Returns <#returns-31>`__
-      -  `Example <#example-31>`__
 
    -  `eth\_getUncleByBlockHashAndIndex <#eth_getunclebyblockhashandindex>`__
 
-      -  `Parameters <#parameters-32>`__
-      -  `Returns <#returns-32>`__
-      -  `Example <#example-32>`__
-
    -  `eth\_getUncleByBlockNumberAndIndex <#eth_getunclebyblocknumberandindex>`__
-
-      -  `Parameters <#parameters-33>`__
-      -  `Returns <#returns-33>`__
-      -  `Example <#example-33>`__
 
    -  `eth\_getCompilers <#eth_getcompilers>`__
 
-      -  `Parameters <#parameters-34>`__
-      -  `Returns <#returns-34>`__
-      -  `Example <#example-34>`__
-
    -  `eth\_compileSolidity <#eth_compilesolidity>`__
-
-      -  `Parameters <#parameters-35>`__
-      -  `Returns <#returns-35>`__
-      -  `Example <#example-35>`__
 
    -  `eth\_compileLLL <#eth_compilelll>`__
 
-      -  `Parameters <#parameters-36>`__
-      -  `Returns <#returns-36>`__
-      -  `Example <#example-36>`__
-
    -  `eth\_compileSerpent <#eth_compileserpent>`__
-
-      -  `Parameters <#parameters-37>`__
-      -  `Returns <#returns-37>`__
-      -  `Example <#example-37>`__
 
    -  `eth\_newFilter <#eth_newfilter>`__
 
-      -  `A note on specifying topic
-         filters: <#a-note-on-specifying-topic-filters>`__
-      -  `Parameters <#parameters-38>`__
-      -  `Returns <#returns-38>`__
-      -  `Example <#example-38>`__
-
    -  `eth\_newBlockFilter <#eth_newblockfilter>`__
-
-      -  `Parameters <#parameters-39>`__
-      -  `Returns <#returns-39>`__
-      -  `Example <#example-39>`__
 
    -  `eth\_newPendingTransactionFilter <#eth_newpendingtransactionfilter>`__
 
-      -  `Parameters <#parameters-40>`__
-      -  `Returns <#returns-40>`__
-      -  `Example <#example-40>`__
-
    -  `eth\_uninstallFilter <#eth_uninstallfilter>`__
-
-      -  `Parameters <#parameters-41>`__
-      -  `Returns <#returns-41>`__
-      -  `Example <#example-41>`__
 
    -  `eth\_getFilterChanges <#eth_getfilterchanges>`__
 
-      -  `Parameters <#parameters-42>`__
-      -  `Returns <#returns-42>`__
-      -  `Example <#example-42>`__
-
    -  `eth\_getFilterLogs <#eth_getfilterlogs>`__
-
-      -  `Parameters <#parameters-43>`__
-      -  `Returns <#returns-43>`__
-      -  `Example <#example-43>`__
 
    -  `eth\_getLogs <#eth_getlogs>`__
 
-      -  `Parameters <#parameters-44>`__
-      -  `Returns <#returns-44>`__
-      -  `Example <#example-44>`__
-
    -  `eth\_getWork <#eth_getwork>`__
 
-      -  `Parameters <#parameters-45>`__
-      -  `Returns <#returns-45>`__
-      -  `Example <#example-45>`__
-
    -  `eth\_submitWork <#eth_submitwork>`__
-
-      -  `Parameters <#parameters-46>`__
-      -  `Returns <#returns-46>`__
-      -  `Example <#example-46>`__
-
+   
    -  `eth\_submitHashrate <#eth_submithashrate>`__
-
-      -  `Parameters <#parameters-47>`__
-      -  `Returns <#returns-47>`__
-      -  `Example <#example-47>`__
 
    -  `db\_putString <#db_putstring>`__
 
-      -  `Parameters <#parameters-48>`__
-      -  `Returns <#returns-48>`__
-      -  `Example <#example-48>`__
-
    -  `db\_getString <#db_getstring>`__
-
-      -  `Parameters <#parameters-49>`__
-      -  `Returns <#returns-49>`__
-      -  `Example <#example-49>`__
 
    -  `db\_putHex <#db_puthex>`__
 
-      -  `Parameters <#parameters-50>`__
-      -  `Returns <#returns-50>`__
-      -  `Example <#example-50>`__
-
    -  `db\_getHex <#db_gethex>`__
-
-      -  `Parameters <#parameters-51>`__
-      -  `Returns <#returns-51>`__
-      -  `Example <#example-51>`__
 
    -  `shh\_version <#shh_version>`__
 
-      -  `Parameters <#parameters-52>`__
-      -  `Returns <#returns-52>`__
-      -  `Example <#example-52>`__
-
    -  `shh\_post <#shh_post>`__
-
-      -  `Parameters <#parameters-53>`__
-      -  `Returns <#returns-53>`__
-      -  `Example <#example-53>`__
 
    -  `shh\_newIdentity <#shh_newidentity>`__
 
-      -  `Parameters <#parameters-54>`__
-      -  `Returns <#returns-54>`__
-      -  `Example <#example-54>`__
-
    -  `shh\_hasIdentity <#shh_hasidentity>`__
-
-      -  `Parameters <#parameters-55>`__
-      -  `Returns <#returns-55>`__
-      -  `Example <#example-55>`__
 
    -  `shh\_newGroup <#shh_newgroup>`__
 
-      -  `Parameters <#parameters-56>`__
-      -  `Returns <#returns-56>`__
-      -  `Example <#example-56>`__
-
    -  `shh\_addToGroup <#shh_addtogroup>`__
-
-      -  `Parameters <#parameters-57>`__
-      -  `Returns <#returns-57>`__
-      -  `Example <#example-57>`__
 
    -  `shh\_newFilter <#shh_newfilter>`__
 
-      -  `Parameters <#parameters-58>`__
-      -  `Returns <#returns-58>`__
-      -  `Example <#example-58>`__
-
    -  `shh\_uninstallFilter <#shh_uninstallfilter>`__
-
-      -  `Parameters <#parameters-59>`__
-      -  `Returns <#returns-59>`__
-      -  `Example <#example-59>`__
 
    -  `shh\_getFilterChanges <#shh_getfilterchanges>`__
 
-      -  `Parameters <#parameters-60>`__
-      -  `Returns <#returns-60>`__
-      -  `Example <#example-60>`__
-
    -  `shh\_getMessages <#shh_getmessages>`__
-
-      -  `Parameters <#parameters-61>`__
-      -  `Returns <#returns-61>`__
-      -  `Example <#example-61>`__
 
 .. raw:: html
 
