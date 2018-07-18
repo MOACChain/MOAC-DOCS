@@ -23,9 +23,9 @@
 -  `JSON-RPC methods <#json-rpc-methods>`__
 -  `JSON RPC API Reference <#json-rpc-api-reference>`__
 
-   -  `web3\_clientVersion <#web3_clientversion>`__
+   -  `chain3\_clientVersion <#web3_clientversion>`__
 
-   -  `web3\_sha3 <#web3_sha3>`__
+   -  `chain3\_sha3 <#web3_sha3>`__
 
    -  `net\_version <#net_version>`__
 
@@ -33,91 +33,91 @@
 
    -  `net\_peerCount <#net_peercount>`__
 
-   -  `eth\_protocolVersion <#eth_protocolversion>`__
+   -  `mc\_protocolVersion <#eth_protocolversion>`__
 
-   -  `eth\_syncing <#eth_syncing>`__
+   -  `mc\_syncing <#eth_syncing>`__
 
-   -  `eth\_coinbase <#eth_coinbase>`__
+   -  `mc\_coinbase <#eth_coinbase>`__
 
-   -  `eth\_mining <#eth_mining>`__
+   -  `mc\_mining <#eth_mining>`__
 
-   -  `eth\_hashrate <#eth_hashrate>`__
+   -  `mc\_hashrate <#eth_hashrate>`__
 
-   -  `eth\_gasPrice <#eth_gasprice>`__
+   -  `mc\_gasPrice <#eth_gasprice>`__
 
-   -  `eth\_accounts <#eth_accounts>`__
+   -  `mc\_accounts <#eth_accounts>`__
 
-   -  `eth\_blockNumber <#eth_blocknumber>`__
+   -  `mc\_blockNumber <#eth_blocknumber>`__
    
-   -  `eth\_getBalance <#eth_getbalance>`__
+   -  `mc\_getBalance <#eth_getbalance>`__
 
-   -  `eth\_getStorageAt <#eth_getstorageat>`__
+   -  `mc\_getStorageAt <#eth_getstorageat>`__
 
-   -  `eth\_getTransactionCount <#eth_gettransactioncount>`__
+   -  `mc\_getTransactionCount <#eth_gettransactioncount>`__
 
-   -  `eth\_getBlockTransactionCountByHash <#eth_getblocktransactioncountbyhash>`__
+   -  `mc\_getBlockTransactionCountByHash <#eth_getblocktransactioncountbyhash>`__
 
-   -  `eth\_getBlockTransactionCountByNumber <#eth_getblocktransactioncountbynumber>`__
+   -  `mc\_getBlockTransactionCountByNumber <#eth_getblocktransactioncountbynumber>`__
 
-   -  `eth\_getUncleCountByBlockHash <#eth_getunclecountbyblockhash>`__
+   -  `mc\_getUncleCountByBlockHash <#eth_getunclecountbyblockhash>`__
 
-   -  `eth\_getUncleCountByBlockNumber <#eth_getunclecountbyblocknumber>`__
+   -  `mc\_getUncleCountByBlockNumber <#eth_getunclecountbyblocknumber>`__
 
-   -  `eth\_getCode <#eth_getcode>`__
+   -  `mc\_getCode <#eth_getcode>`__
    
-   -  `eth\_sign <#eth_sign>`__
+   -  `mc\_sign <#eth_sign>`__
 
-   -  `eth\_sendTransaction <#eth_sendtransaction>`__
+   -  `mc\_sendTransaction <#eth_sendtransaction>`__
 
-   -  `eth\_sendRawTransaction <#eth_sendrawtransaction>`__
+   -  `mc\_sendRawTransaction <#eth_sendrawtransaction>`__
    
-   -  `eth\_call <#eth_call>`__
+   -  `mc\_call <#eth_call>`__
    
-   -  `eth\_estimateGas <#eth_estimategas>`__
+   -  `mc\_estimateGas <#eth_estimategas>`__
 
-   -  `eth\_getBlockByHash <#eth_getblockbyhash>`__
+   -  `mc\_getBlockByHash <#eth_getblockbyhash>`__
 
-   -  `eth\_getBlockByNumber <#eth_getblockbynumber>`__
+   -  `mc\_getBlockByNumber <#eth_getblockbynumber>`__
 
-   -  `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
+   -  `mc\_getTransactionByHash <#eth_gettransactionbyhash>`__
 
-   -  `eth\_getTransactionByBlockHashAndIndex <#eth_gettransactionbyblockhashandindex>`__
+   -  `mc\_getTransactionByBlockHashAndIndex <#eth_gettransactionbyblockhashandindex>`__
 
-   -  `eth\_getTransactionByBlockNumberAndIndex <#eth_gettransactionbyblocknumberandindex>`__
+   -  `mc\_getTransactionByBlockNumberAndIndex <#eth_gettransactionbyblocknumberandindex>`__
 
-   -  `eth\_getTransactionReceipt <#eth_gettransactionreceipt>`__
+   -  `mc\_getTransactionReceipt <#eth_gettransactionreceipt>`__
 
-   -  `eth\_getUncleByBlockHashAndIndex <#eth_getunclebyblockhashandindex>`__
+   -  `mc\_getUncleByBlockHashAndIndex <#eth_getunclebyblockhashandindex>`__
 
-   -  `eth\_getUncleByBlockNumberAndIndex <#eth_getunclebyblocknumberandindex>`__
+   -  `mc\_getUncleByBlockNumberAndIndex <#eth_getunclebyblocknumberandindex>`__
 
-   -  `eth\_getCompilers <#eth_getcompilers>`__
+   -  `mc\_getCompilers <#eth_getcompilers>`__
 
-   -  `eth\_compileSolidity <#eth_compilesolidity>`__
+   -  `mc\_compileSolidity <#eth_compilesolidity>`__
 
-   -  `eth\_compileLLL <#eth_compilelll>`__
+   -  `mc\_compileLLL <#eth_compilelll>`__
 
-   -  `eth\_compileSerpent <#eth_compileserpent>`__
+   -  `mc\_compileSerpent <#eth_compileserpent>`__
 
-   -  `eth\_newFilter <#eth_newfilter>`__
+   -  `mc\_newFilter <#eth_newfilter>`__
 
-   -  `eth\_newBlockFilter <#eth_newblockfilter>`__
+   -  `mc\_newBlockFilter <#eth_newblockfilter>`__
 
-   -  `eth\_newPendingTransactionFilter <#eth_newpendingtransactionfilter>`__
+   -  `mc\_newPendingTransactionFilter <#eth_newpendingtransactionfilter>`__
 
-   -  `eth\_uninstallFilter <#eth_uninstallfilter>`__
+   -  `mc\_uninstallFilter <#eth_uninstallfilter>`__
 
-   -  `eth\_getFilterChanges <#eth_getfilterchanges>`__
+   -  `mc\_getFilterChanges <#eth_getfilterchanges>`__
 
-   -  `eth\_getFilterLogs <#eth_getfilterlogs>`__
+   -  `mc\_getFilterLogs <#eth_getfilterlogs>`__
 
-   -  `eth\_getLogs <#eth_getlogs>`__
+   -  `mc\_getLogs <#eth_getlogs>`__
 
-   -  `eth\_getWork <#eth_getwork>`__
+   -  `mc\_getWork <#eth_getwork>`__
 
-   -  `eth\_submitWork <#eth_submitwork>`__
+   -  `mc\_submitWork <#eth_submitwork>`__
    
-   -  `eth\_submitHashrate <#eth_submithashrate>`__
+   -  `mc\_submitHashrate <#eth_submithashrate>`__
 
    -  `db\_putString <#db_putstring>`__
 
@@ -335,54 +335,54 @@ must be the last argument given to curl e.x. 127.0.0.1:8545
 JSON-RPC methods
 ----------------
 
--  `web3\_clientVersion <#web3_clientversion>`__
--  `web3\_sha3 <#web3_sha3>`__
+-  `chain3\_clientVersion <#web3_clientversion>`__
+-  `chain3\_sha3 <#web3_sha3>`__
 -  `net\_version <#net_version>`__
 -  `net\_peerCount <#net_peercount>`__
 -  `net\_listening <#net_listening>`__
--  `eth\_protocolVersion <#eth_protocolversion>`__
--  `eth\_syncing <#eth_syncing>`__
--  `eth\_coinbase <#eth_coinbase>`__
--  `eth\_mining <#eth_mining>`__
--  `eth\_hashrate <#eth_hashrate>`__
--  `eth\_gasPrice <#eth_gasprice>`__
--  `eth\_accounts <#eth_accounts>`__
--  `eth\_blockNumber <#eth_blocknumber>`__
--  `eth\_getBalance <#eth_getbalance>`__
--  `eth\_getStorageAt <#eth_getstorageat>`__
--  `eth\_getTransactionCount <#eth_gettransactioncount>`__
--  `eth\_getBlockTransactionCountByHash <#eth_getblocktransactioncountbyhash>`__
--  `eth\_getBlockTransactionCountByNumber <#eth_getblocktransactioncountbynumber>`__
--  `eth\_getUncleCountByBlockHash <#eth_getunclecountbyblockhash>`__
--  `eth\_getUncleCountByBlockNumber <#eth_getunclecountbyblocknumber>`__
--  `eth\_getCode <#eth_getcode>`__
--  `eth\_sign <#eth_sign>`__
--  `eth\_sendTransaction <#eth_sendtransaction>`__
--  `eth\_sendRawTransaction <#eth_sendrawtransaction>`__
--  `eth\_call <#eth_call>`__
--  `eth\_estimateGas <#eth_estimategas>`__
--  `eth\_getBlockByHash <#eth_getblockbyhash>`__
--  `eth\_getBlockByNumber <#eth_getblockbynumber>`__
--  `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
--  `eth\_getTransactionByBlockHashAndIndex <#eth_gettransactionbyblockhashandindex>`__
--  `eth\_getTransactionByBlockNumberAndIndex <#eth_gettransactionbyblocknumberandindex>`__
--  `eth\_getTransactionReceipt <#eth_gettransactionreceipt>`__
--  `eth\_getUncleByBlockHashAndIndex <#eth_getunclebyblockhashandindex>`__
--  `eth\_getUncleByBlockNumberAndIndex <#eth_getunclebyblocknumberandindex>`__
--  `eth\_getCompilers <#eth_getcompilers>`__
--  `eth\_compileLLL <#eth_compilelll>`__
--  `eth\_compileSolidity <#eth_compilesolidity>`__
--  `eth\_compileSerpent <#eth_compileserpent>`__
--  `eth\_newFilter <#eth_newfilter>`__
--  `eth\_newBlockFilter <#eth_newblockfilter>`__
--  `eth\_newPendingTransactionFilter <#eth_newpendingtransactionfilter>`__
--  `eth\_uninstallFilter <#eth_uninstallfilter>`__
--  `eth\_getFilterChanges <#eth_getfilterchanges>`__
--  `eth\_getFilterLogs <#eth_getfilterlogs>`__
--  `eth\_getLogs <#eth_getlogs>`__
--  `eth\_getWork <#eth_getwork>`__
--  `eth\_submitWork <#eth_submitwork>`__
--  `eth\_submitHashrate <#eth_submithashrate>`__
+-  `mc\_protocolVersion <#eth_protocolversion>`__
+-  `mc\_syncing <#eth_syncing>`__
+-  `mc\_coinbase <#eth_coinbase>`__
+-  `mc\_mining <#eth_mining>`__
+-  `mc\_hashrate <#eth_hashrate>`__
+-  `mc\_gasPrice <#eth_gasprice>`__
+-  `mc\_accounts <#eth_accounts>`__
+-  `mc\_blockNumber <#eth_blocknumber>`__
+-  `mc\_getBalance <#eth_getbalance>`__
+-  `mc\_getStorageAt <#eth_getstorageat>`__
+-  `mc\_getTransactionCount <#eth_gettransactioncount>`__
+-  `mc\_getBlockTransactionCountByHash <#eth_getblocktransactioncountbyhash>`__
+-  `mc\_getBlockTransactionCountByNumber <#eth_getblocktransactioncountbynumber>`__
+-  `mc\_getUncleCountByBlockHash <#eth_getunclecountbyblockhash>`__
+-  `mc\_getUncleCountByBlockNumber <#eth_getunclecountbyblocknumber>`__
+-  `mc\_getCode <#eth_getcode>`__
+-  `mc\_sign <#eth_sign>`__
+-  `mc\_sendTransaction <#eth_sendtransaction>`__
+-  `mc\_sendRawTransaction <#eth_sendrawtransaction>`__
+-  `mc\_call <#eth_call>`__
+-  `mc\_estimateGas <#eth_estimategas>`__
+-  `mc\_getBlockByHash <#eth_getblockbyhash>`__
+-  `mc\_getBlockByNumber <#eth_getblockbynumber>`__
+-  `mc\_getTransactionByHash <#eth_gettransactionbyhash>`__
+-  `mc\_getTransactionByBlockHashAndIndex <#eth_gettransactionbyblockhashandindex>`__
+-  `mc\_getTransactionByBlockNumberAndIndex <#eth_gettransactionbyblocknumberandindex>`__
+-  `mc\_getTransactionReceipt <#eth_gettransactionreceipt>`__
+-  `mc\_getUncleByBlockHashAndIndex <#eth_getunclebyblockhashandindex>`__
+-  `mc\_getUncleByBlockNumberAndIndex <#eth_getunclebyblocknumberandindex>`__
+-  `mc\_getCompilers <#eth_getcompilers>`__
+-  `mc\_compileLLL <#eth_compilelll>`__
+-  `mc\_compileSolidity <#eth_compilesolidity>`__
+-  `mc\_compileSerpent <#eth_compileserpent>`__
+-  `mc\_newFilter <#eth_newfilter>`__
+-  `mc\_newBlockFilter <#eth_newblockfilter>`__
+-  `mc\_newPendingTransactionFilter <#eth_newpendingtransactionfilter>`__
+-  `mc\_uninstallFilter <#eth_uninstallfilter>`__
+-  `mc\_getFilterChanges <#eth_getfilterchanges>`__
+-  `mc\_getFilterLogs <#eth_getfilterlogs>`__
+-  `mc\_getLogs <#eth_getlogs>`__
+-  `mc\_getWork <#eth_getwork>`__
+-  `mc\_submitWork <#eth_submitwork>`__
+-  `mc\_submitHashrate <#eth_submithashrate>`__
 -  `db\_putString <#db_putstring>`__
 -  `db\_getString <#db_getstring>`__
 -  `db\_putHex <#db_puthex>`__
@@ -404,7 +404,7 @@ JSON RPC API Reference
 --------------
 
 web3\_clientVersion
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 Returns the current client version.
 
@@ -436,7 +436,7 @@ Example
 --------------
 
 web3\_sha3
-^^^^^^^^^^
+~~~~~~~~~~
 
 Returns Keccak-256 (*not* the standardized SHA3-256) of the given data.
 
@@ -474,7 +474,7 @@ Example
 --------------
 
 net\_version
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 Returns the current network id.
 
@@ -508,7 +508,7 @@ Example
 --------------
 
 net\_listening
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 Returns ``true`` if client is actively listening for network
 connections.
@@ -541,7 +541,7 @@ Example
 --------------
 
 net\_peerCount
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 Returns number of peers currently connected to the client.
 
@@ -573,7 +573,7 @@ Example
 --------------
 
 eth\_protocolVersion
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Returns the current ethereum protocol version.
 
@@ -605,7 +605,7 @@ Example
 --------------
 
 eth\_syncing
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 Returns an object with data about the sync status or ``false``.
 
@@ -652,7 +652,7 @@ Example
 --------------
 
 eth\_coinbase
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Returns the client coinbase address.
 
@@ -684,7 +684,7 @@ Example
 --------------
 
 eth\_mining
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 Returns ``true`` if client is actively mining new blocks.
 
@@ -717,7 +717,7 @@ Example
 --------------
 
 eth\_hashrate
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Returns the number of hashes per second that the node is mining with.
 
@@ -749,7 +749,7 @@ Example
 --------------
 
 eth\_gasPrice
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Returns the current price per gas in wei.
 
@@ -781,7 +781,7 @@ Example
 --------------
 
 eth\_accounts
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Returns a list of addresses owned by client.
 
@@ -813,7 +813,7 @@ Example
 --------------
 
 eth\_blockNumber
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 Returns the number of most recent block.
 
@@ -845,7 +845,7 @@ Example
 --------------
 
 eth\_getBalance
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 Returns the balance of the account of given address.
 
@@ -887,7 +887,7 @@ Example
 --------------
 
 eth\_getStorageAt
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 Returns the value from a storage position at a given address.
 
@@ -969,7 +969,7 @@ Now to fetch the storage:
 --------------
 
 eth\_getTransactionCount
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns the number of transactions *sent* from an address.
 
@@ -1012,7 +1012,7 @@ Example
 --------------
 
 eth\_getBlockTransactionCountByHash
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns the number of transactions in a block from a block matching the
 given block hash.
@@ -1051,7 +1051,7 @@ Example
 --------------
 
 eth\_getBlockTransactionCountByNumber
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         Returns the number of transactions in a block matching the given
         block number.
@@ -1092,7 +1092,7 @@ Example
 --------------
 
 eth\_getUncleCountByBlockHash
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns the number of uncles in a block from a block matching the given
 block hash.
@@ -1131,7 +1131,7 @@ Example
 --------------
 
 eth\_getUncleCountByBlockNumber
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns the number of uncles in a block from a block matching the given
 block number.
@@ -1172,7 +1172,7 @@ Example
 --------------
 
 eth\_getCode
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 Returns code at a given address.
 
@@ -1214,7 +1214,7 @@ Example
 --------------
 
 eth\_sign
-^^^^^^^^^
+~~~~~~~~~
 
 The sign method calculates an Ethereum specific signature with:
 ``sign(keccak256("\x19Ethereum Signed Message:\n" + len(message) + message)))``.
@@ -1262,7 +1262,7 @@ The contract is deployed on the testnet Ropsten and Rinkeby.
 --------------
 
 eth\_sendTransaction
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Creates new message call transaction or a contract creation, if the data
 field contains code.
@@ -1328,7 +1328,7 @@ Example
 --------------
 
 eth\_sendRawTransaction
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Creates new message call transaction or a contract creation for signed
 transactions.
@@ -1370,7 +1370,7 @@ Example
 --------------
 
 eth\_call
-^^^^^^^^^
+~~~~~~~~~
 
 Executes a new message call immediately without creating a transaction
 on the block chain.
@@ -1422,7 +1422,7 @@ Example
 --------------
 
 eth\_estimateGas
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 Generates and returns an estimate of how much gas is necessary to allow
 the transaction to complete. The transaction will not be added to the
@@ -1462,7 +1462,7 @@ Example
 --------------
 
 eth\_getBlockByHash
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 Returns information about a block by hash.
 
@@ -1556,7 +1556,7 @@ Example
 --------------
 
 eth\_getBlockByNumber
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 Returns information about a block by block number.
 
@@ -1594,7 +1594,7 @@ Result see `eth\_getBlockByHash <#eth_getblockbyhash>`__
 --------------
 
 eth\_getTransactionByHash
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns the information about a transaction requested by transaction
 hash.
@@ -1663,7 +1663,7 @@ Example
 --------------
 
 eth\_getTransactionByBlockHashAndIndex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns information about a transaction by block hash and transaction
 index position.
@@ -1699,7 +1699,7 @@ Result see `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
 --------------
 
 eth\_getTransactionByBlockNumberAndIndex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns information about a transaction by block number and transaction
 index position.
@@ -1737,7 +1737,7 @@ Result see `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
 --------------
 
 eth\_getTransactionReceipt
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns the receipt of a transaction by transaction hash.
 
@@ -1816,7 +1816,7 @@ Example
 --------------
 
 eth\_getUncleByBlockHashAndIndex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns information about a uncle of a block by hash and uncle index
 position.
@@ -1854,7 +1854,7 @@ Result see `eth\_getBlockByHash <#eth_getblockbyhash>`__
 --------------
 
 eth\_getUncleByBlockNumberAndIndex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns information about a uncle of a block by number and uncle index
 position.
@@ -1894,7 +1894,7 @@ Result see `eth\_getBlockByHash <#eth_getblockbyhash>`__
 --------------
 
 eth\_getCompilers
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 Returns a list of available compilers in the client.
 
@@ -1926,7 +1926,7 @@ Example
 --------------
 
 eth\_compileSolidity
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Returns compiled solidity code.
 
@@ -1997,7 +1997,7 @@ Example
 --------------
 
 eth\_compileLLL
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 Returns compiled LLL code.
 
@@ -2035,7 +2035,7 @@ Example
 --------------
 
 eth\_compileSerpent
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 Returns compiled serpent code.
 
@@ -2073,7 +2073,7 @@ Example
 --------------
 
 eth\_newFilter
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 Creates a filter object, based on filter options, to notify when the
 state changes (logs). To check if the state has changed, call
@@ -2139,7 +2139,7 @@ Example
 --------------
 
 eth\_newBlockFilter
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 Creates a filter in the node, to notify when a new block arrives. To
 check if the state has changed, call
@@ -2173,7 +2173,7 @@ Example
 --------------
 
 eth\_newPendingTransactionFilter
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Creates a filter in the node, to notify when new pending transactions
 arrive. To check if the state has changed, call
@@ -2207,7 +2207,7 @@ Example
 --------------
 
 eth\_uninstallFilter
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Uninstalls a filter with given id. Should always be called when watch is
 no longer needed. Additonally Filters timeout when they aren't requested
@@ -2249,7 +2249,7 @@ Example
 --------------
 
 eth\_getFilterChanges
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 Polling method for a filter, which returns an array of logs which
 occurred since last poll.
@@ -2330,7 +2330,7 @@ Example
 --------------
 
 eth\_getFilterLogs
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 Returns an array of all logs matching filter with given id.
 
@@ -2363,7 +2363,7 @@ Result see `eth\_getFilterChanges <#eth_getfilterchanges>`__
 --------------
 
 eth\_getLogs
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 Returns an array of all logs matching a given filter object.
 
@@ -2397,7 +2397,7 @@ Result see `eth\_getFilterChanges <#eth_getfilterchanges>`__
 --------------
 
 eth\_getWork
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 Returns the hash of the current block, the seedHash, and the boundary
 condition to be met ("target").
@@ -2437,7 +2437,7 @@ Example
 --------------
 
 eth\_submitWork
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 Used for submitting a proof-of-work solution.
 
@@ -2480,7 +2480,7 @@ Example
 --------------
 
 eth\_submitHashrate
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 Used for submitting mining hashrate.
 
@@ -2523,7 +2523,7 @@ Example
 --------------
 
 db\_putString
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Stores a string in the local database.
 
@@ -2568,7 +2568,7 @@ Example
 --------------
 
 db\_getString
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Returns string from the local database.
 
@@ -2610,7 +2610,7 @@ Example
 --------------
 
 db\_putHex
-^^^^^^^^^^
+~~~~~~~~~~
 
 Stores binary data in the local database.
 
@@ -2655,7 +2655,7 @@ Example
 --------------
 
 db\_getHex
-^^^^^^^^^^
+~~~~~~~~~~
 
 Returns binary data from the local database.
 
@@ -2697,7 +2697,7 @@ Example
 --------------
 
 shh\_version
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 Returns the current whisper protocol version.
 
@@ -2729,7 +2729,7 @@ Example
 --------------
 
 shh\_post
-^^^^^^^^^
+~~~~~~~~~
 
 Sends a whisper message.
 
@@ -2784,7 +2784,7 @@ Example
 --------------
 
 shh\_newIdentity
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 Creates new whisper identity in the client.
 
@@ -2816,7 +2816,7 @@ Example
 --------------
 
 shh\_hasIdentity
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 Checks if the client hold the private keys for a given identity.
 
@@ -2855,7 +2855,7 @@ Example
 --------------
 
 shh\_newGroup
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 (?)
 
@@ -2887,7 +2887,7 @@ Example
 --------------
 
 shh\_addToGroup
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 (?)
 
@@ -2926,7 +2926,7 @@ Example
 --------------
 
 shh\_newFilter
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 Creates filter to notify, when client receives whisper message matching
 the filter options.
@@ -2977,7 +2977,7 @@ Example
 --------------
 
 shh\_uninstallFilter
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Uninstalls a filter with given id. Should always be called when watch is
 no longer needed. Additonally Filters timeout when they aren't requested
@@ -3019,7 +3019,7 @@ Example
 --------------
 
 shh\_getFilterChanges
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 Polling method for whisper filters. Returns new messages since the last
 call of this method.
@@ -3089,7 +3089,7 @@ Example
 --------------
 
 shh\_getMessages
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 Get all messages matching a filter. Unlike ``shh_getFilterChanges`` this
 returns all messages.
