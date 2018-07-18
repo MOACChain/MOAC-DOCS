@@ -146,6 +146,8 @@
    -  `shh\_getFilterChanges <#shh_getfilterchanges>`__
 
    -  `shh\_getMessages <#shh_getmessages>`__
+   
+  
 
 .. raw:: html
 
