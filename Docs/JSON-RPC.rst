@@ -401,7 +401,7 @@
 
    <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-<a name="json-rpc-api">JSON RPC API</a>
+[JSON RPC API](#json-rpc-api)
 ============
 
 `JSON <http://json.org/>`__ is a lightweight data-interchange format. It
