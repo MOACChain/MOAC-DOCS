@@ -1,4 +1,4 @@
-MOAC docs Template!
+MOAC docs Template!!
 ========
 
 $project will solve your problem of where to start with documentation,
