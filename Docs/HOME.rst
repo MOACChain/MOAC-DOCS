@@ -3,7 +3,7 @@
 
    moaclogo
 
-Welcom to the MOAC Wiki!
+Welcome to the MOAC Wiki!
 ========================
 
 `欢迎来到墨客的世界！ <https://github.com/MOACChain/moac-core/wiki/MOAC>`__
