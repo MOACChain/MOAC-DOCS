@@ -7,6 +7,7 @@ Welcome to MOAC documentation
    :caption: Contents:
 
    HOME
+   introduction
    accessWallet
    Chain3
    checkBalance
