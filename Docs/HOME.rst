@@ -28,15 +28,15 @@ Index
 General Information
 ~~~~~~~~~~~~~~~~~~~
 
-`Introduction <https://github.com/MOACChain/moac-core/wiki/Introduction>`__
+`Introduction :doc:`introduction`
 
-`VNODE <https://github.com/MOACChain/moac-core/wiki/VNODE>`__
+`VNODE :doc:`VNODE`
 
-`SCS <https://github.com/MOACChain/moac-core/wiki/SCS>`__
+`SCS :doc:`SCS`
 
-`FAQs <https://github.com/MOACChain/moac-core/wiki/FAQs>`__
+`FAQs :doc:`FAQs`
 
-`Versions <https://github.com/MOACChain/moac-core/wiki/versions>`__
+`Versions :doc:`Versions`
 
 ÐApp Development
 ~~~~~~~~~~~~~~~~
