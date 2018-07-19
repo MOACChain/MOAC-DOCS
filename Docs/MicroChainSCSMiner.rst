@@ -1,6 +1,10 @@
+MicroChain SCS Miner
+====================
+
+
 Please follow these steps to start your MicroChain mining:
 
-A1、Download SCS program ( Or power up a SCS hardware miner)
+A1. Download SCS program ( Or power up a SCS hardware miner)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The initial SCS program has following files: README - A txt file
@@ -8,7 +12,7 @@ contains instructions; config/userconfig.json - Configura file used with
 SCS, need to be customized before start SCS; scsserver/scsserver -
 Executable program of SCS
 
-A2、Cusomize userconfig.json
+A2. Cusomize userconfig.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The conten of the userconfig.json is as following:
@@ -32,7 +36,7 @@ The conten of the userconfig.json is as following:
    to connect with the vnode again. This is the number of seconds
    between each connection with vnode.
 
-A3、Start SCS
+A3. Start SCS
 ~~~~~~~~~~~~~
 
 Command options (SCS -h)
@@ -51,7 +55,7 @@ should remove the keysore file and restart the SCS.
 SCS also has a rpc port. Currently the RPC only has monitoring services
 for DAPP developers.
 
-A4、Register the SCS into a SCS pool
+A4. Register the SCS into a SCS pool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To participate in the MicroChain, SCS need to register itself into a SCS
