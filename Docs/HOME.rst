@@ -28,19 +28,19 @@ Index
 General Information
 ~~~~~~~~~~~~~~~~~~~
 
-`Introduction :doc:`introduction`
+:doc:`introduction`
 
-`VNODE :doc:`VNODE`
+:doc:`VNODE`
 
-`SCS :doc:`SCS`
+:doc:`SCS`
 
-`FAQs :doc:`FAQs`
+:doc:`FAQs`
 
-`Versions :doc:`Versions`
+:doc:`Versions`
 
 ÐApp Development
 ~~~~~~~~~~~~~~~~
 
-`ERC20 <https://github.com/MOACChain/moac-core/wiki/ERC20>`__
+:doc:`ERC20`
 
-`ERC721 <https://github.com/MOACChain/moac-core/wiki/ERC721>`__
+:doc:`ERC721`
