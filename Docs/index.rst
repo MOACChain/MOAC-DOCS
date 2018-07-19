@@ -6,6 +6,7 @@ Welcome to MOAC documentation
    :maxdepth: 3
    :caption: Contents:
 
+   HOME
    accessWallet
    Chain3
    checkBalance
@@ -16,7 +17,6 @@ Welcome to MOAC documentation
    ERC20
    ERC721
    FAQs
-   HOME
    How-To-Create-a-Wallet
    JSON-RPC
    MoveToMoac
@@ -26,7 +26,6 @@ Welcome to MOAC documentation
    SCS
    SCSCreateSteps
    Setup
-   TokenPocket
    Versions
    VNODE
    MicroChainDAPPDeveloper
