@@ -25,7 +25,7 @@ etc.
 Index
 -----
 
-General Inforamtion
+General Information
 ~~~~~~~~~~~~~~~~~~~
 
 `Introduction <https://github.com/MOACChain/moac-core/wiki/Introduction>`__
