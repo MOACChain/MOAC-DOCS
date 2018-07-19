@@ -19,7 +19,6 @@ Welcome to MOAC documentation
    HOME
    How-To-Create-a-Wallet
    JSON-RPC
-   MOAC
    MoveToMoac
    protectFunds
    RPC
@@ -34,7 +33,6 @@ Welcome to MOAC documentation
    MicroChainSCSMiner
    MicroChainUsers
    MicroChainVNODEProxy
-   SCSminer
    TXdebug
    
 
