@@ -1,13 +1,16 @@
+Home
+====
+
 .. figure:: https://raw.githubusercontent.com/wiki/moacchain/moac-core/image/logo.jpg
    :alt: moaclogo
 
-   moaclogo
+
 
 Welcome to the MOAC Wiki!
-========================
+--------------------------
 
 `欢迎来到墨客的世界！ <https://github.com/MOACChain/moac-core/wiki/MOAC>`__
-===========================================================================
+-------------------------------------------------------------------------
 
 Mother Of All Chains (MOAC) is to design a scalable and resilient
 Blockchain that supports transactions, data access, control flow in a
