@@ -158,7 +158,7 @@ JSON-RPC
    <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 JSON RPC API
-============
+------------
 
 `JSON <http://json.org/>`__ is a lightweight data-interchange format. It
 can represent numbers, strings, ordered sequences of values, and
