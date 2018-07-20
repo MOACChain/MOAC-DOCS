@@ -1,11 +1,11 @@
 MOAC VNODE
 ^^^^^^^^^^
 
-1. `Design <Design>`__
-2. `Setup <Setup>`__
-3. `Command line commands <Commands>`__
-4. `Console commands <Console>`__
-5. `JavaScript API <Chain3>`__
+1. :doc:`Design`
+2. :doc:`Setup`
+3. :doc:`Commands`
+4. :doc:`Console`
+5. :doc:`Chain3`
 6. Useful websites
 
    6.1 `MOAC <http://moac.io/>`__

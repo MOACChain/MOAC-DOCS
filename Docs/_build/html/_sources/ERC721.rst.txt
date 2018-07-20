@@ -1,3 +1,7 @@
+ERC721 Token
+============
+
+
 Creating your own ERC721 Token on MOAC blockchain
 -------------------------------------------------
 
@@ -577,65 +581,4 @@ Succeed!: 
 Using solc compiler to generate the ABI and bytecode Another way of
 generating these two files is to compile your smart contract using the
 solc compiler on your machine. If you haven’t used solc yet, you can
-follow these instructions for installing it on your machine.
-
-Open a Terminal window and navigate to your working directory where you
-have saved your TestToken.sol file. Run the following command to export
-the ‘TestToken.abi’ and ‘TestToken.bin’ files to the bin directory:
-
-::
-
-    solc --bin --abi -o bin TestToken.sol 
-
-As the file extensions suggest, ‘TestToken.abi’ contains your contract's
-ABI, and ‘TestToken.bin’ contains its bytecode.
-
-If you prefer accessing the solc compiler from within a program’s code
-to generate the ABI and bytecode files rather than using the command
-line, you can use the following code instead:
-
-::
-
-    var fs =  require ( ' fs ' );
-    var solc =  requires ( 'solc' );
-
-    var cmds = process.argv;
-    if(cmds != null && cmds.length > 2){
-      var file = cmds[2];
-      var name = cmds[3];
-      var content = fs.readFileSync(file).toString();
-
-      was input = {
-        file: content
-      };
-
-      var output = solc.compile({sources: input}, 1);
-      console.log('contracts', Object.keys(output.contracts));
-
-      var ctt = output.contracts[name];
-      if(ctt == null){
-          return;
-      }
-
-      var bytecode = ctt.bytecode;
-      var abi = JSON.parse(ctt.interface);
-
-      console.log('bytecode', bytecode);
-      console.log('abi', ctt.interface);
-    }
-
-Regardless of which method you followed, you should now have the ABI and
-bytecode files for your TestToken smart contract. Next, you will be able
-to deploy your token contract on the MOAC blockchain for others to
-interact with it.
-
-.. |ERC20\_moacwallet05.png| image:: image/ERC20_moacwallet05.png
-.. |ERC20\_moacwallet06.png| image:: image/ERC20_moacwallet06.png
-.. |ERC20\_moacwallet07.png| image:: image/ERC20_moacwallet07.png
-.. |ERC20\_moacwallet08.png| image:: image/ERC20_moacwallet08.png
-.. |ERC20\_moacwallet10.png| image:: image/ERC20_moacwallet10.png
-.. |ERC20\_moacwallet11.png| image:: image/ERC20_moacwallet11.png
-.. |ERC20\_moacwallet12.png| image:: image/ERC20_moacwallet12.png
-.. |ERC20\_moacwallet13.png| image:: image/ERC20_moacwallet13.png
-.. |ERC20\_moacwallet17.png| image:: image/ERC20_moacwallet17.png
-
+follow the

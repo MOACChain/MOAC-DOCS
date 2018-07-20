@@ -1,38 +1,166 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Creating your own ERC721 Token on MOAC blockchain &#8212; moac-core-master  documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ERC721 Token &mdash; moac-core-master  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Table of Contents" href="FAQs.html" />
-    <link rel="prev" title="Creating your own ERC20 Token on the MOAC blockchain" href="ERC20.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  <div class="wy-grid-for-nav">
 
-  </head><body>
-  
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+          
+            <a href="index.html" class="icon icon-home"> moac-core-master
+          
+
+          
+          </a>
+
+          
             
-  <div class="section" id="creating-your-own-erc721-token-on-moac-blockchain">
-<h1>Creating your own ERC721 Token on MOAC blockchain<a class="headerlink" href="#creating-your-own-erc721-token-on-moac-blockchain" title="Permalink to this headline">¶</a></h1>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ERC721 Token</a><ul>
+<li><a class="reference internal" href="#creating-your-own-erc721-token-on-moac-blockchain">Creating your own ERC721 Token on MOAC blockchain</a></li>
+<li><a class="reference internal" href="#write-the-erc721-token-smart-contract">Write the ERC721 token smart contract</a><ul>
+<li><a class="reference internal" href="#using-a-ready-open-source-library">Using a ready open source library</a></li>
+<li><a class="reference internal" href="#developing-your-smart-contract-directly">Developing your smart contract directly</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#compile-and-deploy-erc721-token-smart-contract">Compile and deploy ERC721 token smart contract</a><ul>
+<li><a class="reference internal" href="#using-moac-wallet">Using MOAC wallet</a></li>
+<li><a class="reference internal" href="#remix">Remix</a></li>
+<li><a class="reference internal" href="#using-the-node-js-packages">Using the Node.Js packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">moac-core-master</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ERC721 Token</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ERC721.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="erc721-token">
+<h1>ERC721 Token<a class="headerlink" href="#erc721-token" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="creating-your-own-erc721-token-on-moac-blockchain">
+<h2>Creating your own ERC721 Token on MOAC blockchain<a class="headerlink" href="#creating-your-own-erc721-token-on-moac-blockchain" title="Permalink to this headline">¶</a></h2>
 <p>Before you read this page, you should:</p>
 <ul class="simple">
 <li>Understand the following general concepts: blockchain, smart
@@ -48,7 +176,7 @@ tutorial example);</li>
 </ul>
 </div>
 <div class="section" id="write-the-erc721-token-smart-contract">
-<h1>Write the ERC721 token smart contract<a class="headerlink" href="#write-the-erc721-token-smart-contract" title="Permalink to this headline">¶</a></h1>
+<h2>Write the ERC721 token smart contract<a class="headerlink" href="#write-the-erc721-token-smart-contract" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md">ERC721
 standard</a>
 is developed by the Ethereum community. It is a standard interface for
@@ -75,7 +203,7 @@ ready open source library to help with the task, or write the needed
 smart contracts directly from scratch. We will show all three methods
 below so you can master your ERC721 token development skills.</p>
 <div class="section" id="using-a-ready-open-source-library">
-<h2>Using a ready open source library<a class="headerlink" href="#using-a-ready-open-source-library" title="Permalink to this headline">¶</a></h2>
+<h3>Using a ready open source library<a class="headerlink" href="#using-a-ready-open-source-library" title="Permalink to this headline">¶</a></h3>
 <p>Let’s see how you can implement this interface by taking advantage of
 the OpenZeppelin Solidity library, for instance. We will write a
 TestCoin based on, for example, the PausableToken contract in
@@ -292,7 +420,7 @@ ERC721, and so on all the way to ERC721Basic and the SafeMath library
 import.</p>
 </div>
 <div class="section" id="developing-your-smart-contract-directly">
-<h2>Developing your smart contract directly<a class="headerlink" href="#developing-your-smart-contract-directly" title="Permalink to this headline">¶</a></h2>
+<h3>Developing your smart contract directly<a class="headerlink" href="#developing-your-smart-contract-directly" title="Permalink to this headline">¶</a></h3>
 <p>Another way of doing this is to simply write the ERC721 interface and
 your contract implementing it directly from scratch. As you’ll see, this
 is actually a fairly straightforward task:</p>
@@ -369,7 +497,7 @@ However, the code is only for demonstration only.</p>
 </div>
 </div>
 <div class="section" id="compile-and-deploy-erc721-token-smart-contract">
-<h1>Compile and deploy ERC721 token smart contract<a class="headerlink" href="#compile-and-deploy-erc721-token-smart-contract" title="Permalink to this headline">¶</a></h1>
+<h2>Compile and deploy ERC721 token smart contract<a class="headerlink" href="#compile-and-deploy-erc721-token-smart-contract" title="Permalink to this headline">¶</a></h2>
 <p>As a next step, you’ll need to generate the bytecode and ABI for your
 new smart contract. You can think of the bytecode as basically your
 contract’s compiled code. The ABI (Application Binary Interface) is a
@@ -379,7 +507,7 @@ wallet</a>, <a class="reference external" href="http://remix.ethereum.org/">Remi
 development</a>, or compiling using the solc
 compiler on your machine (i.e. the command line).</p>
 <div class="section" id="using-moac-wallet">
-<h2>Using MOAC wallet<a class="headerlink" href="#using-moac-wallet" title="Permalink to this headline">¶</a></h2>
+<h3>Using MOAC wallet<a class="headerlink" href="#using-moac-wallet" title="Permalink to this headline">¶</a></h3>
 <p>MOAC wallet is an online free, client-side interface for using MOAC
 wallets, make transactions and deploy contract. It was developed based
 on open-source software. To use the service, you need to run a local
@@ -390,24 +518,24 @@ MOAC node with addition command line arguments:</p>
 <p>This will allow the access of MOAC node using MOAC wallet.</p>
 <p>Otherwise you will see the following error message:</p>
 <div class="figure" id="id1">
-<img alt="ERC20\_moacwallet01.png" src="_images/ERC20_moacwallet01.png" />
+<img alt="ERC20\_moacwallet01.png" src="image/ERC20_moacwallet01.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet01.png</span></p>
 </div>
 <p>Example command to start a MOAC node connecting with mainnet:</p>
 <p><code class="docutils literal notranslate"><span class="pre">moac</span> <span class="pre">--rpccorsdomain</span> <span class="pre">&quot;http://wallet.moac.io&quot;</span> <span class="pre">--rpc</span> <span class="pre">--rpcport</span> <span class="pre">&quot;8545&quot;</span> <span class="pre">--rpcapi</span> <span class="pre">&quot;chain3,mc,net,db&quot;</span></code></p>
 <p>A successful interface connecting to mainnet looks like this:</p>
 <div class="figure" id="id2">
-<img alt="ERC20\_moacwallet02.png" src="_images/ERC20_moacwallet02.png" />
+<img alt="ERC20\_moacwallet02.png" src="image/ERC20_moacwallet02.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet02.png</span></p>
 </div>
 <p>To compile the contract, click the “CONTRACTS” icon:</p>
 <div class="figure" id="id3">
-<img alt="ERC20\_moacwallet03.png" src="_images/ERC20_moacwallet03.png" />
+<img alt="ERC20\_moacwallet03.png" src="image/ERC20_moacwallet03.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet03.png</span></p>
 </div>
 <p>Then enter the contract deploy page:</p>
 <div class="figure" id="id4">
-<img alt="ERC20\_moacwallet04.png" src="_images/ERC20_moacwallet04.png" />
+<img alt="ERC20\_moacwallet04.png" src="image/ERC20_moacwallet04.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet04.png</span></p>
 </div>
 <p>Copy the source code and paste in the “SOLIDITY CONTRACT SOURCE CODE”
@@ -426,7 +554,7 @@ number. If gas is not enough, the contract cannot be created. To
 continue, be sure to unlock the account to create the contract. You can
 use a console attached to the MOAC to do this:</p>
 <div class="figure" id="id5">
-<img alt="ERC20\_moacwallet09.png" src="_images/ERC20_moacwallet09.png" />
+<img alt="ERC20\_moacwallet09.png" src="image/ERC20_moacwallet09.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet09.png</span></p>
 </div>
 <p>After deploying, the interface is returned to the main menu and you can
@@ -438,7 +566,7 @@ development needs. It cannot debug contracts. To advanced developers,
 you can use Remix to work with contracts.</p>
 </div>
 <div class="section" id="remix">
-<h2>Remix<a class="headerlink" href="#remix" title="Permalink to this headline">¶</a></h2>
+<h3>Remix<a class="headerlink" href="#remix" title="Permalink to this headline">¶</a></h3>
 <p>Remix is an online tool developed by Ethereum community to work with
 smart contracts. MOAC also supports the deploy of smart contract through
 Remix.</p>
@@ -467,18 +595,18 @@ deploying the contract to a real network. Injected Web3 is the default
 web3 connecting to Ethereum network. To deploy MOAC contract, you need
 to choose Web3 Provider.</p>
 <div class="figure" id="id6">
-<img alt="ERC20\_moacwallet14.png" src="_images/ERC20_moacwallet14.png" />
+<img alt="ERC20\_moacwallet14.png" src="image/ERC20_moacwallet14.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet14.png</span></p>
 </div>
 <p>After choose “Web3 Provider”, you can see a message like this:</p>
 <p>Click “OK”,</p>
 <div class="figure" id="id7">
-<img alt="ERC20\_moacwallet15.png" src="_images/ERC20_moacwallet15.png" />
+<img alt="ERC20\_moacwallet15.png" src="image/ERC20_moacwallet15.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet15.png</span></p>
 </div>
 <p>You need to make sure the port is the same as the local running node.</p>
 <div class="figure" id="id8">
-<img alt="ERC20\_moacwallet12.png" src="_images/ERC20_moacwallet16.png" />
+<img alt="ERC20\_moacwallet12.png" src="image/ERC20_moacwallet16.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet12.png</span></p>
 </div>
 <p>You may see the error message like this:</p>
@@ -494,19 +622,19 @@ node that include both</p>
 <p>If the connection is established, you should see your accounts from the
 Account List.</p>
 <div class="figure" id="id9">
-<img alt="ERC20\_moacwallet18.png" src="_images/ERC20_moacwallet18.png" />
+<img alt="ERC20\_moacwallet18.png" src="image/ERC20_moacwallet18.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet18.png</span></p>
 </div>
 <p>Before you deploy the contract, you need to unlock the account that send
 the contract. You can do the unlock with the MOAC console:</p>
 <div class="figure" id="id10">
-<img alt="ERC20\_moacwallet09.png" src="_images/ERC20_moacwallet09.png" />
+<img alt="ERC20\_moacwallet09.png" src="image/ERC20_moacwallet09.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet09.png</span></p>
 </div>
 <p>After successfully deployed the contract, you should see the contract
 address and other information showed in the menu:</p>
 <div class="figure" id="id11">
-<img alt="ERC20\_moacwallet19.png" src="_images/ERC20_moacwallet19.png" />
+<img alt="ERC20\_moacwallet19.png" src="image/ERC20_moacwallet19.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet19.png</span></p>
 </div>
 <p>Remix is good for developing and debugging smart contracts. It is not
@@ -514,7 +642,7 @@ very convenient to deploy multiple contracts. If your requires to deploy
 multiple contracts, you can use the Node.Js packages.</p>
 </div>
 <div class="section" id="using-the-node-js-packages">
-<h2>Using the Node.Js packages<a class="headerlink" href="#using-the-node-js-packages" title="Permalink to this headline">¶</a></h2>
+<h3>Using the Node.Js packages<a class="headerlink" href="#using-the-node-js-packages" title="Permalink to this headline">¶</a></h3>
 <p>You need to install solc package to compile the smart contract, and
 chain3 package to deploy the contract.</p>
 <p>To use the latest stable version of the Solidity compiler via Node.js
@@ -544,121 +672,65 @@ you can install it via npm:</p>
 <p>Using solc compiler to generate the ABI and bytecode Another way of
 generating these two files is to compile your smart contract using the
 solc compiler on your machine. If you haven’t used solc yet, you can
-follow these instructions for installing it on your machine.</p>
-<p>Open a Terminal window and navigate to your working directory where you
-have saved your TestToken.sol file. Run the following command to export
-the ‘TestToken.abi’ and ‘TestToken.bin’ files to the bin directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solc</span> <span class="o">--</span><span class="nb">bin</span> <span class="o">--</span><span class="n">abi</span> <span class="o">-</span><span class="n">o</span> <span class="nb">bin</span> <span class="n">TestToken</span><span class="o">.</span><span class="n">sol</span>
-</pre></div>
+follow the</p>
 </div>
-<p>As the file extensions suggest, ‘TestToken.abi’ contains your contract’s
-ABI, and ‘TestToken.bin’ contains its bytecode.</p>
-<p>If you prefer accessing the solc compiler from within a program’s code
-to generate the ABI and bytecode files rather than using the command
-line, you can use the following code instead:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">fs</span> <span class="o">=</span>  <span class="n">require</span> <span class="p">(</span> <span class="s1">&#39; fs &#39;</span> <span class="p">);</span>
-<span class="n">var</span> <span class="n">solc</span> <span class="o">=</span>  <span class="n">requires</span> <span class="p">(</span> <span class="s1">&#39;solc&#39;</span> <span class="p">);</span>
-
-<span class="n">var</span> <span class="n">cmds</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">argv</span><span class="p">;</span>
-<span class="k">if</span><span class="p">(</span><span class="n">cmds</span> <span class="o">!=</span> <span class="n">null</span> <span class="o">&amp;&amp;</span> <span class="n">cmds</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">){</span>
-  <span class="n">var</span> <span class="n">file</span> <span class="o">=</span> <span class="n">cmds</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-  <span class="n">var</span> <span class="n">name</span> <span class="o">=</span> <span class="n">cmds</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
-  <span class="n">var</span> <span class="n">content</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">readFileSync</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">toString</span><span class="p">();</span>
-
-  <span class="n">was</span> <span class="nb">input</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">file</span><span class="p">:</span> <span class="n">content</span>
-  <span class="p">};</span>
-
-  <span class="n">var</span> <span class="n">output</span> <span class="o">=</span> <span class="n">solc</span><span class="o">.</span><span class="n">compile</span><span class="p">({</span><span class="n">sources</span><span class="p">:</span> <span class="nb">input</span><span class="p">},</span> <span class="mi">1</span><span class="p">);</span>
-  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;contracts&#39;</span><span class="p">,</span> <span class="n">Object</span><span class="o">.</span><span class="n">keys</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">contracts</span><span class="p">));</span>
-
-  <span class="n">var</span> <span class="n">ctt</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">contracts</span><span class="p">[</span><span class="n">name</span><span class="p">];</span>
-  <span class="k">if</span><span class="p">(</span><span class="n">ctt</span> <span class="o">==</span> <span class="n">null</span><span class="p">){</span>
-      <span class="k">return</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="n">var</span> <span class="n">bytecode</span> <span class="o">=</span> <span class="n">ctt</span><span class="o">.</span><span class="n">bytecode</span><span class="p">;</span>
-  <span class="n">var</span> <span class="n">abi</span> <span class="o">=</span> <span class="n">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">ctt</span><span class="o">.</span><span class="n">interface</span><span class="p">);</span>
-
-  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;bytecode&#39;</span><span class="p">,</span> <span class="n">bytecode</span><span class="p">);</span>
-  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;abi&#39;</span><span class="p">,</span> <span class="n">ctt</span><span class="o">.</span><span class="n">interface</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Regardless of which method you followed, you should now have the ABI and
-bytecode files for your TestToken smart contract. Next, you will be able
-to deploy your token contract on the MOAC blockchain for others to
-interact with it.</p>
 </div>
 </div>
 
 
+           </div>
+           
           </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Wenhan Jin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Creating your own ERC721 Token on MOAC blockchain</a></li>
-<li><a class="reference internal" href="#write-the-erc721-token-smart-contract">Write the ERC721 token smart contract</a><ul>
-<li><a class="reference internal" href="#using-a-ready-open-source-library">Using a ready open source library</a></li>
-<li><a class="reference internal" href="#developing-your-smart-contract-directly">Developing your smart contract directly</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#compile-and-deploy-erc721-token-smart-contract">Compile and deploy ERC721 token smart contract</a><ul>
-<li><a class="reference internal" href="#using-moac-wallet">Using MOAC wallet</a></li>
-<li><a class="reference internal" href="#remix">Remix</a></li>
-<li><a class="reference internal" href="#using-the-node-js-packages">Using the Node.Js packages</a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="ERC20.html" title="previous chapter">Creating your own ERC20 Token on the MOAC blockchain</a></li>
-      <li>Next: <a href="FAQs.html" title="next chapter">Table of Contents</a></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/ERC721.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2018, Wenhan Jin.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
-      <a href="_sources/ERC721.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

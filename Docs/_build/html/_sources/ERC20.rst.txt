@@ -1,5 +1,8 @@
+ERC20 Token
+===========
+
 Creating your own ERC20 Token on the MOAC blockchain
-====================================================
+----------------------------------------------------
 
 Before you read this page, you should:
 

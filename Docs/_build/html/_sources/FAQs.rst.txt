@@ -1,10 +1,13 @@
+FAQs
+====
+
 Here are some FAQs from the community. If you cannot find your answers
 here or have more questions, please feel free to check
 `Issues <https://github.com/MOACChain/moac-core/issues>`__, or send an
 email to us.
 
 Table of Contents
-=================
+-----------------
 
 -  `What is MOAC <#what-is-moac>`__
 -  `What is MOAC for <#what-is-moac-for>`__
@@ -15,7 +18,7 @@ Table of Contents
 -  `MoacWalletOnline FAQs <#moacwalletonline-faqs>`__
 
 What is MOAC?
--------------
+~~~~~~~~~~~~~
 
 MOAC is a revolutionary platform with a Multi-Blockchain smart contract
 and P2P service network to efficiently build and scale decentralized
@@ -36,7 +39,7 @@ market standard for transactional efficiency, while optimizing
 decentralization mechanisms and overall security.
 
 What is MOAC for?
------------------
+~~~~~~~~~~~~~~~~~
 
 The MOAC platform was designed to increase and maximize blockchain
 network performance using node-based computing power and allowing for
@@ -67,7 +70,7 @@ processing power (i.e., mobile users).
    MOAC structure
 
 Why was MOAC created?
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 Existing blockchain technologies and platforms suffer from steep
 learning curves, unnecessary complexity, and high usage fees all of
@@ -97,7 +100,7 @@ can outperform Ethereum by 100x transactions per second using an
 advanced Mutli-blockchain system including Microchains and sharding.
 
 Why is MOAC so much better for DAPPs?
--------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 First, MOAC uses blockchain sharding to speed up the TPS, making it an
 attractive platform for DAPP developers and users.
@@ -127,7 +130,7 @@ contract with additional functionality without having to learn how to
 program on the blockchain.
 
 How to get MOAC?
-----------------
+~~~~~~~~~~~~~~~~
 
 MOAC's mainnet was released on April 30th, 2018. Now you can get MOAC on
 the mainnet through the following options:
@@ -145,7 +148,7 @@ your receiver address
 the `MOAC team <info@moac.io>`__.
 
 MoacWalletOnline FAQs
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 `How To Create a Wallet <How-To-Create-a-Wallet>`__
 

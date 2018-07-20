@@ -1,5 +1,12 @@
-MOAC docs Template!!
+MOAC docs
 ========
+
+To create the HTML file:
+
+MAC:
+need to install.
+
+sudo pip install sphinx_rtd_theme
 
 $project will solve your problem of where to start with documentation,
 by providing a basic explanation of how to do it easily.

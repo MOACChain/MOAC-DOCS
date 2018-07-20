@@ -1,3 +1,7 @@
+JSON-RPC
+========
+
+
 .. raw:: html
 
    <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -23,386 +27,138 @@
 -  `JSON-RPC methods <#json-rpc-methods>`__
 -  `JSON RPC API Reference <#json-rpc-api-reference>`__
 
-   -  `web3\_clientVersion <#web3_clientversion>`__
+   -  `chain3\_clientVersion <#web3_clientversion>`__
 
-      -  `Parameters <#parameters>`__
-      -  `Returns <#returns>`__
-      -  `Example <#example>`__
-
-   -  `web3\_sha3 <#web3_sha3>`__
-
-      -  `Parameters <#parameters-1>`__
-      -  `Returns <#returns-1>`__
-      -  `Example <#example-1>`__
+   -  `chain3\_sha3 <#web3_sha3>`__
 
    -  `net\_version <#net_version>`__
 
-      -  `Parameters <#parameters-2>`__
-      -  `Returns <#returns-2>`__
-      -  `Example <#example-2>`__
-
    -  `net\_listening <#net_listening>`__
-
-      -  `Parameters <#parameters-3>`__
-      -  `Returns <#returns-3>`__
-      -  `Example <#example-3>`__
 
    -  `net\_peerCount <#net_peercount>`__
 
-      -  `Parameters <#parameters-4>`__
-      -  `Returns <#returns-4>`__
-      -  `Example <#example-4>`__
+   -  `mc\_protocolVersion <#eth_protocolversion>`__
 
-   -  `eth\_protocolVersion <#eth_protocolversion>`__
+   -  `mc\_syncing <#eth_syncing>`__
 
-      -  `Parameters <#parameters-5>`__
-      -  `Returns <#returns-5>`__
-      -  `Example <#example-5>`__
+   -  `mc\_coinbase <#eth_coinbase>`__
 
-   -  `eth\_syncing <#eth_syncing>`__
+   -  `mc\_mining <#eth_mining>`__
 
-      -  `Parameters <#parameters-6>`__
-      -  `Returns <#returns-6>`__
-      -  `Example <#example-6>`__
+   -  `mc\_hashrate <#eth_hashrate>`__
 
-   -  `eth\_coinbase <#eth_coinbase>`__
+   -  `mc\_gasPrice <#eth_gasprice>`__
 
-      -  `Parameters <#parameters-7>`__
-      -  `Returns <#returns-7>`__
-      -  `Example <#example-7>`__
+   -  `mc\_accounts <#eth_accounts>`__
 
-   -  `eth\_mining <#eth_mining>`__
+   -  `mc\_blockNumber <#eth_blocknumber>`__
+   
+   -  `mc\_getBalance <#eth_getbalance>`__
 
-      -  `Parameters <#parameters-8>`__
-      -  `Returns <#returns-8>`__
-      -  `Example <#example-8>`__
+   -  `mc\_getStorageAt <#eth_getstorageat>`__
 
-   -  `eth\_hashrate <#eth_hashrate>`__
+   -  `mc\_getTransactionCount <#eth_gettransactioncount>`__
 
-      -  `Parameters <#parameters-9>`__
-      -  `Returns <#returns-9>`__
-      -  `Example <#example-9>`__
+   -  `mc\_getBlockTransactionCountByHash <#eth_getblocktransactioncountbyhash>`__
 
-   -  `eth\_gasPrice <#eth_gasprice>`__
+   -  `mc\_getBlockTransactionCountByNumber <#eth_getblocktransactioncountbynumber>`__
 
-      -  `Parameters <#parameters-10>`__
-      -  `Returns <#returns-10>`__
-      -  `Example <#example-10>`__
+   -  `mc\_getUncleCountByBlockHash <#eth_getunclecountbyblockhash>`__
 
-   -  `eth\_accounts <#eth_accounts>`__
+   -  `mc\_getUncleCountByBlockNumber <#eth_getunclecountbyblocknumber>`__
 
-      -  `Parameters <#parameters-11>`__
-      -  `Returns <#returns-11>`__
-      -  `Example <#example-11>`__
+   -  `mc\_getCode <#eth_getcode>`__
+   
+   -  `mc\_sign <#eth_sign>`__
 
-   -  `eth\_blockNumber <#eth_blocknumber>`__
+   -  `mc\_sendTransaction <#eth_sendtransaction>`__
 
-      -  `Parameters <#parameters-12>`__
-      -  `Returns <#returns-12>`__
-      -  `Example <#example-12>`__
+   -  `mc\_sendRawTransaction <#eth_sendrawtransaction>`__
+   
+   -  `mc\_call <#eth_call>`__
+   
+   -  `mc\_estimateGas <#eth_estimategas>`__
 
-   -  `eth\_getBalance <#eth_getbalance>`__
+   -  `mc\_getBlockByHash <#eth_getblockbyhash>`__
 
-      -  `Parameters <#parameters-13>`__
-      -  `Returns <#returns-13>`__
-      -  `Example <#example-13>`__
+   -  `mc\_getBlockByNumber <#eth_getblockbynumber>`__
 
-   -  `eth\_getStorageAt <#eth_getstorageat>`__
+   -  `mc\_getTransactionByHash <#eth_gettransactionbyhash>`__
 
-      -  `Parameters <#parameters-14>`__
-      -  `Returns <#returns-14>`__
-      -  `Example <#example-14>`__
+   -  `mc\_getTransactionByBlockHashAndIndex <#eth_gettransactionbyblockhashandindex>`__
 
-   -  `eth\_getTransactionCount <#eth_gettransactioncount>`__
+   -  `mc\_getTransactionByBlockNumberAndIndex <#eth_gettransactionbyblocknumberandindex>`__
 
-      -  `Parameters <#parameters-15>`__
-      -  `Returns <#returns-15>`__
-      -  `Example <#example-15>`__
+   -  `mc\_getTransactionReceipt <#eth_gettransactionreceipt>`__
 
-   -  `eth\_getBlockTransactionCountByHash <#eth_getblocktransactioncountbyhash>`__
+   -  `mc\_getUncleByBlockHashAndIndex <#eth_getunclebyblockhashandindex>`__
 
-      -  `Parameters <#parameters-16>`__
-      -  `Returns <#returns-16>`__
-      -  `Example <#example-16>`__
+   -  `mc\_getUncleByBlockNumberAndIndex <#eth_getunclebyblocknumberandindex>`__
 
-   -  `eth\_getBlockTransactionCountByNumber <#eth_getblocktransactioncountbynumber>`__
+   -  `mc\_getCompilers <#eth_getcompilers>`__
 
-      -  `Parameters <#parameters-17>`__
-      -  `Returns <#returns-17>`__
-      -  `Example <#example-17>`__
+   -  `mc\_compileSolidity <#eth_compilesolidity>`__
 
-   -  `eth\_getUncleCountByBlockHash <#eth_getunclecountbyblockhash>`__
+   -  `mc\_compileLLL <#eth_compilelll>`__
 
-      -  `Parameters <#parameters-18>`__
-      -  `Returns <#returns-18>`__
-      -  `Example <#example-18>`__
+   -  `mc\_compileSerpent <#eth_compileserpent>`__
 
-   -  `eth\_getUncleCountByBlockNumber <#eth_getunclecountbyblocknumber>`__
+   -  `mc\_newFilter <#eth_newfilter>`__
 
-      -  `Parameters <#parameters-19>`__
-      -  `Returns <#returns-19>`__
-      -  `Example <#example-19>`__
+   -  `mc\_newBlockFilter <#eth_newblockfilter>`__
 
-   -  `eth\_getCode <#eth_getcode>`__
+   -  `mc\_newPendingTransactionFilter <#eth_newpendingtransactionfilter>`__
 
-      -  `Parameters <#parameters-20>`__
-      -  `Returns <#returns-20>`__
-      -  `Example <#example-20>`__
+   -  `mc\_uninstallFilter <#eth_uninstallfilter>`__
 
-   -  `eth\_sign <#eth_sign>`__
+   -  `mc\_getFilterChanges <#eth_getfilterchanges>`__
 
-      -  `Parameters <#parameters-21>`__
-      -  `Returns <#returns-21>`__
-      -  `Example <#example-21>`__
+   -  `mc\_getFilterLogs <#eth_getfilterlogs>`__
 
-   -  `eth\_sendTransaction <#eth_sendtransaction>`__
+   -  `mc\_getLogs <#eth_getlogs>`__
 
-      -  `Parameters <#parameters-22>`__
-      -  `Returns <#returns-22>`__
-      -  `Example <#example-22>`__
+   -  `mc\_getWork <#eth_getwork>`__
 
-   -  `eth\_sendRawTransaction <#eth_sendrawtransaction>`__
-
-      -  `Parameters <#parameters-23>`__
-      -  `Returns <#returns-23>`__
-      -  `Example <#example-23>`__
-
-   -  `eth\_call <#eth_call>`__
-
-      -  `Parameters <#parameters-24>`__
-      -  `Returns <#returns-24>`__
-      -  `Example <#example-24>`__
-
-   -  `eth\_estimateGas <#eth_estimategas>`__
-
-      -  `Parameters <#parameters-25>`__
-      -  `Returns <#returns-25>`__
-      -  `Example <#example-25>`__
-
-   -  `eth\_getBlockByHash <#eth_getblockbyhash>`__
-
-      -  `Parameters <#parameters-26>`__
-      -  `Returns <#returns-26>`__
-      -  `Example <#example-26>`__
-
-   -  `eth\_getBlockByNumber <#eth_getblockbynumber>`__
-
-      -  `Parameters <#parameters-27>`__
-      -  `Returns <#returns-27>`__
-      -  `Example <#example-27>`__
-
-   -  `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
-
-      -  `Parameters <#parameters-28>`__
-      -  `Returns <#returns-28>`__
-      -  `Example <#example-28>`__
-
-   -  `eth\_getTransactionByBlockHashAndIndex <#eth_gettransactionbyblockhashandindex>`__
-
-      -  `Parameters <#parameters-29>`__
-      -  `Returns <#returns-29>`__
-      -  `Example <#example-29>`__
-
-   -  `eth\_getTransactionByBlockNumberAndIndex <#eth_gettransactionbyblocknumberandindex>`__
-
-      -  `Parameters <#parameters-30>`__
-      -  `Returns <#returns-30>`__
-      -  `Example <#example-30>`__
-
-   -  `eth\_getTransactionReceipt <#eth_gettransactionreceipt>`__
-
-      -  `Parameters <#parameters-31>`__
-      -  `Returns <#returns-31>`__
-      -  `Example <#example-31>`__
-
-   -  `eth\_getUncleByBlockHashAndIndex <#eth_getunclebyblockhashandindex>`__
-
-      -  `Parameters <#parameters-32>`__
-      -  `Returns <#returns-32>`__
-      -  `Example <#example-32>`__
-
-   -  `eth\_getUncleByBlockNumberAndIndex <#eth_getunclebyblocknumberandindex>`__
-
-      -  `Parameters <#parameters-33>`__
-      -  `Returns <#returns-33>`__
-      -  `Example <#example-33>`__
-
-   -  `eth\_getCompilers <#eth_getcompilers>`__
-
-      -  `Parameters <#parameters-34>`__
-      -  `Returns <#returns-34>`__
-      -  `Example <#example-34>`__
-
-   -  `eth\_compileSolidity <#eth_compilesolidity>`__
-
-      -  `Parameters <#parameters-35>`__
-      -  `Returns <#returns-35>`__
-      -  `Example <#example-35>`__
-
-   -  `eth\_compileLLL <#eth_compilelll>`__
-
-      -  `Parameters <#parameters-36>`__
-      -  `Returns <#returns-36>`__
-      -  `Example <#example-36>`__
-
-   -  `eth\_compileSerpent <#eth_compileserpent>`__
-
-      -  `Parameters <#parameters-37>`__
-      -  `Returns <#returns-37>`__
-      -  `Example <#example-37>`__
-
-   -  `eth\_newFilter <#eth_newfilter>`__
-
-      -  `A note on specifying topic
-         filters: <#a-note-on-specifying-topic-filters>`__
-      -  `Parameters <#parameters-38>`__
-      -  `Returns <#returns-38>`__
-      -  `Example <#example-38>`__
-
-   -  `eth\_newBlockFilter <#eth_newblockfilter>`__
-
-      -  `Parameters <#parameters-39>`__
-      -  `Returns <#returns-39>`__
-      -  `Example <#example-39>`__
-
-   -  `eth\_newPendingTransactionFilter <#eth_newpendingtransactionfilter>`__
-
-      -  `Parameters <#parameters-40>`__
-      -  `Returns <#returns-40>`__
-      -  `Example <#example-40>`__
-
-   -  `eth\_uninstallFilter <#eth_uninstallfilter>`__
-
-      -  `Parameters <#parameters-41>`__
-      -  `Returns <#returns-41>`__
-      -  `Example <#example-41>`__
-
-   -  `eth\_getFilterChanges <#eth_getfilterchanges>`__
-
-      -  `Parameters <#parameters-42>`__
-      -  `Returns <#returns-42>`__
-      -  `Example <#example-42>`__
-
-   -  `eth\_getFilterLogs <#eth_getfilterlogs>`__
-
-      -  `Parameters <#parameters-43>`__
-      -  `Returns <#returns-43>`__
-      -  `Example <#example-43>`__
-
-   -  `eth\_getLogs <#eth_getlogs>`__
-
-      -  `Parameters <#parameters-44>`__
-      -  `Returns <#returns-44>`__
-      -  `Example <#example-44>`__
-
-   -  `eth\_getWork <#eth_getwork>`__
-
-      -  `Parameters <#parameters-45>`__
-      -  `Returns <#returns-45>`__
-      -  `Example <#example-45>`__
-
-   -  `eth\_submitWork <#eth_submitwork>`__
-
-      -  `Parameters <#parameters-46>`__
-      -  `Returns <#returns-46>`__
-      -  `Example <#example-46>`__
-
-   -  `eth\_submitHashrate <#eth_submithashrate>`__
-
-      -  `Parameters <#parameters-47>`__
-      -  `Returns <#returns-47>`__
-      -  `Example <#example-47>`__
+   -  `mc\_submitWork <#eth_submitwork>`__
+   
+   -  `mc\_submitHashrate <#eth_submithashrate>`__
 
    -  `db\_putString <#db_putstring>`__
 
-      -  `Parameters <#parameters-48>`__
-      -  `Returns <#returns-48>`__
-      -  `Example <#example-48>`__
-
    -  `db\_getString <#db_getstring>`__
-
-      -  `Parameters <#parameters-49>`__
-      -  `Returns <#returns-49>`__
-      -  `Example <#example-49>`__
 
    -  `db\_putHex <#db_puthex>`__
 
-      -  `Parameters <#parameters-50>`__
-      -  `Returns <#returns-50>`__
-      -  `Example <#example-50>`__
-
    -  `db\_getHex <#db_gethex>`__
-
-      -  `Parameters <#parameters-51>`__
-      -  `Returns <#returns-51>`__
-      -  `Example <#example-51>`__
 
    -  `shh\_version <#shh_version>`__
 
-      -  `Parameters <#parameters-52>`__
-      -  `Returns <#returns-52>`__
-      -  `Example <#example-52>`__
-
    -  `shh\_post <#shh_post>`__
-
-      -  `Parameters <#parameters-53>`__
-      -  `Returns <#returns-53>`__
-      -  `Example <#example-53>`__
 
    -  `shh\_newIdentity <#shh_newidentity>`__
 
-      -  `Parameters <#parameters-54>`__
-      -  `Returns <#returns-54>`__
-      -  `Example <#example-54>`__
-
    -  `shh\_hasIdentity <#shh_hasidentity>`__
-
-      -  `Parameters <#parameters-55>`__
-      -  `Returns <#returns-55>`__
-      -  `Example <#example-55>`__
 
    -  `shh\_newGroup <#shh_newgroup>`__
 
-      -  `Parameters <#parameters-56>`__
-      -  `Returns <#returns-56>`__
-      -  `Example <#example-56>`__
-
    -  `shh\_addToGroup <#shh_addtogroup>`__
-
-      -  `Parameters <#parameters-57>`__
-      -  `Returns <#returns-57>`__
-      -  `Example <#example-57>`__
 
    -  `shh\_newFilter <#shh_newfilter>`__
 
-      -  `Parameters <#parameters-58>`__
-      -  `Returns <#returns-58>`__
-      -  `Example <#example-58>`__
-
    -  `shh\_uninstallFilter <#shh_uninstallfilter>`__
-
-      -  `Parameters <#parameters-59>`__
-      -  `Returns <#returns-59>`__
-      -  `Example <#example-59>`__
 
    -  `shh\_getFilterChanges <#shh_getfilterchanges>`__
 
-      -  `Parameters <#parameters-60>`__
-      -  `Returns <#returns-60>`__
-      -  `Example <#example-60>`__
-
    -  `shh\_getMessages <#shh_getmessages>`__
-
-      -  `Parameters <#parameters-61>`__
-      -  `Returns <#returns-61>`__
-      -  `Example <#example-61>`__
+   
+  
 
 .. raw:: html
 
    <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 JSON RPC API
-============
+------------
 
 `JSON <http://json.org/>`__ is a lightweight data-interchange format. It
 can represent numbers, strings, ordered sequences of values, and
@@ -583,54 +339,54 @@ must be the last argument given to curl e.x. 127.0.0.1:8545
 JSON-RPC methods
 ----------------
 
--  `web3\_clientVersion <#web3_clientversion>`__
--  `web3\_sha3 <#web3_sha3>`__
+-  `chain3\_clientVersion <#web3_clientversion>`__
+-  `chain3\_sha3 <#web3_sha3>`__
 -  `net\_version <#net_version>`__
 -  `net\_peerCount <#net_peercount>`__
 -  `net\_listening <#net_listening>`__
--  `eth\_protocolVersion <#eth_protocolversion>`__
--  `eth\_syncing <#eth_syncing>`__
--  `eth\_coinbase <#eth_coinbase>`__
--  `eth\_mining <#eth_mining>`__
--  `eth\_hashrate <#eth_hashrate>`__
--  `eth\_gasPrice <#eth_gasprice>`__
--  `eth\_accounts <#eth_accounts>`__
--  `eth\_blockNumber <#eth_blocknumber>`__
--  `eth\_getBalance <#eth_getbalance>`__
--  `eth\_getStorageAt <#eth_getstorageat>`__
--  `eth\_getTransactionCount <#eth_gettransactioncount>`__
--  `eth\_getBlockTransactionCountByHash <#eth_getblocktransactioncountbyhash>`__
--  `eth\_getBlockTransactionCountByNumber <#eth_getblocktransactioncountbynumber>`__
--  `eth\_getUncleCountByBlockHash <#eth_getunclecountbyblockhash>`__
--  `eth\_getUncleCountByBlockNumber <#eth_getunclecountbyblocknumber>`__
--  `eth\_getCode <#eth_getcode>`__
--  `eth\_sign <#eth_sign>`__
--  `eth\_sendTransaction <#eth_sendtransaction>`__
--  `eth\_sendRawTransaction <#eth_sendrawtransaction>`__
--  `eth\_call <#eth_call>`__
--  `eth\_estimateGas <#eth_estimategas>`__
--  `eth\_getBlockByHash <#eth_getblockbyhash>`__
--  `eth\_getBlockByNumber <#eth_getblockbynumber>`__
--  `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
--  `eth\_getTransactionByBlockHashAndIndex <#eth_gettransactionbyblockhashandindex>`__
--  `eth\_getTransactionByBlockNumberAndIndex <#eth_gettransactionbyblocknumberandindex>`__
--  `eth\_getTransactionReceipt <#eth_gettransactionreceipt>`__
--  `eth\_getUncleByBlockHashAndIndex <#eth_getunclebyblockhashandindex>`__
--  `eth\_getUncleByBlockNumberAndIndex <#eth_getunclebyblocknumberandindex>`__
--  `eth\_getCompilers <#eth_getcompilers>`__
--  `eth\_compileLLL <#eth_compilelll>`__
--  `eth\_compileSolidity <#eth_compilesolidity>`__
--  `eth\_compileSerpent <#eth_compileserpent>`__
--  `eth\_newFilter <#eth_newfilter>`__
--  `eth\_newBlockFilter <#eth_newblockfilter>`__
--  `eth\_newPendingTransactionFilter <#eth_newpendingtransactionfilter>`__
--  `eth\_uninstallFilter <#eth_uninstallfilter>`__
--  `eth\_getFilterChanges <#eth_getfilterchanges>`__
--  `eth\_getFilterLogs <#eth_getfilterlogs>`__
--  `eth\_getLogs <#eth_getlogs>`__
--  `eth\_getWork <#eth_getwork>`__
--  `eth\_submitWork <#eth_submitwork>`__
--  `eth\_submitHashrate <#eth_submithashrate>`__
+-  `mc\_protocolVersion <#eth_protocolversion>`__
+-  `mc\_syncing <#eth_syncing>`__
+-  `mc\_coinbase <#eth_coinbase>`__
+-  `mc\_mining <#eth_mining>`__
+-  `mc\_hashrate <#eth_hashrate>`__
+-  `mc\_gasPrice <#eth_gasprice>`__
+-  `mc\_accounts <#eth_accounts>`__
+-  `mc\_blockNumber <#eth_blocknumber>`__
+-  `mc\_getBalance <#eth_getbalance>`__
+-  `mc\_getStorageAt <#eth_getstorageat>`__
+-  `mc\_getTransactionCount <#eth_gettransactioncount>`__
+-  `mc\_getBlockTransactionCountByHash <#eth_getblocktransactioncountbyhash>`__
+-  `mc\_getBlockTransactionCountByNumber <#eth_getblocktransactioncountbynumber>`__
+-  `mc\_getUncleCountByBlockHash <#eth_getunclecountbyblockhash>`__
+-  `mc\_getUncleCountByBlockNumber <#eth_getunclecountbyblocknumber>`__
+-  `mc\_getCode <#eth_getcode>`__
+-  `mc\_sign <#eth_sign>`__
+-  `mc\_sendTransaction <#eth_sendtransaction>`__
+-  `mc\_sendRawTransaction <#eth_sendrawtransaction>`__
+-  `mc\_call <#eth_call>`__
+-  `mc\_estimateGas <#eth_estimategas>`__
+-  `mc\_getBlockByHash <#eth_getblockbyhash>`__
+-  `mc\_getBlockByNumber <#eth_getblockbynumber>`__
+-  `mc\_getTransactionByHash <#eth_gettransactionbyhash>`__
+-  `mc\_getTransactionByBlockHashAndIndex <#eth_gettransactionbyblockhashandindex>`__
+-  `mc\_getTransactionByBlockNumberAndIndex <#eth_gettransactionbyblocknumberandindex>`__
+-  `mc\_getTransactionReceipt <#eth_gettransactionreceipt>`__
+-  `mc\_getUncleByBlockHashAndIndex <#eth_getunclebyblockhashandindex>`__
+-  `mc\_getUncleByBlockNumberAndIndex <#eth_getunclebyblocknumberandindex>`__
+-  `mc\_getCompilers <#eth_getcompilers>`__
+-  `mc\_compileLLL <#eth_compilelll>`__
+-  `mc\_compileSolidity <#eth_compilesolidity>`__
+-  `mc\_compileSerpent <#eth_compileserpent>`__
+-  `mc\_newFilter <#eth_newfilter>`__
+-  `mc\_newBlockFilter <#eth_newblockfilter>`__
+-  `mc\_newPendingTransactionFilter <#eth_newpendingtransactionfilter>`__
+-  `mc\_uninstallFilter <#eth_uninstallfilter>`__
+-  `mc\_getFilterChanges <#eth_getfilterchanges>`__
+-  `mc\_getFilterLogs <#eth_getfilterlogs>`__
+-  `mc\_getLogs <#eth_getlogs>`__
+-  `mc\_getWork <#eth_getwork>`__
+-  `mc\_submitWork <#eth_submitwork>`__
+-  `mc\_submitHashrate <#eth_submithashrate>`__
 -  `db\_putString <#db_putstring>`__
 -  `db\_getString <#db_getstring>`__
 -  `db\_putHex <#db_puthex>`__
@@ -652,7 +408,7 @@ JSON RPC API Reference
 --------------
 
 web3\_clientVersion
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 Returns the current client version.
 
@@ -684,7 +440,7 @@ Example
 --------------
 
 web3\_sha3
-^^^^^^^^^^
+~~~~~~~~~~
 
 Returns Keccak-256 (*not* the standardized SHA3-256) of the given data.
 
@@ -722,7 +478,7 @@ Example
 --------------
 
 net\_version
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 Returns the current network id.
 
@@ -756,7 +512,7 @@ Example
 --------------
 
 net\_listening
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 Returns ``true`` if client is actively listening for network
 connections.
@@ -789,7 +545,7 @@ Example
 --------------
 
 net\_peerCount
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 Returns number of peers currently connected to the client.
 
@@ -821,7 +577,7 @@ Example
 --------------
 
 eth\_protocolVersion
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Returns the current ethereum protocol version.
 
@@ -853,7 +609,7 @@ Example
 --------------
 
 eth\_syncing
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 Returns an object with data about the sync status or ``false``.
 
@@ -900,7 +656,7 @@ Example
 --------------
 
 eth\_coinbase
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Returns the client coinbase address.
 
@@ -932,7 +688,7 @@ Example
 --------------
 
 eth\_mining
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 Returns ``true`` if client is actively mining new blocks.
 
@@ -965,7 +721,7 @@ Example
 --------------
 
 eth\_hashrate
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Returns the number of hashes per second that the node is mining with.
 
@@ -997,7 +753,7 @@ Example
 --------------
 
 eth\_gasPrice
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Returns the current price per gas in wei.
 
@@ -1029,7 +785,7 @@ Example
 --------------
 
 eth\_accounts
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Returns a list of addresses owned by client.
 
@@ -1061,7 +817,7 @@ Example
 --------------
 
 eth\_blockNumber
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 Returns the number of most recent block.
 
@@ -1093,7 +849,7 @@ Example
 --------------
 
 eth\_getBalance
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 Returns the balance of the account of given address.
 
@@ -1135,7 +891,7 @@ Example
 --------------
 
 eth\_getStorageAt
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 Returns the value from a storage position at a given address.
 
@@ -1217,7 +973,7 @@ Now to fetch the storage:
 --------------
 
 eth\_getTransactionCount
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns the number of transactions *sent* from an address.
 
@@ -1260,7 +1016,7 @@ Example
 --------------
 
 eth\_getBlockTransactionCountByHash
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns the number of transactions in a block from a block matching the
 given block hash.
@@ -1299,7 +1055,7 @@ Example
 --------------
 
 eth\_getBlockTransactionCountByNumber
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         Returns the number of transactions in a block matching the given
         block number.
@@ -1340,7 +1096,7 @@ Example
 --------------
 
 eth\_getUncleCountByBlockHash
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns the number of uncles in a block from a block matching the given
 block hash.
@@ -1379,7 +1135,7 @@ Example
 --------------
 
 eth\_getUncleCountByBlockNumber
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns the number of uncles in a block from a block matching the given
 block number.
@@ -1420,7 +1176,7 @@ Example
 --------------
 
 eth\_getCode
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 Returns code at a given address.
 
@@ -1462,7 +1218,7 @@ Example
 --------------
 
 eth\_sign
-^^^^^^^^^
+~~~~~~~~~
 
 The sign method calculates an Ethereum specific signature with:
 ``sign(keccak256("\x19Ethereum Signed Message:\n" + len(message) + message)))``.
@@ -1510,7 +1266,7 @@ The contract is deployed on the testnet Ropsten and Rinkeby.
 --------------
 
 eth\_sendTransaction
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Creates new message call transaction or a contract creation, if the data
 field contains code.
@@ -1576,7 +1332,7 @@ Example
 --------------
 
 eth\_sendRawTransaction
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Creates new message call transaction or a contract creation for signed
 transactions.
@@ -1618,7 +1374,7 @@ Example
 --------------
 
 eth\_call
-^^^^^^^^^
+~~~~~~~~~
 
 Executes a new message call immediately without creating a transaction
 on the block chain.
@@ -1670,7 +1426,7 @@ Example
 --------------
 
 eth\_estimateGas
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 Generates and returns an estimate of how much gas is necessary to allow
 the transaction to complete. The transaction will not be added to the
@@ -1710,7 +1466,7 @@ Example
 --------------
 
 eth\_getBlockByHash
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 Returns information about a block by hash.
 
@@ -1804,7 +1560,7 @@ Example
 --------------
 
 eth\_getBlockByNumber
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 Returns information about a block by block number.
 
@@ -1842,7 +1598,7 @@ Result see `eth\_getBlockByHash <#eth_getblockbyhash>`__
 --------------
 
 eth\_getTransactionByHash
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns the information about a transaction requested by transaction
 hash.
@@ -1911,7 +1667,7 @@ Example
 --------------
 
 eth\_getTransactionByBlockHashAndIndex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns information about a transaction by block hash and transaction
 index position.
@@ -1947,7 +1703,7 @@ Result see `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
 --------------
 
 eth\_getTransactionByBlockNumberAndIndex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns information about a transaction by block number and transaction
 index position.
@@ -1985,7 +1741,7 @@ Result see `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
 --------------
 
 eth\_getTransactionReceipt
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns the receipt of a transaction by transaction hash.
 
@@ -2064,7 +1820,7 @@ Example
 --------------
 
 eth\_getUncleByBlockHashAndIndex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns information about a uncle of a block by hash and uncle index
 position.
@@ -2102,7 +1858,7 @@ Result see `eth\_getBlockByHash <#eth_getblockbyhash>`__
 --------------
 
 eth\_getUncleByBlockNumberAndIndex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Returns information about a uncle of a block by number and uncle index
 position.
@@ -2142,7 +1898,7 @@ Result see `eth\_getBlockByHash <#eth_getblockbyhash>`__
 --------------
 
 eth\_getCompilers
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 Returns a list of available compilers in the client.
 
@@ -2174,7 +1930,7 @@ Example
 --------------
 
 eth\_compileSolidity
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Returns compiled solidity code.
 
@@ -2245,7 +2001,7 @@ Example
 --------------
 
 eth\_compileLLL
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 Returns compiled LLL code.
 
@@ -2283,7 +2039,7 @@ Example
 --------------
 
 eth\_compileSerpent
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 Returns compiled serpent code.
 
@@ -2321,7 +2077,7 @@ Example
 --------------
 
 eth\_newFilter
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 Creates a filter object, based on filter options, to notify when the
 state changes (logs). To check if the state has changed, call
@@ -2387,7 +2143,7 @@ Example
 --------------
 
 eth\_newBlockFilter
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 Creates a filter in the node, to notify when a new block arrives. To
 check if the state has changed, call
@@ -2421,7 +2177,7 @@ Example
 --------------
 
 eth\_newPendingTransactionFilter
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Creates a filter in the node, to notify when new pending transactions
 arrive. To check if the state has changed, call
@@ -2455,7 +2211,7 @@ Example
 --------------
 
 eth\_uninstallFilter
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Uninstalls a filter with given id. Should always be called when watch is
 no longer needed. Additonally Filters timeout when they aren't requested
@@ -2497,7 +2253,7 @@ Example
 --------------
 
 eth\_getFilterChanges
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 Polling method for a filter, which returns an array of logs which
 occurred since last poll.
@@ -2541,829 +2297,4 @@ changed since last poll.
    in. ``null`` when its pending. ``null`` when its pending log.
 -  ``address``: ``DATA``, 20 Bytes - address from which this log
    originated.
--  ``data``: ``DATA`` - contains one or more 32 Bytes non-indexed
-   arguments of the log.
--  ``topics``: ``Array of DATA`` - Array of 0 to 4 32 Bytes ``DATA`` of
-   indexed log arguments. (In *solidity*: The first topic is the *hash*
-   of the signature of the event (e.g.
-   ``Deposit(address,bytes32,uint256)``), except you declared the event
-   with the ``anonymous`` specifier.)
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getFilterChanges","params":["0x16"],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc":"2.0",
-      "result": [{
-        "logIndex": "0x1", // 1
-        "blockNumber":"0x1b4", // 436
-        "blockHash": "0x8216c5785ac562ff41e2dcfdf5785ac562ff41e2dcfdf829c5a142f1fccd7d",
-        "transactionHash":  "0xdf829c5a142f1fccd7d8216c5785ac562ff41e2dcfdf5785ac562ff41e2dcf",
-        "transactionIndex": "0x0", // 0
-        "address": "0x16c5785ac562ff41e2dcfdf829c5a142f1fccd7d",
-        "data":"0x0000000000000000000000000000000000000000000000000000000000000000",
-        "topics": ["0x59ebeb90bc63057b6515673c3ecf9438e5058bca0f92585014eced636878c9a5"]
-        },{
-          ...
-        }]
-    }
-
---------------
-
-eth\_getFilterLogs
-^^^^^^^^^^^^^^^^^^
-
-Returns an array of all logs matching filter with given id.
-
-Parameters
-''''''''''
-
-1. ``QUANTITY`` - The filter id.
-
-.. code:: js
-
-    params: [
-      "0x16" // 22
-    ]
-
-Returns
-'''''''
-
-See `eth\_getFilterChanges <#eth_getfilterchanges>`__
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getFilterLogs","params":["0x16"],"id":74}'
-
-Result see `eth\_getFilterChanges <#eth_getfilterchanges>`__
-
---------------
-
-eth\_getLogs
-^^^^^^^^^^^^
-
-Returns an array of all logs matching a given filter object.
-
-Parameters
-''''''''''
-
-1. ``Object`` - the filter object, see `eth\_newFilter
-   parameters <#eth_newfilter>`__.
-
-.. code:: js
-
-    params: [{
-      "topics": ["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b"]
-    }]
-
-Returns
-'''''''
-
-See `eth\_getFilterChanges <#eth_getfilterchanges>`__
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getLogs","params":[{"topics":["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b"]}],"id":74}'
-
-Result see `eth\_getFilterChanges <#eth_getfilterchanges>`__
-
---------------
-
-eth\_getWork
-^^^^^^^^^^^^
-
-Returns the hash of the current block, the seedHash, and the boundary
-condition to be met ("target").
-
-Parameters
-''''''''''
-
-none
-
-Returns
-'''''''
-
-``Array`` - Array with the following properties: 1. ``DATA``, 32 Bytes -
-current block header pow-hash 2. ``DATA``, 32 Bytes - the seed hash used
-for the DAG. 3. ``DATA``, 32 Bytes - the boundary condition ("target"),
-2^256 / difficulty.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getWork","params":[],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc":"2.0",
-      "result": [
-          "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
-          "0x5EED00000000000000000000000000005EED0000000000000000000000000000",
-          "0xd1ff1c01710000000000000000000000d1ff1c01710000000000000000000000"
-        ]
-    }
-
---------------
-
-eth\_submitWork
-^^^^^^^^^^^^^^^
-
-Used for submitting a proof-of-work solution.
-
-Parameters
-''''''''''
-
-1. ``DATA``, 8 Bytes - The nonce found (64 bits)
-2. ``DATA``, 32 Bytes - The header's pow-hash (256 bits)
-3. ``DATA``, 32 Bytes - The mix digest (256 bits)
-
-.. code:: js
-
-    params: [
-      "0x0000000000000001",
-      "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
-      "0xD1FE5700000000000000000000000000D1FE5700000000000000000000000000"
-    ]
-
-Returns
-'''''''
-
-``Boolean`` - returns ``true`` if the provided solution is valid,
-otherwise ``false``.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0", "method":"eth_submitWork", "params":["0x0000000000000001", "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef", "0xD1GE5700000000000000000000000000D1GE5700000000000000000000000000"],"id":73}'
-
-    // Result
-    {
-      "id":73,
-      "jsonrpc":"2.0",
-      "result": true
-    }
-
---------------
-
-eth\_submitHashrate
-^^^^^^^^^^^^^^^^^^^
-
-Used for submitting mining hashrate.
-
-Parameters
-''''''''''
-
-1. ``Hashrate``, a hexadecimal string representation (32 bytes) of the
-   hash rate
-2. ``ID``, String - A random hexadecimal(32 bytes) ID identifying the
-   client
-
-.. code:: js
-
-    params: [
-      "0x0000000000000000000000000000000000000000000000000000000000500000",
-      "0x59daa26581d0acd1fce254fb7e85952f4c09d0915afd33d3886cd914bc7d283c"
-    ]
-
-Returns
-'''''''
-
-``Boolean`` - returns ``true`` if submitting went through succesfully
-and ``false`` otherwise.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0", "method":"eth_submitHashrate", "params":["0x0000000000000000000000000000000000000000000000000000000000500000", "0x59daa26581d0acd1fce254fb7e85952f4c09d0915afd33d3886cd914bc7d283c"],"id":73}'
-
-    // Result
-    {
-      "id":73,
-      "jsonrpc":"2.0",
-      "result": true
-    }
-
---------------
-
-db\_putString
-^^^^^^^^^^^^^
-
-Stores a string in the local database.
-
-**Note** this function is deprecated and will be removed in the future.
-
-Parameters
-''''''''''
-
-1. ``String`` - Database name.
-2. ``String`` - Key name.
-3. ``String`` - String to store.
-
-.. code:: js
-
-    params: [
-      "testDB",
-      "myKey",
-      "myString"
-    ]
-
-Returns
-'''''''
-
-``Boolean`` - returns ``true`` if the value was stored, otherwise
-``false``.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"db_putString","params":["testDB","myKey","myString"],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc":"2.0",
-      "result": true
-    }
-
---------------
-
-db\_getString
-^^^^^^^^^^^^^
-
-Returns string from the local database.
-
-**Note** this function is deprecated and will be removed in the future.
-
-Parameters
-''''''''''
-
-1. ``String`` - Database name.
-2. ``String`` - Key name.
-
-.. code:: js
-
-    params: [
-      "testDB",
-      "myKey",
-    ]
-
-Returns
-'''''''
-
-``String`` - The previously stored string.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"db_getString","params":["testDB","myKey"],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc":"2.0",
-      "result": "myString"
-    }
-
---------------
-
-db\_putHex
-^^^^^^^^^^
-
-Stores binary data in the local database.
-
-**Note** this function is deprecated and will be removed in the future.
-
-Parameters
-''''''''''
-
-1. ``String`` - Database name.
-2. ``String`` - Key name.
-3. ``DATA`` - The data to store.
-
-.. code:: js
-
-    params: [
-      "testDB",
-      "myKey",
-      "0x68656c6c6f20776f726c64"
-    ]
-
-Returns
-'''''''
-
-``Boolean`` - returns ``true`` if the value was stored, otherwise
-``false``.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"db_putHex","params":["testDB","myKey","0x68656c6c6f20776f726c64"],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc":"2.0",
-      "result": true
-    }
-
---------------
-
-db\_getHex
-^^^^^^^^^^
-
-Returns binary data from the local database.
-
-**Note** this function is deprecated and will be removed in the future.
-
-Parameters
-''''''''''
-
-1. ``String`` - Database name.
-2. ``String`` - Key name.
-
-.. code:: js
-
-    params: [
-      "testDB",
-      "myKey",
-    ]
-
-Returns
-'''''''
-
-``DATA`` - The previously stored data.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"db_getHex","params":["testDB","myKey"],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc":"2.0",
-      "result": "0x68656c6c6f20776f726c64"
-    }
-
---------------
-
-shh\_version
-^^^^^^^^^^^^
-
-Returns the current whisper protocol version.
-
-Parameters
-''''''''''
-
-none
-
-Returns
-'''''''
-
-``String`` - The current whisper protocol version
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"shh_version","params":[],"id":67}'
-
-    // Result
-    {
-      "id":67,
-      "jsonrpc": "2.0",
-      "result": "2"
-    }
-
---------------
-
-shh\_post
-^^^^^^^^^
-
-Sends a whisper message.
-
-Parameters
-''''''''''
-
-1. ``Object`` - The whisper post object:
-
--  ``from``: ``DATA``, 60 Bytes - (optional) The identity of the sender.
--  ``to``: ``DATA``, 60 Bytes - (optional) The identity of the receiver.
-   When present whisper will encrypt the message so that only the
-   receiver can decrypt it.
--  ``topics``: ``Array of DATA`` - Array of ``DATA`` topics, for the
-   receiver to identify messages.
--  ``payload``: ``DATA`` - The payload of the message.
--  ``priority``: ``QUANTITY`` - The integer of the priority in a rang
-   from ... (?).
--  ``ttl``: ``QUANTITY`` - integer of the time to live in seconds.
-
-.. code:: js
-
-    params: [{
-      from: "0x04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a03e245533f97284d442460f2998cd41858798ddfd4d661997d3940272b717b1",
-      to: "0x3e245533f97284d442460f2998cd41858798ddf04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a0d4d661997d3940272b717b1",
-      topics: ["0x776869737065722d636861742d636c69656e74", "0x4d5a695276454c39425154466b61693532"],
-      payload: "0x7b2274797065223a226d6",
-      priority: "0x64",
-      ttl: "0x64",
-    }]
-
-Returns
-'''''''
-
-``Boolean`` - returns ``true`` if the message was send, otherwise
-``false``.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"shh_post","params":[{"from":"0xc931d93e97ab07fe42d923478ba2465f2..","topics": ["0x68656c6c6f20776f726c64"],"payload":"0x68656c6c6f20776f726c64","ttl":0x64,"priority":0x64}],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc":"2.0",
-      "result": true
-    }
-
---------------
-
-shh\_newIdentity
-^^^^^^^^^^^^^^^^
-
-Creates new whisper identity in the client.
-
-Parameters
-''''''''''
-
-none
-
-Returns
-'''''''
-
-``DATA``, 60 Bytes - the address of the new identiy.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"shh_newIdentity","params":[],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc": "2.0",
-      "result": "0xc931d93e97ab07fe42d923478ba2465f283f440fd6cabea4dd7a2c807108f651b7135d1d6ca9007d5b68aa497e4619ac10aa3b27726e1863c1fd9b570d99bbaf"
-    }
-
---------------
-
-shh\_hasIdentity
-^^^^^^^^^^^^^^^^
-
-Checks if the client hold the private keys for a given identity.
-
-Parameters
-''''''''''
-
-1. ``DATA``, 60 Bytes - The identity address to check.
-
-.. code:: js
-
-    params: [
-      "0x04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a03e245533f97284d442460f2998cd41858798ddfd4d661997d3940272b717b1"
-    ]
-
-Returns
-'''''''
-
-``Boolean`` - returns ``true`` if the client holds the privatekey for
-that identity, otherwise ``false``.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"shh_hasIdentity","params":["0x04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a03e245533f97284d442460f2998cd41858798ddfd4d661997d3940272b717b1"],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc": "2.0",
-      "result": true
-    }
-
---------------
-
-shh\_newGroup
-^^^^^^^^^^^^^
-
-(?)
-
-Parameters
-''''''''''
-
-none
-
-Returns
-'''''''
-
-``DATA``, 60 Bytes - the address of the new group. (?)
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"shh_newGroup","params":[],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc": "2.0",
-      "result": "0xc65f283f440fd6cabea4dd7a2c807108f651b7135d1d6ca90931d93e97ab07fe42d923478ba2407d5b68aa497e4619ac10aa3b27726e1863c1fd9b570d99bbaf"
-    }
-
---------------
-
-shh\_addToGroup
-^^^^^^^^^^^^^^^
-
-(?)
-
-Parameters
-''''''''''
-
-1. ``DATA``, 60 Bytes - The identity address to add to a group (?).
-
-.. code:: js
-
-    params: [
-      "0x04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a03e245533f97284d442460f2998cd41858798ddfd4d661997d3940272b717b1"
-    ]
-
-Returns
-'''''''
-
-``Boolean`` - returns ``true`` if the identity was successfully added to
-the group, otherwise ``false`` (?).
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"shh_addToGroup","params":["0x04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a03e245533f97284d442460f2998cd41858798ddfd4d661997d3940272b717b1"],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc": "2.0",
-      "result": true
-    }
-
---------------
-
-shh\_newFilter
-^^^^^^^^^^^^^^
-
-Creates filter to notify, when client receives whisper message matching
-the filter options.
-
-Parameters
-''''''''''
-
-1. ``Object`` - The filter options:
-
--  ``to``: ``DATA``, 60 Bytes - (optional) Identity of the receiver.
-   *When present it will try to decrypt any incoming message if the
-   client holds the private key to this identity.*
--  ``topics``: ``Array of DATA`` - Array of ``DATA`` topics which the
-   incoming message's topics should match. You can use the following
-   combinations:
-
-   -  ``[A, B] = A && B``
-   -  ``[A, [B, C]] = A && (B || C)``
-   -  ``[null, A, B] = ANYTHING && A && B`` ``null`` works as a wildcard
-
-.. code:: js
-
-    params: [{
-       "topics": ['0x12341234bf4b564f'],
-       "to": "0x04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a03e245533f97284d442460f2998cd41858798ddfd4d661997d3940272b717b1"
-    }]
-
-Returns
-'''''''
-
-``QUANTITY`` - The newly created filter.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"shh_newFilter","params":[{"topics": ['0x12341234bf4b564f'],"to": "0x2341234bf4b2341234bf4b564f..."}],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc":"2.0",
-      "result": "0x7" // 7
-    }
-
---------------
-
-shh\_uninstallFilter
-^^^^^^^^^^^^^^^^^^^^
-
-Uninstalls a filter with given id. Should always be called when watch is
-no longer needed. Additonally Filters timeout when they aren't requested
-with `shh\_getFilterChanges <#shh_getfilterchanges>`__ for a period of
-time.
-
-Parameters
-''''''''''
-
-1. ``QUANTITY`` - The filter id.
-
-.. code:: js
-
-    params: [
-      "0x7" // 7
-    ]
-
-Returns
-'''''''
-
-``Boolean`` - ``true`` if the filter was successfully uninstalled,
-otherwise ``false``.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"shh_uninstallFilter","params":["0x7"],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc":"2.0",
-      "result": true
-    }
-
---------------
-
-shh\_getFilterChanges
-^^^^^^^^^^^^^^^^^^^^^
-
-Polling method for whisper filters. Returns new messages since the last
-call of this method.
-
-**Note** calling the `shh\_getMessages <#shh_getmessages>`__ method,
-will reset the buffer for this method, so that you won't receive
-duplicate messages.
-
-Parameters
-''''''''''
-
-1. ``QUANTITY`` - The filter id.
-
-.. code:: js
-
-    params: [
-      "0x7" // 7
-    ]
-
-Returns
-'''''''
-
-``Array`` - Array of messages received since last poll:
-
--  ``hash``: ``DATA``, 32 Bytes (?) - The hash of the message.
--  ``from``: ``DATA``, 60 Bytes - The sender of the message, if a sender
-   was specified.
--  ``to``: ``DATA``, 60 Bytes - The receiver of the message, if a
-   receiver was specified.
--  ``expiry``: ``QUANTITY`` - Integer of the time in seconds when this
-   message should expire (?).
--  ``ttl``: ``QUANTITY`` - Integer of the time the message should float
-   in the system in seconds (?).
--  ``sent``: ``QUANTITY`` - Integer of the unix timestamp when the
-   message was sent.
--  ``topics``: ``Array of DATA`` - Array of ``DATA`` topics the message
-   contained.
--  ``payload``: ``DATA`` - The payload of the message.
--  ``workProved``: ``QUANTITY`` - Integer of the work this message
-   required before it was send (?).
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"shh_getFilterChanges","params":["0x7"],"id":73}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc":"2.0",
-      "result": [{
-        "hash": "0x33eb2da77bf3527e28f8bf493650b1879b08c4f2a362beae4ba2f71bafcd91f9",
-        "from": "0x3ec052fc33..",
-        "to": "0x87gdf76g8d7fgdfg...",
-        "expiry": "0x54caa50a", // 1422566666
-        "sent": "0x54ca9ea2", // 1422565026
-        "ttl": "0x64", // 100
-        "topics": ["0x6578616d"],
-        "payload": "0x7b2274797065223a226d657373616765222c2263686...",
-        "workProved": "0x0"
-        }]
-    }
-
---------------
-
-shh\_getMessages
-^^^^^^^^^^^^^^^^
-
-Get all messages matching a filter. Unlike ``shh_getFilterChanges`` this
-returns all messages.
-
-Parameters
-''''''''''
-
-1. ``QUANTITY`` - The filter id.
-
-.. code:: js
-
-    params: [
-      "0x7" // 7
-    ]
-
-Returns
-'''''''
-
-See `shh\_getFilterChanges <#shh_getfilterchanges>`__
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"shh_getMessages","params":["0x7"],"id":73}'
-
-Result see `shh\_getFilterChanges <#shh_getfilterchanges>`__
+-  ``data``: ``DATA`` - contains one or more 32 Bytes 

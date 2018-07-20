@@ -1,37 +1,157 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Keystore File (UTC / JSON) &#8212; moac-core-master  documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Differences Between Wallet Types &mdash; moac-core-master  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Creating your own ERC20 Token on the MOAC blockchain" href="ERC20.html" />
-    <link rel="prev" title="Background" href="Design.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  <div class="wy-grid-for-nav">
 
-  </head><body>
-  
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+          
+            <a href="index.html" class="icon icon-home"> moac-core-master
+          
+
+          
+          </a>
+
+          
             
-  <p>What are the different types of private key formats that I can use to
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Differences Between Wallet Types</a><ul>
+<li><a class="reference internal" href="#keystore-file-utc-json">Keystore File (UTC / JSON)</a></li>
+<li><a class="reference internal" href="#private-key-unencrypted">Private Key (unencrypted)</a></li>
+<li><a class="reference internal" href="#metamask">MetaMask</a></li>
+<li><a class="reference internal" href="#ledger-or-trezor-or-digital-bitbox-hardware-wallets">Ledger or TREZOR or Digital Bitbox Hardware Wallets</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">moac-core-master</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Differences Between Wallet Types</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Differences-Between-Wallet-Types.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="differences-between-wallet-types">
+<h1>Differences Between Wallet Types<a class="headerlink" href="#differences-between-wallet-types" title="Permalink to this headline">¶</a></h1>
+<p>What are the different types of private key formats that I can use to
 access my wallet?</p>
 <p>The MOAC is stored on the blockchain, your MOAC private key or Keystore
 File or whatever piece of information you have proves ownership of that
@@ -40,7 +160,7 @@ MOAC, which allows you to move it.</p>
 <p>However, for additional functionality (like protecting it with a
 password) there are formats &amp; ways of storing your private key:</p>
 <div class="section" id="keystore-file-utc-json">
-<h1>Keystore File (UTC / JSON)<a class="headerlink" href="#keystore-file-utc-json" title="Permalink to this headline">¶</a></h1>
+<h2>Keystore File (UTC / JSON)<a class="headerlink" href="#keystore-file-utc-json" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>This is encrypted by the password you chose.</li>
 <li>This is the recommended version to save.</li>
@@ -49,12 +169,12 @@ import it in the future.</li>
 <li>Make sure to have multiple backups.</li>
 </ul>
 <div class="figure" id="id1">
-<img alt="SaveKeystore" src="_images/CreateWalletSave.png" />
+<img alt="SaveKeystore" src="image/CreateWalletSave.png" />
 <p class="caption"><span class="caption-text">SaveKeystore</span></p>
 </div>
 </div>
 <div class="section" id="private-key-unencrypted">
-<h1>Private Key (unencrypted)<a class="headerlink" href="#private-key-unencrypted" title="Permalink to this headline">¶</a></h1>
+<h2>Private Key (unencrypted)<a class="headerlink" href="#private-key-unencrypted" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>This is the unencrypted text version of your private key, meaning no
 password is necessary.</li>
@@ -68,86 +188,82 @@ environment (like a piece of paper or USB drive). This ensures a lost
 password does not result in lost MOAC, and acts as another backup.</li>
 </ul>
 <div class="figure" id="id2">
-<img alt="PrivatekeyHide" src="_images/PrivatekeyHide.png" />
+<img alt="PrivatekeyHide" src="image/PrivatekeyHide.png" />
 <p class="caption"><span class="caption-text">PrivatekeyHide</span></p>
 </div>
 <p>You can check the actual conent of the private key but be sure not to
 discolose to anybody suspicious.</p>
 <div class="figure" id="id3">
-<img alt="Privatekey" src="_images/Privatekey.png" />
+<img alt="Privatekey" src="image/Privatekey.png" />
 <p class="caption"><span class="caption-text">Privatekey</span></p>
 </div>
 </div>
 <div class="section" id="metamask">
-<h1>MetaMask<a class="headerlink" href="#metamask" title="Permalink to this headline">¶</a></h1>
+<h2>MetaMask<a class="headerlink" href="#metamask" title="Permalink to this headline">¶</a></h2>
 <p>You can use Metamask to save your keypairs but currently MetaMask do not
 support MOAC transaction yet.</p>
 </div>
 <div class="section" id="ledger-or-trezor-or-digital-bitbox-hardware-wallets">
-<h1>Ledger or TREZOR or Digital Bitbox Hardware Wallets<a class="headerlink" href="#ledger-or-trezor-or-digital-bitbox-hardware-wallets" title="Permalink to this headline">¶</a></h1>
+<h2>Ledger or TREZOR or Digital Bitbox Hardware Wallets<a class="headerlink" href="#ledger-or-trezor-or-digital-bitbox-hardware-wallets" title="Permalink to this headline">¶</a></h2>
 <p>You can use TREZOR or Digital Bitbox Hardware Wallets to store the MOAC
 keypairs but they do not support MOAC transaction yet.</p>
 </div>
+</div>
 
 
+           </div>
+           
           </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Wenhan Jin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Keystore File (UTC / JSON)</a></li>
-<li><a class="reference internal" href="#private-key-unencrypted">Private Key (unencrypted)</a></li>
-<li><a class="reference internal" href="#metamask">MetaMask</a></li>
-<li><a class="reference internal" href="#ledger-or-trezor-or-digital-bitbox-hardware-wallets">Ledger or TREZOR or Digital Bitbox Hardware Wallets</a></li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="Design.html" title="previous chapter">Background</a></li>
-      <li>Next: <a href="ERC20.html" title="next chapter">Creating your own ERC20 Token on the MOAC blockchain</a></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/Differences-Between-Wallet-Types.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2018, Wenhan Jin.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
-      <a href="_sources/Differences-Between-Wallet-Types.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

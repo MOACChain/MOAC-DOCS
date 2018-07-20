@@ -1,3 +1,7 @@
+Differences Between Wallet Types
+================================
+
+
 What are the different types of private key formats that I can use to
 access my wallet?
 

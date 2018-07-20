@@ -1,38 +1,193 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Background &#8212; moac-core-master  documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Design &mdash; moac-core-master  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Keystore File (UTC / JSON)" href="Differences-Between-Wallet-Types.html" />
-    <link rel="prev" title="Interactive use: the JSRE REPL Console" href="Console.html" />
+    <link rel="next" title="Differences Between Wallet Types" href="Differences-Between-Wallet-Types.html" />
+    <link rel="prev" title="Interactive use: the JSRE REPL Console" href="Console.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  <div class="wy-grid-for-nav">
 
-  </head><body>
-  
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+          
+            <a href="index.html" class="icon icon-home"> moac-core-master
+          
+
+          
+          </a>
+
+          
             
-  <div class="section" id="background">
-<h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="HOME.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">About MOAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessWallet.html">How to Access Your Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chain3.html">Chain3 JavaScript API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkBalance.html">Checking the Balance of Your Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Console.html">Interactive use: the JSRE REPL Console</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#background">Background</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#consensus-protocol">Consensus Protocol</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#layered-architecture">Layered Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moac-topology">MOAC topology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#payment-schedule">Payment schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Differences-Between-Wallet-Types.html">Differences Between Wallet Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ERC20.html">ERC20 Token</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ERC721.html">ERC721 Token</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQs.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-To-Create-a-Wallet.html">How-To-Create-a-Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON-RPC.html">JSON-RPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MoveToMoac.html">Move to Moac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protectFunds.html">Protecting Yourself and Your Funds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RPC.html">JSON RPC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saveAndBackup.html">Safe Storage of Backups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCS.html">SCS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCSCreateSteps.html">MOAC Pizza Alpha (Pangu 0.8.3 prerelease)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Versions.html">墨客版本介绍 (Versions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VNODE.html">MOAC VNODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainDAPPDeveloper.html">DAPP Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainSCSMiner.html">MicroChain SCS Miner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainUsers.html">MicroChain User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainVNODEProxy.html">VNODE-PROXY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXdebug.html">TXdebug</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">moac-core-master</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Design</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Design.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="design">
+<h1>Design<a class="headerlink" href="#design" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
 <p>Blockchain technology has been evolving very quickly since the
 introduction of Bitcoin in 2008. Over the past nine years, many
 Blockchain techniques have been explored to try out various ideas, in
@@ -100,7 +255,7 @@ validation process.</li>
 <li>Sharding solution to improve performance dramatically.</li>
 </ol>
 <div class="section" id="consensus-protocol">
-<h2>Consensus Protocol<a class="headerlink" href="#consensus-protocol" title="Permalink to this headline">¶</a></h2>
+<h3>Consensus Protocol<a class="headerlink" href="#consensus-protocol" title="Permalink to this headline">¶</a></h3>
 <p>We realize simply extend any current consensus protocol won’t be able to
 meet all the requirements. Typical solution of combining two types of
 different consensus protocols results in multiple chains or side chains.
@@ -160,7 +315,7 @@ layer. This is feasible because top layer provides fast, flexible and
 low cost service, while POW layer provides slow, reliant and expensive
 service.</p>
 <div class="section" id="layered-architecture">
-<h3>Layered Architecture<a class="headerlink" href="#layered-architecture" title="Permalink to this headline">¶</a></h3>
+<h4>Layered Architecture<a class="headerlink" href="#layered-architecture" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li>P2P network layer. This layer defines p2p protocol.</li>
 <li>Blockchain layer. This layer handle all operation related to
@@ -174,7 +329,7 @@ inside virtual machine and also keeps a temporary contract state.</li>
 </ol>
 </div>
 <div class="section" id="moac-topology">
-<h3>MOAC topology<a class="headerlink" href="#moac-topology" title="Permalink to this headline">¶</a></h3>
+<h4>MOAC topology<a class="headerlink" href="#moac-topology" title="Permalink to this headline">¶</a></h4>
 <p>The POW consensus node participates in a volunteer way. Each node
 contributes its computing power to solve the computation-intensive
 problem and verifies the validity of transactions in the agreed
@@ -282,7 +437,7 @@ distributed ecosystem and benefit all parties.</p>
 </div>
 </div>
 <div class="section" id="payment-schedule">
-<h1>Payment schedule<a class="headerlink" href="#payment-schedule" title="Permalink to this headline">¶</a></h1>
+<h2>Payment schedule<a class="headerlink" href="#payment-schedule" title="Permalink to this headline">¶</a></h2>
 <p>Block is mined every 10s, with reward of 2 MOAC coins per block.</p>
 <p>The reward schedule halves every 12,500,000 blocks, equivalent to
 approx. four years.</p>
@@ -327,7 +482,7 @@ usage of SCS. This can alleviate the pressure on the underlying layer,
 and also benefit the SCS providers.</p>
 </div>
 <div class="section" id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>To summarize, MOAC utilizes layered architecture to combine the POW
 feature of robust and scalability and the POS feature of fast
 performance, quick response, without their shortcomings. The Smart
@@ -337,72 +492,71 @@ flexible and scalable framework that can be reused across many
 applications. MOAC Blockchain could be valuable to both light weight
 participants and compute intensive participants.</p>
 </div>
+</div>
 
 
+           </div>
+           
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Differences-Between-Wallet-Types.html" class="btn btn-neutral float-right" title="Differences Between Wallet Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Console.html" class="btn btn-neutral" title="Interactive use: the JSRE REPL Console" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Wenhan Jin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Background</a><ul>
-<li><a class="reference internal" href="#consensus-protocol">Consensus Protocol</a><ul>
-<li><a class="reference internal" href="#layered-architecture">Layered Architecture</a></li>
-<li><a class="reference internal" href="#moac-topology">MOAC topology</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#payment-schedule">Payment schedule</a></li>
-<li><a class="reference internal" href="#summary">Summary</a></li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="Console.html" title="previous chapter">Interactive use: the JSRE REPL Console</a></li>
-      <li>Next: <a href="Differences-Between-Wallet-Types.html" title="next chapter">Keystore File (UTC / JSON)</a></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/Design.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2018, Wenhan Jin.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
-      <a href="_sources/Design.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

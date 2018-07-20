@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = u'moac-core-master'
-copyright = u'2018, Wenhan Jin'
+copyright = u'2018, MOAC foundation'
 author = u'Wenhan Jin'
 
 # The short X.Y version

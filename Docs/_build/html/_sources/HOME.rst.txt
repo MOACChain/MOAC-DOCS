@@ -1,13 +1,16 @@
+Home
+====
+
 .. figure:: https://raw.githubusercontent.com/wiki/moacchain/moac-core/image/logo.jpg
    :alt: moaclogo
 
-   moaclogo
 
-Welcom to the MOAC Wiki!
-========================
+
+Welcome to the MOAC Wiki!
+--------------------------
 
 `欢迎来到墨客的世界！ <https://github.com/MOACChain/moac-core/wiki/MOAC>`__
-===========================================================================
+-------------------------------------------------------------------------
 
 Mother Of All Chains (MOAC) is to design a scalable and resilient
 Blockchain that supports transactions, data access, control flow in a
@@ -22,22 +25,22 @@ etc.
 Index
 -----
 
-General Inforamtion
+General Information
 ~~~~~~~~~~~~~~~~~~~
 
-`Introduction <https://github.com/MOACChain/moac-core/wiki/Introduction>`__
+:doc:`introduction`
 
-`VNODE <https://github.com/MOACChain/moac-core/wiki/VNODE>`__
+:doc:`VNODE`
 
-`SCS <https://github.com/MOACChain/moac-core/wiki/SCS>`__
+:doc:`SCS`
 
-`FAQs <https://github.com/MOACChain/moac-core/wiki/FAQs>`__
+:doc:`FAQs`
 
-`Versions <https://github.com/MOACChain/moac-core/wiki/versions>`__
+:doc:`Versions`
 
 ÐApp Development
 ~~~~~~~~~~~~~~~~
 
-`ERC20 <https://github.com/MOACChain/moac-core/wiki/ERC20>`__
+:doc:`ERC20`
 
-`ERC721 <https://github.com/MOACChain/moac-core/wiki/ERC721>`__
+:doc:`ERC721`
