@@ -27,7 +27,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Frequently Asked Questions" href="FAQs.html" />
+    <link rel="prev" title="ERC20 Token" href="ERC20.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -76,25 +78,51 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">ERC721 Token</a><ul>
-<li><a class="reference internal" href="#creating-your-own-erc721-token-on-moac-blockchain">Creating your own ERC721 Token on MOAC blockchain</a></li>
-<li><a class="reference internal" href="#write-the-erc721-token-smart-contract">Write the ERC721 token smart contract</a><ul>
-<li><a class="reference internal" href="#using-a-ready-open-source-library">Using a ready open source library</a></li>
-<li><a class="reference internal" href="#developing-your-smart-contract-directly">Developing your smart contract directly</a></li>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="HOME.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">About MOAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessWallet.html">How to Access Your Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chain3.html">Chain3 JavaScript API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkBalance.html">Checking the Balance of Your Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Console.html">Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Differences-Between-Wallet-Types.html">Differences Between Wallet Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ERC20.html">ERC20 Token</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ERC721 Token</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-your-own-erc721-token-on-moac-blockchain">Creating your own ERC721 Token on MOAC blockchain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#write-the-erc721-token-smart-contract">Write the ERC721 token smart contract</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-a-ready-open-source-library">Using a ready open source library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#developing-your-smart-contract-directly">Developing your smart contract directly</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#compile-and-deploy-erc721-token-smart-contract">Compile and deploy ERC721 token smart contract</a><ul>
-<li><a class="reference internal" href="#using-moac-wallet">Using MOAC wallet</a></li>
-<li><a class="reference internal" href="#remix">Remix</a></li>
-<li><a class="reference internal" href="#using-the-node-js-packages">Using the Node.Js packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compile-and-deploy-erc721-token-smart-contract">Compile and deploy ERC721 token smart contract</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-moac-wallet">Using MOAC wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remix">Remix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-node-js-packages">Using the Node.Js packages</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="FAQs.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-To-Create-a-Wallet.html">How-To-Create-a-Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON-RPC.html">JSON-RPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MoveToMoac.html">Move to Moac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protectFunds.html">Protecting Yourself and Your Funds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RPC.html">JSON RPC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saveAndBackup.html">Safe Storage of Backups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCS.html">SCS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCSCreateSteps.html">MOAC Pizza Alpha (Pangu 0.8.3 prerelease)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VNODE.html">MOAC VNODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainDAPPDeveloper.html">DAPP Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainSCSMiner.html">MicroChain SCS Miner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainUsers.html">MicroChain User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainVNODEProxy.html">VNODE-PROXY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXdebug.html">TXdebug</a></li>
 </ul>
-</div>
+
             
           
         </div>
@@ -518,24 +546,24 @@ MOAC node with addition command line arguments:</p>
 <p>This will allow the access of MOAC node using MOAC wallet.</p>
 <p>Otherwise you will see the following error message:</p>
 <div class="figure" id="id1">
-<img alt="ERC20\_moacwallet01.png" src="image/ERC20_moacwallet01.png" />
+<img alt="ERC20\_moacwallet01.png" src="_images/ERC20_moacwallet01.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet01.png</span></p>
 </div>
 <p>Example command to start a MOAC node connecting with mainnet:</p>
 <p><code class="docutils literal notranslate"><span class="pre">moac</span> <span class="pre">--rpccorsdomain</span> <span class="pre">&quot;http://wallet.moac.io&quot;</span> <span class="pre">--rpc</span> <span class="pre">--rpcport</span> <span class="pre">&quot;8545&quot;</span> <span class="pre">--rpcapi</span> <span class="pre">&quot;chain3,mc,net,db&quot;</span></code></p>
 <p>A successful interface connecting to mainnet looks like this:</p>
 <div class="figure" id="id2">
-<img alt="ERC20\_moacwallet02.png" src="image/ERC20_moacwallet02.png" />
+<img alt="ERC20\_moacwallet02.png" src="_images/ERC20_moacwallet02.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet02.png</span></p>
 </div>
 <p>To compile the contract, click the “CONTRACTS” icon:</p>
 <div class="figure" id="id3">
-<img alt="ERC20\_moacwallet03.png" src="image/ERC20_moacwallet03.png" />
+<img alt="ERC20\_moacwallet03.png" src="_images/ERC20_moacwallet03.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet03.png</span></p>
 </div>
 <p>Then enter the contract deploy page:</p>
 <div class="figure" id="id4">
-<img alt="ERC20\_moacwallet04.png" src="image/ERC20_moacwallet04.png" />
+<img alt="ERC20\_moacwallet04.png" src="_images/ERC20_moacwallet04.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet04.png</span></p>
 </div>
 <p>Copy the source code and paste in the “SOLIDITY CONTRACT SOURCE CODE”
@@ -554,7 +582,7 @@ number. If gas is not enough, the contract cannot be created. To
 continue, be sure to unlock the account to create the contract. You can
 use a console attached to the MOAC to do this:</p>
 <div class="figure" id="id5">
-<img alt="ERC20\_moacwallet09.png" src="image/ERC20_moacwallet09.png" />
+<img alt="ERC20\_moacwallet09.png" src="_images/ERC20_moacwallet09.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet09.png</span></p>
 </div>
 <p>After deploying, the interface is returned to the main menu and you can
@@ -595,18 +623,18 @@ deploying the contract to a real network. Injected Web3 is the default
 web3 connecting to Ethereum network. To deploy MOAC contract, you need
 to choose Web3 Provider.</p>
 <div class="figure" id="id6">
-<img alt="ERC20\_moacwallet14.png" src="image/ERC20_moacwallet14.png" />
+<img alt="ERC20\_moacwallet14.png" src="_images/ERC20_moacwallet14.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet14.png</span></p>
 </div>
 <p>After choose “Web3 Provider”, you can see a message like this:</p>
 <p>Click “OK”,</p>
 <div class="figure" id="id7">
-<img alt="ERC20\_moacwallet15.png" src="image/ERC20_moacwallet15.png" />
+<img alt="ERC20\_moacwallet15.png" src="_images/ERC20_moacwallet15.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet15.png</span></p>
 </div>
 <p>You need to make sure the port is the same as the local running node.</p>
 <div class="figure" id="id8">
-<img alt="ERC20\_moacwallet12.png" src="image/ERC20_moacwallet16.png" />
+<img alt="ERC20\_moacwallet12.png" src="_images/ERC20_moacwallet16.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet12.png</span></p>
 </div>
 <p>You may see the error message like this:</p>
@@ -622,19 +650,19 @@ node that include both</p>
 <p>If the connection is established, you should see your accounts from the
 Account List.</p>
 <div class="figure" id="id9">
-<img alt="ERC20\_moacwallet18.png" src="image/ERC20_moacwallet18.png" />
+<img alt="ERC20\_moacwallet18.png" src="_images/ERC20_moacwallet18.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet18.png</span></p>
 </div>
 <p>Before you deploy the contract, you need to unlock the account that send
 the contract. You can do the unlock with the MOAC console:</p>
 <div class="figure" id="id10">
-<img alt="ERC20\_moacwallet09.png" src="image/ERC20_moacwallet09.png" />
+<img alt="ERC20\_moacwallet09.png" src="_images/ERC20_moacwallet09.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet09.png</span></p>
 </div>
 <p>After successfully deployed the contract, you should see the contract
 address and other information showed in the menu:</p>
 <div class="figure" id="id11">
-<img alt="ERC20\_moacwallet19.png" src="image/ERC20_moacwallet19.png" />
+<img alt="ERC20\_moacwallet19.png" src="_images/ERC20_moacwallet19.png" />
 <p class="caption"><span class="caption-text">ERC20_moacwallet19.png</span></p>
 </div>
 <p>Remix is good for developing and debugging smart contracts. It is not
@@ -683,12 +711,21 @@ follow the</p>
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="FAQs.html" class="btn btn-neutral float-right" title="Frequently Asked Questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ERC20.html" class="btn btn-neutral" title="ERC20 Token" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Wenhan Jin.
+        &copy; Copyright 2018, MOAC foundation.
 
     </p>
   </div>

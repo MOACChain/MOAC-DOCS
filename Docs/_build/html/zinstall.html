@@ -76,32 +76,37 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">1. 准备工作</a></li>
-<li><a class="reference internal" href="#moac">2. 产生本地MOAC节点</a><ul>
-<li><a class="reference internal" href="#id2">2.1 查看moac帮助</a></li>
-<li><a class="reference internal" href="#id3">2.2 运行节点</a></li>
-<li><a class="reference internal" href="#moac-console">2.3 进入MOAC console界面</a></li>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="HOME.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">About MOAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessWallet.html">How to Access Your Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chain3.html">Chain3 JavaScript API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkBalance.html">Checking the Balance of Your Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Console.html">Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Differences-Between-Wallet-Types.html">Differences Between Wallet Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ERC20.html">ERC20 Token</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ERC721.html">ERC721 Token</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQs.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-To-Create-a-Wallet.html">How-To-Create-a-Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON-RPC.html">JSON-RPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MoveToMoac.html">Move to Moac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protectFunds.html">Protecting Yourself and Your Funds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RPC.html">JSON RPC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saveAndBackup.html">Safe Storage of Backups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCS.html">SCS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCSCreateSteps.html">MOAC Pizza Alpha (Pangu 0.8.3 prerelease)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VNODE.html">MOAC VNODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainDAPPDeveloper.html">DAPP Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainSCSMiner.html">MicroChain SCS Miner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainUsers.html">MicroChain User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainVNODEProxy.html">VNODE-PROXY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXdebug.html">TXdebug</a></li>
 </ul>
-</li>
-<li><a class="reference internal" href="#id4">3. 挖矿</a><ul>
-<li><a class="reference internal" href="#id5">3.1 建立新账户</a></li>
-<li><a class="reference internal" href="#id6">3.2 查看账户</a></li>
-<li><a class="reference internal" href="#id7">3.3 查看账户余额</a></li>
-<li><a class="reference internal" href="#id8">3.4 查看挖矿状态</a></li>
-<li><a class="reference internal" href="#id9">3.5 开始挖矿</a></li>
-<li><a class="reference internal" href="#id10">3.6 停止挖矿</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id11">4. 交易</a><ul>
-<li><a class="reference internal" href="#id12">4.1 读入测试函数</a></li>
-<li><a class="reference internal" href="#id13">4.2 交易条件</a></li>
-<li><a class="reference internal" href="#id14">4.3 交易</a></li>
-</ul>
-</li>
-</ul>
-</div>
+
             
           
         </div>
@@ -217,7 +222,7 @@
 </div>
 <p>显示如下信息：</p>
 <div class="figure" id="id15">
-<img alt="moac\_install\_win\_0" src="image/moac_install_win_0.png" />
+<img alt="moac\_install\_win\_0" src="_images/moac_install_win_0.png" />
 <p class="caption"><span class="caption-text">moac_install_win_0</span></p>
 </div>
 <p>至最后三行显示如下：</p>
@@ -245,7 +250,7 @@
 </pre></div>
 </div>
 <div class="figure" id="id16">
-<img alt="moac\_install\_win\_1" src="image/moac_install_win_1.png" />
+<img alt="moac\_install\_win\_1" src="_images/moac_install_win_1.png" />
 <p class="caption"><span class="caption-text">moac_install_win_1</span></p>
 </div>
 <p>该命令行不会主动滚屏，而是等待命令。</p>
@@ -262,7 +267,7 @@
 </div>
 <p>系统会提示输入一个密码，例如”passwd”，并再次输入相同密码确认后，会显示一个以0x开头的字符串，即为MOAC帐号的公开地址。</p>
 <div class="figure" id="id17">
-<img alt="moac\_install\_win\_2" src="image/moac_install_win_2.png" />
+<img alt="moac\_install\_win\_2" src="_images/moac_install_win_2.png" />
 <p class="caption"><span class="caption-text">moac_install_win_2</span></p>
 </div>
 <p>系统同时会在以下目录：</p>
@@ -308,28 +313,28 @@
 </div>
 <p>挖矿状态下，数据显示有明显不同。</p>
 <div class="figure" id="id18">
-<img alt="moac\_install\_win\_4" src="image/moac_install_win_4.png" />
+<img alt="moac\_install\_win\_4" src="_images/moac_install_win_4.png" />
 <p class="caption"><span class="caption-text">moac_install_win_4</span></p>
 </div>
 <p>挖到矿之后，可以查看余额</p>
 <div class="figure" id="id19">
-<img alt="moac\_install\_win\_5" src="image/moac_install_win_5.png" />
+<img alt="moac\_install\_win\_5" src="_images/moac_install_win_5.png" />
 <p class="caption"><span class="caption-text">moac_install_win_5</span></p>
 </div>
 <p>登录墨客区块链浏览器页面： <a class="reference external" href="http://explorer.moac.io">http://explorer.moac.io</a>。</p>
 <div class="figure" id="id20">
-<img alt="moac\_explorer\_0" src="image/moac_explorer_main.png" />
+<img alt="moac\_explorer\_0" src="_images/moac_explorer_main.png" />
 <p class="caption"><span class="caption-text">moac_explorer_0</span></p>
 </div>
 <p>在搜索栏输入你的挖矿账号地址，会显示该账号的余额等信息。</p>
 <div class="figure" id="id21">
-<img alt="moac\_explorer\_1" src="image/moac_explorer_address.png" />
+<img alt="moac\_explorer\_1" src="_images/moac_explorer_address.png" />
 <p class="caption"><span class="caption-text">moac_explorer_1</span></p>
 </div>
 <p>在搜索栏输入你挖到矿的区块号，会显示该区块的信息。</p>
 <p>Miner正是你的账号地址。</p>
 <div class="figure" id="id22">
-<img alt="moac\_explorer\_2" src="image/moac_explorer_blocks.png" />
+<img alt="moac\_explorer\_2" src="_images/moac_explorer_blocks.png" />
 <p class="caption"><span class="caption-text">moac_explorer_2</span></p>
 </div>
 </div>
@@ -368,7 +373,7 @@
 </div>
 <p>这个过程需要第一个账号的密码。比如’passwd’，发送额为0.1 mc。</p>
 <div class="figure" id="id23">
-<img alt="moac\_install\_win\_6" src="image/moac_install_win_6.png" />
+<img alt="moac\_install\_win\_6" src="_images/moac_install_win_6.png" />
 <p class="caption"><span class="caption-text">moac_install_win_6</span></p>
 </div>
 <p>在系统挖矿的情况下，发送应该在下一个区块产生时完成。</p>
@@ -387,7 +392,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Wenhan Jin.
+        &copy; Copyright 2018, MOAC foundation.
 
     </p>
   </div>

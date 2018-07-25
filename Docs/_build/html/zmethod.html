@@ -76,24 +76,37 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">1. 区块链技术的痛点</a><ul>
-<li><a class="reference internal" href="#id2">1.1 处理能力很低，可扩展性比较差</a></li>
-<li><a class="reference internal" href="#dapp">1.2 以太坊不是为DAPP所设计的</a></li>
-<li><a class="reference internal" href="#token">1.3 token主要分配方式是通过挖矿</a></li>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="HOME.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">About MOAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessWallet.html">How to Access Your Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chain3.html">Chain3 JavaScript API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkBalance.html">Checking the Balance of Your Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Console.html">Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Differences-Between-Wallet-Types.html">Differences Between Wallet Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ERC20.html">ERC20 Token</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ERC721.html">ERC721 Token</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQs.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-To-Create-a-Wallet.html">How-To-Create-a-Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON-RPC.html">JSON-RPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MoveToMoac.html">Move to Moac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protectFunds.html">Protecting Yourself and Your Funds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RPC.html">JSON RPC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saveAndBackup.html">Safe Storage of Backups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCS.html">SCS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCSCreateSteps.html">MOAC Pizza Alpha (Pangu 0.8.3 prerelease)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VNODE.html">MOAC VNODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainDAPPDeveloper.html">DAPP Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainSCSMiner.html">MicroChain SCS Miner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainUsers.html">MicroChain User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainVNODEProxy.html">VNODE-PROXY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXdebug.html">TXdebug</a></li>
 </ul>
-</li>
-<li><a class="reference internal" href="#moac">2. MOAC的方案</a><ul>
-<li><a class="reference internal" href="#id3">2.1 分层</a></li>
-<li><a class="reference internal" href="#sharding">2.2 分片（sharding）</a></li>
-<li><a class="reference internal" href="#id4">2.3 子链</a></li>
-<li><a class="reference internal" href="#id5">2.4 跨链</a></li>
-<li><a class="reference internal" href="#id6">2.5 挖矿</a></li>
-</ul>
-</li>
-</ul>
-</div>
+
             
           
         </div>
@@ -255,7 +268,7 @@ transfer和全局合约，解决全局一致性和双花的问题。DAPP的智�
 <p>当前两个区块链的货币之间的兑换有两种方式，一种是采用线下的方式，找到一个可信的有相反需求的其他买家，甲把A货币转给乙，乙把对应的B货币转给甲。这样的办法比较低效，找到一个可信的对家很难，执行的风险也很大。另外一种方式就是普遍采用的中心化的交易所，大家把各自的货币充值到交易所，交易所在它的系统里面记录每个人的余额，然后兑换就在交易所的平台上面进行，直到买家从交易所取出相应的货币。</p>
 <p>中心化的交易平台的问题显而易见。在监管缺失的情况下，中心化交易所可能存在内幕交易，伪造交易，资金挪用等等问题。而且中心化的交易所很容易受到主权机构的控制。</p>
 <div class="figure" id="id7">
-<img alt="cross\_chain" src="image/cross_chain_0.png" />
+<img alt="cross\_chain" src="_images/cross_chain_0.png" />
 <p class="caption"><span class="caption-text">cross_chain</span></p>
 </div>
 <p>这里通过公布X，同时解锁两个交易，实现跨链交易最重要的原子性问题。</p>
@@ -267,7 +280,7 @@ transfer和全局合约，解决全局一致性和双花的问题。DAPP的智�
 <p>墨客采用系统特有的系统定时触发功能和子链的功能，完美解决了上述两个问题。</p>
 <p>系统定时触发功能是设置在指定的未来区块位置执行某个交易。这个设置是100%会被执行。</p>
 <div class="figure" id="id8">
-<img alt="cross\_chain" src="image/cross_chain_1.png" />
+<img alt="cross\_chain" src="_images/cross_chain_1.png" />
 <p class="caption"><span class="caption-text">cross_chain</span></p>
 </div>
 <p>墨客具体的跨链这样实现：</p>
@@ -294,7 +307,7 @@ block后100%会执行，所以他可以很放心的发送交易Be-&gt;Ae : n eth
 node之间可以形成一个子链。为了实现墨客系统与以太坊区块链之间的信息传递，SCS
 node可以同时连接一个eth的light node。</p>
 <div class="figure" id="id9">
-<img alt="cross\_chain" src="image/cross_chain_2.png" />
+<img alt="cross\_chain" src="_images/cross_chain_2.png" />
 <p class="caption"><span class="caption-text">cross_chain</span></p>
 </div>
 <p>这样，SCS node可以随时获得eth中的需要监控的交易信息。多个SCS
@@ -306,7 +319,7 @@ node之间通过预定义的共识协议，将对应的操作（比如解锁系�
 <p>MOAC将系统分为两层，底层是POW挖矿，与现有的以太坊系统兼容，现有的以太坊矿机可以很方便的转移到墨客挖矿。上层是SCS
 node。这样的node数量可以非常巨大，每个部署的子链合约，可以随机挑选出参与挖矿的SCS节点，形成一个共识子网。SCS节点提供服务，并获得报酬。</p>
 <div class="figure" id="id10">
-<img alt="cross\_chain" src="image/cross_chain_3.png" />
+<img alt="cross\_chain" src="_images/cross_chain_3.png" />
 <p class="caption"><span class="caption-text">cross_chain</span></p>
 </div>
 <p>墨客提出了两级挖矿，上层挖矿提供了一个二次分配的功能。就是子链的部署者需要持续的付出MOAC，分配给参与的scs节点，以维持子链的正常运行。而SCS节点参与挖矿的成本很低，只需要一定的MOAC保证金，对系统的要求很低。这样的挖矿机制使得广大的SCS节点都可以参与并获得收益，从而使得MOAC的二次分配更加广泛。这样，可以极大的调动社区的积极性，形成一个开放的系统。</p>
@@ -325,7 +338,7 @@ node。这样的node数量可以非常巨大，每个部署的子链合约，可
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Wenhan Jin.
+        &copy; Copyright 2018, MOAC foundation.
 
     </p>
   </div>

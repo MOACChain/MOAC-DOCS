@@ -4,9 +4,15 @@ MOAC docs
 To create the HTML file:
 
 MAC:
-need to install.
+1. need to install sphinx：
+
+ brew install sphinx-doc
+
+2. Install the sphinx_rtd_theme:
 
 sudo pip install sphinx_rtd_theme
+
+3. Enter Docs directory, 
 
 $project will solve your problem of where to start with documentation,
 by providing a basic explanation of how to do it easily.

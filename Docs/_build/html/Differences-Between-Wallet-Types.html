@@ -27,7 +27,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ERC20 Token" href="ERC20.html" />
+    <link rel="prev" title="Design" href="Design.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -76,17 +78,43 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Differences Between Wallet Types</a><ul>
-<li><a class="reference internal" href="#keystore-file-utc-json">Keystore File (UTC / JSON)</a></li>
-<li><a class="reference internal" href="#private-key-unencrypted">Private Key (unencrypted)</a></li>
-<li><a class="reference internal" href="#metamask">MetaMask</a></li>
-<li><a class="reference internal" href="#ledger-or-trezor-or-digital-bitbox-hardware-wallets">Ledger or TREZOR or Digital Bitbox Hardware Wallets</a></li>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="HOME.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">About MOAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessWallet.html">How to Access Your Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chain3.html">Chain3 JavaScript API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkBalance.html">Checking the Balance of Your Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Console.html">Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Design.html">Design</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Differences Between Wallet Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#keystore-file-utc-json">Keystore File (UTC / JSON)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#private-key-unencrypted">Private Key (unencrypted)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metamask">MetaMask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ledger-or-trezor-or-digital-bitbox-hardware-wallets">Ledger or TREZOR or Digital Bitbox Hardware Wallets</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="ERC20.html">ERC20 Token</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ERC721.html">ERC721 Token</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQs.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-To-Create-a-Wallet.html">How-To-Create-a-Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON-RPC.html">JSON-RPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MoveToMoac.html">Move to Moac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protectFunds.html">Protecting Yourself and Your Funds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RPC.html">JSON RPC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saveAndBackup.html">Safe Storage of Backups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCS.html">SCS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCSCreateSteps.html">MOAC Pizza Alpha (Pangu 0.8.3 prerelease)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VNODE.html">MOAC VNODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainDAPPDeveloper.html">DAPP Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainSCSMiner.html">MicroChain SCS Miner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainUsers.html">MicroChain User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MicroChainVNODEProxy.html">VNODE-PROXY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXdebug.html">TXdebug</a></li>
 </ul>
-</div>
+
             
           
         </div>
@@ -169,7 +197,7 @@ import it in the future.</li>
 <li>Make sure to have multiple backups.</li>
 </ul>
 <div class="figure" id="id1">
-<img alt="SaveKeystore" src="image/CreateWalletSave.png" />
+<img alt="SaveKeystore" src="_images/CreateWalletSave.png" />
 <p class="caption"><span class="caption-text">SaveKeystore</span></p>
 </div>
 </div>
@@ -188,13 +216,13 @@ environment (like a piece of paper or USB drive). This ensures a lost
 password does not result in lost MOAC, and acts as another backup.</li>
 </ul>
 <div class="figure" id="id2">
-<img alt="PrivatekeyHide" src="image/PrivatekeyHide.png" />
+<img alt="PrivatekeyHide" src="_images/PrivatekeyHide.png" />
 <p class="caption"><span class="caption-text">PrivatekeyHide</span></p>
 </div>
 <p>You can check the actual conent of the private key but be sure not to
 discolose to anybody suspicious.</p>
 <div class="figure" id="id3">
-<img alt="Privatekey" src="image/Privatekey.png" />
+<img alt="Privatekey" src="_images/Privatekey.png" />
 <p class="caption"><span class="caption-text">Privatekey</span></p>
 </div>
 </div>
@@ -216,12 +244,21 @@ keypairs but they do not support MOAC transaction yet.</p>
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ERC20.html" class="btn btn-neutral float-right" title="ERC20 Token" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Design.html" class="btn btn-neutral" title="Design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Wenhan Jin.
+        &copy; Copyright 2018, MOAC foundation.
 
     </p>
   </div>
