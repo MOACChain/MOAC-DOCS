@@ -1,9 +1,5 @@
 Versions
-<<<<<<< HEAD
-=======================
-=======
-========
->>>>>>> 6b602c0a5481ee3b50adf5d554c4e1908656f532
+==========================
 
 **1.盘古 (Pangu)**
 
@@ -25,9 +21,8 @@ Documents:
 
 *内部版本识别号(Version)：1.0*
 
-Release Date： 6/30/2018 Major Progress：Distributed File System
-service, Cross-chain Service Available feature： \* Cross subchain \*
-Cross exteral chain \* Persistant File system \* IPFS mining Documents:
+Release Date： 7/30/2018 Major Progress：Distributed File System
+service,  \* Persistant File system \* IPFS mining Documents:
 
 **3.伏羲（Fuxi）**
 
@@ -35,7 +30,8 @@ Cross exteral chain \* Persistant File system \* IPFS mining Documents:
 
 Release Date： 12/30/2018 Major Progress：Generalized Subchain Contract
 Processing, multicast routing protocol for SCS layer Available feature：
-\* Support any applications running in SCS (JAVA, c++,etc) \* Subchain
+Cross-chain Service Available feature： \* Cross subchain \*
+Cross exteral chain \* Support any applications running in SCS (JAVA, c++,etc) \* Subchain
 service market \* SCS layer secure and decentralized communication \*
 IOT mining \* Data encryption Documents:
 

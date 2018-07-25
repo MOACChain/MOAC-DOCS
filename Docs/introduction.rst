@@ -18,24 +18,22 @@ blockchains by themselves.
 History
 ~~~~~~~
 
-.. figure:: image/moac_history.png
+.. figure:: image/moac_hist_en.png
    :alt: moac\_history
 
-   moac\_history
 
 Team
 ~~~~
 
-.. figure:: image/moac_key_person.png
+.. figure:: image/MOACteamEn.png
    :alt: moac\_key\_person
 
-   moac\_key\_person
 
 ICO
 ~~~
 
-The crowdsale of MOAC happened in June 2017. Total 56,483,386 MOAC was
-sold during the ICO time.
+The crowdsale of MOAC happened in June 2017. There are total 75,000,000 MOAC used in the ICO. Total 56,483,386 MOAC was
+sold during the ICO time and the rest is held in private investors.
 
 MOAC tokens can also be mineable, so mining is a viable alternative if
 you want to have the tokens. At first you will be able to be rewarded
