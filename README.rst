@@ -12,7 +12,10 @@ MAC:
 
 sudo pip install sphinx_rtd_theme
 
-3. Enter Docs directory, 
+3. Enter Docs directory, and run Makefile
+
+cd Doc
+make html
 
 $project will solve your problem of where to start with documentation,
 by providing a basic explanation of how to do it easily.
