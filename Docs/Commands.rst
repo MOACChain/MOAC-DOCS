@@ -1,86 +1,86 @@
 Commands
 ========
 
-常用命令：
+Most Commonly Used Commands：
 ----------
 
 ::
 
-    --testnet: connect to MOAC testnet (networkid = 101)；
+    --testnet: connect to MOAC testnet (networkid = 101);
 
-    --rpc: 启用HTTP的RPC服务，以便非本机访问该MOAC节点服务；
+    --rpc: initiate RPC service of HTTP, so as to nonlocally access the specific MOAC node service;
 
-    --rpcaddr value: 默认是"localhost", 只能本机访问； 可通过设置 为"0.0.0.0", 以便非本机访问该MOAC节点服务, 但现在RPC服务是基于HTTP的，是明文传输，需注意安全问题；
+    --rpcaddr value: default as "localhost", only local accessibility; can be reset to "0.0.0.0", so as to nonlocally access the specific MOAC node service, but the current RPC service is based on HTTP using plaintext，so users need to be aware of the safety risks;
 
-    --rpcport value: 默认是"8545",  一般来说不用改，用默认端口即可；
+    --rpcport value: default as"8545", normally no changes are needed, users can use the default port;
 
-    --rpcapi value: 指定RPC要开放的API服务，默认为"chain3,mc,net"，常用的一般还会配置比如personal,admin,debug,miner,txpool,db,shh等，但是因为RPC服务是明文传输，所以，如果使用personal的时候，要注意安全问题；
+    --rpcapi value: command RPC as to which API service will be open，default as "chain3,mc,net"，the commonly used will also be configured such as: personal,admin,debug,miner,txpool,db,shh and so on，but because of RPC services' cleartext nature，if users choose to use personal，they should be aware of the safety risks；
 
-    --rpccorsdomain value: 一般来说，如果你知道要用这个选项的时候，使用""值即可，更详细可自行搜索“CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）”中相关关键词进一步了解；
+    --rpccorsdomain value: in general，if users wish to use this option, they can just use ""; to be more specifical, users are recommended to search up "Cross-origin resource sharing" to further understand some key phrases;
 
-    --jspath loadScript: 默认值为".", loadScript装载javascript文件的主目录；
+    --jspath loadScript: default value is ".", the main directory of loadScript when installing javascript file；
 
-示例如下：
+As shown below：
 ~~~~~~~~~~
 
-启动MOAC节点并连接到mainnet(networkid = 99)
+Initiate MOAC nodes and connect to mainnet (network ID = 99)
 
 ::
 
     ./moac      
 
-通过本地ipc接口连接到MOAC mainnet节点，并启动命令行
+Through local ipc port connecting to MOAC mainnet nodes and start the command line
 
 ::
 
     ./moac attach
 
-启动MOAC节点并连接到testnet(networkid = 101)
+Initiate MOAC nodes and connect to testnet (network ID = 101)
 
 ::
 
     ./moac --testnet                      
 
-启动MOAC测试节点，并启动交互命令行
+Initiate MOAC testnet nodes and interactive command line
 
 ::
 
     ./moac --testnet console    
 
-通过本地ipc接口连接到MOAC节点
+Through local ipc port connecting to MOAC nodes
 
 ::
 
     ./moac attach /xx/xxx/moac.ipc
 
-通过基于HTTP的RPC接口连接到本地或者远程MOAC节点
+Through HTTP-based rpc port connecting to local or remote MOAC nodes
 
 ::
 
     ./moac attach http://xxx.xxx.xxx.xxx:8545       
 
-启动MOAC测试节点，同时启动RPC服务
+Initiate MOAC testnet nodes and RPC service
 
 ::
 
     ./moac --testnet --rpc                  
 
-启动MOAC测试节点，非本机可访问，非本机也可以使用personal及debug服务，同时提供跨域资源共享服务
+Initiate MOAC testnet nodes which is nonlocally accessible; personal and debug services can also be nonlocally used while providing cross-domain resource sharing service.
 
 ::
 
     ./moac --testnet --rpc --rpcaddr=0.0.0.0 --rpcapi="db,mc,net,chain3,personal,debug" --rpccorsdomain=""                  
 
-全部命令行参数
+All command line parameters
 --------------
 
-在命令行下，输入：
+On the command line, type：
 
 ::
 
     $ ./moac help
 
-或者
+or
 
 ::
 
