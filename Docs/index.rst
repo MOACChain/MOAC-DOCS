@@ -1,5 +1,5 @@
 
-.. figure:: https://raw.githubusercontent.com/wiki/moacchain/moac-core/image/logo.jpg
+.. figure:: image/MOACnewTitle256.png
    :alt: moaclogo
 
 
@@ -22,10 +22,7 @@ Mother Of All Chains (MOAC) is to design a scalable and resilient Blockchain tha
    Account Management
    MOAC
    The MOAC network
-   VNODE Mining
-   SCS Mining
-   Global Transactions
-   Direct Transactions
+   MoveToMoac
    FAQs
 
 

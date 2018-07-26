@@ -1,26 +1,80 @@
-|moaclogo| # 欢迎来到墨客的世界！
 
-MOAC旨在提供一种可扩展且有弹性的区块链，支持基于分层结构的状态交易，数据访问，和控制流程。它创建了一个框架以允许用户用高效的方式执行智能合约。它还提供了开发的体系结构，采用底层基础设施来快速简便地产生子区块链。它是一个区块链平台，可以为子区块链的架设提供必要的部件，为想法测试，私链部署，复杂任务处理和智能合同应用等提供解决方案。
+MOAC
+********************************************************************************
 
-墨客系统 （General Information）
---------------------------------
+What is MOAC?
+================================================================================
 
-`系统概述 <https://github.com/MOACChain/moac-core/wiki/系统概述>`__
+MOAC(mc) is the name of the currency used within MOAC network, just like ether within Ethereum. It is used to pay for
+computation within the EVM and run MicroChains. This is done indirectly by purchasing gas for mc as explained in :ref:`gas-and-mc`.
 
-`墨客节点（VNODE） <https://github.com/MOACChain/moac-core/wiki/墨客节点>`__
+Denominations
+--------------------------------------------------------
 
-`子链节点（SCS） <https://github.com/MOACChain/moac-core/wiki/子链>`__
+MOAC has a metric system of denominations used as units of mc. Each denomination has its own unique name. The smallest denomination aka *base unit* of mc is called Sha. Below is a list of the named denominations and
+their value in Sha. Following a common pattern, mc also designates a unit (of 1e+18 or one quintillion Sha) of the currency. 
 
-`常见问题 <https://github.com/MOACChain/moac-core/wiki/FAQs>`__
 
-`墨客版本介绍 <https://github.com/MOACChain/moac-core/wiki/Versions>`__
++-------------------------+-----------+-------------------------------------------+
+| Unit                    | Sha Value | Sha                                       |
++=========================+===========+===========================================+
+| **sha**                 | 1 sha     | 1                                         |
++-------------------------+-----------+-------------------------------------------+
+| **Ksha (femtomc)**      | 1e3 sha   | 1,000                                     |
++-------------------------+-----------+-------------------------------------------+
+| **Msha (picomc)**     | 1e6 sha   | 1,000,000                                 |
++-------------------------+-----------+-------------------------------------------+
+| **Gsha (xiao)**      | 1e9 sha   | 1,000,000,000                             |
++-------------------------+-----------+-------------------------------------------+
+| **micromc (sand)**  | 1e12 sha  | 1,000,000,000,000                         |
++-------------------------+-----------+-------------------------------------------+
+| **millimc** | 1e15 sha  | 1,000,000,000,000,000                     |
++-------------------------+-----------+-------------------------------------------+
+| **mc (moac)**               | 1e18 sha  | 1,000,000,000,000,000,000                 |
++-------------------------+-----------+-------------------------------------------+
 
-分布式应用开发（ÐApp Development）
-----------------------------------
 
-`ERC20 <https://github.com/MOACChain/moac-core/wiki/ERC20>`__
+MOAC supply
+=========================
 
-`ERC721 <https://github.com/MOACChain/moac-core/wiki/ERC721>`__
+* http://explorer.moac.io/home
 
-.. |moaclogo| image:: https://raw.githubusercontent.com/wiki/moacchain/moac-core/image/logo.jpg
 
+Getting mc
+================================================================================
+
+Please see this page `here <https://coinmarketcap.com/currencies/moac/#markets>`_.
+
+Sending mc
+================================================================================
+
+The `MOAC Wallet  <https://www.moacwalletonline.com/>`_  supports sending mc via a graphical interface.
+
+MOAC can also be transferred using the **MOAC console**.
+
+.. code-block:: console
+
+    > var sender = mc.accounts[0];
+    > var des = mc.accounts[1];
+    > var amount = chain3.toSha(0.01, "mc")
+    > mc.sendTransaction({from:sender, to:des, value: amount})
+
+
+MOAC network, like Ethereum, use mc as a cryptofuel, commonly referred to as "gas". Beyond transaction fees, gas is a central part of every network request and requires the sender to pay for the computing resources consumed. The gas cost is dynamically calculated, based on the volume and complexity of the request and multiplied by the current gas price. Its value as a cryptofuel has the effect of increasing the stability and long-term  demand for mc and MOAC as a whole. 
+
+.. _gas-and-mc:
+
+Gas and mc
+=============================
+
+
+Gas is supposed to be the constant cost of network resources/utilisation. You want the real cost of sending a transaction to always be the same, so you can't really expect Gas to be issued, currencies in general are volatile.
+
+So instead, we issue mc whose value is supposed to vary, but also implement a Gas Price in terms of MOAC. If the price of mc goes up, the Gas Price in terms of mc should go down to keep the real cost of Gas the same.
+
+Gas has multiple associated terms with it: Gas Prices, Gas Cost, Gas Limit, and Gas Fees. The principle behind Gas is to have a stable value for how much a transaction or computation costs on the Ethereum network.
+
+* Gas Cost is a static value for how much a computation costs in terms of Gas, and the intent is that the real value of the Gas never changes, so this cost should always stay stable over time.
+* Gas Price is how much Gas costs in terms of another currency or token like MOAC. To stabilise the value of gas, the Gas Price is a floating value such that if the cost of tokens or currency fluctuates, the Gas Price changes to keep the same real value. The Gas Price is set by the equilibrium price of how much users are willing to spend, and how much processing nodes are willing to accept.
+* Gas Limit is the maximum amount of Gas that can be used per block, it is considered the maximum computational load, transaction volume, or block size of a block, and miners can slowly change this value over time.
+* Gas Fee is effectively the amount of Gas needed to be paid to run a particular transaction or program (called a contract). The Gas Fees of a block can be used to imply the computational load, transaction volume, or size of a block. The gas fees are paid to the miners (or bonded contractors in PoS).
