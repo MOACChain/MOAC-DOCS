@@ -23,12 +23,12 @@ your thoughts and comments.
 
 `SubChainProtocolBase <https://github.com/MOACChain/moac-core/wiki/部署子链协议合约>`__
 
-启动 ./bin/moac --datadir "/tmp/moac/60/01" --networkid 1975
+To initiate ./bin/moac --datadir "/tmp/moac/60/01" --networkid 1975
 --nodiscover --verbosity 4
 
-运行一个Vnode的控制窗 ./bin/moac attach /tmp/moac/60/01/moac.ipc
+Operatig a Vnode control window ./bin/moac attach /tmp/moac/60/01/moac.ipc
 
-运行SCS1
+operate SCS1
 
 ./scs1/scsserver
 ./go/src/github.com/innowells/moac-scs/build/bin/scsserver
@@ -74,16 +74,16 @@ mc.getBalance(mc.accounts[0])/1000000000000000000
 
 **General info**
 
-`SubChainBase <https://github.com/MOACChain/moac-core/wiki/部署子链合约>`__
+:doc:`MicroChainDAPPDeveloper`
 
-`SCS node
-selection <https://github.com/MOACChain/moac-core/wiki/选择scs节点>`__
+:doc:`MicroChainFormation`
 
-`SCS
-creation <https://github.com/MOACChain/moac-core/wiki/子链创建过程>`__
+:doc:`MicroChainSCSMining`
 
-`SCS
-running <https://github.com/MOACChain/moac-core/wiki/子链运行流程>`__
+:doc:`MicroChainSCSMonitor`
 
-`SCS
-flushing <https://github.com/MOACChain/moac-core/wiki/子链刷新过程>`__
+:doc:`MicroChainSCSSelection`
+
+:doc:`MicroChainUsers`
+
+:doc:`MicroChainVNODEProxy`
