@@ -1,5 +1,5 @@
-SCS Monitor
------------
+MicroChain SCS Monitor
+----------------------
 
 SCS Monitor is a SCS node monitoring MicroChain status. MicroChain users
 can use this SCS node to monitor MicroChain status and get data from
