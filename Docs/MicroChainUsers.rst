@@ -1,3 +1,7 @@
+MicroChain Users
+----------------
+
+
 There are three major players in MicroChain:
 
 -  A、 SCS miner：run SCS and join the MicroChain consensus to get
