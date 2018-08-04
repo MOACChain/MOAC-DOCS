@@ -1,3 +1,6 @@
+MicroChain SCS Mining
+---------------------
+
 Please follow these steps to start your MicroChain mining:
 
 A1、Download SCS program ( Or power up a SCS hardware miner)
