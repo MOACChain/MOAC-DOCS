@@ -1,3 +1,7 @@
+MicroChain SCS Selection
+-------------------------
+
+
 *MicroChain select SCSs using the following methods:*
 
 1. In the MicroChain contract, DAPP developer need to choose the range
