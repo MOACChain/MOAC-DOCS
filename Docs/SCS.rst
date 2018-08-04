@@ -84,6 +84,8 @@ mc.getBalance(mc.accounts[0])/1000000000000000000
 
 :doc:`MicroChainSCSSelection`
 
+:doc:`MicroChainSCSMiner`
+
 :doc:`MicroChainUsers`
 
 :doc:`MicroChainVNODEProxy`
