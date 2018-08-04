@@ -1,5 +1,5 @@
-VNODE-PROXY
------------
+MicroChain VNODE-PROXY
+-----------------------
 
 In MOAC system，VNODE-PROXY(VP) is used to provide MicroChain register
 and data services. VP is a VNODE that can get rewards from MicroChains
