@@ -2,7 +2,7 @@ Ethereum to Moac
 ============
 If you want to develop Dapp on MOAC, you should use Solidity. MOAC
 supports the deployment of smart contracts through Remix, wallet.moac.io
-and For a Dapp that wants to move to MOAC from Ethereum, please follow
+and for a Dapp that wants to move to MOAC from Ethereum, please follow
 these steps:
 
 1. Deploy the smart contract:
