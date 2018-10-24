@@ -24,6 +24,7 @@ Mother Of All Chains (MOAC) is to design a scalable and resilient Blockchain tha
    The MOAC network
    MoveToMoac
    FAQs
+   FileStormUserGuide
 
 
 Indices and tables
