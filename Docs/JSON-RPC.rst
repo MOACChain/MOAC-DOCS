@@ -1,164 +1,5 @@
-JSON-RPC
-========
-
-
-.. raw:: html
-
-   <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-
-.. raw:: html
-
-   <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-**Contents**
-
--  `JSON RPC API <#json-rpc-api>`__
--  `JavaScript API <#javascript-api>`__
--  `JSON-RPC Endpoint <#json-rpc-endpoint>`__
-
-   -  `Go <#go>`__
-   -  `C++ <#c>`__
-   -  `Python <#python>`__
-
--  `JSON-RPC support <#json-rpc-support>`__
--  `HEX value encoding <#hex-value-encoding>`__
--  `The default block parameter <#the-default-block-parameter>`__
--  `Curl Examples Explained <#curl-examples-explained>`__
--  `JSON-RPC methods <#json-rpc-methods>`__
--  `JSON RPC API Reference <#json-rpc-api-reference>`__
-
-   -  `chain3\_clientVersion <#web3_clientversion>`__
-
-   -  `chain3\_sha3 <#web3_sha3>`__
-
-   -  `net\_version <#net_version>`__
-
-   -  `net\_listening <#net_listening>`__
-
-   -  `net\_peerCount <#net_peercount>`__
-
-   -  `mc\_protocolVersion <#eth_protocolversion>`__
-
-   -  `mc\_syncing <#eth_syncing>`__
-
-   -  `mc\_coinbase <#eth_coinbase>`__
-
-   -  `mc\_mining <#eth_mining>`__
-
-   -  `mc\_hashrate <#eth_hashrate>`__
-
-   -  `mc\_gasPrice <#eth_gasprice>`__
-
-   -  `mc\_accounts <#eth_accounts>`__
-
-   -  `mc\_blockNumber <#eth_blocknumber>`__
-   
-   -  `mc\_getBalance <#eth_getbalance>`__
-
-   -  `mc\_getStorageAt <#eth_getstorageat>`__
-
-   -  `mc\_getTransactionCount <#eth_gettransactioncount>`__
-
-   -  `mc\_getBlockTransactionCountByHash <#eth_getblocktransactioncountbyhash>`__
-
-   -  `mc\_getBlockTransactionCountByNumber <#eth_getblocktransactioncountbynumber>`__
-
-   -  `mc\_getUncleCountByBlockHash <#eth_getunclecountbyblockhash>`__
-
-   -  `mc\_getUncleCountByBlockNumber <#eth_getunclecountbyblocknumber>`__
-
-   -  `mc\_getCode <#eth_getcode>`__
-   
-   -  `mc\_sign <#eth_sign>`__
-
-   -  `mc\_sendTransaction <#eth_sendtransaction>`__
-
-   -  `mc\_sendRawTransaction <#eth_sendrawtransaction>`__
-   
-   -  `mc\_call <#eth_call>`__
-   
-   -  `mc\_estimateGas <#eth_estimategas>`__
-
-   -  `mc\_getBlockByHash <#eth_getblockbyhash>`__
-
-   -  `mc\_getBlockByNumber <#eth_getblockbynumber>`__
-
-   -  `mc\_getTransactionByHash <#eth_gettransactionbyhash>`__
-
-   -  `mc\_getTransactionByBlockHashAndIndex <#eth_gettransactionbyblockhashandindex>`__
-
-   -  `mc\_getTransactionByBlockNumberAndIndex <#eth_gettransactionbyblocknumberandindex>`__
-
-   -  `mc\_getTransactionReceipt <#eth_gettransactionreceipt>`__
-
-   -  `mc\_getUncleByBlockHashAndIndex <#eth_getunclebyblockhashandindex>`__
-
-   -  `mc\_getUncleByBlockNumberAndIndex <#eth_getunclebyblocknumberandindex>`__
-
-   -  `mc\_getCompilers <#eth_getcompilers>`__
-
-   -  `mc\_compileSolidity <#eth_compilesolidity>`__
-
-   -  `mc\_compileLLL <#eth_compilelll>`__
-
-   -  `mc\_compileSerpent <#eth_compileserpent>`__
-
-   -  `mc\_newFilter <#eth_newfilter>`__
-
-   -  `mc\_newBlockFilter <#eth_newblockfilter>`__
-
-   -  `mc\_newPendingTransactionFilter <#eth_newpendingtransactionfilter>`__
-
-   -  `mc\_uninstallFilter <#eth_uninstallfilter>`__
-
-   -  `mc\_getFilterChanges <#eth_getfilterchanges>`__
-
-   -  `mc\_getFilterLogs <#eth_getfilterlogs>`__
-
-   -  `mc\_getLogs <#eth_getlogs>`__
-
-   -  `mc\_getWork <#eth_getwork>`__
-
-   -  `mc\_submitWork <#eth_submitwork>`__
-   
-   -  `mc\_submitHashrate <#eth_submithashrate>`__
-
-   -  `db\_putString <#db_putstring>`__
-
-   -  `db\_getString <#db_getstring>`__
-
-   -  `db\_putHex <#db_puthex>`__
-
-   -  `db\_getHex <#db_gethex>`__
-
-   -  `shh\_version <#shh_version>`__
-
-   -  `shh\_post <#shh_post>`__
-
-   -  `shh\_newIdentity <#shh_newidentity>`__
-
-   -  `shh\_hasIdentity <#shh_hasidentity>`__
-
-   -  `shh\_newGroup <#shh_newgroup>`__
-
-   -  `shh\_addToGroup <#shh_addtogroup>`__
-
-   -  `shh\_newFilter <#shh_newfilter>`__
-
-   -  `shh\_uninstallFilter <#shh_uninstallfilter>`__
-
-   -  `shh\_getFilterChanges <#shh_getfilterchanges>`__
-
-   -  `shh\_getMessages <#shh_getmessages>`__
-   
-  
-
-.. raw:: html
-
-   <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 JSON RPC API
-------------
+============
 
 `JSON <http://json.org/>`__ is a lightweight data-interchange format. It
 can represent numbers, strings, ordered sequences of values, and
@@ -172,21 +13,33 @@ within the same process, over sockets, over HTTP, or in many various
 message passing environments. It uses JSON (`RFC
 4627 <http://www.ietf.org/rfc/rfc4627.txt>`__) as data format.
 
-Geth 1.4 has experimental pub/sub support. See
-`this <https://github.com/ethereum/go-ethereum/wiki/RPC-PUB-SUB>`__ page
-for more information.
+MOAC RPC API has some compatibility with ETHEREUM RPC API,
 
-Parity 1.6 has experimental pub/sub support See
-`this <https://github.com/paritytech/parity/wiki/JSONRPC-Eth-Pub-Sub-Module>`__
-for more information.
++------------+------------+
+| Chain3     | Web3.js    |
++============+============+
+| chain3     | web3       |
++------------+------------+
+| mc         | eth        |
++------------+------------+
+| net        | net        |
++------------+------------+
+| admin      | admin      |
++------------+------------+
+| personal   | personal   |
++------------+------------+
+
+MOAC has two additional RPC commands (vnode and scs) for VNODE and SCS
+services. These RPCs are under developing and will be supported by Nuwa
+1.0.4 version and later.
 
 JavaScript API
 --------------
 
-To talk to an ethereum node from inside a JavaScript application use the
-`web3.js <https://github.com/ethereum/web3.js>`__ library, which gives a
-convenient interface for the RPC methods. See the `JavaScript
-API <https://github.com/ethereum/wiki/wiki/JavaScript-API>`__ for more.
+To talk to a MOAC node from inside a JavaScript application use the
+`chain3.js <https://github.com/MOACChain/chain3>`__ library, which gives
+a convenient interface for the RPC methods. See the `JavaScript
+API <https://github.com/MOACChain/moac-core/wiki/Chain3>`__ for more.
 
 JSON-RPC Endpoint
 -----------------
@@ -196,29 +49,23 @@ Default JSON-RPC endpoints:
 +----------+-------------------------+
 | Client   | URL                     |
 +==========+=========================+
-| C++      | http://localhost:8545   |
-+----------+-------------------------+
 | Go       | http://localhost:8545   |
-+----------+-------------------------+
-| Py       | http://localhost:4000   |
-+----------+-------------------------+
-| Parity   | http://localhost:8545   |
 +----------+-------------------------+
 
 Go
 ~~
 
-You can start the HTTP JSON-RPC with the ``--rpc`` flag
+You can start the HTTP JSON-RPC with the ``--rpc`` flag. For VNODE:
 
 .. code:: bash
 
-    geth --rpc
+    moac --rpc
 
 change the default port (8545) and listing address (localhost) with:
 
 .. code:: bash
 
-    geth --rpc --rpcaddr <ip> --rpcport <portnumber>
+    moac --rpc --rpcaddr <ip> --rpcport <portnumber>
 
 If accessing the RPC from a browser, CORS will need to be enabled with
 the appropriate domain set. Otherwise, JavaScript calls are limit by the
@@ -226,55 +73,17 @@ same-origin policy and requests will fail:
 
 .. code:: bash
 
-    geth --rpc --rpccorsdomain "http://localhost:3000"
+    moac --rpc --rpccorsdomain "http://localhost:3000"
 
-The JSON RPC can also be started from the `geth
+The JSON RPC can also be started from the VNODE `moac
 console <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console>`__
 using the ``admin.startRPC(addr, port)`` command.
 
-C++
-~~~
-
-You can start it by running ``eth`` application with ``-j`` option:
+For SCS:
 
 .. code:: bash
 
-    ./eth -j
-
-You can also specify JSON-RPC port (default is 8545):
-
-.. code:: bash
-
-    ./eth -j --json-rpc-port 8079
-
-Python
-~~~~~~
-
-In python the JSONRPC server is currently started by default and listens
-on ``127.0.0.1:4000``
-
-You can change the port and listen address by giving a config option.
-
-``pyethapp -c jsonrpc.listen_port=4002 -c jsonrpc.listen_host=127.0.0.2 run``
-
-JSON-RPC support
-----------------
-
-+------------------+----------------+---------------+---------------+----------+
-|                  | cpp-ethereum   | go-ethereum   | py-ethereum   | parity   |
-+==================+================+===============+===============+==========+
-| JSON-RPC 1.0     | ✓              |               |               |          |
-+------------------+----------------+---------------+---------------+----------+
-| JSON-RPC 2.0     | ✓              | ✓             | ✓             | ✓        |
-+------------------+----------------+---------------+---------------+----------+
-| Batch requests   | ✓              | ✓             | ✓             | ✓        |
-+------------------+----------------+---------------+---------------+----------+
-| HTTP             | ✓              | ✓             | ✓             | ✓        |
-+------------------+----------------+---------------+---------------+----------+
-| IPC              | ✓              | ✓             |               | ✓        |
-+------------------+----------------+---------------+---------------+----------+
-| WS               |                | ✓             |               | ✓        |
-+------------------+----------------+---------------+---------------+----------+
+    scsserver --rpc
 
 HEX value encoding
 ------------------
@@ -296,26 +105,24 @@ digits per byte. Examples: - 0x41 (size 1, "A") - 0x004200 (size 3,
 ":raw-latex:`\0`B:raw-latex:`\0`") - 0x (size 0, "") - WRONG: 0xf0f0f
 (must be even number of digits) - WRONG: 004200 (must be prefixed 0x)
 
-Currently
-`cpp-ethereum <https://github.com/ethereum/cpp-ethereum>`__,\ `go-ethereum <https://github.com/ethereum/go-ethereum>`__,
-and `parity <https://github.com/paritytech/parity>`__ provide JSON-RPC
-communication over http and IPC (unix socket Linux and OSX/named pipes
-on Windows). Version 1.4 of go-ethereum and version 1.6 of Parity
-onwards have websocket support.
+Currently `MOAC <https://github.com/MOACChain/moac-core/releases>`__
+VNODE server provides JSON-RPC communication over http and IPC (unix
+socket Linux and OSX/named pipes on Windows). SCS server provides
+rovides JSON-RPC communication over http only.
 
 The default block parameter
 ---------------------------
 
 The following methods have an extra default block parameter:
 
--  `eth\_getBalance <#eth_getbalance>`__
--  `eth\_getCode <#eth_getcode>`__
--  `eth\_getTransactionCount <#eth_gettransactioncount>`__
--  `eth\_getStorageAt <#eth_getstorageat>`__
--  `eth\_call <#eth_call>`__
+-  `mc\_getBalance <#mc_getbalance>`__
+-  `mc\_getCode <#mc_getcode>`__
+-  `mc\_getTransactionCount <#mc_gettransactioncount>`__
+-  `mc\_getStorageAt <#mc_getstorageat>`__
+-  `mc\_call <#mc_call>`__
 
-When requests are made that act on the state of ethereum, the last
-default block parameter determines the height of the block.
+When requests are made that act on the state of moac, the last default
+block parameter determines the height of the block.
 
 The following options are possible for the defaultBlock parameter:
 
@@ -333,82 +140,91 @@ content type to application/x-www-form-urlencoded . If your node does
 complain, manually set the header by placing -H "Content-Type:
 application/json" at the start of the call.
 
-The examples also do not include the URL/IP & port combination which
-must be the last argument given to curl e.x. 127.0.0.1:8545
+The examples assume a local MOAC node is running and connected to
+testnet (network id = 101). The URL/IP & port combination is
+localhost:8545 or '127.0.0.1', which must be the last argument given to
+curl.
 
 JSON-RPC methods
 ----------------
 
--  `chain3\_clientVersion <#web3_clientversion>`__
--  `chain3\_sha3 <#web3_sha3>`__
--  `net\_version <#net_version>`__
--  `net\_peerCount <#net_peercount>`__
--  `net\_listening <#net_listening>`__
--  `mc\_protocolVersion <#eth_protocolversion>`__
--  `mc\_syncing <#eth_syncing>`__
--  `mc\_coinbase <#eth_coinbase>`__
--  `mc\_mining <#eth_mining>`__
--  `mc\_hashrate <#eth_hashrate>`__
--  `mc\_gasPrice <#eth_gasprice>`__
--  `mc\_accounts <#eth_accounts>`__
--  `mc\_blockNumber <#eth_blocknumber>`__
--  `mc\_getBalance <#eth_getbalance>`__
--  `mc\_getStorageAt <#eth_getstorageat>`__
--  `mc\_getTransactionCount <#eth_gettransactioncount>`__
--  `mc\_getBlockTransactionCountByHash <#eth_getblocktransactioncountbyhash>`__
--  `mc\_getBlockTransactionCountByNumber <#eth_getblocktransactioncountbynumber>`__
--  `mc\_getUncleCountByBlockHash <#eth_getunclecountbyblockhash>`__
--  `mc\_getUncleCountByBlockNumber <#eth_getunclecountbyblocknumber>`__
--  `mc\_getCode <#eth_getcode>`__
--  `mc\_sign <#eth_sign>`__
--  `mc\_sendTransaction <#eth_sendtransaction>`__
--  `mc\_sendRawTransaction <#eth_sendrawtransaction>`__
--  `mc\_call <#eth_call>`__
--  `mc\_estimateGas <#eth_estimategas>`__
--  `mc\_getBlockByHash <#eth_getblockbyhash>`__
--  `mc\_getBlockByNumber <#eth_getblockbynumber>`__
--  `mc\_getTransactionByHash <#eth_gettransactionbyhash>`__
--  `mc\_getTransactionByBlockHashAndIndex <#eth_gettransactionbyblockhashandindex>`__
--  `mc\_getTransactionByBlockNumberAndIndex <#eth_gettransactionbyblocknumberandindex>`__
--  `mc\_getTransactionReceipt <#eth_gettransactionreceipt>`__
--  `mc\_getUncleByBlockHashAndIndex <#eth_getunclebyblockhashandindex>`__
--  `mc\_getUncleByBlockNumberAndIndex <#eth_getunclebyblocknumberandindex>`__
--  `mc\_getCompilers <#eth_getcompilers>`__
--  `mc\_compileLLL <#eth_compilelll>`__
--  `mc\_compileSolidity <#eth_compilesolidity>`__
--  `mc\_compileSerpent <#eth_compileserpent>`__
--  `mc\_newFilter <#eth_newfilter>`__
--  `mc\_newBlockFilter <#eth_newblockfilter>`__
--  `mc\_newPendingTransactionFilter <#eth_newpendingtransactionfilter>`__
--  `mc\_uninstallFilter <#eth_uninstallfilter>`__
--  `mc\_getFilterChanges <#eth_getfilterchanges>`__
--  `mc\_getFilterLogs <#eth_getfilterlogs>`__
--  `mc\_getLogs <#eth_getlogs>`__
--  `mc\_getWork <#eth_getwork>`__
--  `mc\_submitWork <#eth_submitwork>`__
--  `mc\_submitHashrate <#eth_submithashrate>`__
--  `db\_putString <#db_putstring>`__
--  `db\_getString <#db_getstring>`__
--  `db\_putHex <#db_puthex>`__
--  `db\_getHex <#db_gethex>`__
--  `shh\_post <#shh_post>`__
--  `shh\_version <#shh_version>`__
--  `shh\_newIdentity <#shh_newidentity>`__
--  `shh\_hasIdentity <#shh_hasidentity>`__
--  `shh\_newGroup <#shh_newgroup>`__
--  `shh\_addToGroup <#shh_addtogroup>`__
--  `shh\_newFilter <#shh_newfilter>`__
--  `shh\_uninstallFilter <#shh_uninstallfilter>`__
--  `shh\_getFilterChanges <#shh_getfilterchanges>`__
--  `shh\_getMessages <#shh_getmessages>`__
+-  chain3
+
+   -  `chain3\_clientVersion <#chain3_clientversion>`__
+   -  `chain3\_sha3 <#chain3_sha3>`__
+
+-  net
+
+   -  `net\_version <#net_version>`__
+   -  `net\_peerCount <#net_peercount>`__
+   -  `net\_listening <#net_listening>`__
+
+-  mc
+
+   -  `mc\_protocolVersion <#mc_protocolversion>`__
+   -  `mc\_syncing <#mc_syncing>`__
+   -  `mc\_coinbase <#mc_coinbase>`__
+   -  `mc\_mining <#mc_mining>`__
+   -  `mc\_hashrate <#mc_hashrate>`__
+   -  `mc\_gasPrice <#mc_gasprice>`__
+   -  `mc\_accounts <#mc_accounts>`__
+   -  `mc\_blockNumber <#mc_blocknumber>`__
+   -  `mc\_getBalance <#mc_getbalance>`__
+   -  `mc\_getStorageAt <#mc_getstorageat>`__
+   -  `mc\_getTransactionCount <#mc_gettransactioncount>`__
+   -  `mc\_getBlockTransactionCountByHash <#mc_getblocktransactioncountbyhash>`__
+   -  `mc\_getBlockTransactionCountByNumber <#mc_getblocktransactioncountbynumber>`__
+   -  `mc\_getUncleCountByBlockHash <#mc_getunclecountbyblockhash>`__
+   -  `mc\_getUncleCountByBlockNumber <#mc_getunclecountbyblocknumber>`__
+   -  `mc\_getCode <#mc_getcode>`__
+   -  `mc\_sign <#mc_sign>`__
+   -  `mc\_sendTransaction <#mc_sendtransaction>`__
+   -  `mc\_sendRawTransaction <#mc_sendrawtransaction>`__
+   -  `mc\_call <#mc_call>`__
+   -  `mc\_estimateGas <#mc_estimategas>`__
+   -  `mc\_getBlockByHash <#mc_getblockbyhash>`__
+   -  `mc\_getBlockByNumber <#mc_getblockbynumber>`__
+   -  `mc\_getTransactionByHash <#mc_gettransactionbyhash>`__
+   -  `mc\_getTransactionByBlockHashAndIndex <#mc_gettransactionbyblockhashandindex>`__
+   -  `mc\_getTransactionByBlockNumberAndIndex <#mc_gettransactionbyblocknumberandindex>`__
+   -  `mc\_getTransactionReceipt <#mc_gettransactionreceipt>`__
+   -  `mc\_getUncleByBlockHashAndIndex <#mc_getunclebyblockhashandindex>`__
+   -  `mc\_getUncleByBlockNumberAndIndex <#mc_getunclebyblocknumberandindex>`__
+   -  `mc\_newFilter <#mc_newfilter>`__
+   -  `mc\_newBlockFilter <#mc_newblockfilter>`__
+   -  `mc\_newPendingTransactionFilter <#mc_newpendingtransactionfilter>`__
+   -  `mc\_uninstallFilter <#mc_uninstallfilter>`__
+   -  `mc\_getFilterChanges <#mc_getfilterchanges>`__
+   -  `mc\_getFilterLogs <#mc_getfilterlogs>`__
+   -  `mc\_getLogs <#mc_getlogs>`__
+   -  `mc\_getWork <#mc_getwork>`__
+   -  `mc\_submitWork <#mc_submitwork>`__
+
+-  vnode
+
+   -  `vnode\_address <#vnode_address>`__
+   -  `vnode\_scsService <#vnode_scsservice>`__
+   -  `vnode\_serviceCfg <#vnode_servicecfg>`__
+   -  `vnode\_showToPublic <#vnode_showtopublic>`__
+   -  `vnode\_vnodeIP <#vnode_vnodeip>`__
+
+-  scs
+-  `scs\_directCall <#scs_directcall>`__
+-  `scs\_getBlock <#scs_getblock>`__
+-  `scs\_getBlockNumber <#scs_getblocknumber>`__
+-  `scs\_getDappState <#scs_getdappstate>`__
+-  `scs\_getMicroChainList <#scs_getmicrochainlist>`__
+-  `scs\_getNonce <#scs_getnonce>`__
+-  `scs\_getSCSId <#scs_getscsid>`__
+-  `scs\_getTransactionReceipt <#scs_gettransactionreceipt>`__
 
 JSON RPC API Reference
 ----------------------
 
 --------------
 
-web3\_clientVersion
-~~~~~~~~~~~~~~~~~~~
+chain3\_clientVersion
+^^^^^^^^^^^^^^^^^^^^^
 
 Returns the current client version.
 
@@ -428,19 +244,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":67}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"chain3_clientVersion","params":[],"id":101}' 'localhost:8545'
 
     // Result
     {
-      "id":67,
       "jsonrpc":"2.0",
-      "result": "Mist/v0.9.3/darwin/go1.4.1"
+      "id":101,
+      "result":"Moac/v0.8.3-release-ad500ab5/darwin-amd64/go1.10"
     }
 
 --------------
 
-web3\_sha3
-~~~~~~~~~~
+chain3\_sha3
+^^^^^^^^^^^^
 
 Returns Keccak-256 (*not* the standardized SHA3-256) of the given data.
 
@@ -466,19 +282,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"web3_sha3","params":["0x68656c6c6f20776f726c64"],"id":64}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"chain3_sha3","params":["0x68656c6c6f20776f726c64"],"id":101}' localhost:8545
 
     // Result
     {
-      "id":64,
-      "jsonrpc": "2.0",
-      "result": "0x47173285a8d7341e5e972fc677286384f802f8ef42a5ec5f03bbfa254cb01fad"
+      "jsonrpc":"2.0",
+      "id":101,
+      "result":"0x47173285a8d7341e5e972fc677286384f802f8ef42a5ec5f03bbfa254cb01fad"
     }
 
 --------------
 
 net\_version
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 Returns the current network id.
 
@@ -490,9 +306,8 @@ none
 Returns
 '''''''
 
-``String`` - The current network id. - ``"1"``: Ethereum Mainnet -
-``"2"``: Morden Testnet (deprecated) - ``"3"``: Ropsten Testnet -
-``"4"``: Rinkeby Testnet - ``"42"``: Kovan Testnet
+``String`` - The current network id. - ``"99"``: MOAC Mainnet -
+``"101"``: MOAC Testnet - ``"100"``: Devnet
 
 Example
 '''''''
@@ -500,19 +315,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"net_version","params":[],"id":67}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"net_version","params":[],"id":101}' localhost:8545
 
     // Result
     {
-      "id":67,
+      "id":101,
       "jsonrpc": "2.0",
-      "result": "3"
+      "result": "101"
     }
 
 --------------
 
 net\_listening
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
 
 Returns ``true`` if client is actively listening for network
 connections.
@@ -533,11 +348,11 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"net_listening","params":[],"id":67}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"net_listening","params":[],"id":101}' localhost:8545
 
     // Result
     {
-      "id":67,
+      "id":101,
       "jsonrpc":"2.0",
       "result":true
     }
@@ -545,7 +360,7 @@ Example
 --------------
 
 net\_peerCount
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
 
 Returns number of peers currently connected to the client.
 
@@ -565,21 +380,21 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":74}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":101}' localhost:8545
 
     // Result
     {
       "id":74,
       "jsonrpc": "2.0",
-      "result": "0x2" // 2
+      "result": "0x4" // 4 net peers are connecting
     }
 
 --------------
 
-eth\_protocolVersion
-~~~~~~~~~~~~~~~~~~~~
+mc\_protocolVersion
+^^^^^^^^^^^^^^^^^^^
 
-Returns the current ethereum protocol version.
+Returns the current MOAC protocol version.
 
 Parameters
 ''''''''''
@@ -589,7 +404,7 @@ none
 Returns
 '''''''
 
-``String`` - The current ethereum protocol version
+``String`` - The current MOAC protocol version
 
 Example
 '''''''
@@ -597,19 +412,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_protocolVersion","params":[],"id":67}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_protocolVersion","params":[],"id":101}' localhost:8545
 
     // Result
     {
-      "id":67,
+      "id":101,
       "jsonrpc": "2.0",
-      "result": "54"
+      "result": "0x3f"
     }
 
 --------------
 
-eth\_syncing
-~~~~~~~~~~~~
+mc\_syncing
+^^^^^^^^^^^
 
 Returns an object with data about the sync status or ``false``.
 
@@ -625,8 +440,8 @@ Returns
 not syncing: - ``startingBlock``: ``QUANTITY`` - The block at which the
 import started (will only be reset, after the sync reached his head) -
 ``currentBlock``: ``QUANTITY`` - The current block, same as
-eth\_blockNumber - ``highestBlock``: ``QUANTITY`` - The estimated
-highest block
+mc\_blockNumber - ``highestBlock``: ``QUANTITY`` - The estimated highest
+block
 
 Example
 '''''''
@@ -634,7 +449,7 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_syncing","params":[],"id":101}' localhost:8545
 
     // Result
     {
@@ -648,15 +463,15 @@ Example
     }
     // Or when not syncing
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
       "result": false
     }
 
 --------------
 
-eth\_coinbase
-~~~~~~~~~~~~~
+mc\_coinbase
+^^^^^^^^^^^^
 
 Returns the client coinbase address.
 
@@ -676,19 +491,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_coinbase","params":[],"id":64}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_coinbase","params":[],"id":101}' localhost:8545
 
     // Result
     {
-      "id":64,
+      "id":101,
       "jsonrpc": "2.0",
       "result": "0x407d73d8a49eeb85d32cf465507dd71d507100c1"
     }
 
 --------------
 
-eth\_mining
-~~~~~~~~~~~
+mc\_mining
+^^^^^^^^^^
 
 Returns ``true`` if client is actively mining new blocks.
 
@@ -709,19 +524,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_mining","params":[],"id":71}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_mining","params":[],"id":101}' localhost:8545
 
     // Result
     {
-      "id":71,
+      "id":101,
       "jsonrpc": "2.0",
       "result": true
     }
 
 --------------
 
-eth\_hashrate
-~~~~~~~~~~~~~
+mc\_hashrate
+^^^^^^^^^^^^
 
 Returns the number of hashes per second that the node is mining with.
 
@@ -741,21 +556,21 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_hashrate","params":[],"id":71}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_hashrate","params":[],"id":101}' localhost:8545
 
     // Result
     {
-      "id":71,
+      "id":101,
       "jsonrpc": "2.0",
       "result": "0x38a"
     }
 
 --------------
 
-eth\_gasPrice
-~~~~~~~~~~~~~
+mc\_gasPrice
+^^^^^^^^^^^^
 
-Returns the current price per gas in wei.
+Returns the current price per gas in sha.
 
 Parameters
 ''''''''''
@@ -765,7 +580,7 @@ none
 Returns
 '''''''
 
-``QUANTITY`` - integer of the current gas price in wei.
+``QUANTITY`` - integer of the current gas price in sha.
 
 Example
 '''''''
@@ -773,19 +588,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_gasPrice","params":[],"id":101}' localhost:8545
 
     // Result
     {
-      "id":73,
+      "id":101,
       "jsonrpc": "2.0",
       "result": "0x09184e72a000" // 10000000000000
     }
 
 --------------
 
-eth\_accounts
-~~~~~~~~~~~~~
+mc\_accounts
+^^^^^^^^^^^^
 
 Returns a list of addresses owned by client.
 
@@ -805,19 +620,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_accounts","params":[],"id":101}' localhost:8545
 
     // Result
     {
       "id":1,
       "jsonrpc": "2.0",
-      "result": ["0x407d73d8a49eeb85d32cf465507dd71d507100c1"]
+      "result": ["0x407d73d8a49eeb85d32cf465507dd71d507100c1","0x87dc9d8014e189b9d32c622a9ad1d02f72383979"]
     }
 
 --------------
 
-eth\_blockNumber
-~~~~~~~~~~~~~~~~
+mc\_blockNumber
+^^^^^^^^^^^^^^^
 
 Returns the number of most recent block.
 
@@ -837,7 +652,7 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":83}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_blockNumber","params":[],"id":101}' 'localhost:8545'
 
     // Result
     {
@@ -848,8 +663,8 @@ Example
 
 --------------
 
-eth\_getBalance
-~~~~~~~~~~~~~~~
+mc\_getBalance
+^^^^^^^^^^^^^^
 
 Returns the balance of the account of given address.
 
@@ -871,7 +686,7 @@ Parameters
 Returns
 '''''''
 
-``QUANTITY`` - integer of the current balance in wei.
+``QUANTITY`` - integer of the current balance in sha.
 
 Example
 '''''''
@@ -879,19 +694,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1", "latest"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getBalance","params":["0x87dc9d8014e189b9d32c622a9ad1d02f72383979", "latest"],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
-      "result": "0x0234c8a3397aab58" // 158972490234375000
+      "result": "0x12f8b3a319c000" // 5340000000000000
     }
 
 --------------
 
-eth\_getStorageAt
-~~~~~~~~~~~~~~~~~
+mc\_getStorageAt
+^^^^^^^^^^^^^^^^
 
 Returns the value from a storage position at a given address.
 
@@ -914,8 +729,8 @@ Example
 
 Calculating the correct position depends on the storage to retrieve.
 Consider the following contract deployed at
-``0x295a70b2de5e3953354a6a8344e616ed314d7251`` by address
-``0x391694e7e0b0cce554cb130d723a9d27458f9298``.
+``0x02701dc451e126316ece6870fd70ea140efa7b15`` by address
+``0xa8863fc8ce3816411378685223c03daae9770ebb``.
 
 ::
 
@@ -933,7 +748,7 @@ Retrieving the value of pos0 is straight forward:
 
 .. code:: js
 
-    curl -X POST --data '{"jsonrpc":"2.0", "method": "eth_getStorageAt", "params": ["0x295a70b2de5e3953354a6a8344e616ed314d7251", "0x0", "latest"], "id": 1}' localhost:8545
+    curl -X POST --data '{"jsonrpc":"2.0", "method": "mc_getStorageAt", "params": ["0x02701dc451e126316ece6870fd70ea140efa7b15", "0x0", "latest"], "id": 101}' localhost:8545
 
     {"jsonrpc":"2.0","id":1,"result":"0x00000000000000000000000000000000000000000000000000000000000004d2"}
 
@@ -952,28 +767,28 @@ the position with:
 
     keccak(decodeHex("000000000000000000000000391694e7e0b0cce554cb130d723a9d27458f9298" + "0000000000000000000000000000000000000000000000000000000000000001"))
 
-The geth console which comes with the web3 library can be used to make
+The moac console which comes with the chain3 library can be used to make
 the calculation:
 
 .. code:: js
 
     > var key = "000000000000000000000000391694e7e0b0cce554cb130d723a9d27458f9298" + "0000000000000000000000000000000000000000000000000000000000000001"
     undefined
-    > web3.sha3(key, {"encoding": "hex"})
+    > chain3.sha3(key, {"encoding": "hex"})
     "0x6661e9d6d8b923d5bbaab1b96e1dd51ff6ea2a93520fdc9eb75d059238b8c5e9"
 
 Now to fetch the storage:
 
 .. code:: js
 
-    curl -X POST --data '{"jsonrpc":"2.0", "method": "eth_getStorageAt", "params": ["0x295a70b2de5e3953354a6a8344e616ed314d7251", "0x6661e9d6d8b923d5bbaab1b96e1dd51ff6ea2a93520fdc9eb75d059238b8c5e9", "latest"], "id": 1}' localhost:8545
+    curl -X POST --data '{"jsonrpc":"2.0", "method": "mc_getStorageAt", "params": ["0x295a70b2de5e3953354a6a8344e616ed314d7251", "0x6661e9d6d8b923d5bbaab1b96e1dd51ff6ea2a93520fdc9eb75d059238b8c5e9", "latest"], "id": 101}' localhost:8545
 
-    {"jsonrpc":"2.0","id":1,"result":"0x000000000000000000000000000000000000000000000000000000000000162e"}
+    {"jsonrpc":"2.0","id":101,"result":"0x000000000000000000000000000000000000000000000000000000000000162e"}
 
 --------------
 
-eth\_getTransactionCount
-~~~~~~~~~~~~~~~~~~~~~~~~
+mc\_getTransactionCount
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the number of transactions *sent* from an address.
 
@@ -1004,19 +819,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionCount","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1","latest"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getTransactionCount","params":["0x57d83802a772adf506a89f5021c93a05749e3c6e","latest"],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
-      "result": "0x1" // 1
+      "result": "0x29" // 41
     }
 
 --------------
 
-eth\_getBlockTransactionCountByHash
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mc\_getBlockTransactionCountByHash
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the number of transactions in a block from a block matching the
 given block hash.
@@ -1043,7 +858,7 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByHash","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getBlockTransactionCountByHash","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":101}' localhost:8545
 
     // Result
     {
@@ -1054,8 +869,8 @@ Example
 
 --------------
 
-eth\_getBlockTransactionCountByNumber
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mc\_getBlockTransactionCountByNumber
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
         Returns the number of transactions in a block matching the given
         block number.
@@ -1084,19 +899,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByNumber","params":["0xe8"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getBlockTransactionCountByNumber","params":["0xe8"],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
       "result": "0xa" // 10
     }
 
 --------------
 
-eth\_getUncleCountByBlockHash
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mc\_getUncleCountByBlockHash
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the number of uncles in a block from a block matching the given
 block hash.
@@ -1123,19 +938,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getUncleCountByBlockHash","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getUncleCountByBlockHash","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
       "result": "0x1" // 1
     }
 
 --------------
 
-eth\_getUncleCountByBlockNumber
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mc\_getUncleCountByBlockNumber
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the number of uncles in a block from a block matching the given
 block number.
@@ -1164,19 +979,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getUncleCountByBlockNumber","params":["0xe8"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getUncleCountByBlockNumber","params":["0xe8"],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
       "result": "0x1" // 1
     }
 
 --------------
 
-eth\_getCode
-~~~~~~~~~~~~
+mc\_getCode
+^^^^^^^^^^^
 
 Returns code at a given address.
 
@@ -1206,27 +1021,27 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getCode","params":["0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b", "0x2"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getCode","params":["0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b", "0x2"],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
       "result": "0x600160008035811a818181146012578301005b601b6001356025565b8060005260206000f25b600060078202905091905056"
     }
 
 --------------
 
-eth\_sign
-~~~~~~~~~
+mc\_sign
+^^^^^^^^
 
-The sign method calculates an Ethereum specific signature with:
-``sign(keccak256("\x19Ethereum Signed Message:\n" + len(message) + message)))``.
+The sign method calculates an MOAC specific signature with:
+``sign(keccak256("\x19MOAC Signed Message:\n" + len(message) + message)))``.
 
 By adding a prefix to the message makes the calculated signature
-recognisable as an Ethereum specific signature. This prevents misuse
-where a malicious DApp can sign arbitrary data (e.g. transaction) and
-use the signature to impersonate the victim.
+recognisable as an MOAC specific signature. This prevents misuse where a
+malicious DApp can sign arbitrary data (e.g. transaction) and use the
+signature to impersonate the victim.
 
 **Note** the address to sign with must be unlocked.
 
@@ -1249,27 +1064,29 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sign","params":["0x9b2055d370f73ec7d8a03e965129118dc8f5bf83", "0xdeadbeaf"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_sign","params":["0x57d83802a772adf506a89f5021c93a05749e3c6e", "0xdeadbeaf"],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
-      "result": "0xa3f20717a250c2b0b729b7e5becbff67fdaef7e0699da4de7ca5895b02a170a12d887fd3b17bfdce3481f10bea41f45ba9f709d39ce8325427b57afcfc994cee1b"
+      "result": "0xefa354f816ab378a7da6ec25afe9e6393b72a3c06b2d08550815cc43d1993f6c58afbf228559df6a39ac419bef847ca2dc3047886df6a0f06a4c5e6a4e2dc9a61c"
     }
 
 An example how to use solidity ecrecover to verify the signature
-calculated with ``eth_sign`` can be found
+calculated with ``mc_sign`` can be found
 `here <https://gist.github.com/bas-vk/d46d83da2b2b4721efb0907aecdb7ebd>`__.
 The contract is deployed on the testnet Ropsten and Rinkeby.
 
 --------------
 
-eth\_sendTransaction
-~~~~~~~~~~~~~~~~~~~~
+mc\_sendTransaction
+^^^^^^^^^^^^^^^^^^^
 
 Creates new message call transaction or a contract creation, if the data
 field contains code.
+
+**Note** the address to sign with must be unlocked.
 
 Parameters
 ''''''''''
@@ -1310,9 +1127,9 @@ Returns
 ``DATA``, 32 Bytes - the transaction hash, or the zero hash if the
 transaction is not yet available.
 
-Use `eth\_getTransactionReceipt <#eth_gettransactionreceipt>`__ to get
-the contract address, after the transaction was mined, when you created
-a contract.
+Use `mc\_getTransactionReceipt <#mc_gettransactionreceipt>`__ to get the
+contract address, after the transaction was mined, when you created a
+contract.
 
 Example
 '''''''
@@ -1320,19 +1137,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sendTransaction","params":[{see above}],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_sendTransaction","params":[{see above}],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
       "result": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331"
     }
 
 --------------
 
-eth\_sendRawTransaction
-~~~~~~~~~~~~~~~~~~~~~~~
+mc\_sendRawTransaction
+^^^^^^^^^^^^^^^^^^^^^^
 
 Creates new message call transaction or a contract creation for signed
 transactions.
@@ -1352,9 +1169,9 @@ Returns
 ``DATA``, 32 Bytes - the transaction hash, or the zero hash if the
 transaction is not yet available.
 
-Use `eth\_getTransactionReceipt <#eth_gettransactionreceipt>`__ to get
-the contract address, after the transaction was mined, when you created
-a contract.
+Use `mc\_getTransactionReceipt <#mc_gettransactionreceipt>`__ to get the
+contract address, after the transaction was mined, when you created a
+contract.
 
 Example
 '''''''
@@ -1362,19 +1179,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sendRawTransaction","params":[{see above}],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_sendRawTransaction","params":[{see above}],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
       "result": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331"
     }
 
 --------------
 
-eth\_call
-~~~~~~~~~
+mc\_call
+^^^^^^^^
 
 Executes a new message call immediately without creating a transaction
 on the block chain.
@@ -1389,7 +1206,7 @@ Parameters
 -  ``to``: ``DATA``, 20 Bytes - The address the transaction is directed
    to.
 -  ``gas``: ``QUANTITY`` - (optional) Integer of the gas provided for
-   the transaction execution. eth\_call consumes zero gas, but this
+   the transaction execution. mc\_call consumes zero gas, but this
    parameter may be needed by some executions.
 -  ``gasPrice``: ``QUANTITY`` - (optional) Integer of the gasPrice used
    for each paid gas
@@ -1414,19 +1231,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params":[{see above}],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_call","params":[{see above}],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
       "result": "0x"
     }
 
 --------------
 
-eth\_estimateGas
-~~~~~~~~~~~~~~~~
+mc\_estimateGas
+^^^^^^^^^^^^^^^
 
 Generates and returns an estimate of how much gas is necessary to allow
 the transaction to complete. The transaction will not be added to the
@@ -1437,8 +1254,8 @@ including EVM mechanics and node performance.
 Parameters
 ''''''''''
 
-See `eth\_call <#eth_call>`__ parameters, expect that all properties are
-optional. If no gas limit is specified geth uses the block gas limit
+See `mc\_call <#mc_call>`__ parameters, expect that all properties are
+optional. If no gas limit is specified moac uses the block gas limit
 from the pending block as an upper bound. As a result the returned
 estimate might not be enough to executed the call/transaction when the
 amount of gas is higher than the pending block gas limit.
@@ -1454,19 +1271,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_estimateGas","params":[{see above}],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_estimateGas","params":[{see above}],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
       "result": "0x5208" // 21000
     }
 
 --------------
 
-eth\_getBlockByHash
-~~~~~~~~~~~~~~~~~~~
+mc\_getBlockByHash
+^^^^^^^^^^^^^^^^^^
 
 Returns information about a block by hash.
 
@@ -1529,38 +1346,40 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockByHash","params":["0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331", true],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getBlockByHash","params":["0x9d88f2a2a348eec743b149f461fddcf0843d3920ddf998896672cee476b99127", true],"id":101}' localhost:8545
 
     // Result
     {
-    "id":1,
     "jsonrpc":"2.0",
-    "result": {
-        "number": "0x1b4", // 436
-        "hash": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331",
-        "parentHash": "0x9646252be9520f6e71339a8df9c55e4d7619deeb018d2a3f2d21fc165dde5eb5",
-        "nonce": "0xe04d296d2460cfb8472af2c5fd05b5a214109c25688d3704aed5484f9a7792f2",
-        "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
-        "logsBloom": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331",
-        "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
-        "stateRoot": "0xd5855eb08b3387c0af375e9cdb6acfc05eb8f519e419b874b6ff2ffda7ed1dff",
-        "miner": "0x4e65fda2159562a496f9f3522f89122a3088497a",
-        "difficulty": "0x027f07", // 163591
-        "totalDifficulty":  "0x027f07", // 163591
-        "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
-        "size":  "0x027f07", // 163591
-        "gasLimit": "0x9f759", // 653145
-        "gasUsed": "0x9f759", // 653145
-        "timestamp": "0x54e34e8e" // 1424182926
-        "transactions": [{...},{ ... }] 
-        "uncles": ["0x1606e5...", "0xd5145a9..."]
+    "id":101,
+    "result":{
+      "difficulty":"0x9ad5136",
+      "extraData":"0xdd854d4f41432d85302e382e332d87676f312e382e338777696e646f7773",
+      "gasLimit":"0x895440",
+      "gasUsed":"0x0",
+      "hash":"0x9d88f2a2a348eec743b149f461fddcf0843d3920ddf998896672cee476b99127",
+      "logsBloom":"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "miner":"0x0a2168d2f08161c01745fec4e6e8fe06f314ab41",
+      "mixHash":"0xd6e9f8d36f8f0f57abff5ccf6390ece4d5a14eb624779628fd6e6119451589e2",
+      "nonce":"0x423e7acb4d05a23c",
+      "number":"0x4803d",
+      "parentHash":"0xc494dbda1ef4f673fd14fc487a1346a7747a41910d1a1f0e72d6e0e660c0e792",
+      "receiptsRoot":"0x9287370eb27f11b0c2188431cbc58a23b685f02dbd851ed4d974f932bd780839",
+      "sha3Uncles":"0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+      "size":"0x24e",
+      "stateRoot":"0xff791a26fd0cb6addfe4bec0287b3905bf44898f0fd71e446cb1385f94333e18",
+      "timestamp":"0x5b1f3a14",
+      "totalDifficulty":"0x325dc638b38e",
+      "transactions":[{"blockHash":"0x9d88f2a2a348eec743b149f461fddcf0843d3920ddf998896672cee476b99127","blockNumber":"0x4803d","from":"0x0000000000000000000000000000000000000064","gas":"0x0","gasPrice":"0x4a817c800","hash":"0x52ccd05bdfb137fcbb6154f1cb7c006ba53cd8ce80511841d2e7b3c6324d49df","input":"0xc1c0e9c4","nonce":"0x4803c","syscnt":"0x65","to":"0x0000000000000000000000000000000000000065","transactionIndex":"0x0","value":"0x0","v":"0x0","r":"0x0","s":"0x0","shardingFlag":"0x0"}],
+      "transactionsRoot":"0xa29e25d8e3db000e44122a594cc52a7bf050850b3a7e028fd54cb83784fc1bc3",
+      "uncles":[]
       }
     }
 
 --------------
 
-eth\_getBlockByNumber
-~~~~~~~~~~~~~~~~~~~~~
+mc\_getBlockByNumber
+^^^^^^^^^^^^^^^^^^^^
 
 Returns information about a block by block number.
 
@@ -1583,7 +1402,7 @@ Parameters
 Returns
 '''''''
 
-See `eth\_getBlockByHash <#eth_getblockbyhash>`__
+See `mc\_getBlockByHash <#mc_getblockbyhash>`__
 
 Example
 '''''''
@@ -1591,14 +1410,14 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["0x1b4", true],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getBlockByNumber","params":["0x1b4", true],"id":101}' localhost:8545
 
-Result see `eth\_getBlockByHash <#eth_getblockbyhash>`__
+Result see `mc\_getBlockByHash <#mc_getblockbyhash>`__
 
 --------------
 
-eth\_getTransactionByHash
-~~~~~~~~~~~~~~~~~~~~~~~~~
+mc\_getTransactionByHash
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the information about a transaction requested by transaction
 hash.
@@ -1643,11 +1462,11 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionByHash","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getTransactionByHash","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":101}' localhost:8545
 
     // Result
     {
-    "id":1,
+    "id":101,
     "jsonrpc":"2.0",
     "result": {
         "hash":"0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b",
@@ -1666,8 +1485,8 @@ Example
 
 --------------
 
-eth\_getTransactionByBlockHashAndIndex
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mc\_getTransactionByBlockHashAndIndex
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns information about a transaction by block hash and transaction
 index position.
@@ -1688,7 +1507,7 @@ Parameters
 Returns
 '''''''
 
-See `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
+See `mc\_getTransactionByHash <#mc_gettransactionbyhash>`__
 
 Example
 '''''''
@@ -1696,14 +1515,14 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionByBlockHashAndIndex","params":["0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b", "0x0"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getTransactionByBlockHashAndIndex","params":["0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b", "0x0"],"id":101}' localhost:8545
 
-Result see `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
+Result see `mc\_getTransactionByHash <#mc_gettransactionbyhash>`__
 
 --------------
 
-eth\_getTransactionByBlockNumberAndIndex
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mc\_getTransactionByBlockNumberAndIndex
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns information about a transaction by block number and transaction
 index position.
@@ -1726,7 +1545,7 @@ Parameters
 Returns
 '''''''
 
-See `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
+See `mc\_getTransactionByHash <#mc_gettransactionbyhash>`__
 
 Example
 '''''''
@@ -1734,14 +1553,14 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionByBlockNumberAndIndex","params":["0x29c", "0x0"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getTransactionByBlockNumberAndIndex","params":["0x29c", "0x0"],"id":101}' localhost:8545
 
-Result see `eth\_getTransactionByHash <#eth_gettransactionbyhash>`__
+Result see `mc\_getTransactionByHash <#mc_gettransactionbyhash>`__
 
 --------------
 
-eth\_getTransactionReceipt
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+mc\_getTransactionReceipt
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the receipt of a transaction by transaction hash.
 
@@ -1755,7 +1574,7 @@ Parameters
 .. code:: js
 
     params: [
-       '0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238'
+       '0x7bb694c3462764cb113e9b742faaf06adc728e70b607f8b7aa95207ee32b1c5e'
     ]
 
 Returns
@@ -1795,32 +1614,31 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionReceipt","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getTransactionReceipt","params":["0x7bb694c3462764cb113e9b742faaf06adc728e70b607f8b7aa95207ee32b1c5e"],"id":101}' localhost:8545
 
     // Result
     {
-    "id":1,
-    "jsonrpc":"2.0",
-    "result": {
-         transactionHash: '0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238',
-         transactionIndex:  '0x1', // 1
-         blockNumber: '0xb', // 11
-         blockHash: '0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b',
-         cumulativeGasUsed: '0x33bc', // 13244
-         gasUsed: '0x4dc', // 1244
-         contractAddress: '0xb60e8dd61c5d32be8058bb8eb970870f07233155', // or null, if none was created
-         logs: [{
-             // logs as returned by getFilterLogs, etc.
-         }, ...],
-         logsBloom: "0x00...0", // 256 byte bloom filter
-         status: '0x1'
-      }
+    {"jsonrpc":"2.0",
+    "id":101,
+    "result":{
+    "blockHash":"0xad7d2eec610b3e04ea4676c11a3184cb07df43ed7ab717f331d3c952fc1b55cf",
+    "blockNumber":"0x1b943",
+    "contractAddress":"0xf2f4eec6c2adfcf780aae828de0b25f86506ffae",
+    "cumulativeGasUsed":"0x1b337c",
+    "from":"0x7312f4b8a4457a36827f185325fd6b66a3f8bb8b",
+    "gasUsed":"0x1b337c",
+    "logs":[],
+    "logsBloom":"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "status":"0x1",
+    "to":null,
+    "transactionHash":"0x7bb694c3462764cb113e9b742faaf06adc728e70b607f8b7aa95207ee32b1c5e",
+    "transactionIndex":"0x1"}
     }
 
 --------------
 
-eth\_getUncleByBlockHashAndIndex
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mc\_getUncleByBlockHashAndIndex
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns information about a uncle of a block by hash and uncle index
 position.
@@ -1841,7 +1659,7 @@ Parameters
 Returns
 '''''''
 
-See `eth\_getBlockByHash <#eth_getblockbyhash>`__
+See `mc\_getBlockByHash <#mc_getblockbyhash>`__
 
 Example
 '''''''
@@ -1849,16 +1667,16 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getUncleByBlockHashAndIndex","params":["0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b", "0x0"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getUncleByBlockHashAndIndex","params":["0x696d389aa9b6b44e08af9f3528c51587aac435b75a54ece42f4b2d1289043497", "0x0"],"id":101}' localhost:8545
 
-Result see `eth\_getBlockByHash <#eth_getblockbyhash>`__
+Result see `mc\_getBlockByHash <#mc_getblockbyhash>`__
 
 **Note**: An uncle doesn't contain individual transactions.
 
 --------------
 
-eth\_getUncleByBlockNumberAndIndex
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mc\_getUncleByBlockNumberAndIndex
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns information about a uncle of a block by number and uncle index
 position.
@@ -1881,7 +1699,7 @@ Parameters
 Returns
 '''''''
 
-See `eth\_getBlockByHash <#eth_getblockbyhash>`__
+See `mc\_getBlockByHash <#mc_getblockbyhash>`__
 
 **Note**: An uncle doesn't contain individual transactions.
 
@@ -1891,197 +1709,18 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getUncleByBlockNumberAndIndex","params":["0x29c", "0x0"],"id":1}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getUncleByBlockNumberAndIndex","params":["0x29c", "0x0"],"id":101}' localhost:8545
 
-Result see `eth\_getBlockByHash <#eth_getblockbyhash>`__
-
---------------
-
-eth\_getCompilers
-~~~~~~~~~~~~~~~~~
-
-Returns a list of available compilers in the client.
-
-Parameters
-''''''''''
-
-none
-
-Returns
-'''''''
-
-``Array`` - Array of available compilers.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getCompilers","params":[],"id":1}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc": "2.0",
-      "result": ["solidity", "lll", "serpent"]
-    }
+Result see `mc\_getBlockByHash <#mc_getblockbyhash>`__
 
 --------------
 
-eth\_compileSolidity
-~~~~~~~~~~~~~~~~~~~~
-
-Returns compiled solidity code.
-
-Parameters
-''''''''''
-
-1. ``String`` - The source code.
-
-.. code:: js
-
-    params: [
-       "contract test { function multiply(uint a) returns(uint d) {   return a * 7;   } }",
-    ]
-
-Returns
-'''''''
-
-``DATA`` - The compiled source code.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_compileSolidity","params":["contract test { function multiply(uint a) returns(uint d) {   return a * 7;   } }"],"id":1}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc": "2.0",
-      "result": {
-          "code": "0x605880600c6000396000f3006000357c010000000000000000000000000000000000000000000000000000000090048063c6888fa114602e57005b603d6004803590602001506047565b8060005260206000f35b60006007820290506053565b91905056",
-          "info": {
-            "source": "contract test {\n   function multiply(uint a) constant returns(uint d) {\n       return a * 7;\n   }\n}\n",
-            "language": "Solidity",
-            "languageVersion": "0",
-            "compilerVersion": "0.9.19",
-            "abiDefinition": [
-              {
-                "constant": true,
-                "inputs": [
-                  {
-                    "name": "a",
-                    "type": "uint256"
-                  }
-                ],
-                "name": "multiply",
-                "outputs": [
-                  {
-                    "name": "d",
-                    "type": "uint256"
-                  }
-                ],
-                "type": "function"
-              }
-            ],
-            "userDoc": {
-              "methods": {}
-            },
-            "developerDoc": {
-              "methods": {}
-            }
-          }
-
-    }
-
---------------
-
-eth\_compileLLL
-~~~~~~~~~~~~~~~
-
-Returns compiled LLL code.
-
-Parameters
-''''''''''
-
-1. ``String`` - The source code.
-
-.. code:: js
-
-    params: [
-       "(returnlll (suicide (caller)))",
-    ]
-
-Returns
-'''''''
-
-``DATA`` - The compiled source code.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_compileLLL","params":["(returnlll (suicide (caller)))"],"id":1}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc": "2.0",
-      "result": "0x603880600c6000396000f3006001600060e060020a600035048063c6888fa114601857005b6021600435602b565b8060005260206000f35b600081600702905091905056" // the compiled source code
-    }
-
---------------
-
-eth\_compileSerpent
-~~~~~~~~~~~~~~~~~~~
-
-Returns compiled serpent code.
-
-Parameters
-''''''''''
-
-1. ``String`` - The source code.
-
-.. code:: js
-
-    params: [
-       "/* some serpent */",
-    ]
-
-Returns
-'''''''
-
-``DATA`` - The compiled source code.
-
-Example
-'''''''
-
-.. code:: js
-
-    // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_compileSerpent","params":["/* some serpent */"],"id":1}'
-
-    // Result
-    {
-      "id":1,
-      "jsonrpc": "2.0",
-      "result": "0x603880600c6000396000f3006001600060e060020a600035048063c6888fa114601857005b6021600435602b565b8060005260206000f35b600081600702905091905056" // the compiled source code
-    }
-
---------------
-
-eth\_newFilter
-~~~~~~~~~~~~~~
+mc\_newFilter
+^^^^^^^^^^^^^
 
 Creates a filter object, based on filter options, to notify when the
 state changes (logs). To check if the state has changed, call
-`eth\_getFilterChanges <#eth_getfilterchanges>`__.
+`mc\_getFilterChanges <#mc_getfilterchanges>`__.
 
 A note on specifying topic filters:
 '''''''''''''''''''''''''''''''''''
@@ -2131,23 +1770,23 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_newFilter","params":[{"topics":["0x12341234"]}],"id":73}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_newFilter","params":[{"topics":["0x12341234"]}],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
       "result": "0x1" // 1
     }
 
 --------------
 
-eth\_newBlockFilter
-~~~~~~~~~~~~~~~~~~~
+mc\_newBlockFilter
+^^^^^^^^^^^^^^^^^^
 
 Creates a filter in the node, to notify when a new block arrives. To
 check if the state has changed, call
-`eth\_getFilterChanges <#eth_getfilterchanges>`__.
+`mc\_getFilterChanges <#mc_getfilterchanges>`__.
 
 Parameters
 ''''''''''
@@ -2165,23 +1804,23 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_newBlockFilter","params":[],"id":73}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_newBlockFilter","params":[],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc":  "2.0",
-      "result": "0x1" // 1
+      "result": "0x244afc5c2cb35b24c5b91bba7f7ab19d" // 1
     }
 
 --------------
 
-eth\_newPendingTransactionFilter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mc\_newPendingTransactionFilter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Creates a filter in the node, to notify when new pending transactions
 arrive. To check if the state has changed, call
-`eth\_getFilterChanges <#eth_getfilterchanges>`__.
+`mc\_getFilterChanges <#mc_getfilterchanges>`__.
 
 Parameters
 ''''''''''
@@ -2199,23 +1838,23 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_newPendingTransactionFilter","params":[],"id":73}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_newPendingTransactionFilter","params":[],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc":  "2.0",
       "result": "0x1" // 1
     }
 
 --------------
 
-eth\_uninstallFilter
-~~~~~~~~~~~~~~~~~~~~
+mc\_uninstallFilter
+^^^^^^^^^^^^^^^^^^^
 
 Uninstalls a filter with given id. Should always be called when watch is
 no longer needed. Additonally Filters timeout when they aren't requested
-with `eth\_getFilterChanges <#eth_getfilterchanges>`__ for a period of
+with `mc\_getFilterChanges <#mc_getfilterchanges>`__ for a period of
 time.
 
 Parameters
@@ -2241,19 +1880,19 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"eth_uninstallFilter","params":["0xb"],"id":73}'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_uninstallFilter","params":["0xb"],"id":101}' localhost:8545
 
     // Result
     {
-      "id":1,
+      "id":101,
       "jsonrpc": "2.0",
       "result": true
     }
 
 --------------
 
-eth\_getFilterChanges
-~~~~~~~~~~~~~~~~~~~~~
+mc\_getFilterChanges
+^^^^^^^^^^^^^^^^^^^^
 
 Polling method for a filter, which returns an array of logs which
 occurred since last poll.
@@ -2275,12 +1914,12 @@ Returns
 ``Array`` - Array of log objects, or an empty array if nothing has
 changed since last poll.
 
--  For filters created with ``eth_newBlockFilter`` the return are block
+-  For filters created with ``mc_newBlockFilter`` the return are block
    hashes (``DATA``, 32 Bytes), e.g. ``["0x3454645634534..."]``.
--  For filters created with ``eth_newPendingTransactionFilter`` the
+-  For filters created with ``mc_newPendingTransactionFilter`` the
    return are transaction hashes (``DATA``, 32 Bytes), e.g.
    ``["0x6345343454645..."]``.
--  For filters created with ``eth_newFilter`` logs are objects with
+-  For filters created with ``mc_newFilter`` logs are objects with
    following params:
 
 -  ``removed``: ``TAG`` - ``true`` when the log was removed, due to a
@@ -2297,4 +1936,618 @@ changed since last poll.
    in. ``null`` when its pending. ``null`` when its pending log.
 -  ``address``: ``DATA``, 20 Bytes - address from which this log
    originated.
--  ``data``: ``DATA`` - contains one or more 32 Bytes 
+-  ``data``: ``DATA`` - contains one or more 32 Bytes non-indexed
+   arguments of the log.
+-  ``topics``: ``Array of DATA`` - Array of 0 to 4 32 Bytes ``DATA`` of
+   indexed log arguments. (In *solidity*: The first topic is the *hash*
+   of the signature of the event (e.g.
+   ``Deposit(address,bytes32,uint256)``), except you declared the event
+   with the ``anonymous`` specifier.)
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getFilterChanges","params":["0x16"],"id":101}' localhost:8545
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc":"2.0",
+      "result": [{
+        "logIndex": "0x1", // 1
+        "blockNumber":"0x1b4", // 436
+        "blockHash": "0x8216c5785ac562ff41e2dcfdf5785ac562ff41e2dcfdf829c5a142f1fccd7d",
+        "transactionHash":  "0xdf829c5a142f1fccd7d8216c5785ac562ff41e2dcfdf5785ac562ff41e2dcf",
+        "transactionIndex": "0x0", // 0
+        "address": "0x16c5785ac562ff41e2dcfdf829c5a142f1fccd7d",
+        "data":"0x0000000000000000000000000000000000000000000000000000000000000000",
+        "topics": ["0x59ebeb90bc63057b6515673c3ecf9438e5058bca0f92585014eced636878c9a5"]
+        },{
+          ...
+        }]
+    }
+
+--------------
+
+mc\_getFilterLogs
+^^^^^^^^^^^^^^^^^
+
+Returns an array of all logs matching filter with given id.
+
+Parameters
+''''''''''
+
+1. ``QUANTITY`` - The filter id.
+
+.. code:: js
+
+    params: [
+      "0x16" // 22
+    ]
+
+Returns
+'''''''
+
+See `mc\_getFilterChanges <#mc_getfilterchanges>`__
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getFilterLogs","params":["0x16"],"id":101}' localhost:8545
+
+Result see `mc\_getFilterChanges <#mc_getfilterchanges>`__
+
+--------------
+
+mc\_getLogs
+^^^^^^^^^^^
+
+Returns an array of all logs matching a given filter object.
+
+Parameters
+''''''''''
+
+1. ``Object`` - the filter object, see `mc\_newFilter
+   parameters <#mc_newfilter>`__.
+
+.. code:: js
+
+    params: [{
+      "topics": ["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b"]
+    }]
+
+Returns
+'''''''
+
+See `mc\_getFilterChanges <#mc_getfilterchanges>`__
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getLogs","params":[{"topics":["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b"]}],"id":101}'
+
+Result see `mc\_getFilterChanges <#mc_getfilterchanges>`__
+
+--------------
+
+mc\_getWork
+^^^^^^^^^^^
+
+Returns the hash of the current block, the seedHash, and the boundary
+condition to be met ("target").
+
+Parameters
+''''''''''
+
+none
+
+Returns
+'''''''
+
+``Array`` - Array with the following properties: 1. ``DATA``, 32 Bytes -
+current block header pow-hash 2. ``DATA``, 32 Bytes - the seed hash used
+for the DAG. 3. ``DATA``, 32 Bytes - the boundary condition ("target"),
+2^256 / difficulty.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getWork","params":[],"id":101}' localhost:8545
+
+    // Result
+    {
+    "jsonrpc":"2.0",
+    "id":101,
+    "result":["0x367ebe7ed77dde0a4cc134adaa769f93a833e08a86a0d38ab18e32cc3740b5f8","0x9b2baad7528ecec612c5751a6bd525905892d7892e155c3b05e61363154a940b","0x0000001dd67ebb66a2c0fc63b9907077f70b5315e1780a8b74f33d40e2a9a7e4"]
+    }
+
+--------------
+
+mc\_submitWork
+^^^^^^^^^^^^^^
+
+Used for submitting a proof-of-work solution.
+
+Parameters
+''''''''''
+
+1. ``DATA``, 8 Bytes - The nonce found (64 bits)
+2. ``DATA``, 32 Bytes - The header's pow-hash (256 bits)
+3. ``DATA``, 32 Bytes - The mix digest (256 bits)
+
+.. code:: js
+
+    params: [
+      "0x0000000000000001",
+      "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+      "0xD1FE5700000000000000000000000000D1FE5700000000000000000000000000"
+    ]
+
+Returns
+'''''''
+
+``Boolean`` - returns ``true`` if the provided solution is valid,
+otherwise ``false``.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0", "method":"mc_submitWork", "params":["0x0000000000000001", "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef", "0xD1GE5700000000000000000000000000D1GE5700000000000000000000000000"],"id":101}'
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc":"2.0",
+      "result": true
+    }
+
+--------------
+
+vnode\_address
+^^^^^^^^^^^^^^
+
+Returns the VNODE benificial address. This is needed for SCS to use in
+the communication.
+
+Parameters
+''''''''''
+
+none
+
+Returns
+'''''''
+
+``address``: ``DATA``, 20 Bytes - address from which the VNODE settings
+in the vnodeconfig.json file.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"vnode_address","params":[],"id":101}' localhost:8545
+
+    // Result
+    {
+    "jsonrpc":"2.0",
+    "id":101,
+    "result":"0xa8863fc8ce3816411378685223c03daae9770ebb"
+    }
+
+--------------
+
+vnode\_scsService
+^^^^^^^^^^^^^^^^^
+
+Returns if the VNODE enable the service for SCS servers.
+
+Parameters
+''''''''''
+
+none
+
+Returns
+'''''''
+
+``Bool`` - true, enable the SCS service; false, not open.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"vnode_scsService","params":[],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "jsonrpc":"2.0",
+      "id":101,
+      "result":true
+    }
+
+--------------
+
+vnode\_serviceCfg
+^^^^^^^^^^^^^^^^^
+
+Returns the VNODE SCS service ports for connecting with.
+
+Parameters
+''''''''''
+
+none
+
+Returns
+'''''''
+
+``String`` - The current service port set in the vnodeconfig.json.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"vnode_serviceCfg","params":[],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "jsonrpc":"2.0",
+      "id":101,
+      "result":":50062"
+    }
+
+--------------
+
+vnode\_showToPublic
+^^^^^^^^^^^^^^^^^^^
+
+Returns if the VNODE enable the public view.
+
+Parameters
+''''''''''
+
+none
+
+Returns
+'''''''
+
+``Bool`` - true, open to the public; false, not open.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"vnode_showToPublic","params":[],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "jsonrpc":"2.0",
+      "id":101,
+      "result":true
+    }
+
+--------------
+
+vnode\_vnodeIP
+^^^^^^^^^^^^^^
+
+Returns VNODE IP for users to access. Note for cloud servers, this could
+be different from the cloud server IP.
+
+Parameters
+''''''''''
+
+none
+
+Returns
+'''''''
+
+``String`` - The current IP that can be used to access. This is set in
+the vnodeconfig.json.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"vnode_vnodeIP","params":[],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "jsonrpc":"2.0",
+      "id":101,
+      "result":"127.0.0.1"
+    }
+
+--------------
+
+scs\_directCall
+^^^^^^^^^^^^^^^
+
+Executes a new constant call of the MicroChain Dapp function without
+creating a transaction on the MicroChain. This RPC call is used by
+API/lib to call MicroChain Dapp functions.
+
+Parameters
+''''''''''
+
+``Object`` - The transaction call object - ``from``: ``DATA``, 20 Bytes
+- (optional) The address the transaction is sent from. - ``to``:
+``DATA``, 20 Bytes - The address the transaction is directed to. This
+parameter is the MicroChain address. - ``data``: ``DATA`` - (optional)
+Hash of the method signature and encoded parameters. For details see
+`Ethereum Contract
+ABI <https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI>`__
+
+Returns
+'''''''
+
+``DATA`` - the return value of executed Dapp constant function call.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_directCall","params":[{see above}],"id":101}' localhost:8545
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": "0x"
+    }
+
+--------------
+
+scs\_getBlock
+^^^^^^^^^^^^^
+
+Returns information about a MicroChain block by block number.
+
+Parameters
+''''''''''
+
+1. ``String`` - the address of the MicroChain that Dapp is on.
+2. ``QUANTITY|TAG`` - integer of a block number, or the string
+   ``"earliest"`` or ``"latest"``, as in the `default block
+   parameter <#the-default-block-parameter>`__. Note, scs\_getBlock does
+   not support ``"pending"``.
+
+Returns
+'''''''
+
+``OBJ`` - object of the block on the MicroChain.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getBlock","params":["0x9d711986ccc8c89db2dfaf0894acadeb5a383ee8","0x1"],"id":101}' localhost:8548
+
+    // Result
+    {"jsonrpc":"2.0","id":101,"result":{"extraData":"0x","hash":"0xc80cbe08bc266b1236f22a8d0b310faae3135961dbef6ad8b6ad4e8cd9537309","number":"0x1","parentHash":"0x0000000000000000000000000000000000000000000000000000000000000000","receiptsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421","stateRoot":"0x1a065207da60d8e7a44db2f3b5ed9d3e81052a3059e4108c84701d0bf6a62292","timestamp":"0x0","transactions":[],"transactionsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"}}
+
+--------------
+
+scs\_getBlockNumber
+^^^^^^^^^^^^^^^^^^^
+
+Returns the number of most recent block .
+
+Parameters
+''''''''''
+
+``String`` - the address of the MicroChain that Dapp is on.
+
+Returns
+'''''''
+
+``NUMBER`` - integer of the current block number the client is on.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getBlockNumber","params":["0x9d711986ccc8c89db2dfaf0894acadeb5a383ee8"],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": "0x4b7" // 1207
+    }
+
+--------------
+
+scs\_getDappState
+^^^^^^^^^^^^^^^^^
+
+Returns the Dapp state on the MicroChain.
+
+Parameters
+''''''''''
+
+``String`` - the address of the MicroChain that Dapp is on.
+
+Returns
+'''''''
+
+``Number`` - 0, no DAPP is deployed on the MicroChain; 1, DAPP is
+deployed on the MicroChain.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getDappState","params":["0x9d711986ccc8c89db2dfaf0894acadeb5a383ee8"],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": 1
+    }
+
+--------------
+
+scs\_getMicroChainList
+^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the Dapp state on the MicroChain.
+
+Parameters
+''''''''''
+
+None
+
+Returns
+'''''''
+
+``Array`` - A list of Micro Chain addresses on the SCS.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getMicroChainList","params":[],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": ["0x9d711986ccc8c89db2dfaf0894acadeb5a383ee8","0x7cfd775c7a97aa632846eff35dcf9dbcf502d0f3"]
+    }
+
+--------------
+
+scs\_getNonce
+^^^^^^^^^^^^^
+
+Returns the Dapp state on the MicroChain.
+
+Parameters
+''''''''''
+
+1. ``String`` - the address of the MicroChain that Dapp is on.
+2. ``String`` - the address of the accountn.
+
+Returns
+'''''''
+
+``Array`` - 0, no DAPP is deployed on the MicroChain; 1, DAPP is
+deployed on the MicroChain.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getNonce","params":["0x9d711986ccc8c89db2dfaf0894acadeb5a383ee8", "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B"],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": 1
+    }
+
+--------------
+
+scs\_getSCSId
+^^^^^^^^^^^^^
+
+Returns the SCS id.
+
+Parameters
+''''''''''
+
+None
+
+Returns
+'''''''
+
+``String`` - SCS id in the scskeystore directory, used for SCS
+identification to send deposit and receive MicroChain mining rewards.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getSCSId","params":[],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": "0x9d711986ccc8c89db2dfaf0894acadeb5a383ee8"
+    }
+
+--------------
+
+scs\_getTransactionReceipt
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the receipt of a transaction by transaction hash. Note That the
+receipt is not available for pending transactions.
+
+Parameters
+''''''''''
+
+``String`` - The MicroChain address. ``String`` - The transaction hash.
+``Function`` - (optional) If you pass a callback the HTTP request is
+made asynchronous.
+
+Returns
+'''''''
+
+``Object`` - A transaction receipt object, or null when no receipt was
+found:.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getTransactionReceipt","params":["0x299afff2da4a57e7e0a0a16bf626f8822b8a3158","0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": {"logs":[{"address":"0x2328537bc943ab1a89fe94a4b562ee7a7b013634","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef","0x000000000000000000000000a8863fc8ce3816411378685223c03daae9770ebb","0x0000000000000000000000007312f4b8a4457a36827f185325fd6b66a3f8bb8b"],"data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQ=","blockNumber":0,"transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69","transactionIndex":0,"blockHash":"0x78f092ca81a891ad6c467caa2881d00d8e19c8925ddfd71d793294fbfc5f15fe","logIndex":0,"removed":false}],"logsBloom":"0x00000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000008000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000800000000000080000000000000000000000000002000000000000000000000000000000000000080100002000000000000000000000000000000000000000000000000000000000000000000000000000","status":"0x1","transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"}
+    }
