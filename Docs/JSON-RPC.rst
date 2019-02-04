@@ -28,9 +28,13 @@ MOAC RPC API has some compatibility with ETHEREUM RPC API,
 +------------+------------+
 | personal   | personal   |
 +------------+------------+
+| vnode      | n/a        |
++------------+------------+
+| scs        | n/a        |
++------------+------------+
 
 MOAC has two additional RPC commands (vnode and scs) for VNODE and SCS
-services. These RPCs are under developing and will be supported by Nuwa
+services. These RPCs are supported by Nuwa
 1.0.4 version and later.
 
 JavaScript API

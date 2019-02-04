@@ -23,7 +23,7 @@ Most Commonly Used Commands：
 As shown below：
 ~~~~~~~~~~
 
-Initiate MOAC nodes and connect to mainnet (network ID = 99)
+Initiate MOAC VNODEs and connect to mainnet (network ID = 99)
 
 ::
 

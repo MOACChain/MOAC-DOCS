@@ -42,16 +42,16 @@ Install $project by running:
 Contribute
 ----------
 
-- Issue Tracker: github.com/$project/$project/issues
-- Source Code: github.com/$project/$project
+- Issue Tracker: github.com/MOACChain/MOAC-DOCS/issues
+- Source Code: github.com/MOACChain/MOAC-DOCS
 
 Support
 -------
 
 If you are having issues, please let us know.
-We have a mailing list located at: project@google-groups.com
+We have a mailing list located at: info@moac.io
 
 License
 -------
 
-The project is licensed under the BSD license.
+The project is licensed under the MIT license.

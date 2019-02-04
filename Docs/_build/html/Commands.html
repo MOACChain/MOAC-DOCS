@@ -150,66 +150,66 @@
             
   <div class="section" id="commands">
 <h1>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2>常用命令：<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--testnet: connect to MOAC testnet (networkid = 101)；
+<div class="section" id="most-commonly-used-commands">
+<h2>Most Commonly Used Commands：<a class="headerlink" href="#most-commonly-used-commands" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--testnet: connect to MOAC testnet (networkid = 101);
 
---rpc: 启用HTTP的RPC服务，以便非本机访问该MOAC节点服务；
+--rpc: initiate RPC service of HTTP, so as to nonlocally access the specific MOAC node service;
 
---rpcaddr value: 默认是&quot;localhost&quot;, 只能本机访问； 可通过设置 为&quot;0.0.0.0&quot;, 以便非本机访问该MOAC节点服务, 但现在RPC服务是基于HTTP的，是明文传输，需注意安全问题；
+--rpcaddr value: default as &quot;localhost&quot;, only local accessibility; can be reset to &quot;0.0.0.0&quot;, so as to nonlocally access the specific MOAC node service, but the current RPC service is based on HTTP using plaintext，so users need to be aware of the safety risks;
 
---rpcport value: 默认是&quot;8545&quot;,  一般来说不用改，用默认端口即可；
+--rpcport value: default as&quot;8545&quot;, normally no changes are needed, users can use the default port;
 
---rpcapi value: 指定RPC要开放的API服务，默认为&quot;chain3,mc,net&quot;，常用的一般还会配置比如personal,admin,debug,miner,txpool,db,shh等，但是因为RPC服务是明文传输，所以，如果使用personal的时候，要注意安全问题；
+--rpcapi value: command RPC as to which API service will be open，default as &quot;chain3,mc,net&quot;，the commonly used will also be configured such as: personal,admin,debug,miner,txpool,db,shh and so on，but because of RPC services&#39; cleartext nature，if users choose to use personal，they should be aware of the safety risks；
 
---rpccorsdomain value: 一般来说，如果你知道要用这个选项的时候，使用&quot;&quot;值即可，更详细可自行搜索“CORS是一个W3C标准，全称是&quot;跨域资源共享&quot;（Cross-origin resource sharing）”中相关关键词进一步了解；
+--rpccorsdomain value: in general，if users wish to use this option, they can just use &quot;&quot;; to be more specifical, users are recommended to search up &quot;Cross-origin resource sharing&quot; to further understand some key phrases;
 
---jspath loadScript: 默认值为&quot;.&quot;, loadScript装载javascript文件的主目录；
+--jspath loadScript: default value is &quot;.&quot;, the main directory of loadScript when installing javascript file；
 </pre></div>
 </div>
-<div class="section" id="id2">
-<h3>示例如下：<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>启动MOAC节点并连接到mainnet(networkid = 99)</p>
+<div class="section" id="as-shown-below">
+<h3>As shown below：<a class="headerlink" href="#as-shown-below" title="Permalink to this headline">¶</a></h3>
+<p>Initiate MOAC nodes and connect to mainnet (network ID = 99)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">moac</span>
 </pre></div>
 </div>
-<p>通过本地ipc接口连接到MOAC mainnet节点，并启动命令行</p>
+<p>Through local ipc port connecting to MOAC mainnet nodes and start the command line</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">moac</span> <span class="n">attach</span>
 </pre></div>
 </div>
-<p>启动MOAC节点并连接到testnet(networkid = 101)</p>
+<p>Initiate MOAC nodes and connect to testnet (network ID = 101)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">moac</span> <span class="o">--</span><span class="n">testnet</span>
 </pre></div>
 </div>
-<p>启动MOAC测试节点，并启动交互命令行</p>
+<p>Initiate MOAC testnet nodes and interactive command line</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">moac</span> <span class="o">--</span><span class="n">testnet</span> <span class="n">console</span>
 </pre></div>
 </div>
-<p>通过本地ipc接口连接到MOAC节点</p>
+<p>Through local ipc port connecting to MOAC nodes</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">moac</span> <span class="n">attach</span> <span class="o">/</span><span class="n">xx</span><span class="o">/</span><span class="n">xxx</span><span class="o">/</span><span class="n">moac</span><span class="o">.</span><span class="n">ipc</span>
 </pre></div>
 </div>
-<p>通过基于HTTP的RPC接口连接到本地或者远程MOAC节点</p>
+<p>Through HTTP-based rpc port connecting to local or remote MOAC nodes</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">moac</span> <span class="n">attach</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">xxx</span><span class="o">.</span><span class="n">xxx</span><span class="o">.</span><span class="n">xxx</span><span class="o">.</span><span class="n">xxx</span><span class="p">:</span><span class="mi">8545</span>
 </pre></div>
 </div>
-<p>启动MOAC测试节点，同时启动RPC服务</p>
+<p>Initiate MOAC testnet nodes and RPC service</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">moac</span> <span class="o">--</span><span class="n">testnet</span> <span class="o">--</span><span class="n">rpc</span>
 </pre></div>
 </div>
-<p>启动MOAC测试节点，非本机可访问，非本机也可以使用personal及debug服务，同时提供跨域资源共享服务</p>
+<p>Initiate MOAC testnet nodes which is nonlocally accessible; personal and debug services can also be nonlocally used while providing cross-domain resource sharing service.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">moac</span> <span class="o">--</span><span class="n">testnet</span> <span class="o">--</span><span class="n">rpc</span> <span class="o">--</span><span class="n">rpcaddr</span><span class="o">=</span><span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="o">--</span><span class="n">rpcapi</span><span class="o">=</span><span class="s2">&quot;db,mc,net,chain3,personal,debug&quot;</span> <span class="o">--</span><span class="n">rpccorsdomain</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>全部命令行参数<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>在命令行下，输入：</p>
+<div class="section" id="all-command-line-parameters">
+<h2>All command line parameters<a class="headerlink" href="#all-command-line-parameters" title="Permalink to this headline">¶</a></h2>
+<p>On the command line, type：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./moac help
 </pre></div>
 </div>
-<p>或者</p>
+<p>or</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./moac --help
 </pre></div>
 </div>

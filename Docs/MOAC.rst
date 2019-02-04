@@ -1,11 +1,11 @@
 
-MOAC
+MOAC token
 ********************************************************************************
 
-What is MOAC?
+What is MOAC token?
 ================================================================================
 
-MOAC(mc) is the name of the currency used within MOAC network, just like ether within Ethereum. It is used to pay for
+MOAC(mc) is the name of the native token used within MOAC network, just like ether within Ethereum. It is used to pay for
 computation within the EVM and run MicroChains. This is done indirectly by purchasing gas for mc as explained in :ref:`gas-and-mc`.
 
 Denominations
@@ -37,6 +37,7 @@ their value in Sha. Following a common pattern, mc also designates a unit (of 1e
 MOAC supply
 =========================
 
+Current supply can be found at:
 * http://explorer.moac.io/home
 
 
