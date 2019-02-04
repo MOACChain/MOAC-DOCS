@@ -1,5 +1,6 @@
-MicroChain
+MotherChain
 ^^^^^^^^^^
+
 
 1. :doc:`MicroChainDAPPDeveloper`
 2. :doc:`MicroChainFormation`

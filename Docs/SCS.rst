@@ -1,26 +1,15 @@
-MicroChain Client SCS
----
+SCS Client
+^^^^^^^^^^
 
-additional MicroChains. Using blockchain sharding technology, a MicroChain functions as a child blockchain within the platform that operates above the global MotherChain, and is responsible for Smart Contracts management. MicroChains also enable high volume transactions using a variety of consensus systems. Consensus system is an agreement system that provides accountability and verification of transactions.
+Smart Contract Server(SCS) clients are the key components of the MicroChain in MOAC network. Using blockchain sharding technology, a MicroChain functions as a child blockchain within the platform that operates above the global MotherChain, and is responsible for Smart Contracts management. MicroChains also enable high volume transactions using a variety of consensus systems. Consensus system is an agreement system that provides accountability and verification of transactions.
 
 The platform’s advanced layered Multi-blockchain architecture increases overall transaction processing speeds up to 100x faster (TPS) than existing blockchain platforms. Meanwhile, MicroChains enhance token concurrency rates up to 10,000 times, for a truly scalable solution.
 
 MicroChains significantly reduce the cost of smart contract operations and allow developers to rapidly test different application and service ideas. MOAC’s MicroChains are able to interconnect with all other non- MOAC blockchains using Cross-Chain capabilities. This allows both users and their decentralized applications (DApps) to migrate easily to the MOAC Platform, with no prior blockchain knowledge. It also provides a decentralized file storage solution which is currently missing from other major blockchains.
 
-The executable SCS node program was released on Pizza Day.
 
-This release is alpha version of MOAC microchain. It is still under
-development but we want you to try and taste it with us. It is for
-programmers only.
 
-The package is Only to run at a single node mode for easy debugging. It
-contains both vnode and scs executables and necessary files
-
-Executables: Windows: pizzaAlpha.vnode.scs.widows.zip Ubuntu:
-pizzaAlpha.vnode.ubuntu.tar.gz, pizzaAlpha.scs.ubuntu.tar.gz
-
-We also have some video instructions for developers. Please let us know
-your thoughts and comments.
+We have some video instructions for developers to setup MicroChains. 
 
 **English tutorials:**
 
