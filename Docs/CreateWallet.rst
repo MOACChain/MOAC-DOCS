@@ -1,5 +1,7 @@
-How-To-Create-a-Wallet
+How To Create a Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^
+
+There 
 Go to https://www.moacwalletonline.com/#generate-wallet .
 
 Enter a strong but easy to remember password.

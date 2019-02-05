@@ -15,12 +15,6 @@ MOAC will also make it easy to deploy sub blockchains called MicroChains and int
 offer easy solutions for small companies that want to create sub
 blockchains by themselves.
 
-History
-~~~~~~~
-
-.. figure:: image/moac_hist_en.png
-   :alt: moac\_history
-
 
 Team
 ~~~~
@@ -39,3 +33,15 @@ MOAC tokens are also mineable and mining is a viable alternative if
 you want to have the tokens. At first you will be able to be rewarded
 with 2 MOAC tokens per block but this number will decrease by half
 whenever 12,500,000 MOAC tokens have been already mined.
+
+History
+~~~~~~~
+
+MOAC is an ongoing project. A planned roadmap is at:
+
+:doc:`Versions`
+
+
+Most recent progress can be found at the github page:
+
+`MOAC releases <https://github.com/MOACChain/moac-core/releases>`__

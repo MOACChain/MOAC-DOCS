@@ -1,11 +1,7 @@
 SCS Client
 ^^^^^^^^^^
 
-Smart Contract Server(SCS) clients are the key components of the MicroChain in MOAC network. Using blockchain sharding technology, a MicroChain functions as a child blockchain within the platform that operates above the global MotherChain, and is responsible for Smart Contracts management. MicroChains also enable high volume transactions using a variety of consensus systems. Consensus system is an agreement system that provides accountability and verification of transactions.
-
-The platform’s advanced layered Multi-blockchain architecture increases overall transaction processing speeds up to 100x faster (TPS) than existing blockchain platforms. Meanwhile, MicroChains enhance token concurrency rates up to 10,000 times, for a truly scalable solution.
-
-MicroChains significantly reduce the cost of smart contract operations and allow developers to rapidly test different application and service ideas. MOAC’s MicroChains are able to interconnect with all other non- MOAC blockchains using Cross-Chain capabilities. This allows both users and their decentralized applications (DApps) to migrate easily to the MOAC Platform, with no prior blockchain knowledge. It also provides a decentralized file storage solution which is currently missing from other major blockchains.
+Smart Contract Server(SCS) clients are the key components of the MicroChain in MOAC network. 
 
 
 
@@ -67,9 +63,7 @@ mc.getBalance(mc.accounts[0])/1000000000000000000
     subchainbase.nodeCount()
     registerclose()
 
-**General info**
-
-:doc:`MicroChainDAPPDeveloper`
+**Other related links**
 
 :doc:`MicroChainFormation`
 
@@ -77,10 +71,8 @@ mc.getBalance(mc.accounts[0])/1000000000000000000
 
 :doc:`MicroChainSCSMonitor`
 
-:doc:`MicroChainSCSSelection`
-
-:doc:`MicroChainSCSMiner`
+:doc:`MicroChainVNODEProxy`
 
 :doc:`MicroChainUsers`
 
-:doc:`MicroChainVNODEProxy`
+:doc:`MicroChainDAPPDeveloper`

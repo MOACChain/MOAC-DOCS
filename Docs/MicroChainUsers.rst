@@ -2,7 +2,7 @@ MicroChain Users
 ----------------
 
 
-There are three major players in MicroChain:
+There are three types of users in MicroChains:
 
 -  A、 SCS miner：run SCS and join the MicroChain consensus to get
    MicroChain rewards;

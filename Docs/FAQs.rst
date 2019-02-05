@@ -150,7 +150,15 @@ the `MOAC team <info@moac.io>`__.
 MoacWalletOnline FAQs
 ~~~~~~~~~~~~~~~~~~~~~
 
-`How To Create a Wallet <How-To-Create-a-Wallet>`__
+:doc:`CreateWallet`
+
+:doc:`Differences-Between-Wallet-Types`
+
+:doc:`saveAndBackup`
+
+:doc:`accessWallet`
+
+`How To Create a Wallet <CreateWallet>`__
 
 `Differences between wallet types <Differences-Between-Wallet-Types>`__
 

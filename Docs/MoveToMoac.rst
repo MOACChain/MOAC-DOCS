@@ -1,7 +1,7 @@
 Move to Moac
 ============
 
-MOAC developed based on the
+MOAC developed its VNODE client based on the
 `Ethereum <https://github.com/ethereum/go-ethereum>`__ project. It also
 implements a ***javascript runtime environment*** (JSRE) that can be
 used in either interactive (console) or non-interactive (script) mode.

@@ -81,6 +81,14 @@ WINDOWS
 ^^^^^^^
 
 Unzip the file to a directory, under the directory, run
+moac.exe
+
+To see the help, use moac.exe --help
+
+To enable the console, run: moac.exe console
+
+A mainnet directory will be created under  and some info
+should be seen as:
 
 2.1 查看moac帮助
 ''''''''''''''''

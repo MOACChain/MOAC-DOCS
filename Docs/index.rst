@@ -18,10 +18,8 @@ Mother Of All Chains (MOAC) is to design a scalable and resilient Blockchain tha
    Introduction
    VNODE
    SCS
-   Account
    MOACtoken
-   MoacNetwork
-   MoveToMoac
+   MOACnetwork
    DAPPs
    FAQs
    FileStormUserGuide

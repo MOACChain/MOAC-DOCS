@@ -1,5 +1,5 @@
-Chain3 JavaScript API
-=====================
+Chain3 JavaScript library
+=========================
 
 Chain3 JavaScript API was built for MOAC chain. It followed the Ethereum
 web3.js API routines so the users can easily move their Ðapp to MOAC
