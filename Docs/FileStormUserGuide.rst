@@ -1,40 +1,53 @@
 FileStorm User Guide
---------------------
+********************
+
+
+Introduction
+============
 
 FileStorm is a decentralized storage platform implemented with IPFS and
 MOAC. The files are stored on millions of data nodes provided by people
 around the world in IPFS format in exchange for MOAC. FileStorm is a
-project that involves three types of people.
+project that involves three types of users.
 
-1. Storage Provider Storage providers provides the hardware devices used
+1. Storage Provider: 
+   Provides the hardware devices used
    for storage, such as computers with large volume of storage, or
    customized storage boxes. FileStorm program needs to be installed on
    these devices so they can connect to Moac FileStorm microchains as
    well as IPFS network. Storage providers can gain reward in MOAC by
    offering the storage service.
 
-2. Dapp Developers Dapp Developers are the creator of FileStorm
+2. Dapp Developers: The creator and owner of FileStorm
    microchains. They can create a dedicated microchain used for storage
    only for their own Dapp. Moac Foundation will also create a public
    FileStorm microchain. Dapp Developers will have to pay MOAC to deploy
    and maintain a FileStorm.
 
-3. Storage End Users Storage end users will use FileStorm through
-   Dapps. The end users do not need MOAC to use FileStorm, but they may
+3. Storage End Users:  The users will use FileStorm through
+   Dapps. The end users do not need any MOAC to use FileStorm, but they may
    have to pay to use the Dapps.
 
-Our user guide has three parts for the three type of users.
+
+Roles
+=====
 
 Storage Providers
-~~~~~~~~~~~~~~~~~
+-----------------
 
-运行FileStorm子链需要安装下面四个模块
+FileStorm MicroChain needs to install the following parts:
 
--  SCSServer - 墨客子链节点程序。
--  redis - 本地数据库，用于存储文件公共哈希和私密哈希的对应。
--  IPFS Daemon - 文件以IPFS的方式存储的主要平台。
+* SCSServer - MOAC MicroChain server;
+* redis     - Local database, used to save the map between public HASH and private HASH;
+* IPFS Daemon - IPFS platform to save the data files;
 
-这些模块可以用以下的方式一个一个下载安装，也可以用Docker的方式安装。先介绍一个一个下载安装流程。以Macbook为例：
+These parts can be installed separately or through Docker.
+
+
+Installation
+^^^^^^^^^^^^
+
+On MAC OS:
 
 redis：
 
@@ -47,8 +60,9 @@ redis：
     tar xzvf redis-stable.tar.gz
     sudo apt install redis-server
 
-ipfs
-可以从这个链接\ `下载 <https://dist.ipfs.io/#go-ipfs>`__\ 最新版本ipfs软件包。我们以ubuntu版本为例
+ipfs:
+
+IPFS can be downloaded from \ `IPFS <https://dist.ipfs.io/#go-ipfs>`__\ 最新版本ipfs软件包。我们以ubuntu版本为例
 
 ::
 
@@ -62,35 +76,39 @@ scsserver
 也可以从这里下载Docker版本。关于Docker的安装和使用，可以看着里：\ `Get
 Started with Docker <https://docs.docker.com/get-started/>`__.
 
-设置
-^^^^
+Configuration
+^^^^^^^^^^^^^
 
-设置文件是../config/userconfig.json
+Configuration file: userconfig.json
 
-VnodeServiceCfg的设置是从 `Node info -
+VnodeServiceCfg的设置是从 
+`Node info -
 Testnet <https://nodes101.moac.io/>`__\ 上，找到Vnode Protocol
 Pool下面的任何一个Vnode/Port组合加上。
-Beneficiary设置成SCS节点收益的受益人钱包地址。
+Beneficiary is the public wallet address of SCS owner.
 
-服务器上必须把下面的端口打开: \* 4001 \* 5001 \* 8080
+The VNODE server need to open the following ports for outside access: 
+* 4001;
+* 5001;
+* 8080;
 
-运行
-^^^^
+Running
+^^^^^^^
 
-第一次使用必须先生成IPFS文件库
+IPFS file system needs to be initialized before the first usage:
 
 ::
 
     ipfs init
 
-然后就可以运行FileStorm了。FileStorm可以调用下面的脚本运行。
+Then the user can run FileStorm MicroChain using the start script:
 
 ::
 
     cd scsserver
     ./run_filestorm_scs.sh
 
-脚本代码如下，在后台调用四个模块
+The start script calls the four components in the FileStorm:
 
 ::
 
@@ -109,11 +127,11 @@ Beneficiary设置成SCS节点收益的受益人钱包地址。
     nohup ./scsserver > scs.out 2>&1 &
     echo "SCS started."
 
-可以用调用下面的脚本停止。
+To stop the service, call the following script:
 
 ``./stop_filestorm_scs.sh``
 
-脚本代码如下，关闭四个模块
+The closing script closed the four components:
 
 ::
 
@@ -127,15 +145,13 @@ Beneficiary设置成SCS节点收益的受益人钱包地址。
 
 *为了让子链节点正常使用，我们还需要给每个子链节点地址打0.5个Moac。*
 
-监测
-^^^^
+Monitring:
 
-可以用下面的指令检测程序运行进程
 
 ``tail -f scs.out``
 
-应用部署方
-~~~~~~~~~~
+DAPP Developers
+^^^^^^^^^^^^^^^
 
 1. 本地必须开一个vnode连接到Moac testnet上。在
    https://github.com/MOACChain/moac-core/releases 下载Nuwa1.0.2
@@ -149,8 +165,8 @@ Beneficiary设置成SCS节点收益的受益人钱包地址。
 7. 注册检测子链
 8. 子链浏览器检测
 
-存储使用者
-~~~~~~~~~~
+Users
+^^^^^^^^^
 
 存储使用者一般都是通过应用来存储文件。应用部署方则通过部署子链合约
 FileStormMicroChain.sol把文件存到FileStorm上，或者读出来。
