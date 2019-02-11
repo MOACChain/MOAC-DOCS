@@ -29,27 +29,30 @@ project that involves three types of users.
    have to pay to use the Dapps.
 
 
-Roles
-=====
+User Roles
+==========
 
 Storage Providers
 -----------------
 
-FileStorm MicroChain needs to install the following parts:
+Storage providers are the people who run the FileStore MicroChain as the service.
 
-* SCSServer - MOAC MicroChain server;
-* redis     - Local database, used to save the map between public HASH and private HASH;
-* IPFS Daemon - IPFS platform to save the data files;
+FileStorm MicroChain needs to install the following packages:
 
-These parts can be installed separately or through Docker.
+* redis        - Local database, used to save the map between public HASH and private HASH;
+* IPFS Daemon  - IPFS platform to save the data files;
+* SCSServer    - MOAC MicroChain server;
+* stormcatcher - Program calls the IPFS program from MOAC MicroChain server;
+
+These packages can be installed separately or through Docker.
 
 
 Installation
 ^^^^^^^^^^^^
 
-On MAC OS:
-
 redis：
+
+Ubuntu
 
 ::
 
@@ -60,9 +63,18 @@ redis：
     tar xzvf redis-stable.tar.gz
     sudo apt install redis-server
 
+CentOs
+
+::
+    sudo yum install epel-release
+    sudo yum update
+    sudo yum install redis
+
 ipfs:
 
-IPFS can be downloaded from \ `IPFS <https://dist.ipfs.io/#go-ipfs>`__\ 最新版本ipfs软件包。我们以ubuntu版本为例
+IPFS can be downloaded from \ `IPFS <https://dist.ipfs.io/#go-ipfs>`__\ 
+
+Ubuntu
 
 ::
 
@@ -70,21 +82,33 @@ IPFS can be downloaded from \ `IPFS <https://dist.ipfs.io/#go-ipfs>`__\ 最新�
     tar xvfz go-ipfs_v0.4.17_linux-amd64.tar.gz
     sudo mv go-ipfs/ipfs /usr/local/bin/ipfs
 
-scsserver
-可以从这个\ `链接 <https://github.com/MOACChain/moac-core/releases/tag/v0.9>`__\ 下载最新版本。我们以ubuntu版本为例。
 
-也可以从这里下载Docker版本。关于Docker的安装和使用，可以看着里：\ `Get
-Started with Docker <https://docs.docker.com/get-started/>`__.
+::
+    sudo yum install epel-release
+    sudo yum update
+    sudo yum install redis
+
+scsserver:
+
+The newest version can be download from \ `release link <https://github.com/MOACChain/FileStorm/releases>`__\.
+
+scsserver
+stormcatcher
+userconfig.json
+run_filestorm_scs.sh
+stop_filestorm_scs.sh
+
+Then you can execute filestorm_install.sh to install filestorm scs.
 
 Configuration
 ^^^^^^^^^^^^^
 
 Configuration file: userconfig.json
 
-VnodeServiceCfg的设置是从 
+VnodeServiceCfg can be setup using the Vnode/Port information from  
 `Node info -
-Testnet <https://nodes101.moac.io/>`__\ 上，找到Vnode Protocol
-Pool下面的任何一个Vnode/Port组合加上。
+Testnet <https://nodes101.moac.io/>`__\  Protocol
+Pool.
 Beneficiary is the public wallet address of SCS owner.
 
 The VNODE server need to open the following ports for outside access: 
@@ -143,41 +167,48 @@ The closing script closed the four components:
     pkill scsserver
     echo "FileStorm SCS Stopped."
 
-*为了让子链节点正常使用，我们还需要给每个子链节点地址打0.5个Moac。*
+*To make the SCSs be able to work with MicroChain, 0.5 moac depsit needs to be added to each SCS's address.*
 
 Monitring:
 
+To check if the MOAC MicroChain running, check the log file: 
 
 ``tail -f scs.out``
 
 DAPP Developers
 ^^^^^^^^^^^^^^^
 
-1. 本地必须开一个vnode连接到Moac testnet上。在
-   https://github.com/MOACChain/moac-core/releases 下载Nuwa1.0.2
-2. 用下面的指令开启vnode
-   ``./moac --testnet --rpc --rpccorsdomain "http://wallet.moac.io" console``
-3. 打开 http://wallet.moac.io
-4. 发合约 DeploySubChainBase.sol
-5. 从 `Node info - Testnet <https://nodes101.moac.io/>`__\ 
-   上找SubChainProtocolBase pool地址和 Vnodeproxy pool地址
-6. 发子链合约 FileStormMicroChain.sol
-7. 注册检测子链
-8. 子链浏览器检测
+DAPP developers deploy the DAPP on the FileStorm MicroChain to let the Storage Users access the data through the DAPP.
 
-Users
-^^^^^^^^^
+To develop a DAPP on the FileStorm platform, you need to:
+1. Run a vnode locally to connect to the MOAC mainnet(or testnet for testing). The newest released version is under: 
+   https://github.com/MOACChain/moac-core/releases 
+2. Start the vnode:
+   To connect with mainnet: ``./moac --rpc --rpccorsdomain "http://wallet.moac.io" console``
+   To connect with testnet: ``./moac --testnet --rpc --rpccorsdomain "http://wallet.moac.io" console``
+3. Use `MOAC wallet <https://wallet.moac.io>`__\ to deploy the MicroChain;
+4.  DeploySubChainBase.sol
+5. Find `Node info - Testnet <https://nodes101.moac.io/>`__\ 
+   SubChainProtocolBase pool地址和 Vnodeproxy pool地址
+6. Use MOAC wallet to deploy the FileStormMicroChain.sol;
+7. Register the MicroChain;
+8. Check the status of MicroChain with MicroChain explorer.
 
-存储使用者一般都是通过应用来存储文件。应用部署方则通过部署子链合约
-FileStormMicroChain.sol把文件存到FileStorm上，或者读出来。
+Storage Users
+^^^^^^^^^^^^^
 
-我们可以用如下的步骤演示文件读写的流程。方便应用方了解熟悉后集成到应用中。
+Strage users access the data on the IPFS through DAPP deployed on the FileStorm. 
 
-1. 本地必须开一个vnode连接到Moac testnet上。在
-   https://github.com/MOACChain/moac-core/releases
-   下载Nuwa1.0.2。（希望将来应用开发者会把这个模块）
-2. 用下面的指令开启vnode ``./moac --testnet console``
-3. 在本地安装IPFS（希望将来应用开发者会把这个模块集成到应用中。）可以从这个链接\ `下载 <https://dist.ipfs.io/#go-ipfs>`__\ 最新版本ipfs软件包。我们以ubuntu版本为例
+
+Example:
+
+The following procedures show how to access a data file on the FileStorm testnet.
+
+1. Setup a local VNODE server. The software can be downloaded from 
+   https://github.com/MOACChain/moac-core/releases;
+2. Running the VNODE: ``./moac --testnet console``;
+3. Setup IPFS \ `download <https://dist.ipfs.io/#go-ipfs>`__\;
+  For ubuntu:
 
    ::
 
@@ -185,28 +216,28 @@ FileStormMicroChain.sol把文件存到FileStorm上，或者读出来。
        tar xvfz go-ipfs_v0.4.17_linux-amd64.tar.gz
        sudo mv go-ipfs/ipfs /usr/local/bin/ipfs
 
-4. 我们本地生成一个测试文件。\ ``vi newtestfile.txt``
-5. 我们将测试文件放到IPFS中：\ ``ifps add newtestfile.txt``
-6. 我们将拿到的文件hash生成16进制代码。可以在这个网站实现：https://codebeautify.org/string-hex-converter。
-   也可以用下面这段代码得到。 \`\`\` npm install --save ethereumjs-abi
+4. Generate a local text file for uploading:\ ``vi newtestfile.txt``
+5. Add the generated file to the IPFS system：\ ``ifps add newtestfile.txt``
+6. Convert the hash to HEX code, which can be done using this web tool：https://codebeautify.org/string-hex-converter.
+   or using the NODEJS tool: `` npm install --save ethereumjs-abi ``
 
-var abi = require('ethereumjs-abi'); var original =
-'QmQNe96LqV5TcRQyBz12iQXPZQjemBqkgnpHki3wmKjtd6'; var encoded =
-abi.simpleEncode('write(string)', original);
+    ::
 
-console.log('original', original);  console.log('encoded',
-encoded.toString('hex'));
+    var abi = require('ethereumjs-abi'); var original =
+    'QmQNe96LqV5TcRQyBz12iQXPZQjemBqkgnpHki3wmKjtd6'; var encoded =
+    abi.simpleEncode('write(string)', original);
 
-::
+    console.log('original', original);  console.log('encoded',
+    encoded.toString('hex'));
 
 
-    7. 得到的字节数是46位的16进制数（因为每一位两个数字，一共92个数字）。因为solidty参数的存储空间是32位，46位的16进制数需要两个存储空间才行，然后我们要把得到的16进制数后面补上足够多的0，变成一个64位的16进制数（一共108个数字）。
-    8. 调用函数处理文件有如下三个函数，分别可以对文件进行写，读，删。
-    8. from: 这必须是本机keystore里存在的一个账号。如果是vnode里第一次生成的就是chain3.mc.accounts[0]，必须先进行一下`personal.unlockAccount(mc.accounts[0])`解锁使用。
-    8. to: subchainbaseaddress是SubChainBase合约地址，必须由应用项目方提供，我们可以用前面测试得到的地址。
-    8. data: 把第7步得到的数字加到data的数值里2e的后面。
-    8. 每次调用要把nonce手动加1。（下一个版本会有更好的方法拿到nonce）
-    8. via必须跟moac同文件夹下的vnodeproxy.json文件里
+    7. The HEX code of the HASH should be a HEX code with length 46, total 92 digits. Since the storage of parameters in Solidity only has 32 digits, we used two parameters to store the HEX code of the HASH. The HEX code of the HASH is filled with 0s to make two HEX codes with 64 digits;
+    8. Call the three functions to read, write and delete the data on the MicroChain:
+    9. from: need to be an unlocked account;
+    10. to: DAPP address provided by the DAPP developer or the Storage Provider;
+    11. data: Add the HEX code from Step 7 after '2e';
+    12. After each successful call, the nonce need to increase by 1 for the next call.
+    13. via needs to set as the same value of via in the vnodeproxy.json in the VNODE directory.
         
 
 // write(fileHash) chain3.mc.sendTransaction( { from:
@@ -228,8 +259,9 @@ gasPrice: chain3.mc.gasPrice, shardingflag: 1, data:
 '0x80599e4b0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002e'
 nonce: 3, via: mc.accounts[0] }); \`\`\`
 
-调用结果：
+Results：
 
-Write：IPFS文件被存到FileStorm子链的每一个节点上，文件Hash值被改变。
-Read：FileStorm子链的每一个节点上都会出现原始Hash值的原文件。（会在24小时后自动删除。）
-Remove：IPFS文件会从FileStorm子链的每一个节点上被删除。
+Write：a file was written to FileStorm MicroChain's nodes with a HASH;
+
+Read：A file will be read from FileStorm nodes;
+Remove：The data file will be removed from every FileStorm node;
