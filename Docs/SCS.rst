@@ -14,7 +14,7 @@ We have some video instructions for developers to setup MicroChains.
 
 `SubChainProtocolBase <https://github.com/MOACChain/moac-core/wiki/部署子链协议合约>`__
 
-To initiate ./bin/moac --datadir "/tmp/moac/60/01" --networkid 1975
+To initiate ./bin/moac --datadir "/tmp/moac" --networkid 1975
 --nodiscover --verbosity 4
 
 Operatig a Vnode control window ./bin/moac attach /tmp/moac/60/01/moac.ipc

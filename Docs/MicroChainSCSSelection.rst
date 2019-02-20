@@ -5,7 +5,7 @@ MicroChain SCS Selection
 *MicroChain select SCSs using the following methods:*
 
 1. In the MicroChain contract, DAPP developer need to choose the range
-   of SCSs[min,max] needed for the MicroChain.
+   of SCSs[min,max] needed for the MicroChain. min should be no less than 1. max should be 
 2. Vnode compare the distance between the SCS account and the VNODE. If
    its smaller than the selected target, then notify the SCS.
 3. SCS received the notice from register, then it need to answer with
