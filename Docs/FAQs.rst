@@ -144,7 +144,7 @@ the mainnet through the following options:
 
 If you want some moac on the testnet, you can mine on the testnet, put
 your receiver address
-`here <https://github.com/MOACChain/moac-core/issues/1>`__ or contact
+`here <https://faucet.moacchina.com/>`__ or contact
 the `MOAC team <info@moac.io>`__.
 
 MoacWalletOnline FAQs

@@ -19,7 +19,8 @@ Mother Of All Chains (MOAC) is to design a scalable and resilient Blockchain tha
    VNODE
    SCS
    MOACtoken
-   MOACnetwork
+   MotherChain
+   MicroChain
    DAPPs
    FAQs
    FileStormUserGuide

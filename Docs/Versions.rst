@@ -39,7 +39,7 @@ Major Progress：
 
 *内部版本识别号(Version)：1.1*
 
-Release Date： 06/30/2018 
+Release Date： 06/30/2019
 
 Available features：
 

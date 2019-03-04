@@ -29,4 +29,4 @@ The MotherChain is a Proof of Work blockchain, similar to Ethereum, that handles
    
    6.5 `TokenPocket <https://www.mytokenpocket.vip/en>`__
 
-   6.6 `MOACMask <https://github.com/MOACChain/MOACMask>`__
+   6.6 `MOACMask <https://github.com/MOACChain/MOACMask/releases>`__

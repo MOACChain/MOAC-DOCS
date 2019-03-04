@@ -1,14 +1,14 @@
 MicroChain Formation
-============
+====================
 
 **Requirements**
 
-To form a MicroChain, user needs to prepare at least one SCS to run the MicroChain and one VNODE to connect to MOAC netwrk.
+To form a MicroChain, user needs to prepare at least three SCS to run the MicroChain and one VNODE to connect to MOAC netwrk.
 
 MOAC required each SCS has deposit when it registered the MicroChain.
 
 * 1. VNODE connected to MOAC network;
-* 2. SCS servers (>1) with some MOAC deposit;
+* 2. SCS servers (>=3) with some MOAC deposit;
 
 :doc:`MicroChainVNODEProxy`
 
@@ -16,7 +16,7 @@ There are three types of smart contracts needed for the MicroChain formation
 
 * 1. Smart contract for the VNODE protocol;
 * 2. Smart contract for the MicroChain protocol;
-* 3. Smart contract for the VNODE protocol;
+* 3. Smart contract for the MicroChain;
 
 .. figure:: https://raw.githubusercontent.com/wiki/moacchain/moac-core/image/reg-flow.png
    :alt: 
@@ -46,7 +46,7 @@ from the value of index\_range RangeIndex[] 。*
 
 
 MOAC release
------------------------------------------
+------------
 
 
 
