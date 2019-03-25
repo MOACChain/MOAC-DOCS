@@ -15,21 +15,21 @@ MOAC tranasaction format is different format from Ethereum. It contains three mo
 +=========================+===========+===========================================+
 | **AccountNonce**        | nonce     | transaction sequence number fr the sending account  |
 +-------------------------+-----------+-------------------------------------------+
-| **Price**      | 1e3 sha   | 1,000                                     |
+| **Price**      | price   | price you are offering to pay, in unit of Sha |
 +-------------------------+-----------+-------------------------------------------+
-| **GasLimit**       | 1e6 sha   | 1,000,000                                 |
+| **GasLimit**       | gaslimit   | maximum amount of gas allowed for the transaction, should less than 9,000,000|
 +-------------------------+-----------+-------------------------------------------+
-| **Recipient**         | 1e9 sha   | 1,000,000,000                             |
+| **Recipient**         | to   | destination address (account or contract address)                           |
 +-------------------------+-----------+-------------------------------------------+
-| **Amount**      | amount  | 1,000,000,000,000                         |
+| **Amount**      | amount  | moac to transfer to the destination, if any, in unit of Sha  |
 +-------------------------+-----------+-------------------------------------------+
-| **Payload**           | data  | 1,000,000,000,000,000,000                 |
+| **Payload**           | data  |  Information aobut Global Contract call, MicroChain Dapp transactions, etc.|
 +-------------------------+-----------+-------------------------------------------+
-| **ShardingFlag**             | shardingFlag  | 1,000,000,000,000,000                     |
+| **ShardingFlag**             | shardingFlag  | Used to identify the TX types: 0 - MotherChain TX; 2 - MicroChain token transfer; 3 - MicroChain DAPP deploy        |
 +-------------------------+-----------+-------------------------------------------+
-| **Via**           | via  | 1,000,000,000,000,000,000                 |
+| **Via**           | via  | VNODE proxy beneficial address                |
 +-------------------------+-----------+-------------------------------------------+
-| **SystemContract**           | systemFlag  | 1,000,000,000,000,000,000          |
+| **SystemContract**           | systemFlag  | usually 0, only set by the internal process   |
 +-------------------------+-----------+-------------------------------------------+
 
    ::

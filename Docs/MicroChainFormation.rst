@@ -3,7 +3,7 @@ MicroChain Formation
 
 **Requirements**
 
-To form a MicroChain, user needs to prepare at least three SCS to run the MicroChain and one VNODE to connect to MOAC netwrk.
+To form a MicroChain, user needs to prepare at least three SCS to run the MicroChain and one VNODE to connect to a MOAC netwrk.
 
 MOAC required each SCS has deposit when it registered the MicroChain.
 
@@ -45,33 +45,22 @@ from the value of index\_range RangeIndex[] 。*
 
 
 
-MOAC release
-------------
+MOAC MicroChain Formation
+-------------------------
 
 
+The published MOAC release later than nuwa 1.0.8 supporting multiple contracts on the MicroChain.
+To form the MicroChain and running, there are 4 major steps:
 
-There are two tar files: pizzaAlpha.vnode.ubuntu.tar.gz. - vnode
-executables and files; pizzaAlpha.scs.ubuntu.tar.gz - three scs
-executables and files.
-
-1. Untar the file using tar, there are 4 directories:
+1. Have at least one VNODE registered in a VNODE POOL contract:
 
    ::
 
-       vnode
-       scs1
-       scs2
-       scs3
+      A VNODE pool contract to allow VNODE join as proxy of the microchain;
+      :doc:`MicroChainVNODEProxy`
 
-2. Start the vnode $ ./start\_vnode.sh
 
-   from another terminal, run moac again to attach the running node
-
-   ::
-
-       $ ./attach.sh
-
-   Check and create coinbase account
+2. Have a SCS POOL contract with some SCS servers registered:
 
    ::
 

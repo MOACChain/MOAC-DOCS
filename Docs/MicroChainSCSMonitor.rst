@@ -1,9 +1,9 @@
 MicroChain SCS Monitor
 ----------------------
 
-SCS Monitor is a SCS node monitoring MicroChain status. MicroChain users
+SCS Monitor is a SCS node monitoring MicroChain status. MicroChain owner
 can use this SCS node to monitor MicroChain status and get data from
-MicroChain.
+MicroChain. Only the owner of MicroChain can add monitors.
 
 Users can use RPC settings to get information fron SCS monitor.
 
@@ -12,9 +12,7 @@ It does not join the consensus and cannot get rewards from MicroChain.
 
 SCS monitor can monitor MicroChain after it starts. The MicroChain user
 need to call the "registerAsMonitor" method in MicroChain contract to
-register it.
-
-Example 1:
+register it. 
 
 The registerAsMonitor call method to connect SCS monitor with
 MicroChain:
@@ -32,12 +30,11 @@ Parameters:
 -  dappAddr、dappPasswd：Dapp user account and password to unlock the
    account;
 -  microchainAddr：MicroChain contract address;
--  scsAddr：scsid of SCS monitor, should be in the
-   directory:“…/scsserver/scskeystore”；
+-  scsAddr：scsid of SCS monitor without prefix '0x', should be in the
+   directory:"scskeystore"；
 -  string: ‘0x4e592e2f’ is a constant to access the subchainbase method
    ‘registerAsMonitor(address monitor), do not change it.
 
-Example 2:
 
 Calling example
 

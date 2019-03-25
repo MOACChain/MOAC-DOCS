@@ -37,6 +37,42 @@ these steps:
    -  `web3.js <https://github.com/ethereum/web3.js>`__, only the
       functions listed in chain3 are workable, such as web3, eth, admin.
 
+Example
+~~~~~~~
+
+Web3.js:
+
+.. code:: js
+
+    var Web3 = require('../index.js');
+    var web3 = new Web3();
+    
+    web3.setProvider(new web3.providers.HttpProvider('http://localhost:8545'));
+    
+    var coinbase = web3.eth.coinbase;
+    console.log(coinbase);
+    
+    var balance = web3.eth.getBalance(coinbase);
+    console.log(balance.toString(10));
+    
+Chain3:
+
+.. code:: js
+
+
+    var Chain3 = require('../index.js');
+    var chain3 = new Chain3();
+    
+    chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
+    
+    var coinbase = chain3.mc.accounts[0];
+    console.log(coinbase);
+    
+    var balance = web3.eth.getBalance(coinbase);
+    console.log(balance.toString(10));
+    
+
+
 Solidity
 --------
 

@@ -5,13 +5,12 @@ DAPP Developer can create a MicroChain and running his DAPP on the
 MicroChain. He need to deposit enough MOAC in the MicroChain to reward
 the SCSs running the MicroChain.
 
-DAPP Developer need to make his own MicroChain contract or use some
-template provided by MOAC.
+DAPP Developer need to form his own MicroChain to run the Contracts.
 
-B1、Deploy MicroChain control contract
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Deploy MicroChain control contract
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-subchainbase is the contract for the DAPP developers to control the
+subchainbase is the contract for the DAPP developers to form the
 MicroChain. It provides the MicroChain launch and running methods.
 
 The parameters are as following:

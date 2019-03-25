@@ -1,6 +1,9 @@
 Roadmap
 ==========================
 
+.. figure:: image/Roadmap2019.png
+
+
 **1.盘古 (Pangu)**
 
 *内部版本识别号 (Version)：0.8*
@@ -39,7 +42,7 @@ Major Progress：
 
 *内部版本识别号(Version)：1.1*
 
-Release Date： 06/30/2019
+Release Date： 12/30/2019
 
 Available features：
 
@@ -51,7 +54,7 @@ Available features：
 
 *内部版本识别号(Version)：1.2*
 
-Release Date： 12/30/2019 
+Release Date： 12/30/2020
 
 Available features：
 

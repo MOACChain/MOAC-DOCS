@@ -1,17 +1,19 @@
 MicroChain SCS Mining
 ---------------------
 
-Please follow these steps to run a SCS and start your MicroChain mining:
+To do SCS mining, a SCS miner needs to deposit some MOAC to join a MicroChain mining pool.
+When a SCS was chosen by a MicroChain and start mining, it can receive mining rewards from the MicroChain as long as the MicroChain is running. The rewards was given as MOAC and shows up after a flush of the MicroChain. The deposit will be
+ deducted if the SCS keeps sending dishonest transactions or lost
+ connections very often.Please follow these steps to run a SCS and start your MicroChain mining:
 
-A1、Download SCS program ( Or power up a SCS hardware miner)
+Download SCS program ( Or power up a SCS hardware miner)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The initial SCS program has following files: README - A txt file
-contains instructions; config/userconfig.json - Configura file used with
-SCS, need to be customized before start SCS; scsserver/scsserver -
-Executable program of SCS
+The initial SCS program has following files: 
+1. scsserver: the executable file for SCS server; 
+2. config/userconfig.json - Configuration file used with SCS, need to be customized before start SCS;
 
-A2、Cusomize userconfig.json
+Cusomize userconfig.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The conten of the userconfig.json is as following:
@@ -21,44 +23,48 @@ The conten of the userconfig.json is as following:
    setup a local VNODE or use a truste VNODE from other sources;
 2. DataDir：SCS data directory that holding the MicroChain data. Default
    is "./scsdata";
-3. LogPath：SCS log directory, default is "./logs";
+3. LogPath：SCS log directory, default is "./_logs";
 4. Beneficiary：Account holds the MicroChain mining rewards. Please
    don't use the SCS account for this. We suggest you create this
    account separatly and don't put the keystore file on SCS.
 5. VnodeChainId：network id with the MotherChain. Testnet = 101 and
    mainnet = 99. If you have a custome network, you need to make sure
    the vnode connect with has the same network id.
-6. Capability: desposit limit for a MicroChain. Since each MicroChain
+6. LogLevel：Logging verbosity, 0=silent, 1=error, 2=warn, 3=info, 4=debug (default: 4)
+7. Capability: desposit limit for a MicroChain. Since each MicroChain
    requires some desposit to join, you can set this number and only join
    the MicroChain with deposit requirement less than this limit.
-7. ReconnectInterval: If the connection is lost with vnode, SCS will try
+8. ReconnectInterval: If the connection is lost with vnode, SCS will try
    to connect with the vnode again. This is the number of seconds
    between each connection with vnode.
 
-A3、Start SCS
-~~~~~~~~~~~~~
+Start SCS
+~~~~~~~~~
 
 Command options (SCS -h)
 
 ::
 
     -p [psd]           Start SCS with a password for the scsid keystore，default password is "moacscsofflineaccountpwd"
-    -rpcaddr [addr]    SCS start with rpc ip
-    -rpcport [port]    SCS start with rpc port
+    -rpc               Enable the HTTP-RPC server with JSON-RPC format methods
+    -rpcdebug          Enable the HTTP-RPC server with debug format methods       
+    -rpcaddr [addr]    HTTP-RPC server listening interface (default: "localhost")
+    -rpcport [port]    HTTP-RPC server listening port (default: 8548)
 
 After the first start，SCS generates a keystore with a password (default
 or provided by user). The address of this keystore is the scsid. This
 address won't receive rewards. If user want to use a different scsid,
 should remove the keysore file and restart the SCS.
 
-SCS also has a rpc port. Currently the RPC only has monitoring services
+SCS has a rpc port. Currently the RPC only has monitoring services
 for DAPP developers.
 
-A4、Register the SCS into a SCS pool
+Register the SCS into a SCS pool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To participate in the MicroChain, SCS need to register itself into a SCS
-pool. When it registers, the SCS need to pay deposit as required by the
+pool. A SCS pool is a Global Contract (usually named subchainprotocolbase.sol) deployed on MOAC MotherChain. 
+When it registers, the SCS need to pay deposit as required by the
 SCS pool (defined in subchainprotocolbase.sol). After it is registered,
 it need to wait for some blocks (default is 50 blocks) to be chosen by
 MicroChains.
@@ -78,9 +84,9 @@ Javascript method to register the SCS: (used under VNODE console)
 Explainations
 
 -  baseAddr、basePasswd：MOAC VNODE account used to send TX;
--  protocolAddr：The subchainprotocolbase contract address;
+-  protocolAddr：The subchainprotocolbase contract address, or the SCS pool address;
 -  scsAddr：scsid address, saved in "…/scsserver/scskeystore";
--  deposit: amount of MOAC to send to pools to join MicroChains;
+-  deposit: amount of MOAC to send to pools to join MicroChains, no smaller than the deposit limit required by SCS pool contract;
 -  data：‘0x4420e486’ is a constant used to call the MicroChain. It was
    from the subchainprotocolbase function ‘register(address scs)’ .
    Don't change it unless you know what you are doing here!

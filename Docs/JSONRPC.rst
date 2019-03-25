@@ -34,8 +34,8 @@ MOAC RPC API has some compatibility with ETHEREUM RPC API,
 +------------+------------+
 
 MOAC has two additional RPC commands (vnode and scs) for VNODE and SCS
-services. These RPCs are supported by Nuwa
-1.0.4 version and later.
+services. These RPCs are supported by Nuwa 1.0.4 version and later.
+The most recent RPC is for Nuwa 1.0.8.
 
 JavaScript API
 --------------
@@ -220,7 +220,8 @@ JSON-RPC methods
 -  `scs\_getMicroChainList <#scs_getmicrochainlist>`__
 -  `scs\_getNonce <#scs_getnonce>`__
 -  `scs\_getSCSId <#scs_getscsid>`__
--  `scs\_getTransactionReceipt <#scs_gettransactionreceipt>`__
+-  `scs\_getReceiptByHash <#scs_getreceiptbyhash>`__
+-  `scs\_getReceiptByNonce <#scs_getreceiptbynonce>`__
 
 JSON RPC API Reference
 ----------------------
@@ -2522,8 +2523,8 @@ Example
 
 --------------
 
-scs\_getTransactionReceipt
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+scs\_getReceiptByHash
+^^^^^^^^^^^^^^^^^^^^^
 
 Returns the receipt of a transaction by transaction hash. Note That the
 receipt is not available for pending transactions.
@@ -2531,7 +2532,8 @@ receipt is not available for pending transactions.
 Parameters
 ''''''''''
 
-``String`` - The MicroChain address. ``String`` - The transaction hash.
+``String`` - The MicroChain address. 
+``String`` - The transaction hash.
 ``Function`` - (optional) If you pass a callback the HTTP request is
 made asynchronous.
 
@@ -2547,11 +2549,50 @@ Example
 .. code:: js
 
     // Request
-    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getTransactionReceipt","params":["0x299afff2da4a57e7e0a0a16bf626f8822b8a3158","0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"],"id":101}' 'localhost:8545'
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getReceiptByHash","params":["0x299afff2da4a57e7e0a0a16bf626f8822b8a3158","0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"],"id":101}' 'localhost:8545'
 
     // Result
     {
       "id":101,
       "jsonrpc": "2.0",
-      "result": {"logs":[{"address":"0x2328537bc943ab1a89fe94a4b562ee7a7b013634","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef","0x000000000000000000000000a8863fc8ce3816411378685223c03daae9770ebb","0x0000000000000000000000007312f4b8a4457a36827f185325fd6b66a3f8bb8b"],"data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQ=","blockNumber":0,"transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69","transactionIndex":0,"blockHash":"0x78f092ca81a891ad6c467caa2881d00d8e19c8925ddfd71d793294fbfc5f15fe","logIndex":0,"removed":false}],"logsBloom":"0x00000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000008000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000800000000000080000000000000000000000000002000000000000000000000000000000000000080100002000000000000000000000000000000000000000000000000000000000000000000000000000","status":"0x1","transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"}
+      "result": {contractAddress: '0x0a674edac2ccd47ae2a3197ea3163aa81087fbd1',
+  failed: false,"logs":[{"address":"0x2328537bc943ab1a89fe94a4b562ee7a7b013634","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef","0x000000000000000000000000a8863fc8ce3816411378685223c03daae9770ebb","0x0000000000000000000000007312f4b8a4457a36827f185325fd6b66a3f8bb8b"],"data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQ=","blockNumber":0,"transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69","transactionIndex":0,"blockHash":"0x78f092ca81a891ad6c467caa2881d00d8e19c8925ddfd71d793294fbfc5f15fe","logIndex":0,"removed":false}],"logsBloom":"0x00000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000008000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000800000000000080000000000000000000000000002000000000000000000000000000000000000080100002000000000000000000000000000000000000000000000000000000000000000000000000000","status":"0x1","transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"}
+    }
+
+--------------
+
+scs\_getReceiptByNonce
+^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the transaction result by address and nonce on the MicroChain. Note That the nonce is the nonce on the MicroChain. This nonce can be checked using scs_getNonce. 
+
+Parameters
+''''''''''
+
+``String`` - The MicroChain address. 
+``String`` - The transaction hash.
+``Int`` - The nonce of the transaction.
+``Function`` - (optional) If you pass a callback the HTTP request is
+made asynchronous.
+
+Returns
+'''''''
+
+``Object`` - A transaction receipt object, or null when no receipt was
+found:.
+
+Example
+'''''''
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getReceiptByNonce","params":["0x299afff2da4a57e7e0a0a16bf626f8822b8a3158","0xa8863fc8ce3816411378685223c03daae9770ebb", 0],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": {contractAddress: '0x0a674edac2ccd47ae2a3197ea3163aa81087fbd1',
+  failed: false,"logs":[{"address":"0x2328537bc943ab1a89fe94a4b562ee7a7b013634","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef","0x000000000000000000000000a8863fc8ce3816411378685223c03daae9770ebb","0x0000000000000000000000007312f4b8a4457a36827f185325fd6b66a3f8bb8b"],"data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQ=","blockNumber":0,"transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69","transactionIndex":0,"blockHash":"0x78f092ca81a891ad6c467caa2881d00d8e19c8925ddfd71d793294fbfc5f15fe","logIndex":0,"removed":false}],"logsBloom":"0x00000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000008000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000800000000000080000000000000000000000000002000000000000000000000000000000000000080100002000000000000000000000000000000000000000000000000000000000000000000000000000","status":"0x1","transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"}
     }
