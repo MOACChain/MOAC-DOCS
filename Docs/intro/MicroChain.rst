@@ -11,12 +11,5 @@ Developers have the freedom to select the consensus protocol that best fits thei
 
 MicroChains significantly reduce the cost of smart contract operations and allow developers to rapidly test different application and service ideas. MOAC’s MicroChains are able to interconnect with all other non- MOAC blockchains using Cross-Chain capabilities. This allows both users and their decentralized applications (DApps) to migrate easily to the MOAC Platform, with no prior blockchain knowledge. It also provides a decentralized file storage solution (IPFS) which is currently missing from other major blockchains.
 
-1. :doc:`MicroChainFormation`
-2. :doc:`MicroChainSCSMining`
-3. :doc:`MicroChainSCSSelection`
-4. :doc:`MicroChainSCSMonitor`
-5. :doc:`MicroChainVNODEProxy`
-6. :doc:`MicroChainUsers`
-7. :doc:`MicroChainDAPPDeveloper`
 
 

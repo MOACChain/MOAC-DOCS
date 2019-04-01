@@ -30,6 +30,3 @@ available to sub blockchains, providing solution for idea test, private
 chain deployment, complex task processing, decentralized applications
 etc.
 
-:doc:`MicroChainFormation`
-
-:doc:`MicroChainDAPPDeveloper`

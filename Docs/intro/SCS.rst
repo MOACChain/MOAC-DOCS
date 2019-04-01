@@ -13,16 +13,3 @@ We have some video instructions for developers to setup MicroChains.
 `Youku <http://v.youku.com/v_show/id_XMzYyMTQzMTk1Mg==.html?spm=a2h3j.8428770.3416059.1>`__
 
 
-More information can be found in the following pages:
-
-:doc:`MicroChainFormation`
-
-:doc:`MicroChainSCSMining`
-
-:doc:`MicroChainSCSMonitor`
-
-:doc:`MicroChainVNODEProxy`
-
-:doc:`MicroChainUsers`
-
-:doc:`MicroChainDAPPDeveloper`

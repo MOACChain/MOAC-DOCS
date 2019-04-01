@@ -3,21 +3,7 @@ VNODE Client
 
 VNODE client is used to form the MotherChain network. It used a Proof of Work consensus method similar to Ethereum. VNODE not only handles data storage and compute processing for smart contracts but also pass data for the MicroChain Dapps. 
 
-1. :doc:`Design`
-2. :doc:`Setup`
-3. :doc:`Commands`
-4. :doc:`Console`
-5. Chain 3
-
-   5.1 :doc:`Chain3`
-   
-   5.2 :doc:`Chain3Java`
-
-   5.3 :doc:`Chain3Go`
-
-   5.4 :doc:`Chain3PythonLibrary`
-   
-6. Useful websites
+Useful websites
 
    6.1 `MOAC <http://www.moacfoundation.org/>`__
    
