@@ -1,7 +1,7 @@
 VNODE Client
 ^^^^^^^^^^
 
-The MotherChain is a Proof of Work blockchain, similar to Ethereum, that handles data storage and compute processing for smart contracts and Dapps. On the MOAC Platform, the MotherChain is the public blockchain network that processes balance transfers, blockchain operation, consensus, and data access. The MOAC Platform also supports other consensus models.
+VNODE client is used to form the MotherChain network. It used a Proof of Work consensus method similar to Ethereum. VNODE not only handles data storage and compute processing for smart contracts but also pass data for the MicroChain Dapps. 
 
 1. :doc:`Design`
 2. :doc:`Setup`

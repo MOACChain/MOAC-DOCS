@@ -210,8 +210,7 @@ microchain:
         sending from:0xa8863fc8ce3816411378685223c03daae9770ebb to:0xc3c6e85820d97477172498ce7aed37b0bb22e67e amount:0 with data:0x69f3576f
         
 
-10. Subchain mining started: After these steps, scs server should have
-    some info like:
+10. Subchain mining started: After these steps, scs servers should form a MicroChain and start generating blocks. You may see some info like:
 
     ::
 

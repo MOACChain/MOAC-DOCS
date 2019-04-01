@@ -21,8 +21,8 @@ If you have a DAPP running on Ethereum or similar platform, it's very easy to mo
 MicroChain DApps
 ~~~~~~~~~~~~~~~~
 
-Blockchain that supports transactions, data access, control flow in a
-layered structure. It creates the framework to allow users to execute
+DApp runs on MicroChain means it has its own blockchain that supports transactions, 
+data access, control flow in a layered structure. It creates the framework to allow users to execute
 Smart Contract in an efficient way. It also provides the architecture to
 spawn sub blockchains using underlying infrastructure quickly and
 easily. It is a Blockchain platform with necessary plumbing parts
