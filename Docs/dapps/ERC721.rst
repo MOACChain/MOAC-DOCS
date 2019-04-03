@@ -378,7 +378,7 @@ MOAC node with addition command line arguments:
 
 Otherwise you will see the following error message:
 
-.. figure:: image/ERC20_moacwallet01.png
+.. figure:: ../image/ERC20_moacwallet01.png
    :alt: ERC20\_moacwallet01.png
 
    ERC20\_moacwallet01.png
@@ -389,21 +389,21 @@ Example command to start a MOAC node connecting with mainnet:
 
 A successful interface connecting to mainnet looks like this:
 
-.. figure:: image/ERC20_moacwallet02.png
+.. figure:: ../image/ERC20_moacwallet02.png
    :alt: ERC20\_moacwallet02.png
 
    ERC20\_moacwallet02.png
 
 To compile the contract, click the “CONTRACTS” icon:
 
-.. figure:: image/ERC20_moacwallet03.png
+.. figure:: ../image/ERC20_moacwallet03.png
    :alt: ERC20\_moacwallet03.png
 
    ERC20\_moacwallet03.png
 
 Then enter the contract deploy page:
 
-.. figure:: image/ERC20_moacwallet04.png
+.. figure:: ../image/ERC20_moacwallet04.png
    :alt: ERC20\_moacwallet04.png
 
    ERC20\_moacwallet04.png
@@ -424,7 +424,7 @@ number. If gas is not enough, the contract cannot be created. To
 continue, be sure to unlock the account to create the contract. You can
 use a console attached to the MOAC to do this:
 
-.. figure:: image/ERC20_moacwallet09.png
+.. figure:: ../image/ERC20_moacwallet09.png
    :alt: ERC20\_moacwallet09.png
 
    ERC20\_moacwallet09.png
@@ -477,7 +477,7 @@ deploying the contract to a real network. Injected Web3 is the default
 web3 connecting to Ethereum network. To deploy MOAC contract, you need
 to choose Web3 Provider.
 
-.. figure:: image/ERC20_moacwallet14.png
+.. figure:: ../image/ERC20_moacwallet14.png
    :alt: ERC20\_moacwallet14.png
 
    ERC20\_moacwallet14.png
@@ -486,14 +486,14 @@ After choose “Web3 Provider”, you can see a message like this:
 
 Click “OK”,
 
-.. figure:: image/ERC20_moacwallet15.png
+.. figure:: ../image/ERC20_moacwallet15.png
    :alt: ERC20\_moacwallet15.png
 
    ERC20\_moacwallet15.png
 
 You need to make sure the port is the same as the local running node.
 
-.. figure:: image/ERC20_moacwallet16.png
+.. figure:: ../image/ERC20_moacwallet16.png
    :alt: ERC20\_moacwallet12.png
 
    ERC20\_moacwallet12.png
@@ -516,7 +516,7 @@ and
 If the connection is established, you should see your accounts from the
 Account List.
 
-.. figure:: image/ERC20_moacwallet18.png
+.. figure:: ../image/ERC20_moacwallet18.png
    :alt: ERC20\_moacwallet18.png
 
    ERC20\_moacwallet18.png
@@ -524,7 +524,7 @@ Account List.
 Before you deploy the contract, you need to unlock the account that send
 the contract. You can do the unlock with the MOAC console:
 
-.. figure:: image/ERC20_moacwallet09.png
+.. figure:: ../image/ERC20_moacwallet09.png
    :alt: ERC20\_moacwallet09.png
 
    ERC20\_moacwallet09.png
@@ -532,7 +532,7 @@ the contract. You can do the unlock with the MOAC console:
 After successfully deployed the contract, you should see the contract
 address and other information showed in the menu:
 
-.. figure:: image/ERC20_moacwallet19.png
+.. figure:: ../image/ERC20_moacwallet19.png
    :alt: ERC20\_moacwallet19.png
 
    ERC20\_moacwallet19.png

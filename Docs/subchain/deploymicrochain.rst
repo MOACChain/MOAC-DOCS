@@ -1,6 +1,11 @@
 Create a MicroChain
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+DAPP Developer can create a MicroChain and running his DAPP on the
+MicroChain. He need to deposit enough MOAC in the MicroChain to reward
+the SCSs running the MicroChain.
+
+
 Vnode Pool
 ----------------------
 
@@ -167,9 +172,23 @@ Example:
 部署子链合约  
 ----------------------
 
-现在我们可以部署一个子链合约，并准备将两个scs
+subchainbase is the contract for the DAPP developers to form the
+MicroChain. It provides the MicroChain launch and running methods.
 
-部署SubChainBase.sol示例:
+The parameters are as following:
+
+1. proto：subchainprotocolbase contract address, obtain from MOAC team;
+2. vnodeProtocolBaseAddr：vnodeprotocolbase contract address，obtain
+   from MOAC team；
+3. min：min SCSs required to launch MicroChain, can only be 3,5,7;
+4. max：max SCS can be used in the MicroChain, can only be 11，21，31，51，99;
+5. thousandth：default is 1;
+6. flushRound：MicroChain flush interval between MotherChain blocks, the 
+   number should between 40 and 99;
+7. The gas limit need set to larger than 7000000 for deploying, suggest using 9000000.
+
+
+Example commands of deploying SubChainBase.sol:
 ::
 	> chain3 = require('chain3')
 	> solc = require('solc')
@@ -181,7 +200,7 @@ Example:
 	> bin = output.contracts[':SubChainBase'].bytecode;
 	> proto = '0xe42f4f566aedc3b6dd61ea4f70cc78d396130fac' ;    // 子链矿池合约 
 	> vnodeProtocolBaseAddr = '0x22f141dcc59850707708bc90e256318a5fe0b928' ;       // Vnode矿池合约 
-	> min = 1 ;			// 子链需要SCS的最小数量，当前需要从如下值中选择：1，3，5，7
+	> min = 3 ;			// 子链需要SCS的最小数量，当前需要从如下值中选择：3，5，7
 	> max = 11;		// 子链需要SCS的最大数量，当前需要从如下值中选择：11，21，31，51，99
 	> thousandth = 1 ;			// 千分之几
 	> flushRound = 40 ;     	// 子链刷新周期  单位是主链block生成对应数量的时间，当前的取值范围是40-99
@@ -194,48 +213,140 @@ Example:
 		
 
 	
-子链开放注册
+RegisterOpen：
 ----------------------
 
-首先子链合约需要最终提供gas费给scs，需要给子链控制合约发送一定量的moac，调用合约里的函数addFund
+RegisterOpen step is doing the following tasks:
+
+-  Dapp developer call this function on MotherChain to start the
+   MicroChain；
+-  MotherChain broadcast the call to all the VNODES. If the VNODE
+   contains a valid SCS, it will wait for the selection signal；
+-  If SCS receives a selection signal, it need to send a transaction to
+   the MicroChain contract to finish the registeration (This is why SCS
+   need to have some initial MOAC deposit).
+-  MicroChain will collect the confirmations undtil it reaches the max
+   limit as defined in the contract.
+
+The MicroChain chooses in the SCS pool to form the microChain
+validators. By default, this process is random. The microChain creator
+can also change the selection process and only allow specific SCSs to
+join.
+
+Before doing RegisterOpen, Developer need to deposit enough fund to the Microchain so it can send MotherChain transactions. 
+
 ::	
-	根据ABI chain3.sha3("addFund()") = 0xa2f09dfa891d1ba530cdf00c7c12ddd9f6e625e5368fff9cdf23c9dc0ad433b1
-		取前4个字节 0xa2f09dfa 
+	In ABI chain3.sha3("addFund()") = 0xa2f09dfa891d1ba530cdf00c7c12ddd9f6e625e5368fff9cdf23c9dc0ad433b1
+	Use the first 4 bytes: 0xa2f09dfa 
 	> amount = 20;
 	> subchainaddr = '0x1195cd9769692a69220312e95192e0dcb6a4ec09';
 	> chain3.personal.unlockAccount(chain3.mc.accounts[0], '123456');
 	> chain3.mc.sendTransaction( { from: chain3.mc.accounts[0], value:chain3.toSha(amount,'mc'), to: subchainaddr, gas: "2000000", gasPrice: chain3.mc.gasPrice, data: '0xa2f09dfa'});
 
-可以通过查询余额进行验证  
+The balance of MicroChain can be checked:
 ::		
 	> chain3.mc.getBalance('0x1195cd9769692a69220312e95192e0dcb6a4ec09')
 		
-然后调用  调用合约里的函数registerOpen 开放注册 (按子链矿池合约中SCS注册先后排序进行选取)
+
+Then call the MicroChain registerOpen function to register the SCSs:
+
 ::
-	根据ABI chain3.sha3("registerOpen()") = 0x5defc56ce78f178d760a165a5528a8e8974797e616a493970df1c0918c13a175
-		取前4个字节 0x5defc56c 
+	In ABI chain3.sha3("registerOpen()") = 0x5defc56ce78f178d760a165a5528a8e8974797e616a493970df1c0918c13a175
+	Use the first 4 bytes: 0x5defc56c 
 	> subchainaddr = '0x1195cd9769692a69220312e95192e0dcb6a4ec09';
 	> chain3.personal.unlockAccount(chain3.mc.accounts[0], '123456');
 	> chain3.mc.sendTransaction( { from: chain3.mc.accounts[0], value:0, to: subchainaddr, gas: "2000000", gasPrice: chain3.mc.gasPrice, data: '0x5defc56c'});				
 
-	
+Comments:
+
+-  dappAddr、dappPasswd：Dapp Developer account and password to make the
+   call；
+-  subchainAddr: subchainbase contract address;
+-  data：In sendtx, '0x5defc56c' is a constant to send with. It was
+   generate from the first 4 bytes in the hash of registerOpen()
+   function.
+
 验证：  访问子链合约的 registerFlag 为 1 ， 等待scs注册 (vnode 一个 flush周期后 ) ， 访问子链合约的 nodeCount
 	> chain3.mc.getStorageAt(subchainaddr,0x14)  // 注意registerFlag变量在合约中变量定义的位置（16进制）
 	> chain3.mc.getStorageAt(subchainaddr,0x0e)  // 注意nodeCount变量在合约中变量定义的位置（16进制）
 
-子链关闭注册
+After registerOpen is called，DAPP developer need to wait for a VNODE block generated. Then he can use the following
+methods to check how many SCS nodes registed in the MicroChain:
+
+Method 1：
+
+In the Console, check after call RegisterOpern in subchainBase:
+
+This is to call the nodeCount function in subchainBase contract.
+
+.. code:: javascript
+
+    > subchainBase.nodeCount()
+
+Method 2:
+
+In the Console, call the subchain address to check the value of
+nodeCount ('0x0e'):
+
+.. code:: javascript
+
+    > mc.getStorageAt(subchainaddr,0x14)
+    > mc.getStorageAt(subchainAddr,0x0e)
+
+When enough SCS nodes registerd in the MicroChain, continue to next
+Step: RegisterClose().
+
+
+RegisterClose
 ----------------------
 
-等到两个scs都注册完毕后，即注册SCS数目大于等于子链要求的最小数目时，调用子链合约里的函数 registerClose关闭注册
+RegisterClose is doing the following tasks:
+
+-  Dapp developer call the RegisterClose function;
+-  The contract checks if the number of SCS registered is larger than
+   the min number required in the MicroChain contract. If yes, continue.
+   Otherwise, the register is void;
+-  The contract is broacast to all the VNODEs and SCSs that the
+   registration is closed;
+-  The registered SCSs receive this broachasting, init the MicroChain
+   and start generating MicroChain blocks.
+
+After RegisterClose，SCSs cannot register through the MicroChain
+contract. The SCSs registered can participate as the MicroChain miner and get rewards from
+the MicroChain owner.
+
+Besure to have enough SCS nodes registered befor calling Registerclose.
+Otherwise you need to start the Registeropen process again.
+
 ::
-	根据ABI chain3.sha3("registerClose()") = 0x69f3576fc10c82561bd84b0045ee48d80d59a866174f2513fdef43d65702bf70
-		取前4个字节 0x69f3576f 
+	In ABI chain3.sha3("registerClose()") = 0x69f3576fc10c82561bd84b0045ee48d80d59a866174f2513fdef43d65702bf70
+	Use the first 4 bytes: 0x69f3576f 
 	> subchainaddr = '0x1195cd9769692a69220312e95192e0dcb6a4ec09';
 	> chain3.personal.unlockAccount(chain3.mc.accounts[0], '123456');
 	> chain3.mc.sendTransaction( { from: chain3.mc.accounts[0], value:0, to: subchainaddr, gas: "2000000", gasPrice: chain3.mc.gasPrice, data: '0x69f3576f'});
 			
-验证：  访问子链合约的 registerFlag 为 0
+Comments:
+
+-  dappAddr、dappPasswd：Dapp developer account and password to send the
+   TX;
+-  subchainAddr：MicroChain contract subchainbase address;
+-  '0x69f3576f': constant, generated from the subchainbase
+   registerClose() function by using Keccak256 hash.
+
+To check, can call the subchainbase contract if registerFlag = 0 (after nuwa 1.0.7 version)
 	> chain3.mc.getStorageAt(subchainaddr,0x14)	 // 注意registerFlag变量在合约中变量定义的位置（16进制）
 
-SCS自身完成初始化并开始子链运行，可观察scs的concole界面，scs开始出块即成功完成部署子链。
+Now the MicroChain should be formed and SCS can output information about the MicroChain.
+You can check the status of the MicroChain by connect with the SCS rpc port:
+
+.. code:: javascript
+
+	chain3.setScsProvider(new chain3.providers.HttpProvider('http://localhost:8548'));
+
+	// List the SCS server ID
+	console.log("SCS ID:", chain3.scs.getSCSId());
+
+	// List the microChain running on the SCS server
+	mclist = chain3.scs.getMicroChainList();
+	console.log("SCS MicroChain List:", mclist);
 

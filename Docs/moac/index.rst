@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-MOAC network
+MOAC network and tools
 ========================================
 
 .. toctree::
@@ -18,5 +18,5 @@ MOAC network
    Chain3
    Chain3Go
    Chain3Java
-   Chain3PythongLibrary
+   Chain3PythonLibrary
 

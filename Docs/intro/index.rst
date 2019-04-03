@@ -10,9 +10,12 @@ Introduction
    :maxdepth: 2
    :caption: Introduction:
 
-   introduction
+   Introduction
    MOACnetwork
+   VNODE
+   SCS
    MotherChain
    MicroChain
    MOACtoken
+   Versions
 

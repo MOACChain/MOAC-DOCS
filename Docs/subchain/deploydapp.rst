@@ -1,9 +1,8 @@
 Deploy DApp contracts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-同主链相同，业务逻辑的实现也通过智能合约的方式。
-
-在1.0.8版本中，加入的子链多合约的功能。子链多合约指的是在一条子链上部署多个子链业务逻辑合约。
+Since nuwa 1.0.8, deploy DAPP on MicroChain changed to support multiple contracts.
+First, user need to deploy a Dappbase.sol to support all other DAPP contracts.
 
 
 Requirements

@@ -140,7 +140,7 @@ should be seen as:
 
 显示如下信息：
 
-.. figure:: image/moac_install_win_0.png
+.. figure:: ../image/moac_install_win_0.png
    :alt: moac\_install\_win\_0
 
    moac\_install\_win\_0
@@ -180,7 +180,7 @@ should be seen as:
 
     D:\ moacPangu0.8.2-win>moac attach
 
-.. figure:: image/moac_install_win_1.png
+.. figure:: ../image/moac_install_win_1.png
    :alt: moac\_install\_win\_1
 
    moac\_install\_win\_1
@@ -203,7 +203,7 @@ should be seen as:
 
 系统会提示输入一个密码，例如"passwd"，并再次输入相同密码确认后，会显示一个以0x开头的字符串，即为MOAC帐号的公开地址。
 
-.. figure:: image/moac_install_win_2.png
+.. figure:: ../image/moac_install_win_2.png
    :alt: moac\_install\_win\_2
 
    moac\_install\_win\_2
@@ -268,28 +268,28 @@ should be seen as:
 
 挖矿状态下，数据显示有明显不同。
 
-.. figure:: image/moac_install_win_4.png
+.. figure:: ../image/moac_install_win_4.png
    :alt: moac\_install\_win\_4
 
    moac\_install\_win\_4
 
 挖到矿之后，可以查看余额
 
-.. figure:: image/moac_install_win_5.png
+.. figure:: ../image/moac_install_win_5.png
    :alt: moac\_install\_win\_5
 
    moac\_install\_win\_5
 
 登录墨客区块链浏览器页面： http://explorer.moac.io。
 
-.. figure:: image/moac_explorer_main.png
+.. figure:: ../image/moac_explorer_main.png
    :alt: moac\_explorer\_0
 
    moac\_explorer\_0
 
 在搜索栏输入你的挖矿账号地址，会显示该账号的余额等信息。
 
-.. figure:: image/moac_explorer_address.png
+.. figure:: ../image/moac_explorer_address.png
    :alt: moac\_explorer\_1
 
    moac\_explorer\_1
@@ -298,7 +298,7 @@ should be seen as:
 
 Miner正是你的账号地址。
 
-.. figure:: image/moac_explorer_blocks.png
+.. figure:: ../image/moac_explorer_blocks.png
    :alt: moac\_explorer\_2
 
    moac\_explorer\_2
@@ -350,7 +350,7 @@ Miner正是你的账号地址。
 
 这个过程需要第一个账号的密码。比如'passwd'，发送额为0.1 mc。
 
-.. figure:: image/moac_install_win_6.png
+.. figure:: ../image/moac_install_win_6.png
    :alt: moac\_install\_win\_6
 
    moac\_install\_win\_6

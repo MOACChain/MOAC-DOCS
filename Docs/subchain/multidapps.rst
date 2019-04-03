@@ -14,6 +14,7 @@ STEP0：Deploy dappbase.sol;
 
 STEP1：Deploy dapp1.sol, register in dappbase;
 ::
+
     contract Dapp1 {
     struct tup {
         uint amount;
@@ -36,6 +37,7 @@ STEP1：Deploy dapp1.sol, register in dappbase;
 
 STEP2：Deploy dapp2.sol, calls the Function getString in dapp1;
 ::
+
     contract Dapp1 {
         struct tup {
             uint amount;
@@ -60,6 +62,7 @@ STEP2：Deploy dapp2.sol, calls the Function getString in dapp1;
 
 Example：
 ::
+
     > nonce = 1   // 调用ScsRPCMethod.GetNonce获得
     > subchainaddr = '0xb877bf4e4cc94fd9168313e00047b77217760930';
     > dappaddr = '0xcc0D18E77748AeBe3cC6462be0EF724e391a4aD9';
@@ -81,6 +84,7 @@ STEP0：Deploy dappbase.sol;
 
 STEP1：Deploy dapp1.sol，register in dappbase;
 ::
+
      contract Dapp1 {
         struct tup {
             uint amount;
@@ -105,6 +109,7 @@ STEP1：Deploy dapp1.sol，register in dappbase;
 
 STEP2：部署合约dapp3.sol，要求可以访问dapp1中的数据
 ::
+
     contract Dapp1 {
         struct tup {
             uint amount;
@@ -152,7 +157,8 @@ STEP2：部署合约dapp3.sol，要求可以访问dapp1中的数据
 
 STEP3：部署合约dapp4.sol，要求可以访问dapp3中的数据
 ::
-    contract Dapp3 {
+
+  contract Dapp3 {
             struct tup {
                 uint amount;
                 address addr;

@@ -23,7 +23,7 @@ Keystore File (UTC / JSON)
    import it in the future.
 -  Make sure to have multiple backups.
 
-.. figure:: image/CreateWalletSave.png
+.. figure:: ../image/CreateWalletSave.png
    :alt: SaveKeystore
 
    SaveKeystore
@@ -42,7 +42,7 @@ Private Key (unencrypted)
    environment (like a piece of paper or USB drive). This ensures a lost
    password does not result in lost MOAC, and acts as another backup.
 
-.. figure:: image/PrivatekeyHide.png
+.. figure:: ../image/PrivatekeyHide.png
    :alt: PrivatekeyHide
 
    PrivatekeyHide
@@ -50,16 +50,19 @@ Private Key (unencrypted)
 You can check the actual conent of the private key but be sure not to
 discolose to anybody suspicious.
 
-.. figure:: image/Privatekey.png
+.. figure:: ../image/Privatekey.png
    :alt: Privatekey
 
    Privatekey
 
-MetaMask
+MOACMask
 ~~~~~~~~
 
-You can use Metamask to save your keypairs but currently MetaMask do not
-support MOAC transaction yet.
+You can use MOACMask to generate a keypairs and make transactions. 
+MOACMask is a project developed based on MetaMask to support MOAC network. 
+Currently it is still in testing and support MOAC MotherChain transactions.
+
+You can download the most recent [MOACMask release]().
 
 Ledger or TREZOR or Digital Bitbox Hardware Wallets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

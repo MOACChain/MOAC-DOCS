@@ -20,7 +20,7 @@ MOAC network
 
 By separating balance transfer and Smart Contracts, the platform’s advanced layered Multi-blockchain architecture increases overall transaction processing speeds up to 100x faster (TPS) than Ethereum. The MOAC architecture  is  overviewed  below,  consisting of MotherChain       , an event handling system, Smart Contracts as MicroChains , blockchain sharding, Cross-Chain capabilities, security, and an API.
 
-.. figure:: image/MOACNetwork.png
+.. figure:: ../image/MOACNetwork.png
    :alt: moac\_key\_person
 
 
@@ -42,7 +42,7 @@ The MOAC Platform uses MicroChains to separate processing tasks and isolate bloc
 Team
 ~~~~
 
-.. figure:: image/MOACteamEn.png
+.. figure:: ../image/MOACteamEn.png
    :alt: moac\_key\_person
 
 

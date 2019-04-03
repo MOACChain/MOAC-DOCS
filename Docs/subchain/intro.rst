@@ -61,6 +61,5 @@ Key points to create a MicroChain
 ---------------------------------
 
 1. The VNODE used to connect with SCSs should have good internet connection and high bandwidth. 
-2. The VNODEs should be 子链scs的vnode需要互相addPeer以保证通讯畅通。同时，这些vnode建议尽量add外面的节点以保证主链高度一致，并且保证时钟同步。
-
-2、SCS servers need to have good time synchronization with the internet clock;
+2. The VNODEs should be added as peer with each other to keep the communication well.
+3. SCS servers need to have good time synchronization with the internet clock;

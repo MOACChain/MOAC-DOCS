@@ -64,7 +64,7 @@ processing power (i.e., mobile users).
 -  Cross-chain capability
 -  Two levels of mining encourage massive participants
 
-.. figure:: image/MOACStructure.png
+.. figure:: ../image/MOACStructure.png
    :alt: MOAC structure
 
    MOAC structure
@@ -147,6 +147,37 @@ your receiver address
 `here <https://faucet.moacchina.com/>`__ or contact
 the `MOAC team <info@moac.io>`__.
 
+
+MicroChain Questions
+~~~~~~~~~~~~~~~~~~~~~
+
+1. What's the deposit for?
+
+The process for a SCS node to join a microChain is: make a safety
+deposit and register in the SCS pool. The amount of the deposit is a
+parameter that can be set in the microChain protocol. SCS cannot choose
+the microChain by itself.
+
+The microChain will choose in the SCS pool to form the microChain
+validators. By default, this process is random. The microChain creator
+can also change the selection process and only allow specific SCSs to
+join. When microChain generate a new block, if a SCS made bad decision,
+it will be punished with penalty of the deposit. The microChain will
+drop a SCS if it made many bad decisions.
+
+2. How secure are microchains against 51% attack? Or are there different
+   security measures applied on microchain level?
+
+   Generally there are two ways to prevent inside attackers in a public
+   microChain. First, all the SCS join the SCS pool need to pay some
+   deposits and will be kicked out of the microChain if it made enough
+   bad decisions. This can cost the attacker more than they can earn in
+   a public microChain. Second, the microChain was formed by randomly
+   choosing SCSs from the SCS pool. Thus, it is very hard for the
+   attacker to get enough SCSs to do the 51% attack (33% for PBFT). For
+   a SCSs pool with 100 nodes, the attackers may need 51 nodes to
+   perform the 51% attack for a microchip with only 20 nodes.
+
 MoacWalletOnline FAQs
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -158,14 +189,7 @@ MoacWalletOnline FAQs
 
 :doc:`accessWallet`
 
-`How To Create a Wallet <CreateWallet>`__
+:doc:`protectFunds`
 
-`Differences between wallet types <Differences-Between-Wallet-Types>`__
+:doc:`checkBalance`
 
-`How to Properly Save & Back Up Your Wallet <SaveAndBackup>`__
-
-`How To Access Your Wallet <accessWallet>`__
-
-`Protecting Yourself and Your Funds <protectFunds>`__
-
-`Checking the Balance of Your Account <checkBalance>`__

@@ -14,7 +14,7 @@ MicroChain
    requirements
    deploymicrochain
    deploydapp
-   mointor
+   monitor
    atomicswap
    multidapps
    shutdown   

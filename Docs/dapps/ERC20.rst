@@ -190,7 +190,7 @@ MOAC node with addition command line arguments:
 
 Otherwise you will see the following error message:
 
-.. figure:: image/ERC20_moacwallet01.png
+.. figure:: ../image/ERC20_moacwallet01.png
    :alt: ERC20\_moacwallet01.png
 
    ERC20\_moacwallet01.png
@@ -201,21 +201,21 @@ Example command to start a MOAC node connecting with mainnet:
 
 A successful interface connecting to mainnet looks like this:
 
-.. figure:: image/ERC20_moacwallet02.png
+.. figure:: ../image/ERC20_moacwallet02.png
    :alt: ERC20\_moacwallet02.png
 
    ERC20\_moacwallet02.png
 
 To compile the contract, click the “CONTRACTS” icon:
 
-.. figure:: image/ERC20_moacwallet03.png
+.. figure:: ../image/ERC20_moacwallet03.png
    :alt: ERC20\_moacwallet03.png
 
    ERC20\_moacwallet03.png
 
 Then enter the contract deploy page:
 
-.. figure:: image/ERC20_moacwallet04.png
+.. figure:: ../image/ERC20_moacwallet04.png
    :alt: ERC20\_moacwallet04.png
 
    ERC20\_moacwallet04.png
@@ -225,21 +225,21 @@ section. After copying the source code, the compiling process will
 automatically started. If no errors are not found, the right side should
 show a “SELECT CONTRACT TO DEPLOY” menu.
 
-.. figure:: image/ERC20_moacwallet05.png
+.. figure:: ../image/ERC20_moacwallet05.png
    :alt: ERC20\_moacwallet05.png
 
    ERC20\_moacwallet05.png
 
 Select the contract name “TokenERC20”:
 
-.. figure:: image/ERC20_moacwallet06.png
+.. figure:: ../image/ERC20_moacwallet06.png
    :alt: ERC20\_moacwallet06.png
 
    ERC20\_moacwallet06.png
 
 Input the parameters values from the menu: \
 
-.. figure:: image/ERC20_moacwallet07.png
+.. figure:: ../image/ERC20_moacwallet07.png
    :alt: ERC20\_moacwallet07.png
 
    ERC20\_moacwallet07.png
@@ -248,7 +248,7 @@ You need to have enough balance to deploy the contract. You can choose the
 amount of fee to use when deploying the contract. Click the DEPLOY
 button:
 
-.. figure:: image/ERC20_moacwallet08.png
+.. figure:: ../image/ERC20_moacwallet08.png
    :alt: ERC20\_moacwallet08.png
 
    ERC20\_moacwallet08.png
@@ -259,7 +259,7 @@ number. If gas is not enough, the contract cannot be created. To
 continue, be sure to unlock the account to create the contract. You can
 use a console attached to the MOAC to do this:
 
-.. figure:: image/ERC20_moacwallet09.png
+.. figure:: ../image/ERC20_moacwallet09.png
    :alt: ERC20\_moacwallet09.png
 
    ERC20\_moacwallet09.png
@@ -267,7 +267,7 @@ use a console attached to the MOAC to do this:
 After deploying, the interface is returned to the main menu and you can
 see the following transaction is creating.
 
-.. figure:: image/ERC20_moacwallet10.png
+.. figure:: ../image/ERC20_moacwallet10.png
    :alt: ERC20\_moacwallet10.png
 
    ERC20\_moacwallet10.png
@@ -275,7 +275,7 @@ see the following transaction is creating.
 After 12 confirmations, you can start using
 the contract by click the admin page link.
 
-.. figure:: image/ERC20_moacwallet11.png
+.. figure:: ../image/ERC20_moacwallet11.png
    :alt: ERC20\_moacwallet11.png
 
    ERC20\_moacwallet11.png
@@ -305,7 +305,7 @@ contract:
 If the contract is compiled successfully, remix will show the interface
 like this:
 
-.. figure:: image/ERC20_moacwallet12.png
+.. figure:: ../image/ERC20_moacwallet12.png
    :alt: ERC20\_moacwallet12.png
 
    ERC20\_moacwallet12.png
@@ -320,7 +320,7 @@ sure to enable the access of REMIX to the MOAC node with
 
 Click the Run Tab and you should see the following menu:
 
-.. figure:: image/ERC20_moacwallet13.png
+.. figure:: ../image/ERC20_moacwallet13.png
    :alt: ERC20\_moacwallet13.png
 
    ERC20\_moacwallet13.png
@@ -331,7 +331,7 @@ deploying the contract to a real network. Injected Web3 is the default
 web3 connecting to Ethereum network. To deploy MOAC contract, you need
 to choose Web3 Provider.
 
-.. figure:: image/ERC20_moacwallet14.png
+.. figure:: ../image/ERC20_moacwallet14.png
    :alt: ERC20\_moacwallet14.png
 
    ERC20\_moacwallet14.png
@@ -340,21 +340,21 @@ After choose “Web3 Provider”, you can see a message like this:
 
 Click “OK”,
 
-.. figure:: image/ERC20_moacwallet15.png
+.. figure:: ../image/ERC20_moacwallet15.png
    :alt: ERC20\_moacwallet15.png
 
    ERC20\_moacwallet15.png
 
 You need to make sure the port is the same as the local running node.
 
-.. figure:: image/ERC20_moacwallet16.png
+.. figure:: ../image/ERC20_moacwallet16.png
    :alt: ERC20\_moacwallet12.png
 
    ERC20\_moacwallet12.png
 
 You may see the error message like this:
 
-.. figure:: image/ERC20_moacwallet17.png
+.. figure:: ../image/ERC20_moacwallet17.png
    :alt: ERC20\_moacwallet17.png
 
    ERC20\_moacwallet17.png
@@ -375,7 +375,7 @@ and
 If the connection is established, you should see your accounts from the
 Account List.
 
-.. figure:: image/ERC20_moacwallet18.png
+.. figure:: ../image/ERC20_moacwallet18.png
    :alt: ERC20\_moacwallet18.png
 
    ERC20\_moacwallet18.png
@@ -383,7 +383,7 @@ Account List.
 Before you deploy the contract, you need to unlock the account that send
 the contract. You can do the unlock with the MOAC console:
 
-.. figure:: image/ERC20_moacwallet09.png
+.. figure:: ../image/ERC20_moacwallet09.png
    :alt: ERC20\_moacwallet09.png
 
    ERC20\_moacwallet09.png
@@ -391,7 +391,7 @@ the contract. You can do the unlock with the MOAC console:
 After successfully deployed the contract, you should see the contract
 address and other information showed in the menu:
 
-.. figure:: image/ERC20_moacwallet19.png
+.. figure:: ../image/ERC20_moacwallet19.png
    :alt: ERC20\_moacwallet19.png
 
    ERC20\_moacwallet19.png
@@ -492,12 +492,12 @@ bytecode files for your TestToken smart contract. Next, you will be able
 to deploy your token contract on the MOAC blockchain for others to
 interact with it.
 
-.. |ERC20\_moacwallet05.png| image:: image/ERC20_moacwallet05.png
-.. |ERC20\_moacwallet06.png| image:: image/ERC20_moacwallet06.png
-.. |ERC20\_moacwallet07.png| image:: image/ERC20_moacwallet07.png
-.. |ERC20\_moacwallet08.png| image:: image/ERC20_moacwallet08.png
-.. |ERC20\_moacwallet10.png| image:: image/ERC20_moacwallet10.png
-.. |ERC20\_moacwallet11.png| image:: image/ERC20_moacwallet11.png
-.. |ERC20\_moacwallet12.png| image:: image/ERC20_moacwallet12.png
-.. |ERC20\_moacwallet13.png| image:: image/ERC20_moacwallet13.png
-.. |ERC20\_moacwallet17.png| image:: image/ERC20_moacwallet17.png
+.. |ERC20\_moacwallet05.png| image:: ../image/ERC20_moacwallet05.png
+.. |ERC20\_moacwallet06.png| image:: ../image/ERC20_moacwallet06.png
+.. |ERC20\_moacwallet07.png| image:: ../image/ERC20_moacwallet07.png
+.. |ERC20\_moacwallet08.png| image:: ../image/ERC20_moacwallet08.png
+.. |ERC20\_moacwallet10.png| image:: ../image/ERC20_moacwallet10.png
+.. |ERC20\_moacwallet11.png| image:: ../image/ERC20_moacwallet11.png
+.. |ERC20\_moacwallet12.png| image:: ../image/ERC20_moacwallet12.png
+.. |ERC20\_moacwallet13.png| image:: ../image/ERC20_moacwallet13.png
+.. |ERC20\_moacwallet17.png| image:: ../image/ERC20_moacwallet17.png

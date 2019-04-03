@@ -18,7 +18,6 @@ SCS monitor can monitor MicroChain after it starts. The MicroChain user
 need to call the "registerAsMonitor" method in MicroChain contract to
 register it. 
 
-Monitor不参与子链的交易共识，只是同步区块数据，提供数据查询
 
 子链启动的方式与scs区别在于参数不同，主要定义了rpc接口的访问控制
 ::	
