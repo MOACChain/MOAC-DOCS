@@ -33,7 +33,7 @@ Vnode Pool
 	
 注意：gas 不要设置太大， 不然会触发错误 exceeds block gas limit undefined
 		
-vnode 设置代理并加入矿池
+Add VNODE to pool 
 ------------------------
 
 修改vnode目录配置文件vnodeconfig.json: VnodeBeneficialAddress里设置收益账号：  0xf103bc1c054babcecd13e7ac1cf34f029647b08c
@@ -103,7 +103,7 @@ SCS Pool
 部署完毕后，获得子链矿池合约地址  0xe42f4f566aedc3b6dd61ea4f70cc78d396130fac
 
 
-Start SCSs 
+Start SCSs
 ----------------------
 
 这里我们设置两个scs节点
@@ -136,10 +136,10 @@ Start SCSs
 	> chain3.mc.getBalance('0xd4057328a35f34507dbcd295d43ed0cccf9c368a')
 	> chain3.mc.getBalance('0x3e21ba36b396936c6cc9adc3674655b912e5fa54')
 	
-将scs加入子链矿池
+Add SCSs to Pool
 ----------------------
 
-调用子链矿池合约register方法加入矿池
+Call SubchainProtocolBase.sol's register function to join the pool
 			
 Parameters:
 ::
@@ -169,7 +169,7 @@ Example:
 同上将另一个scs（0x3e21ba36b396936c6cc9adc3674655b912e5fa54）也加入子链矿池
 
 
-部署子链合约  
+Deploy MicroChain Contract
 ----------------------
 
 subchainbase is the contract for the DAPP developers to form the

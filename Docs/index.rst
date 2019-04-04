@@ -12,7 +12,7 @@ Mother Of All Chains (MOAC) is to design a scalable and resilient Blockchain tha
 
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Contents:
 
    intro/index

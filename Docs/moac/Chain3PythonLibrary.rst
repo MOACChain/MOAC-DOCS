@@ -54,7 +54,7 @@ Chain3 API
 ----------
 
 1. chain3.version.network：
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Returns the current network id. For MOAC, mainnet network id = 99,
 testnet network id = 101.
@@ -64,7 +64,7 @@ testnet network id = 101.
     print('network id:'+ str(chain3.version.network))
 
 2. chain3.HTTPProvider:
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Convenience API to access chain3.providers.rpc.HTTPProvider
 
@@ -73,7 +73,7 @@ Convenience API to access chain3.providers.rpc.HTTPProvider
     Chain3(Chain3.HTTPProvider("http://127.0.0.1:8545", request_kwargs={'timeout': 30}))
 
 3. chain3.sha3(string,options)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 string：The string to hash using the SHA3 algorithm.
 options：optional，need set to hex for HEX string.
@@ -86,7 +86,7 @@ options：optional，need set to hex for HEX string.
     print(hashOfHash);
 
 4. chain3.net.peerCount:
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 This property is read only and returns the number of connected peers.
 
@@ -96,7 +96,7 @@ This property is read only and returns the number of connected peers.
     print(peerCount);
 
 5. chain3.net.listening:
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 This property is read only and says whether the node is actively
 listening for network connections or not.
@@ -107,7 +107,7 @@ listening for network connections or not.
     print(listenState);
 
 6. chain3.mc.coinbase:
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Returns the current Coinbase address.
 
@@ -117,7 +117,7 @@ Returns the current Coinbase address.
     print(nodeCoinbase);
 
 7. chain3.mc.mining:
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Returns boolean as to whether the node is currently mining.
 
@@ -127,7 +127,7 @@ Returns boolean as to whether the node is currently mining.
     print(miningState);  //true or false
 
 8. chain3.mc.accounts:
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Returns the list of known accounts.
 
@@ -137,7 +137,7 @@ Returns the list of known accounts.
     print(nodeAccounts);
 
 9. chain3.mc.blockNumber:
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Returns the number of the most recent block
 
@@ -147,7 +147,7 @@ Returns the number of the most recent block
     print(nowBlockNumber);
 
 10. chain3.mc.getBlockTransactionCount(block\_identifier):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the number of transactions in the block specified by
 block\_identifier.
@@ -163,7 +163,7 @@ mc\_getBlockTransactionCountByHash.
     print(transactionCount);
 
 11. chain3.mc.getBalance(account, block\_identifier=mc.defaultBlock):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the balance of the given account at the block specified by
 block\_identifier.
@@ -179,7 +179,7 @@ account may be a hex address or an ENS name
     //         getBalance2:3045272267220000000000
 
 12. chain3.mc.defaultBlock:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The default block number that will be used for any RPC methods that
 accept a block identifier. Defaults to 'latest'.
@@ -193,7 +193,7 @@ accept a block identifier. Defaults to 'latest'.
     print("defaultBlock" + defultBlock);
 
 13. chain3.mc.gasPrice:
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Returns the current gas price in Sha = 1e-18 mc. GasPrice is calculated
 from most recent blocks.
@@ -204,7 +204,7 @@ from most recent blocks.
     print(gasPrice.toString(10));
 
 14. chain3.mc.estimateGas(transaction\_params=None):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Uses the selected gas price strategy to calculate a gas price. This
 method returns the gas price denominated in sha. The transaction\_params
@@ -224,7 +224,7 @@ be able to produce a gas price.
     //        estimateGas :1273
 
 15. chain3.mc.getCode(account, block\_identifier=mc.defaultBlock):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the bytecode for the given account at the block specified by
 block\_identifier. account may be a hex address or an ENS name
@@ -234,7 +234,7 @@ block\_identifier. account may be a hex address or an ENS name
     code  = chain3.mc.getCode("0x0000000000000000000000000000000000000065");//contract address
 
 16. chain3.mc.syncing:
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Returns either False if the node is not syncing or a dictionary showing
 sync status.
@@ -253,7 +253,7 @@ sync status.
     })
 
 17. chain3.mc.getTransaction(transaction\_hash):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: python
 
@@ -280,7 +280,7 @@ sync status.
     */
 
 18. chain3.mc.getBlock(block\_identifier=mc.defaultBlock, full\_transactions=False):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the block specified by block\_identifier. Delegates to
 mc\_getBlockByNumber if block\_identifier is an integer or one of the
@@ -328,7 +328,7 @@ hashes.
     */
 
 19. chain3.personal.unlockAccount(account, passphrase, duration=None):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Unlocks the given account for duration seconds. If duration is None then
 the account will remain unlocked indefinitely. Returns boolean as to
@@ -339,7 +339,7 @@ whether the account was successfully unlocked.
     chain3.personal.unlockAccount(mc.accounts[0], 'password')
 
 20. chain3.miner.start(num\_threads):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Start the CPU mining process using the given number of threads.
 
@@ -348,7 +348,7 @@ Start the CPU mining process using the given number of threads.
     chain3.miner.start(2) # number of threads
 
 21. chain3.miner.stop:
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Stop the CPU mining operation
 
@@ -357,7 +357,7 @@ Stop the CPU mining operation
     chain3.miner.stop()
 
 22. chain3.miner.setGasPrice(gas\_price):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Sets the minimum accepted gas price that this node will accept when
 mining transactions. Any transactions with a gas price below this value
@@ -368,7 +368,7 @@ will be ignored.
     chain3.miner.setGasPrice(19999999999)
 
 23. chain3.mc.getTransactionReceipt((transaction\_hash, timeout=120):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Returns the transaction receipt specified by transaction\_hash. If the
 transaction has not yet been mined returns None
@@ -401,7 +401,7 @@ transaction has not yet been mined returns None
     */
 
 24. chain3.mc.getTransactionCount((block\_identifier):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Returns the number of transactions that have been sent from account as
 of the block specified by block\_identifier.
@@ -411,7 +411,7 @@ of the block specified by block\_identifier.
     chain3.mc.getTransactionCount('0x87E369172Af1e817ebD8d63bcD9f685A513a6736', block_identifier=chain3.mc.defaultBlock)
 
 25. chain3.mc.sendTransaction(transaction, passphrase):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Signs and sends the given transaction
 
@@ -459,7 +459,7 @@ than the gasLimit a ValueError will be raised.
      
 
 26. chain3.mc.sendRawTransaction(raw\_transaction):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Sends a signed and serialized transaction. Returns the transaction hash.
 
