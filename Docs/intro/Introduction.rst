@@ -1,4 +1,4 @@
-Introduction
+MOAC
 ----------
 
 Mother of All Chain (MOAC) Blockchain
@@ -15,8 +15,6 @@ MOAC will also make it easy to deploy sub blockchains called MicroChains and int
 offer easy solutions for small companies that want to create sub
 blockchains by themselves.
 
-MOAC network
-^^^^^^^^^^^^
 
 By separating balance transfer and Smart Contracts, the platform’s advanced layered Multi-blockchain architecture increases overall transaction processing speeds up to 100x faster (TPS) than Ethereum. The MOAC architecture  is  overviewed  below,  consisting of MotherChain       , an event handling system, Smart Contracts as MicroChains , blockchain sharding, Cross-Chain capabilities, security, and an API.
 

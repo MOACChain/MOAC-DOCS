@@ -8,7 +8,7 @@ Introduction
 
 .. toctree::
    :maxdepth: 2
-   :caption: Introduction:
+   :caption: Content:
 
    Introduction
    MOACnetwork
