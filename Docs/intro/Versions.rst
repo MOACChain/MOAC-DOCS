@@ -1,7 +1,7 @@
 Roadmap
 ==========================
 
-.. figure:: ../image/WhitePaperGraph.png
+.. figure:: ../image/ROADMAP2019EN.png
 
 
 **1.盘古 (Pangu)**

@@ -1,3 +1,4 @@
 ### build docs
 ./bak
 ./Docs/_build/*
+./Docs/_static/*
