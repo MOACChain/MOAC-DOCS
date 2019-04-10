@@ -62,7 +62,7 @@ You can use MOACMask to generate a keypairs and make transactions.
 MOACMask is a project developed based on MetaMask to support MOAC network. 
 Currently it is still in testing and support MOAC MotherChain transactions.
 
-You can download the most recent [MOACMask release]().
+You can download the most recent [MOACMask release](https://github.com/MOACChain/MOACMask/releases).
 
 Ledger or TREZOR or Digital Bitbox Hardware Wallets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
