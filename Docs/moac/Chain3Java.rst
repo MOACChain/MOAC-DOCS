@@ -1,6 +1,5 @@
-
-chain3j: Chain3 Java MOAC Ðapp API
-==================================
+Chain3 Java Library
+===================
 
 `chain3j <https://github.com/MOACChain/chain3j>` is a lightweight, highly modular, reactive, type safe Java and Android library for working with
 Smart Contracts and integrating with clients (nodes) on the MOAC network:

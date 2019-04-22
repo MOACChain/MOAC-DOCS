@@ -15,7 +15,7 @@ MOAC network and tools
    Commands
    Console
    JSONRPC
-   Chain3
+   Chain3Js
    Chain3Go
    Chain3Java
    Chain3PythonLibrary

@@ -1,19 +1,19 @@
-JSON RPC API
-============
+JSON RPC
+========
 
-`JSON <http://json.org/>`__ is a lightweight data-interchange format. It
+`JSON <http://json.org/>` is a lightweight data-interchange format. It
 can represent numbers, strings, ordered sequences of values, and
 collections of name/value pairs.
 
-`JSON-RPC <http://www.jsonrpc.org/specification>`__ is a stateless,
+`JSON-RPC <http://www.jsonrpc.org/specification>`is a stateless,
 light-weight remote procedure call (RPC) protocol. Primarily this
 specification defines several data structures and the rules around their
 processing. It is transport agnostic in that the concepts can be used
 within the same process, over sockets, over HTTP, or in many various
 message passing environments. It uses JSON (`RFC
-4627 <http://www.ietf.org/rfc/rfc4627.txt>`__) as data format.
+4627 <http://www.ietf.org/rfc/rfc4627.txt>`) as data format.
 
-MOAC RPC API has some compatibility with ETHEREUM RPC API,
+MOAC JSON-RPC has some compatibility with ETHEREUM JSON-RPC,
 
 +------------+------------+
 | Chain3     | Web3.js    |
@@ -33,17 +33,17 @@ MOAC RPC API has some compatibility with ETHEREUM RPC API,
 | scs        | n/a        |
 +------------+------------+
 
-MOAC has two additional RPC commands (vnode and scs) for VNODE and SCS
+MOAC has two additional JSON-RPC objects (vnode and scs) for VNODE and SCS
 services. These RPCs are supported by Nuwa 1.0.4 version and later.
-The most recent RPC is for Nuwa 1.0.8.
+The most recent RPC is Nuwa 1.0.9.
 
 JavaScript API
 --------------
 
 To talk to a MOAC node from inside a JavaScript application use the
-`chain3.js <https://github.com/MOACChain/chain3>`__ library, which gives
+`chain3.js <https://github.com/MOACChain/chain3>` library, which gives
 a convenient interface for the RPC methods. See the `JavaScript
-API <https://github.com/MOACChain/moac-core/wiki/Chain3>`__ for more.
+API <https://github.com/MOACChain/moac-core/wiki/Chain3>` for more.
 
 JSON-RPC Endpoint
 -----------------
@@ -80,7 +80,7 @@ same-origin policy and requests will fail:
     moac --rpc --rpccorsdomain "http://localhost:3000"
 
 The JSON RPC can also be started from the VNODE `moac
-console <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console>`__
+console <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console>`
 using the ``admin.startRPC(addr, port)`` command.
 
 For SCS:
@@ -109,7 +109,7 @@ digits per byte. Examples: - 0x41 (size 1, "A") - 0x004200 (size 3,
 ":raw-latex:`\0`B:raw-latex:`\0`") - 0x (size 0, "") - WRONG: 0xf0f0f
 (must be even number of digits) - WRONG: 004200 (must be prefixed 0x)
 
-Currently `MOAC <https://github.com/MOACChain/moac-core/releases>`__
+Currently `MOAC <https://github.com/MOACChain/moac-core/releases>`
 VNODE server provides JSON-RPC communication over http and IPC (unix
 socket Linux and OSX/named pipes on Windows). SCS server provides
 rovides JSON-RPC communication over http only.
@@ -119,11 +119,11 @@ The default block parameter
 
 The following methods have an extra default block parameter:
 
--  `mc\_getBalance <#mc_getbalance>`__
--  `mc\_getCode <#mc_getcode>`__
--  `mc\_getTransactionCount <#mc_gettransactioncount>`__
--  `mc\_getStorageAt <#mc_getstorageat>`__
--  `mc\_call <#mc_call>`__
+-  :ref:`mc\_getBalance <mc_getbalance>`
+-  :ref:`mc\_getCode <mc_getcode>`
+-  :ref:`mc\_getTransactionCount <mc_gettransactioncount>`
+-  :ref:`mc\_getStorageAt <mc_getstorageat>`
+-  :ref:`mc\_call <mc_call>`
 
 When requests are made that act on the state of moac, the last default
 block parameter determines the height of the block.
@@ -154,97 +154,100 @@ JSON-RPC methods
 
 -  chain3
 
-   -  `chain3\_clientVersion <#chain3_clientversion>`__
-   -  `chain3\_sha3 <#chain3_sha3>`__
+   -  :ref:`chain3\_clientVersion <chain3_clientversion>`
+   -  :ref:`chain3\_sha3 <chain3_sha3>`
 
 -  net
 
-   -  `net\_version <#net_version>`__
-   -  `net\_peerCount <#net_peercount>`__
-   -  `net\_listening <#net_listening>`__
+   -  :ref:`net\_version <net_version>`
+   -  :ref:`net\_peerCount <net_peercount>`
+   -  :ref:`net\_listening <net_listening>`
 
 -  mc
 
-   -  `mc\_protocolVersion <#mc_protocolversion>`__
-   -  `mc\_syncing <#mc_syncing>`__
-   -  `mc\_coinbase <#mc_coinbase>`__
-   -  `mc\_mining <#mc_mining>`__
-   -  `mc\_hashrate <#mc_hashrate>`__
-   -  `mc\_gasPrice <#mc_gasprice>`__
-   -  `mc\_accounts <#mc_accounts>`__
-   -  `mc\_blockNumber <#mc_blocknumber>`__
-   -  `mc\_getBalance <#mc_getbalance>`__
-   -  `mc\_getStorageAt <#mc_getstorageat>`__
-   -  `mc\_getTransactionCount <#mc_gettransactioncount>`__
-   -  `mc\_getBlockTransactionCountByHash <#mc_getblocktransactioncountbyhash>`__
-   -  `mc\_getBlockTransactionCountByNumber <#mc_getblocktransactioncountbynumber>`__
-   -  `mc\_getUncleCountByBlockHash <#mc_getunclecountbyblockhash>`__
-   -  `mc\_getUncleCountByBlockNumber <#mc_getunclecountbyblocknumber>`__
-   -  `mc\_getCode <#mc_getcode>`__
-   -  `mc\_sign <#mc_sign>`__
-   -  `mc\_sendTransaction <#mc_sendtransaction>`__
-   -  `mc\_sendRawTransaction <#mc_sendrawtransaction>`__
-   -  `mc\_call <#mc_call>`__
-   -  `mc\_estimateGas <#mc_estimategas>`__
-   -  `mc\_getBlockByHash <#mc_getblockbyhash>`__
-   -  `mc\_getBlockByNumber <#mc_getblockbynumber>`__
-   -  `mc\_getTransactionByHash <#mc_gettransactionbyhash>`__
-   -  `mc\_getTransactionByBlockHashAndIndex <#mc_gettransactionbyblockhashandindex>`__
-   -  `mc\_getTransactionByBlockNumberAndIndex <#mc_gettransactionbyblocknumberandindex>`__
-   -  `mc\_getTransactionReceipt <#mc_gettransactionreceipt>`__
-   -  `mc\_getUncleByBlockHashAndIndex <#mc_getunclebyblockhashandindex>`__
-   -  `mc\_getUncleByBlockNumberAndIndex <#mc_getunclebyblocknumberandindex>`__
-   -  `mc\_newFilter <#mc_newfilter>`__
-   -  `mc\_newBlockFilter <#mc_newblockfilter>`__
-   -  `mc\_newPendingTransactionFilter <#mc_newpendingtransactionfilter>`__
-   -  `mc\_uninstallFilter <#mc_uninstallfilter>`__
-   -  `mc\_getFilterChanges <#mc_getfilterchanges>`__
-   -  `mc\_getFilterLogs <#mc_getfilterlogs>`__
-   -  `mc\_getLogs <#mc_getlogs>`__
-   -  `mc\_getWork <#mc_getwork>`__
-   -  `mc\_submitWork <#mc_submitwork>`__
+   -  :ref:`mc\_protocolVersion <mc_protocolversion>`
+   -  :ref:`mc\_syncing <mc_syncing>`
+   -  :ref:`mc\_coinbase <mc_coinbase>`
+   -  :ref:`mc\_mining <mc_mining>`
+   -  :ref:`mc\_hashrate <mc_hashrate>`
+   -  :ref:`mc\_gasPrice <mc_gasprice>`
+   -  :ref:`mc\_accounts <mc_accounts>`
+   -  :ref:`mc\_blockNumber <mc_blocknumber>`
+   -  :ref:`mc\_getBalance <mc_getbalance>`
+   -  :ref:`mc\_getStorageAt <mc_getstorageat>`
+   -  :ref:`mc\_getTransactionCount <mc_gettransactioncount>`
+   -  :ref:`mc\_getBlockTransactionCountByHash <mc_getblocktransactioncountbyhash>`
+   -  :ref:`mc\_getBlockTransactionCountByNumber <mc_getblocktransactioncountbynumber>`
+   -  :ref:`mc\_getUncleCountByBlockHash <mc_getunclecountbyblockhash>`
+   -  :ref:`mc\_getUncleCountByBlockNumber <mc_getunclecountbyblocknumber>`
+   -  :ref:`mc\_getCode <mc_getcode>`
+   -  :ref:`mc\_sign <mc_sign>`
+   -  :ref:`mc\_sendTransaction <mc_sendtransaction>`
+   -  :ref:`mc\_sendRawTransaction <mc_sendrawtransaction>`
+   -  :ref:`mc\_call <mc_call>`
+   -  :ref:`mc\_estimateGas <mc_estimategas>`
+   -  :ref:`mc\_getBlockByHash <mc_getblockbyhash>`
+   -  :ref:`mc\_getBlockByNumber <mc_getblockbynumber>`
+   -  :ref:`mc\_getTransactionByHash <mc_gettransactionbyhash>`
+   -  :ref:`mc\_getTransactionByBlockHashAndIndex <mc_gettransactionbyblockhashandindex>`
+   -  :ref:`mc\_getTransactionByBlockNumberAndIndex <mc_gettransactionbyblocknumberandindex>`
+   -  :ref:`mc\_getTransactionReceipt <mc_gettransactionreceipt>`
+   -  :ref:`mc\_getUncleByBlockHashAndIndex <mc_getunclebyblockhashandindex>`
+   -  :ref:`mc\_getUncleByBlockNumberAndIndex <mc_getunclebyblocknumberandindex>`
+   -  :ref:`mc\_newFilter <mc_newfilter>`
+   -  :ref:`mc\_newBlockFilter <mc_newblockfilter>`
+   -  :ref:`mc\_newPendingTransactionFilter <mc_newpendingtransactionfilter>`
+   -  :ref:`mc\_uninstallFilter <mc_uninstallfilter>`
+   -  :ref:`mc\_getFilterChanges <mc_getfilterchanges>`
+   -  :ref:`mc\_getFilterLogs <mc_getfilterlogs>`
+   -  :ref:`mc\_getLogs <mc_getlogs>`
+   -  :ref:`mc\_getWork <mc_getwork>`
+   -  :ref:`mc\_submitWork <mc_submitwork>`
 
 -  vnode
 
-   -  `vnode\_address <#vnode_address>`__
-   -  `vnode\_scsService <#vnode_scsservice>`__
-   -  `vnode\_serviceCfg <#vnode_servicecfg>`__
-   -  `vnode\_showToPublic <#vnode_showtopublic>`__
-   -  `vnode\_vnodeIP <#vnode_vnodeip>`__
+   -  :ref:`vnode\_address <vnode_address>`
+   -  :ref:`vnode\_scsService <vnode_scsservice>`
+   -  :ref:`vnode\_serviceCfg <vnode_servicecfg>`
+   -  :ref:`vnode\_showToPublic <vnode_showtopublic>`
+   -  :ref:`vnode\_vnodeIP <vnode_vnodeip>`
 
 -  scs
--  `scs\_directCall <#scs_directcall>`__
--  `scs\_getBlock <#scs_getblock>`__
--  `scs\_getBlockNumber <#scs_getblocknumber>`__
--  `scs\_getDappState <#scs_getdappstate>`__
--  `scs\_getMicroChainList <#scs_getmicrochainlist>`__
--  `scs\_getNonce <#scs_getnonce>`__
--  `scs\_getSCSId <#scs_getscsid>`__
--  `scs\_getReceiptByHash <#scs_getreceiptbyhash>`__
--  `scs\_getReceiptByNonce <#scs_getreceiptbynonce>`__
 
-JSON RPC API Reference
-----------------------
+   -  :ref:`scs_directcall<scs_directcall>`
+   -  :ref:`scs_getblock<scs_getblock>`
+   -  :ref:`scs_getBlockNumber <scs_getblocknumber>`
+   -  :ref:`scs_getDappList <scs_getdapplist>`
+   -  :ref:`scs_getDappState <scs_getdappstate>`
+   -  :ref:`scs_getMicroChainInfo <scs_getmicrochaininfo>`
+   -  :ref:`scs_getMicroChainList <scs_getmicrochainlist>`
+   -  :ref:`scs\_getNonce <scs_getnonce>`
+   -  :ref:`scs\_getSCSId <scs_getscsid>`
+   -  :ref:`scs\_getTransactionByHash <scs_gettransactionbyhash>`
+   -  :ref:`scs\_getTransactionByNonce <scs_gettransactionbynonce>`
+   -  :ref:`scs\_getReceiptByHash <scs_getreceiptbyhash>`
+   -  :ref:`scs\_getReceiptByNonce <scs_getreceiptbynonce>`
+   -  :ref:`scs\_getExchangeByAddress <scs_getexchangebyaddress>`
+   -  :ref:`scs\_getExchangeInfo <scs_getexchangeinfo>`
+   -  :ref:`scs\_getTxpool <scs_gettxpool>`
 
---------------
 
-chain3\_clientVersion
-^^^^^^^^^^^^^^^^^^^^^
+.. _chain3_clientversion:
+
+**Chain3_clientVersion**
 
 Returns the current client version.
 
-Parameters
-''''''''''
+**Parameters**
 
 none
 
-Returns
-'''''''
+**Returns**
 
 ``String`` - The current client version
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -260,13 +263,13 @@ Example
 
 --------------
 
-chain3\_sha3
-^^^^^^^^^^^^
+**Chain3_sha3**
+
+.. _chain3_sha3:
 
 Returns Keccak-256 (*not* the standardized SHA3-256) of the given data.
 
-Parameters
-''''''''''
+*Parameters*
 
 1. ``DATA`` - the data to convert into a SHA3 hash
 
@@ -276,13 +279,12 @@ Parameters
       "0x68656c6c6f20776f726c64"
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``DATA`` - The SHA3 result of the given string.
 
-Example
-'''''''
+*Example*
 
 .. code:: js
 
@@ -298,24 +300,25 @@ Example
 
 --------------
 
-net\_version
-^^^^^^^^^^^^
+.. _net_version:
+
+**net\_version**
 
 Returns the current network id.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``String`` - The current network id. - ``"99"``: MOAC Mainnet -
 ``"101"``: MOAC Testnet - ``"100"``: Devnet
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -331,24 +334,25 @@ Example
 
 --------------
 
-net\_listening
-^^^^^^^^^^^^^^
+.. _net_listening:
+
+**net\_listening**
+
 
 Returns ``true`` if client is actively listening for network
 connections.
 
-Parameters
-''''''''''
+*Parameters*
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``Boolean`` - ``true`` when listening, otherwise ``false``.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -364,23 +368,23 @@ Example
 
 --------------
 
-net\_peerCount
-^^^^^^^^^^^^^^
+.. _net_peerCount:
+
+**net\_peerCount**
 
 Returns number of peers currently connected to the client.
 
-Parameters
-''''''''''
+*Parameters*
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - integer of the number of connected peers.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -396,23 +400,23 @@ Example
 
 --------------
 
-mc\_protocolVersion
-^^^^^^^^^^^^^^^^^^^
+.. _mc_protocolVersion:
+
+**mc\_protocolVersion**
 
 Returns the current MOAC protocol version.
 
-Parameters
-''''''''''
+*Parameters*
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``String`` - The current MOAC protocol version
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -428,28 +432,31 @@ Example
 
 --------------
 
-mc\_syncing
-^^^^^^^^^^^
+**mc\_syncing**
+
+.. _mc_syncing:
 
 Returns an object with data about the sync status or ``false``.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``Object|Boolean``, An object with sync status data or ``FALSE``, when
-not syncing: - ``startingBlock``: ``QUANTITY`` - The block at which the
+not syncing: 
+
+- ``startingBlock``: ``QUANTITY`` - The block at which the
 import started (will only be reset, after the sync reached his head) -
 ``currentBlock``: ``QUANTITY`` - The current block, same as
 mc\_blockNumber - ``highestBlock``: ``QUANTITY`` - The estimated highest
 block
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -475,23 +482,24 @@ Example
 
 --------------
 
-mc\_coinbase
-^^^^^^^^^^^^
+.. _mc_coinbase:
+
+**mc\_coinbase**
 
 Returns the client coinbase address.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``DATA``, 20 bytes - the current coinbase address.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -507,24 +515,25 @@ Example
 
 --------------
 
-mc\_mining
-^^^^^^^^^^
+**mc\_mining**
+
+.. _mc_mining:
 
 Returns ``true`` if client is actively mining new blocks.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``Boolean`` - returns ``true`` of the client is mining, otherwise
 ``false``.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -540,23 +549,24 @@ Example
 
 --------------
 
-mc\_hashrate
-^^^^^^^^^^^^
+.. _mc_hashrate:
+
+**mc\_hashrate**
 
 Returns the number of hashes per second that the node is mining with.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - number of hashes per second.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -572,23 +582,24 @@ Example
 
 --------------
 
-mc\_gasPrice
-^^^^^^^^^^^^
+.. _mc_gasprice:
+
+**mc\_gasPrice**
 
 Returns the current price per gas in sha.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - integer of the current gas price in sha.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -604,23 +615,24 @@ Example
 
 --------------
 
-mc\_accounts
-^^^^^^^^^^^^
+**mc\_accounts**
+
+.. _mc_accounts:
 
 Returns a list of addresses owned by client.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``Array of DATA``, 20 Bytes - addresses owned by the client.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -636,23 +648,24 @@ Example
 
 --------------
 
-mc\_blockNumber
-^^^^^^^^^^^^^^^
+**mc\_blockNumber**
+
+.. _mc_blockNumber:
 
 Returns the number of most recent block.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - integer of the current block number the client is on.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -668,18 +681,19 @@ Example
 
 --------------
 
-mc\_getBalance
-^^^^^^^^^^^^^^
+**mc\_getBalance**
+
+.. _mc_getBalance:
 
 Returns the balance of the account of given address.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``DATA``, 20 Bytes - address to check for balance.
 2. ``QUANTITY|TAG`` - integer block number, or the string ``"latest"``,
    ``"earliest"`` or ``"pending"``, see the `default block
-   parameter <#the-default-block-parameter>`__
+   parameter <#the-default-block-parameter>`
 
 .. code:: js
 
@@ -688,13 +702,13 @@ Parameters
        'latest'
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - integer of the current balance in sha.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -710,27 +724,28 @@ Example
 
 --------------
 
-mc\_getStorageAt
-^^^^^^^^^^^^^^^^
+**mc\_getStorageAt**
+
+.. _mc_getStorageAt:
 
 Returns the value from a storage position at a given address.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``DATA``, 20 Bytes - address of the storage.
 2. ``QUANTITY`` - integer of the position in the storage.
 3. ``QUANTITY|TAG`` - integer block number, or the string ``"latest"``,
    ``"earliest"`` or ``"pending"``, see the `default block
-   parameter <#the-default-block-parameter>`__
+   parameter <#the-default-block-parameter>`
 
-Returns
-'''''''
+*Returns*
+
 
 ``DATA`` - the value at this storage position.
 
 Example
-'''''''
+
 
 Calculating the correct position depends on the storage to retrieve.
 Consider the following contract deployed at
@@ -792,18 +807,19 @@ Now to fetch the storage:
 
 --------------
 
-mc\_getTransactionCount
-^^^^^^^^^^^^^^^^^^^^^^^
+**mc\_getTransactionCount**
+
+.. _mc_getTransactionCount:
 
 Returns the number of transactions *sent* from an address.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``DATA``, 20 Bytes - address.
 2. ``QUANTITY|TAG`` - integer block number, or the string ``"latest"``,
    ``"earliest"`` or ``"pending"``, see the `default block
-   parameter <#the-default-block-parameter>`__
+   parameter <#the-default-block-parameter>`
 
 .. code:: js
 
@@ -812,14 +828,14 @@ Parameters
        'latest' // state at the latest block
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - integer of the number of transactions send from this
 address.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -835,14 +851,15 @@ Example
 
 --------------
 
-mc\_getBlockTransactionCountByHash
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**mc\_getBlockTransactionCountByHash**
+
+.. _mc_getBlockTransactionCountByHash:
 
 Returns the number of transactions in a block from a block matching the
 given block hash.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``DATA``, 32 Bytes - hash of a block
 
@@ -852,13 +869,13 @@ Parameters
        '0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238'
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - integer of the number of transactions in this block.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -874,18 +891,19 @@ Example
 
 --------------
 
-mc\_getBlockTransactionCountByNumber
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**mc\_getBlockTransactionCountByNumber**
 
-        Returns the number of transactions in a block matching the given
-        block number.
+.. _mc_getBlockTransactionCountByNumber:
 
-Parameters
-''''''''''
+Returns the number of transactions in a block matching the given
+block number.
+
+*Parameters*
+
 
 1. ``QUANTITY|TAG`` - integer of a block number, or the string
    ``"earliest"``, ``"latest"`` or ``"pending"``, as in the `default
-   block parameter <#the-default-block-parameter>`__.
+   block parameter <#the-default-block-parameter>`.
 
 .. code:: js
 
@@ -893,13 +911,13 @@ Parameters
        '0xe8', // 232
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - integer of the number of transactions in this block.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -915,14 +933,15 @@ Example
 
 --------------
 
-mc\_getUncleCountByBlockHash
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**mc\_getUncleCountByBlockHash**
+
+.. _mc_getUncleCountByBlockHash:
 
 Returns the number of uncles in a block from a block matching the given
 block hash.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``DATA``, 32 Bytes - hash of a block
 
@@ -932,13 +951,13 @@ Parameters
        '0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238'
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - integer of the number of uncles in this block.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -954,18 +973,19 @@ Example
 
 --------------
 
-mc\_getUncleCountByBlockNumber
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**mc\_getUncleCountByBlockNumber**
+
+.. _mc_getUncleCountByBlockNumber:
 
 Returns the number of uncles in a block from a block matching the given
 block number.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``QUANTITY|TAG`` - integer of a block number, or the string "latest",
    "earliest" or "pending", see the `default block
-   parameter <#the-default-block-parameter>`__
+   parameter <#the-default-block-parameter>`
 
 .. code:: js
 
@@ -973,13 +993,13 @@ Parameters
        '0xe8', // 232
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - integer of the number of uncles in this block.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -995,18 +1015,19 @@ Example
 
 --------------
 
-mc\_getCode
-^^^^^^^^^^^
+**mc\_getCode**
 
-Returns code at a given address.
+.. _mc_getCode:
 
-Parameters
-''''''''''
+*Returns* code at a given address.
+
+*Parameters*
+
 
 1. ``DATA``, 20 Bytes - address
 2. ``QUANTITY|TAG`` - integer block number, or the string ``"latest"``,
    ``"earliest"`` or ``"pending"``, see the `default block
-   parameter <#the-default-block-parameter>`__
+   parameter <#the-default-block-parameter>`
 
 .. code:: js
 
@@ -1015,13 +1036,13 @@ Parameters
        '0x2'  // 2
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``DATA`` - the code from the given address.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1037,8 +1058,9 @@ Example
 
 --------------
 
-mc\_sign
-^^^^^^^^
+**mc\_sign**
+
+.. _mc_sign:
 
 The sign method calculates an MOAC specific signature with:
 ``sign(keccak256("\x19MOAC Signed Message:\n" + len(message) + message)))``.
@@ -1050,21 +1072,21 @@ signature to impersonate the victim.
 
 **Note** the address to sign with must be unlocked.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 account, message
 
 1. ``DATA``, 20 Bytes - address
 2. ``DATA``, N Bytes - message to sign
 
-Returns
-'''''''
+*Returns*
+
 
 ``DATA``: Signature
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1079,22 +1101,23 @@ Example
     }
 
 An example how to use solidity ecrecover to verify the signature
-calculated with ``mc_sign`` can be found
-`here <https://gist.github.com/bas-vk/d46d83da2b2b4721efb0907aecdb7ebd>`__.
+calculated with `:ref:`mc_sign`` can be found
+`here <https://gist.github.com/bas-vk/d46d83da2b2b4721efb0907aecdb7ebd>`.
 The contract is deployed on the testnet Ropsten and Rinkeby.
 
 --------------
 
-mc\_sendTransaction
-^^^^^^^^^^^^^^^^^^^
+**mc\_sendTransaction**
+
+.. _mc_sendTransaction:
 
 Creates new message call transaction or a contract creation, if the data
 field contains code.
 
 **Note** the address to sign with must be unlocked.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``Object`` - The transaction object
 
@@ -1109,9 +1132,9 @@ Parameters
 -  ``value``: ``QUANTITY`` - (optional) Integer of the value sent with
    this transaction
 -  ``data``: ``DATA`` - The compiled code of a contract OR the hash of
-   the invoked method signature and encoded parameters. For details see
-   `Ethereum Contract
-   ABI <https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI>`__
+   the invoked method signature and encoded parameters. MOAC used the 
+   solidity ABI. For details see `Ethereum Contract
+   ABI <https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI>`
 -  ``nonce``: ``QUANTITY`` - (optional) Integer of a nonce. This allows
    to overwrite your own pending transactions that use the same nonce.
 
@@ -1126,18 +1149,18 @@ Parameters
       "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
     }]
 
-Returns
-'''''''
+*Returns*
+
 
 ``DATA``, 32 Bytes - the transaction hash, or the zero hash if the
 transaction is not yet available.
 
-Use `mc\_getTransactionReceipt <#mc_gettransactionreceipt>`__ to get the
+Use :ref:`mc\_getTransactionReceipt <mc_gettransactionreceipt>` to get the
 contract address, after the transaction was mined, when you created a
 contract.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1153,14 +1176,16 @@ Example
 
 --------------
 
-mc\_sendRawTransaction
-^^^^^^^^^^^^^^^^^^^^^^
+**mc\_sendRawTransaction**
+
+.. _mc_sendRawTransaction:
+
 
 Creates new message call transaction or a contract creation for signed
 transactions.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``DATA``, The signed transaction data.
 
@@ -1168,18 +1193,18 @@ Parameters
 
     params: ["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"]
 
-Returns
-'''''''
+*Returns*
+
 
 ``DATA``, 32 Bytes - the transaction hash, or the zero hash if the
 transaction is not yet available.
 
-Use `mc\_getTransactionReceipt <#mc_gettransactionreceipt>`__ to get the
+Use :ref:`mc\_getTransactionReceipt <mc_gettransactionreceipt>` to get the
 contract address, after the transaction was mined, when you created a
 contract.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1195,14 +1220,15 @@ Example
 
 --------------
 
-mc\_call
-^^^^^^^^
+**mc\_call**
+
+.. _mc_call:
 
 Executes a new message call immediately without creating a transaction
 on the block chain.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``Object`` - The transaction call object
 
@@ -1219,19 +1245,19 @@ Parameters
    this transaction
 -  ``data``: ``DATA`` - (optional) Hash of the method signature and
    encoded parameters. For details see `Ethereum Contract
-   ABI <https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI>`__
+   ABI <https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI>`
 
 2. ``QUANTITY|TAG`` - integer block number, or the string ``"latest"``,
    ``"earliest"`` or ``"pending"``, see the `default block
-   parameter <#the-default-block-parameter>`__
+   parameter <#the-default-block-parameter>`
 
-Returns
-'''''''
+*Returns*
+
 
 ``DATA`` - the return value of executed contract.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1247,8 +1273,9 @@ Example
 
 --------------
 
-mc\_estimateGas
-^^^^^^^^^^^^^^^
+**mc\_estimateGas**
+
+.. _mc_estimateGas:
 
 Generates and returns an estimate of how much gas is necessary to allow
 the transaction to complete. The transaction will not be added to the
@@ -1256,22 +1283,22 @@ blockchain. Note that the estimate may be significantly more than the
 amount of gas actually used by the transaction, for a variety of reasons
 including EVM mechanics and node performance.
 
-Parameters
-''''''''''
+*Parameters*
 
-See `mc\_call <#mc_call>`__ parameters, expect that all properties are
+
+See :ref:`mc\_call <mc_call>` parameters, expect that all properties are
 optional. If no gas limit is specified moac uses the block gas limit
 from the pending block as an upper bound. As a result the returned
 estimate might not be enough to executed the call/transaction when the
 amount of gas is higher than the pending block gas limit.
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - the amount of gas used.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1287,13 +1314,14 @@ Example
 
 --------------
 
-mc\_getBlockByHash
-^^^^^^^^^^^^^^^^^^
+**mc\_getBlockByHash**
+
+.. _mc_getBlockByHash:
 
 Returns information about a block by hash.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``DATA``, 32 Bytes - Hash of a block.
 2. ``Boolean`` - If ``true`` it returns the full transaction objects, if
@@ -1306,8 +1334,8 @@ Parameters
        true
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``Object`` - A block object, or ``null`` when no block was found:
 
@@ -1346,7 +1374,6 @@ Returns
 -  ``uncles``: ``Array`` - Array of uncle hashes.
 
 Example
-'''''''
 
 .. code:: js
 
@@ -1383,17 +1410,18 @@ Example
 
 --------------
 
-mc\_getBlockByNumber
-^^^^^^^^^^^^^^^^^^^^
+**mc\_getBlockByNumber**
+
+.. _mc_getBlockByNumber:
 
 Returns information about a block by block number.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``QUANTITY|TAG`` - integer of a block number, or the string
    ``"earliest"``, ``"latest"`` or ``"pending"``, as in the `default
-   block parameter <#the-default-block-parameter>`__.
+   block parameter <#the-default-block-parameter>`.
 2. ``Boolean`` - If ``true`` it returns the full transaction objects, if
    ``false`` only the hashes of the transactions.
 
@@ -1404,31 +1432,32 @@ Parameters
        true
     ]
 
-Returns
-'''''''
+*Returns*
 
-See `mc\_getBlockByHash <#mc_getblockbyhash>`__
+
+See :ref:`mc\_getBlockByHash <mc_getblockbyhash>`
 
 Example
-'''''''
+
 
 .. code:: js
 
     // Request
     curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getBlockByNumber","params":["0x1b4", true],"id":101}' localhost:8545
 
-Result see `mc\_getBlockByHash <#mc_getblockbyhash>`__
+Result see :ref:`mc\_getBlockByHash <mc_getblockbyhash>`
 
 --------------
 
-mc\_getTransactionByHash
-^^^^^^^^^^^^^^^^^^^^^^^^
+**mc\_getTransactionByHash**
+
+.. _mc_getTransactionByHash:
 
 Returns the information about a transaction requested by transaction
 hash.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``DATA``, 32 Bytes - hash of a transaction
 
@@ -1438,8 +1467,8 @@ Parameters
        "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``Object`` - A transaction object, or ``null`` when no transaction was
 found:
@@ -1462,7 +1491,7 @@ found:
 -  ``input``: ``DATA`` - the data send along with the transaction.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1490,14 +1519,15 @@ Example
 
 --------------
 
-mc\_getTransactionByBlockHashAndIndex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**mc\_getTransactionByBlockHashAndIndex**
+
+.. _mc_getTransactionByBlockHashAndIndex:
 
 Returns information about a transaction by block hash and transaction
 index position.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``DATA``, 32 Bytes - hash of a block.
 2. ``QUANTITY`` - integer of the transaction index position.
@@ -1509,35 +1539,36 @@ Parameters
        '0x0' // 0
     ]
 
-Returns
-'''''''
+*Returns*
 
-See `mc\_getTransactionByHash <#mc_gettransactionbyhash>`__
+
+See :ref:`mc\_getTransactionByHash <mc_gettransactionbyhash>`
 
 Example
-'''''''
+
 
 .. code:: js
 
     // Request
     curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getTransactionByBlockHashAndIndex","params":["0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b", "0x0"],"id":101}' localhost:8545
 
-Result see `mc\_getTransactionByHash <#mc_gettransactionbyhash>`__
+Result see :ref:`mc\_getTransactionByHash <mc_gettransactionbyhash>`
 
 --------------
 
-mc\_getTransactionByBlockNumberAndIndex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**mc\_getTransactionByBlockNumberAndIndex**
+
+.. _mc_getTransactionByBlockNumberAndIndex:
 
 Returns information about a transaction by block number and transaction
 index position.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``QUANTITY|TAG`` - a block number, or the string ``"earliest"``,
    ``"latest"`` or ``"pending"``, as in the `default block
-   parameter <#the-default-block-parameter>`__.
+   parameter <#the-default-block-parameter>`.
 2. ``QUANTITY`` - the transaction index position.
 
 .. code:: js
@@ -1547,32 +1578,33 @@ Parameters
        '0x0' // 0
     ]
 
-Returns
-'''''''
+*Returns*
 
-See `mc\_getTransactionByHash <#mc_gettransactionbyhash>`__
+
+See :ref:`mc\_getTransactionByHash <mc_gettransactionbyhash>`
 
 Example
-'''''''
+
 
 .. code:: js
 
     // Request
     curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getTransactionByBlockNumberAndIndex","params":["0x29c", "0x0"],"id":101}' localhost:8545
 
-Result see `mc\_getTransactionByHash <#mc_gettransactionbyhash>`__
+Result see :ref:`mc\_getTransactionByHash <mc_gettransactionbyhash>`
 
 --------------
 
-mc\_getTransactionReceipt
-^^^^^^^^^^^^^^^^^^^^^^^^^
+**mc\_getTransactionReceipt**
+
+.. _mc_getTransactionReceipt:
 
 Returns the receipt of a transaction by transaction hash.
 
 **Note** That the receipt is not available for pending transactions.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``DATA``, 32 Bytes - hash of a transaction
 
@@ -1582,8 +1614,8 @@ Parameters
        '0x7bb694c3462764cb113e9b742faaf06adc728e70b607f8b7aa95207ee32b1c5e'
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``Object`` - A transaction receipt object, or ``null`` when no receipt
 was found:
@@ -1614,7 +1646,7 @@ It also returns *either* :
 -  ``status``: ``QUANTITY`` either ``1`` (success) or ``0`` (failure)
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1642,14 +1674,15 @@ Example
 
 --------------
 
-mc\_getUncleByBlockHashAndIndex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**mc\_getUncleByBlockHashAndIndex**
+
+.. _mc_getUncleByBlockHashAndIndex:
 
 Returns information about a uncle of a block by hash and uncle index
 position.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``DATA``, 32 Bytes - hash a block.
 2. ``QUANTITY`` - the uncle's index position.
@@ -1661,37 +1694,38 @@ Parameters
        '0x0' // 0
     ]
 
-Returns
-'''''''
+*Returns*
 
-See `mc\_getBlockByHash <#mc_getblockbyhash>`__
+
+See :ref:`mc\_getBlockByHash <mc_getblockbyhash>`
 
 Example
-'''''''
+
 
 .. code:: js
 
     // Request
     curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getUncleByBlockHashAndIndex","params":["0x696d389aa9b6b44e08af9f3528c51587aac435b75a54ece42f4b2d1289043497", "0x0"],"id":101}' localhost:8545
 
-Result see `mc\_getBlockByHash <#mc_getblockbyhash>`__
+Result see :ref:`mc\_getBlockByHash <mc_getblockbyhash>`
 
 **Note**: An uncle doesn't contain individual transactions.
 
 --------------
 
-mc\_getUncleByBlockNumberAndIndex
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**mc\_getUncleByBlockNumberAndIndex**
+
+.. _mc_getUncleByBlockNumberAndIndex:
 
 Returns information about a uncle of a block by number and uncle index
 position.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``QUANTITY|TAG`` - a block number, or the string ``"earliest"``,
    ``"latest"`` or ``"pending"``, as in the `default block
-   parameter <#the-default-block-parameter>`__.
+   parameter <#the-default-block-parameter>`.
 2. ``QUANTITY`` - the uncle's index position.
 
 .. code:: js
@@ -1701,34 +1735,35 @@ Parameters
        '0x0' // 0
     ]
 
-Returns
-'''''''
+*Returns*
 
-See `mc\_getBlockByHash <#mc_getblockbyhash>`__
+
+See :ref:`mc\_getBlockByHash <mc_getblockbyhash>`
 
 **Note**: An uncle doesn't contain individual transactions.
 
 Example
-'''''''
+
 
 .. code:: js
 
     // Request
     curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getUncleByBlockNumberAndIndex","params":["0x29c", "0x0"],"id":101}' localhost:8545
 
-Result see `mc\_getBlockByHash <#mc_getblockbyhash>`__
+Result see :ref:`mc\_getBlockByHash <mc_getblockbyhash>`
 
 --------------
 
-mc\_newFilter
-^^^^^^^^^^^^^
+**mc\_newFilter**
+
+.. _mc_newFilter:
 
 Creates a filter object, based on filter options, to notify when the
 state changes (logs). To check if the state has changed, call
-`mc\_getFilterChanges <#mc_getfilterchanges>`__.
+:ref:`mc\_getFilterChanges <mc_getfilterchanges>`.
 
 A note on specifying topic filters:
-'''''''''''''''''''''''''''''''''''
+'''''
 
 Topics are order-dependent. A transaction with a log with topics [A, B]
 will be matched by the following topic filters: \* ``[]`` "anything" \*
@@ -1738,8 +1773,8 @@ after)" \* ``[A, B]`` "A in first position AND B in second position (and
 anything after)" \* ``[[A, B], [A, B]]`` "(A OR B) in first position AND
 (A OR B) in second position (and anything after)"
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``Object`` - The filter options:
 
@@ -1764,13 +1799,13 @@ Parameters
       "topics": ["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b", null, ["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b", "0x0000000000000000000000000aff3454fce5edbc8cca8697c15331677e6ebccc"]]
     }]
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - A filter id.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1786,25 +1821,26 @@ Example
 
 --------------
 
-mc\_newBlockFilter
-^^^^^^^^^^^^^^^^^^
+**mc\_newBlockFilter**
+
+.. _mc_newBlockFilter:
 
 Creates a filter in the node, to notify when a new block arrives. To
 check if the state has changed, call
-`mc\_getFilterChanges <#mc_getfilterchanges>`__.
+:ref:`mc\_getFilterChanges <mc_getfilterchanges>`.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 None
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - A filter id.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1820,25 +1856,26 @@ Example
 
 --------------
 
-mc\_newPendingTransactionFilter
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**mc\_newPendingTransactionFilter**
+
+.. _mc_newPendingTransactionFilter:
 
 Creates a filter in the node, to notify when new pending transactions
 arrive. To check if the state has changed, call
-`mc\_getFilterChanges <#mc_getfilterchanges>`__.
+:ref:`mc\_getFilterChanges <mc_getfilterchanges>`.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 None
 
-Returns
-'''''''
+*Returns*
+
 
 ``QUANTITY`` - A filter id.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1854,16 +1891,17 @@ Example
 
 --------------
 
-mc\_uninstallFilter
-^^^^^^^^^^^^^^^^^^^
+**mc\_uninstallFilter**
+
+.. _mc_uninstallFilter:
 
 Uninstalls a filter with given id. Should always be called when watch is
 no longer needed. Additonally Filters timeout when they aren't requested
-with `mc\_getFilterChanges <#mc_getfilterchanges>`__ for a period of
+with :ref:`mc\_getFilterChanges <mc_getfilterchanges>` for a period of
 time.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``QUANTITY`` - The filter id.
 
@@ -1873,14 +1911,14 @@ Parameters
       "0xb" // 11
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``Boolean`` - ``true`` if the filter was successfully uninstalled,
 otherwise ``false``.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1896,14 +1934,15 @@ Example
 
 --------------
 
-mc\_getFilterChanges
-^^^^^^^^^^^^^^^^^^^^
+**mc\_getFilterChanges**
+
+.. _mc_getfilterchanges:
 
 Polling method for a filter, which returns an array of logs which
 occurred since last poll.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``QUANTITY`` - the filter id.
 
@@ -1913,18 +1952,18 @@ Parameters
       "0x16" // 22
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``Array`` - Array of log objects, or an empty array if nothing has
 changed since last poll.
 
--  For filters created with ``mc_newBlockFilter`` the return are block
+-  For filters created with `:ref:`mc_newBlockFilter`` the return are block
    hashes (``DATA``, 32 Bytes), e.g. ``["0x3454645634534..."]``.
--  For filters created with ``mc_newPendingTransactionFilter`` the
+-  For filters created with `:ref:`mc_newPendingTransactionFilter`` the
    return are transaction hashes (``DATA``, 32 Bytes), e.g.
    ``["0x6345343454645..."]``.
--  For filters created with ``mc_newFilter`` logs are objects with
+-  For filters created with `:ref:`mc_newFilter`` logs are objects with
    following params:
 
 -  ``removed``: ``TAG`` - ``true`` when the log was removed, due to a
@@ -1950,7 +1989,7 @@ changed since last poll.
    with the ``anonymous`` specifier.)
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -1977,13 +2016,14 @@ Example
 
 --------------
 
-mc\_getFilterLogs
-^^^^^^^^^^^^^^^^^
+**mc\_getFilterLogs**
+
+.. _mc_getFilterLogs:
 
 Returns an array of all logs matching filter with given id.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``QUANTITY`` - The filter id.
 
@@ -1993,33 +2033,34 @@ Parameters
       "0x16" // 22
     ]
 
-Returns
-'''''''
+*Returns*
 
-See `mc\_getFilterChanges <#mc_getfilterchanges>`__
+
+See :ref:`mc\_getFilterChanges <mc_getfilterchanges>`
 
 Example
-'''''''
+
 
 .. code:: js
 
     // Request
     curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getFilterLogs","params":["0x16"],"id":101}' localhost:8545
 
-Result see `mc\_getFilterChanges <#mc_getfilterchanges>`__
+Result see :ref:`mc\_getFilterChanges <mc_getfilterchanges>`
 
 --------------
 
-mc\_getLogs
-^^^^^^^^^^^
+**mc\_getLogs**
+
+.. _mc_getLogs:
 
 Returns an array of all logs matching a given filter object.
 
-Parameters
-''''''''''
+*Parameters*
 
-1. ``Object`` - the filter object, see `mc\_newFilter
-   parameters <#mc_newfilter>`__.
+
+1. ``Object`` - the filter object, see :ref:`mc\_newFilter
+   parameters <mc_newfilter>`.
 
 .. code:: js
 
@@ -2027,36 +2068,36 @@ Parameters
       "topics": ["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b"]
     }]
 
-Returns
-'''''''
+*Returns*
 
-See `mc\_getFilterChanges <#mc_getfilterchanges>`__
+
+See :ref:`mc\_getFilterChanges <mc_getfilterchanges>`
 
 Example
-'''''''
+
 
 .. code:: js
 
     // Request
     curl -X POST --data '{"jsonrpc":"2.0","method":"mc_getLogs","params":[{"topics":["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b"]}],"id":101}'
 
-Result see `mc\_getFilterChanges <#mc_getfilterchanges>`__
+Result see :ref:`mc\_getFilterChanges <mc_getfilterchanges>`
 
 --------------
 
-mc\_getWork
-^^^^^^^^^^^
+**mc\_getWork**
+
+.. _mc_getWork:
 
 Returns the hash of the current block, the seedHash, and the boundary
 condition to be met ("target").
 
-Parameters
-''''''''''
+*Parameters*
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``Array`` - Array with the following properties: 1. ``DATA``, 32 Bytes -
 current block header pow-hash 2. ``DATA``, 32 Bytes - the seed hash used
@@ -2064,7 +2105,7 @@ for the DAG. 3. ``DATA``, 32 Bytes - the boundary condition ("target"),
 2^256 / difficulty.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -2080,13 +2121,14 @@ Example
 
 --------------
 
-mc\_submitWork
-^^^^^^^^^^^^^^
+**mc\_submitWork**
+
+.. _mc_submitWork:
 
 Used for submitting a proof-of-work solution.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 1. ``DATA``, 8 Bytes - The nonce found (64 bits)
 2. ``DATA``, 32 Bytes - The header's pow-hash (256 bits)
@@ -2100,14 +2142,14 @@ Parameters
       "0xD1FE5700000000000000000000000000D1FE5700000000000000000000000000"
     ]
 
-Returns
-'''''''
+*Returns*
+
 
 ``Boolean`` - returns ``true`` if the provided solution is valid,
 otherwise ``false``.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -2123,25 +2165,25 @@ Example
 
 --------------
 
-vnode\_address
-^^^^^^^^^^^^^^
+**vnode\_address**
+
+.. _vnode_address:
 
 Returns the VNODE benificial address. This is needed for SCS to use in
 the communication.
 
-Parameters
-''''''''''
+*Parameters*
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``address``: ``DATA``, 20 Bytes - address from which the VNODE settings
 in the vnodeconfig.json file.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -2157,23 +2199,24 @@ Example
 
 --------------
 
-vnode\_scsService
-^^^^^^^^^^^^^^^^^
+**vnode\_scsService**
+
+.. _vnode_scsService:
 
 Returns if the VNODE enable the service for SCS servers.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``Bool`` - true, enable the SCS service; false, not open.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -2189,23 +2232,23 @@ Example
 
 --------------
 
-vnode\_serviceCfg
-^^^^^^^^^^^^^^^^^
+**vnode\_serviceCfg**
+
+.. _vnode_serviceCfg:
 
 Returns the VNODE SCS service ports for connecting with.
 
-Parameters
-''''''''''
+*Parameters*
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``String`` - The current service port set in the vnodeconfig.json.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -2221,23 +2264,23 @@ Example
 
 --------------
 
-vnode\_showToPublic
-^^^^^^^^^^^^^^^^^^^
+**vnode\_showToPublic**
+
+.. _vnode_showToPublic:
 
 Returns if the VNODE enable the public view.
 
-Parameters
-''''''''''
+*Parameters*
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``Bool`` - true, open to the public; false, not open.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -2253,25 +2296,26 @@ Example
 
 --------------
 
-vnode\_vnodeIP
-^^^^^^^^^^^^^^
+**vnode\_vnodeIP**
+
+.. _vnode_vnodeIP:
 
 Returns VNODE IP for users to access. Note for cloud servers, this could
 be different from the cloud server IP.
 
-Parameters
-''''''''''
+*Parameters*
+
 
 none
 
-Returns
-'''''''
+*Returns*
+
 
 ``String`` - The current IP that can be used to access. This is set in
 the vnodeconfig.json.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -2287,31 +2331,31 @@ Example
 
 --------------
 
-scs\_directCall
-^^^^^^^^^^^^^^^
+.. _scs_directcall:
+
+**scs_directCall**
 
 Executes a new constant call of the MicroChain Dapp function without
 creating a transaction on the MicroChain. This RPC call is used by
 API/lib to call MicroChain Dapp functions.
 
-Parameters
-''''''''''
+*Parameters*
 
-``Object`` - The transaction call object - ``from``: ``DATA``, 20 Bytes
-- (optional) The address the transaction is sent from. - ``to``:
-``DATA``, 20 Bytes - The address the transaction is directed to. This
-parameter is the MicroChain address. - ``data``: ``DATA`` - (optional)
-Hash of the method signature and encoded parameters. For details see
-`Ethereum Contract
-ABI <https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI>`__
 
-Returns
-'''''''
+``Object`` - The transaction call object 
+- ``from``: ``DATA``, 20 Bytes - (optional) The address the transaction is sent from. 
+- ``to``: ``DATA``, 20 Bytes - The address the transaction is directed to. This
+parameter is the MicroChain address. 
+- ``data``: ``DATA`` - (optional) Hash of the method signature and encoded parameters. For details see
+`Ethereum Contract ABI <https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI>`
+
+*Returns*
+
 
 ``DATA`` - the return value of executed Dapp constant function call.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -2327,27 +2371,28 @@ Example
 
 --------------
 
-scs\_getBlock
-^^^^^^^^^^^^^
+**scs\_getBlock**
 
-Returns information about a MicroChain block by block number.
+.. _scs_getblock:
 
-Parameters
-''''''''''
+Returns information about a block on the MicroChain by block number.
+
+*Parameters*
+
 
 1. ``String`` - the address of the MicroChain that Dapp is on.
 2. ``QUANTITY|TAG`` - integer of a block number, or the string
    ``"earliest"`` or ``"latest"``, as in the `default block
-   parameter <#the-default-block-parameter>`__. Note, scs\_getBlock does
+   parameter <#the-default-block-parameter>`. Note, scs\_getBlock does
    not support ``"pending"``.
 
-Returns
-'''''''
+*Returns*
 
-``OBJ`` - object of the block on the MicroChain.
+
+``DATA`` - Data in the block on the MicroChain.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -2359,23 +2404,53 @@ Example
 
 --------------
 
-scs\_getBlockNumber
-^^^^^^^^^^^^^^^^^^^
+**scs\_getBlockList**
+
+.. _scs_getblocklist:
+
+Returns information about multiple MicroChain blocks by block number.
+
+*Parameters*
+
+
+1. ``String`` - the address of the MicroChain that Dapp is on.
+2. ``QUANTITY`` - integer of the start block number.
+3. ``QUANTITY`` - integer of the end block number, need to be larger or equal the start block number.
+
+*Returns*
+
+
+``ARRAY`` - Array of the block infromation on the MicroChain.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    curl -X POST --data curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getBlock","params":["0x9d711986ccc8c89db2dfaf0894acadeb5a383ee8","0x370", "0x373"],"id":101}' localhost:8548
+
+    // Result
+    {"jsonrpc":"2.0","id":101,"result":{"blockList":[{"extraData":"0x","hash":"0x56075838e0fffe6576add14783b957239d4f3c57989bc3a7b7728a3b57eb305a","miner":"0xecd1e094ee13d0b47b72f5c940c17bd0c7630326","number":"0x370","parentHash":"0x56352a3a8bd0901608041115817204cbce943606e406d233d7d0359f449bd4c2","receiptsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421","stateRoot":"0xde741a2f6b4a3c865e8f6fc9ba11eadaa1fa04c61d660bcdf0fa1195029699f6","timestamp":"0x5bfb7c1c","transactions":[],"transactionsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"},{"extraData":"0x","hash":"0xbc3f5791ec039cba99c37310a4f30a68030dd2ab79efb47d23fd9ac5343f54e5","miner":"0xecd1e094ee13d0b47b72f5c940c17bd0c7630326","number":"0x371","parentHash":"0x56075838e0fffe6576add14783b957239d4f3c57989bc3a7b7728a3b57eb305a","receiptsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421","stateRoot":"0xde741a2f6b4a3c865e8f6fc9ba11eadaa1fa04c61d660bcdf0fa1195029699f6","timestamp":"0x5bfb7c3a","transactions":[],"transactionsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"},{"extraData":"0x","hash":"0x601be17c47cb4684053457d1d5f70a6dbeb853b27cda08d160555f857f2da33b","miner":"0xecd1e094ee13d0b47b72f5c940c17bd0c7630326","number":"0x372","parentHash":"0xbc3f5791ec039cba99c37310a4f30a68030dd2ab79efb47d23fd9ac5343f54e5","receiptsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421","stateRoot":"0xde741a2f6b4a3c865e8f6fc9ba11eadaa1fa04c61d660bcdf0fa1195029699f6","timestamp":"0x5bfb7c58","transactions":[],"transactionsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"},{"extraData":"0x","hash":"0x8a0bea649bcdbd2b525690ff485e56d5a83443e9013fcdccd1a0adee56ba4092","miner":"0xecd1e094ee13d0b47b72f5c940c17bd0c7630326","number":"0x373","parentHash":"0x601be17c47cb4684053457d1d5f70a6dbeb853b27cda08d160555f857f2da33b","receiptsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421","stateRoot":"0xde741a2f6b4a3c865e8f6fc9ba11eadaa1fa04c61d660bcdf0fa1195029699f6","timestamp":"0x5bfb7c76","transactions":[],"transactionsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"}],"endBlk":"0x373","microchainAddress":"0x7D0CbA876cB9Da5fa310A54d29F4687f5dd93fD7","startBlk":"0x370"}}
+
+--------------
+
+**scs\_getBlockNumber**
+
+.. _scs_getblocknumber:
 
 Returns the number of most recent block .
 
-Parameters
-''''''''''
+*Parameters*
 
-``String`` - the address of the MicroChain that Dapp is on.
+1. ``String`` - the address of the MicroChain that Dapp is on.
 
-Returns
-'''''''
+*Returns*
 
-``NUMBER`` - integer of the current block number the client is on.
+``QUANTITY`` - integer of the current block number the client is on.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -2388,27 +2463,54 @@ Example
       "jsonrpc": "2.0",
       "result": "0x4b7" // 1207
     }
+--------------
+
+**scs\_getDappList**
+
+.. _scs_getdapplist:
+
+Returns the Dapp addresses on the MicroChain. For nuwa 1.0.8 and later version only, 
+
+*Parameters*
+
+1. ``String`` - the address of the MicroChain that has Dapps.
+
+*Returns*
+
+``ARRAY`` - Array of the DAPP addresses on the MicroChain.
+
+Example
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getDappList","params":[],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": ["0x9d711986ccc8c89db2dfaf0894acadeb5a383ee8","0x7cfd775c7a97aa632846eff35dcf9dbcf502d0f3"]
+    }
 
 --------------
 
-scs\_getDappState
-^^^^^^^^^^^^^^^^^
+**scs\_getDappState**
+
+.. _scs_getdappstate:
 
 Returns the Dapp state on the MicroChain.
 
-Parameters
-''''''''''
+*Parameters*
 
-``String`` - the address of the MicroChain that Dapp is on.
+1. ``String`` - the address of the MicroChain that Dapp is on.
 
-Returns
-'''''''
+*Returns*
 
-``Number`` - 0, no DAPP is deployed on the MicroChain; 1, DAPP is
+``QUANTITY`` - 0, no DAPP is deployed on the MicroChain; 1, DAPP is
 deployed on the MicroChain.
 
 Example
-'''''''
 
 .. code:: js
 
@@ -2423,24 +2525,52 @@ Example
     }
 
 --------------
+**scs\_getMicroChainInfo**
 
-scs\_getMicroChainList
-^^^^^^^^^^^^^^^^^^^^^^
+.. _scs_getmicrochaininfo:
 
-Returns the Dapp state on the MicroChain.
+Returns the requested MicroChain information on the connecting SCS. This information is the same as the information defined in the MicroChain contract.
 
-Parameters
-''''''''''
+*Parameters*
+
+1. `String` - the address of the MicroChain on the SCS.
+
+*Returns*
+
+
+``Object`` A Micro Chain information object as defined in the MicroChain contract.
+
+Example
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getMicroChainInfo","params":[],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": {"balance":"0x0","blockReward":"0x1c6bf52634000","bondLimit":"0xde0b6b3a7640000","owner":"0xa8863fc8Ce3816411378685223C03DAae9770ebB","scsList":["0xECd1e094Ee13d0B47b72F5c940C17bD0c7630326","0x50C15fafb95968132d1a6ee3617E99cCa1FCF059","0x1b65cE1A393FFd5960D2ce11E7fd6fDB9e991945"],"txReward":"0x174876e800","viaReward":"0x9184e72a000"}
+    }
+
+--------------
+**scs\_getMicroChainList**
+
+.. _scs_getmicrochainlist:
+
+Returns the list of MicroChains on the SCS that is connecting with. 
+
+*Parameters*
 
 None
 
-Returns
-'''''''
+*Returns*
 
 ``Array`` - A list of Micro Chain addresses on the SCS.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -2456,25 +2586,24 @@ Example
 
 --------------
 
-scs\_getNonce
-^^^^^^^^^^^^^
+**scs\_getNonce**
 
-Returns the Dapp state on the MicroChain.
+.. _scs_getNonce:
 
-Parameters
-''''''''''
+Returns the account nonce on the MicroChain. 
+
+*Parameters*
+
 
 1. ``String`` - the address of the MicroChain that Dapp is on.
 2. ``String`` - the address of the accountn.
 
-Returns
-'''''''
+*Returns*
 
-``Array`` - 0, no DAPP is deployed on the MicroChain; 1, DAPP is
-deployed on the MicroChain.
+
+``QUANTITY`` integer of the number of transactions send from this address on the MicroChain; 
 
 Example
-'''''''
 
 .. code:: js
 
@@ -2490,24 +2619,23 @@ Example
 
 --------------
 
-scs\_getSCSId
-^^^^^^^^^^^^^
+**scs\_getSCSId**
+
+.. _scs_getSCSId:
 
 Returns the SCS id.
 
-Parameters
-''''''''''
+*Parameters*
 
 None
 
-Returns
-'''''''
+*Returns*
 
-``String`` - SCS id in the scskeystore directory, used for SCS
+
+1. ``String`` - SCS id in the scskeystore directory, used for SCS
 identification to send deposit and receive MicroChain mining rewards.
 
 Example
-'''''''
 
 .. code:: js
 
@@ -2523,28 +2651,26 @@ Example
 
 --------------
 
-scs\_getReceiptByHash
-^^^^^^^^^^^^^^^^^^^^^
+**scs\_getReceiptByHash**
+
+.. _scs_getReceiptByHash:
 
 Returns the receipt of a transaction by transaction hash. Note That the
 receipt is not available for pending transactions.
 
-Parameters
-''''''''''
+*Parameters*
 
-``String`` - The MicroChain address. 
-``String`` - The transaction hash.
-``Function`` - (optional) If you pass a callback the HTTP request is
-made asynchronous.
+1. ``String`` - The MicroChain address. 
+2. ``String`` - The transaction hash.
 
-Returns
-'''''''
+*Returns*
+
 
 ``Object`` - A transaction receipt object, or null when no receipt was
 found:.
 
 Example
-'''''''
+
 
 .. code:: js
 
@@ -2561,28 +2687,25 @@ Example
 
 --------------
 
-scs\_getReceiptByNonce
-^^^^^^^^^^^^^^^^^^^^^^
+**scs\_getReceiptByNonce**
+
+.. _scs_getReceiptByNonce:
 
 Returns the transaction result by address and nonce on the MicroChain. Note That the nonce is the nonce on the MicroChain. This nonce can be checked using scs_getNonce. 
 
-Parameters
-''''''''''
+*Parameters*
 
-``String`` - The MicroChain address. 
-``String`` - The transaction hash.
-``Int`` - The nonce of the transaction.
-``Function`` - (optional) If you pass a callback the HTTP request is
-made asynchronous.
 
-Returns
-'''''''
+1. ``String`` - The MicroChain address. 
+1. ``String`` - The transaction nonce.
+1. ``QUANTITY`` - The nonce of the transaction.
+
+*Returns*
 
 ``Object`` - A transaction receipt object, or null when no receipt was
 found:.
 
 Example
-'''''''
 
 .. code:: js
 
@@ -2596,3 +2719,181 @@ Example
       "result": {contractAddress: '0x0a674edac2ccd47ae2a3197ea3163aa81087fbd1',
   failed: false,"logs":[{"address":"0x2328537bc943ab1a89fe94a4b562ee7a7b013634","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef","0x000000000000000000000000a8863fc8ce3816411378685223c03daae9770ebb","0x0000000000000000000000007312f4b8a4457a36827f185325fd6b66a3f8bb8b"],"data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQ=","blockNumber":0,"transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69","transactionIndex":0,"blockHash":"0x78f092ca81a891ad6c467caa2881d00d8e19c8925ddfd71d793294fbfc5f15fe","logIndex":0,"removed":false}],"logsBloom":"0x00000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000008000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000800000000000080000000000000000000000000002000000000000000000000000000000000000080100002000000000000000000000000000000000000000000000000000000000000000000000000000","status":"0x1","transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"}
     }
+
+--------------
+
+**scs\_getTransactionByHash**
+
+.. _scs_gettransactionbyhash:
+
+Returns the receipt of a transaction by transaction hash. Note That the
+receipt is not available for pending transactions.
+
+*Parameters*
+
+1. ``String`` - The MicroChain address. 
+2. ``String`` - The transaction hash.
+
+*Returns*
+
+
+``Object`` - A transaction object, or null when no transaction was found.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getTransactionByHash","params":["0x299afff2da4a57e7e0a0a16bf626f8822b8a3158","0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": {contractAddress: '0x0a674edac2ccd47ae2a3197ea3163aa81087fbd1',
+  failed: false,"logs":[{"address":"0x2328537bc943ab1a89fe94a4b562ee7a7b013634","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef","0x000000000000000000000000a8863fc8ce3816411378685223c03daae9770ebb","0x0000000000000000000000007312f4b8a4457a36827f185325fd6b66a3f8bb8b"],"data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQ=","blockNumber":0,"transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69","transactionIndex":0,"blockHash":"0x78f092ca81a891ad6c467caa2881d00d8e19c8925ddfd71d793294fbfc5f15fe","logIndex":0,"removed":false}],"logsBloom":"0x00000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000008000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000800000000000080000000000000000000000000002000000000000000000000000000000000000080100002000000000000000000000000000000000000000000000000000000000000000000000000000","status":"0x1","transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"}
+    }
+
+--------------
+
+**scs\_getTransactionByNonce**
+
+.. _scs_gettransactionbynonce:
+
+Returns the receipt of a transaction by transaction hash. Note That the
+receipt is not available for pending transactions.
+
+*Parameters*
+
+1. ``String`` - The MicroChain address. 
+1. ``String`` - The transaction nonce.
+1. ``QUANTITY`` - The nonce of the transaction.
+
+*Returns*
+
+
+``Object`` - A transaction receipt object, or null when no receipt was
+found:.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getTransactionByNonce","params":["0x299afff2da4a57e7e0a0a16bf626f8822b8a3158","0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"],"id":101}' 'localhost:8545'
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": {contractAddress: '0x0a674edac2ccd47ae2a3197ea3163aa81087fbd1',
+  failed: false,"logs":[{"address":"0x2328537bc943ab1a89fe94a4b562ee7a7b013634","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef","0x000000000000000000000000a8863fc8ce3816411378685223c03daae9770ebb","0x0000000000000000000000007312f4b8a4457a36827f185325fd6b66a3f8bb8b"],"data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQ=","blockNumber":0,"transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69","transactionIndex":0,"blockHash":"0x78f092ca81a891ad6c467caa2881d00d8e19c8925ddfd71d793294fbfc5f15fe","logIndex":0,"removed":false}],"logsBloom":"0x00000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000008000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000800000000000080000000000000000000000000002000000000000000000000000000000000000080100002000000000000000000000000000000000000000000000000000000000000000000000000000","status":"0x1","transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"}
+    
+--------------
+
+**scs\_getExchangeByAddress**
+
+.. _scs_getExchangeByAddress:
+
+Returns the Withdraw/Deposit exchange records between MicroChain and MotherChain for a certain address. This command returns both the ongoing exchanges and processed exchanges. To check all the ongoing exchanges, please use scs_getExchangeInfo. 
+
+
+*Parameters*
+
+1. `String` - The MicroChain address.
+1. `String` - The address to be checked.
+1. `Int` - Index of Deposit records >= 0.
+1. `Int` - Number of Deposit records extracted.
+1. `Int` - Index of Depositing records >= 0.
+1. `Int` - Number of Depositing records extracted.
+1. `Int` - Index of Withdraw records >= 0.
+1. `Int` - Number of Withdraw records extracted.
+1. `Int` - Index of Withdrawing records >= 0.
+1. `Int` - Number of Withdrawing records extracted.
+
+*Returns*
+
+
+``Object`` - A JSON format object contains the token exchange info.
+
+Example
+
+
+.. code:: js
+
+  // Request
+  curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getExchangeByAddress","params":["0x2e4694875de2a7da9c3186a176c52760d58694e4","0xa8863fc8ce3816411378685223c03daae9770ebb", 0,10,0,10,0,10,0,10],"id":100}' localhost:8548
+
+  // Result
+  {"jsonrpc":"2.0","id":100,"result":{"DepositRecordCount":2,"DepositRecords":[null,null,{"DepositAmt":"0x18abedda5a37000","Deposittime":"0x5c7f03c4"},{"DepositAmt":"0x2bdbb64bc09000","Deposittime":"0x5c7e8aaa"}],"DepositingRecordCount":0,"DepositingRecords":null,"WithdrawRecordCount":0,"WithdrawRecords":null,"WithdrawingRecordCount":0,"WithdrawingRecords":null,"microchain":"0x2e4694875de2a7da9c3186a176c52760d58694e4","sender":"0xa8863fc8ce3816411378685223c03daae9770ebb"}}
+
+
+--------------
+
+
+**scs\_getExchangeInfo**
+
+.. _scs_getExchangeInfo:
+
+Returns the Withdraw/Deposit exchange records between MicroChain and MotherChain for a certain address. This command returns both the ongoing exchanges and processed exchanges. To check all the ongoing exchanges, please use scs_getExchangeInfo. 
+
+
+*Parameters*
+
+1. `String` - The MicroChain address.
+1. `String` - The transaction hash.
+1. `Int` - Index of Depositing records >= 0.
+1. `Int` - Number of Depositing records extracted.
+1. `Int` - Index of Withdrawing records >= 0.
+1. `Int` - Number of Withdrawing records extracted.
+
+*Returns*
+
+
+``Object`` - A JSON format object contains the token exchange info.
+
+Example
+
+
+.. code:: js
+
+  // Request
+  curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getExchangeInfo","params":["0x2e4694875de2a7da9c3186a176c52760d58694e4",0,10,0,10],"id":101}' 'localhost:8545'
+
+  // Result
+
+  {"jsonrpc":"2.0","id":100,"result":{"DepositingRecordCount":0,"DepositingRecords":null,"WithdrawingRecordCount":0,"WithdrawingRecords":null,"microchain":"0x2e4694875de2a7da9c3186a176c52760d58694e4","scsid":"0x50c15fafb95968132d1a6ee3617e99cca1fcf059"}}
+
+--------------
+
+
+**scs\_getTxpool**
+
+.. _scs_gettxpool:
+
+Returns the ongoing transactions in the MicroChain. 
+
+*Parameters*
+
+1. `String` - The MicroChain address.
+
+*Returns*
+
+``Object`` - A JSON format object contains two fields pending and queued. Each of these fields are associative arrays, in which each entry maps an origin-address to a batch of scheduled transactions. These batches themselves are maps associating nonces with actual transactions.
+
+Example
+
+
+.. code:: js
+
+  // Request
+  curl -X POST --data '{"jsonrpc":"2.0","method":"scs_getTxpool","params":["0x2e4694875de2a7da9c3186a176c52760d58694e4"],"id":101}' 'localhost:8545'
+
+  // Result
+
+  {"jsonrpc":"2.0","id":100,"result":{"pending":{},"queued":{}}}
+
+--------------
+

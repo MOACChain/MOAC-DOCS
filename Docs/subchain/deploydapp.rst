@@ -10,10 +10,8 @@ Requirements
 One running MicroChain without any DAPP on it.
 Please refer to "Create a MicroChain".
 
-假设有两个业务逻辑合约dapp1.sol和dapp2.sol。
-
-从发布链接下载多合约基础合约dappbase.sol
-
+Download the control contract dappbase.sol using the latest download link.
+dapp1.sol and dapp2.sol are the two 
 
 Deploy the DAPP
 ------------------------------
@@ -22,12 +20,13 @@ DAPP is deployed by using sendTransaction on the MotherChain with the shardingFl
 
 Parameters：
 ::
-	to: 子链控制合约subchainbase的地址
-	gas: 不需要消耗gas费用，传值：0
-	shardingflag：表示操作子链， 传值：0x3，请注意，多合约版本部署任何合约shardingflag都为0x3  
-	via: 对应 proxy vnode 的收益地址
+    from: source account to deploy the DAPP;
+	to: MicroChain address;
+	gas: no gas needed for this operation, can be set to 0;
+	shardingflag: require to set to 0x3，in nuwa 1.0.8 and later, all MicroChain deployment need set to shardingflag;
+	via: VNODE proxy address, should be found in vnodeconfig.json;
 	
-STEP1：在子链上部署多合约基础合约 dappbase.sol， 部署示例
+STEP1：Deploy the dappbase.sol on MicroChain 0x1195cd9769692a69220312e95192e0dcb6a4ec09:
 ::
 	> chain3 = require('chain3')
 	> solc = require('solc')
@@ -43,14 +42,15 @@ STEP1：在子链上部署多合约基础合约 dappbase.sol， 部署示例
 	> chain3.personal.unlockAccount(chain3.mc.accounts[0], '123456');
 	> chain3.mc.sendTransaction({from: chain3.mc.accounts[0], value:0, to: subchainaddr, gas:0, shardingFlag: "0x3", data: '0x' + bin, nonce: 0, via: via, });
 			
-验证: 
-	合约部署成功后，Nonce值应该是1   
-	可调用monitor的rpc接口ScsRPCMethod.GetNonce进行检查，具体详见子链接口调用部分。
+Result: 
+	If MicroChain is deployed successfully, the Nonce of the source account should change to 1; 
+	This can be checked using rpc command get_nonce, or rpcdebug command ScsRPCMethod.GetNonce.
+	Please refer to [Interact with the DAPP]().
 
 
-STEP2：在子链上部署业务逻辑合约 dapp1.sol，部署方法和上面雷同
+STEP2：Deploy the dapp1.sol using the same command as Step1;
 
-STEP3：在子链上部署业务逻辑合约 dapp2.sol，部署方法和上面雷同
+STEP3：Deploy the dapp2.sol using the same command as Step1;
 		
 
 Interact with the DAPP

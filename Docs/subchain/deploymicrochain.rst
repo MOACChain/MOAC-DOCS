@@ -9,11 +9,11 @@ the SCSs running the MicroChain.
 Vnode Pool
 ----------------------
 
-首先部署vnode矿池合约，VnodeProtocolBase，如果加入现成的vnode矿池，则可以忽略此步骤。
+VNODE pool contract, VnodeProtocolBase, is to setup a pool for VNODE servers to provide service to MicroChains. You can join existing VNODE pools that published by certified groups.
 
-加入矿池的代理Vnode节点被用于提供子链调用服务和子链历史数据中转服务的节点。
+For each VNODE join a pool, VNODE need to deposit the minimum moac to the contract to register. If VNODE service is broken due to bad behavior or bad internet connection, these deposit will be deducted. If the VNODE server didn't have enough deposit, then it will be moved out of the pool.
 
-以下为nodejs部署示例：最低保证金为 2 moac 
+This is an example to deploy the VNODE pool with a Contract requiring 2 moac as minimum deposit: 
 ::	
 	> chain3 = require('chain3')
 	> solc = require('solc')
@@ -29,9 +29,9 @@ Vnode Pool
 	> VnodeProtocolBase = VnodeProtocolBaseContract.new( 2, { from: chain3.mc.accounts[0],  data: '0x' + bin,  gas: '5000000'});
 	> chain3.mc.getTransactionReceipt(VnodeProtocolBase.transactionHash).contractAddress
 
-部署完毕后，获得 vnode矿池合约地址  0x22f141dcc59850707708bc90e256318a5fe0b928	
+The contract address will be generated after creation:  0x22f141dcc59850707708bc90e256318a5fe0b928	
 	
-注意：gas 不要设置太大， 不然会触发错误 exceeds block gas limit undefined
+Note: gas limit should be less than the block limit 9,000,000, otherwise it will generate the error "exceeds block gas limit undefined".
 		
 Add VNODE to pool 
 ------------------------
@@ -131,7 +131,7 @@ Start SCSs
 	> scsaddr = '0x3e21ba36b396936c6cc9adc3674655b912e5fa54';
 	> chain3.mc.sendTransaction( { from: chain3.mc.accounts[0], value:chain3.toSha(amount,'mc'), to: scsaddr, gas: "2000000", gasPrice: chain3.mc.gasPrice, data: ''});
 	
-可以通过查询余额进行验证  
+Check the balance of the SCS accounts.  
 ::		
 	> chain3.mc.getBalance('0xd4057328a35f34507dbcd295d43ed0cccf9c368a')
 	> chain3.mc.getBalance('0x3e21ba36b396936c6cc9adc3674655b912e5fa54')
