@@ -56,9 +56,6 @@ Default JSON-RPC endpoints:
 | Go       | http://localhost:8545   |
 +----------+-------------------------+
 
-Go
-~~
-
 You can start the HTTP JSON-RPC with the ``--rpc`` flag. For VNODE:
 
 .. code:: bash
@@ -231,6 +228,10 @@ JSON-RPC methods
    -  :ref:`scs\_getExchangeInfo <scs_getexchangeinfo>`
    -  :ref:`scs\_getTxpool <scs_gettxpool>`
 
+------------
+
+CHAIN3
+~~~~~~
 
 .. _chain3_clientversion:
 
@@ -299,6 +300,9 @@ Returns Keccak-256 (*not* the standardized SHA3-256) of the given data.
     }
 
 --------------
+
+NET
+~~~
 
 .. _net_version:
 
@@ -399,6 +403,9 @@ Example
     }
 
 --------------
+
+MC
+~~~
 
 .. _mc_protocolVersion:
 
@@ -1762,8 +1769,7 @@ Creates a filter object, based on filter options, to notify when the
 state changes (logs). To check if the state has changed, call
 :ref:`mc\_getFilterChanges <mc_getfilterchanges>`.
 
-A note on specifying topic filters:
-'''''
+\*A note on specifying topic filters:*
 
 Topics are order-dependent. A transaction with a log with topics [A, B]
 will be matched by the following topic filters: \* ``[]`` "anything" \*
@@ -2165,6 +2171,9 @@ Example
 
 --------------
 
+VNODE
+~~~~~~
+
 **vnode\_address**
 
 .. _vnode_address:
@@ -2330,6 +2339,9 @@ Example
     }
 
 --------------
+
+SCS
+~~~
 
 .. _scs_directcall:
 
