@@ -1,9 +1,12 @@
 Terms
-^^^^^^^^^^^^^^^
+^^^^^^
 
 Vnode
 ----------------------
-Validating Node(VNODE) client is used to form the MotherChain network. It used a Proof of Work consensus method similar to Ethereum. VNODE not only handles data storage and compute processing for smart contracts but also pass data for the MicroChain Dapps. 
+Verification node (VNODE or V-node), is the application that running a full
+MOAC MotherChain node in the MOAC network. It can mine blocks in the
+network, transfer moac, perform the POW consensus, and pass MicroChains data in
+MOAC network. 
 
 SCS
 ----------------------
