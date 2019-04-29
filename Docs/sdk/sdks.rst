@@ -11,17 +11,17 @@ Node.JS Example
 
 Parameters:
 ::
-	pwd：钱包账户密码
+	psd: Account password, get from the registration on API 
 
 Example:
 ::
 	var account = require("moac-api").account;
-	var wallet = account.register(pwd);
+	var wallet = account.register(psd);
 
 Results:
 ::
 	wallet：
-	{ address: '钱包地址....',
+	{ address: 'Wallet/Account address....',
 	  privateKey: '私钥....',
 	  keyStore: 'keyStore内容...' 
 	}
@@ -33,14 +33,14 @@ Node.JS Example
 
 Parameters:
 ::
-	addr：钱包地址
-	pwd：钱包密码
+	addr：Wallet/Account address
+	psd: password of the wallet
 	keyStore：keyStore
 
 Example:
 ::
 	var account = require("moac-api").account;
-	var status = account.login(addr, pwd, keyStore);
+	var status = account.login(addr, psd, keyStore);
 
 Results:
 ::
@@ -115,7 +115,7 @@ Results:
 ::
 	tradeInfo：交易详情
 	
-获取合约实例
+Get MicroChain Instance
 ===========================
 
 Node.JS Example
@@ -293,7 +293,7 @@ ERC20充值
 
 Parameters:
 ::
-	addr：钱包地址
+	addr：Wallet/Account address
 	privateKey：钱包私钥
 	microChainAddress：子链地址
 	method：方法 "issue(address,uint256)"
@@ -315,7 +315,7 @@ MOAC充值
 
 Parameters:
 ::
-	addr：钱包地址
+	addr：Wallet/Account address
 	privateKey：钱包私钥
 	microChainAddress：子链地址
 	method：方法 "issue(address,uint256)"
@@ -432,7 +432,7 @@ Node.JS Example
 
 Parameters:
 ::
-	addr：钱包地址
+	addr：Wallet/Account address
 
 Example:
 ::
@@ -601,7 +601,7 @@ Results:
 
 Parameters:
 ::
-	addr：钱包地址
+	addr：Wallet/Account address
 	amount：金额（单位为moac）
 	privateKey：钱包私钥
 
@@ -620,7 +620,7 @@ Results:
 
 Parameters:
 ::
-	addr：钱包地址
+	addr：Wallet/Account address
 	amount：金额（erc20最小单位）
 	privateKey：钱包私钥
 

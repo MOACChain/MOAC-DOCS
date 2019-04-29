@@ -1,4 +1,5 @@
 ### build docs
 ./bak
+./Docs/image/*.jpg
 ./Docs/_build/*
 ./Docs/_static/*

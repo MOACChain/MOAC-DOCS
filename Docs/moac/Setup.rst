@@ -90,37 +90,37 @@ To enable the console, run: moac.exe console
 A mainnet directory will be created under  and some info
 should be seen as:
 
-2.1 查看moac帮助
+1. Check moac command line info
 ''''''''''''''''
 
-打开命令（cmd）终端，转到墨客解压目录，在命令行中执行：
+Open Windows client cmd, move to the install directory of moac (assume c:\moac-win), run:
 
 ::
 
-    D:\moacPangu0.8.2-win>moac --help
+    C:\moac-win>moac.exe --help
 
-显示帮助信息，包含但不限于以下内容：
-
-查看moac帮助
-
-打开命令（cmd）终端，转到墨客解压目录，在命令行中执行：
+will display the commandline info：
 
 ::
 
-    D:\ moacPangu0.8.2-win>moac --help
+  Start MOAC.... 2
+  NAME:
+   moac - the MOAC-core command line interface
+   Copyright 2017-2019 The MOAC tech 
+  USAGE:
+   moac [options] command [command options] [arguments...]
+   VERSION:
+     1.0.9-rc-dd996c53
+   
+   COMMANDS:
+   account     Manage accounts
+   attach      Start an interactive JavaScript environment (connect to node)
+   bug         opens a window to report a bug on the moac repo
+   console     Start an interactive JavaScript environment
+   dump        Dump a specific block from storage
+   dumpconfig  Show configuration values
+   ......
 
-显示帮助信息，包含但不限于以下内容：
-
-::
-
-    Start MOAC.... 2
-    NAME:
-     moac - the MOAC-core command line interface
-     Copyright 2017 The MOAC Authors
-    USAGE:
-     moac [options] command [command options] [arguments...]
-    VERSION:
-     0.8.2-develop-ed4070bf
     MOAC CORE OPTIONS:
     --config value                      TOML configuration file
     --datadir "C:\Users\[userName]\AppData\Roaming\MoacNode" Data directory for the databases and keystore
@@ -129,23 +129,23 @@ should be seen as:
     --networkid value                   Network identifier (integer, 1=Pangu, 2=Testnet) (default: 1)
     --testnet                          MOAC test network: pre-configured proof-of-work test network
 
-2.2 运行节点
-''''''''''''
+2. Run a VNODE client connecting with mainnet
+'''''''''''''''''''''''''''''''''''''''''''''
 
-打开命令（cmd）终端，转到墨客当前目录，在命令行中执行：
+Open Windows client cmd, move to the install directory of moac, run:
 
 ::
 
-    D:\ moacPangu0.8.2-win>moac
+    C:\moac-win>moac.exe
 
-显示如下信息：
+should have similiar info：
 
 .. figure:: ../image/moac_install_win_0.png
    :alt: moac\_install\_win\_0
 
    moac\_install\_win\_0
 
-至最后三行显示如下：
+If it's the first time you start VNODE, you should have some thing like:
 
 ::
 
@@ -153,15 +153,15 @@ should be seen as:
     INFO [04-01|20:44:42.852] 145:IPC endpoint opened: \\.\pipe\moac.ipc
     INFO [04-01|20:45:12.846] 152:Block synchronisation started
 
-表示节点安装成功，如果网络正常，就开始同步区块。
+It means the VNODE is connecting with the MOAC network and start syncing blocks.
 
-系统将MOAC节点默认安装在目录：
+The default installation directory is：
 
 ::
 
     C:\Users\[userName]\AppData\Roaming\MoacNode\
 
-该目录下包含两个文件夹：moac和keystore。
+It should contains two subdirectories ：moac和keystore。
 
 2.3 进入MOAC console界面
 ''''''''''''''''''''''''
@@ -170,7 +170,7 @@ should be seen as:
 
 ::
 
-    D:\ moacPangu0.8.2-win>moac console
+    C:\moac-win> moac console
 
 之后一直滚屏以同步区块数据。
 

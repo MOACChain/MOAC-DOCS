@@ -1,16 +1,14 @@
 Atomic Swap of MicroChain tokens
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-MOAC MicroChain can have their own tokens and these tokens can be swapped with MotherChain native token moac or other ERC20 token.
-
-当前，墨客提供三种类型的母子链货币交互，以下一一介绍
+MOAC MicroChain can have their own tokens and these tokens can be swapped with MotherChain native token moac or other ERC20 token. MOAC supports three types of Atomic Swaps.
 
 Atomic Swap of moac (ASM)
 ------------------------
 这个是最基础的一种货币兑换。使用者可以在主链上充值MOAC，然后最早在下一个flush周期在子链上获取子链原生币。同理，使用者可以提出子链原生币，并最早在下一个flush周期获得主链MOAC。
 
-子链部署准备
-================
+Requirements to deploy the MicroChain
+=====================================
 
 参考子链部署章节，完成部署子链的准备工作。
 ::

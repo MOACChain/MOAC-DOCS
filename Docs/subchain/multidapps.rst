@@ -6,7 +6,7 @@ It enables the developers to use more complex contracts or upgrade the Dapps on 
 
 
 Dapps interaction
---------------------------
+-----------------
 
 This example use dapp2 to call the functions in dapp1.
 
@@ -63,7 +63,7 @@ STEP2：Deploy dapp2.sol, calls the Function getString in dapp1;
 Example：
 ::
 
-    > nonce = 1   // 调用ScsRPCMethod.GetNonce获得
+    > nonce = 1   // call ScsRPCMethod.GetNonce on SCS monitor
     > subchainaddr = '0xb877bf4e4cc94fd9168313e00047b77217760930';
     > dappaddr = '0xcc0D18E77748AeBe3cC6462be0EF724e391a4aD9';
     > via = '0xf103bc1c054babcecd13e7ac1cf34f029647b08c';
@@ -107,7 +107,8 @@ STEP1：Deploy dapp1.sol，register in dappbase;
         }
     }
 
-STEP2：部署合约dapp3.sol，要求可以访问dapp1中的数据
+STEP2：Deploy dapp3.sol to test calling method in dapp1. Then Dapp3 call getAmountByAddr method in Dapp1 to get the value into the variable mytups from Dapp1.
+
 ::
 
     contract Dapp1 {
@@ -153,9 +154,9 @@ STEP2：部署合约dapp3.sol，要求可以访问dapp1中的数据
         }
     }
 
-说明：getAmountByAddr方法将dapp1中的老数据放入dapp3中的mytups。
 
-STEP3：部署合约dapp4.sol，要求可以访问dapp3中的数据
+STEP3：Deploy dapp4.sol to test calling method in dapp3. The getAmountByAddr method call the method getAmountByAddr in dapp3. Since dapp3 method calls the method in dapp1, this call finally returns the value of variable in dapp1.
+
 ::
 
   contract Dapp3 {
@@ -203,5 +204,3 @@ STEP3：部署合约dapp4.sol，要求可以访问dapp3中的数据
             return mytups;
         }
     }
-
-说明：getAmountByAddr方法将dapp3中的老数据放入dapp3中的mytups，因为dapp3的方法中包含dapp1的数据，所以这个方法最终返回dapp1，dapp3，dapp4中所有符合addr的数据。

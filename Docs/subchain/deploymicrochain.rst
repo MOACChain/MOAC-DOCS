@@ -198,9 +198,9 @@ Example commands of deploying SubChainBase.sol:
 	> output = solc.compile({sources: input}, 1);			
 	> abi = output.contracts[':SubChainBase'].interface;
 	> bin = output.contracts[':SubChainBase'].bytecode;
-	> proto = '0xe42f4f566aedc3b6dd61ea4f70cc78d396130fac' ;    // 子链矿池合约 
-	> vnodeProtocolBaseAddr = '0x22f141dcc59850707708bc90e256318a5fe0b928' ;       // Vnode矿池合约 
-	> min = 3 ;			// 子链需要SCS的最小数量，当前需要从如下值中选择：3，5，7
+	> proto = '0xe42f4f566aedc3b6dd61ea4f70cc78d396130fac' ;    // SCS pool contract
+	> vnodeProtocolBaseAddr = '0x22f141dcc59850707708bc90e256318a5fe0b928' ;       // Vnode pool contract
+	> min = 3 ;		// Minimum number of SCSs in the MicroChain，has to be one of：3，5，7
 	> max = 11;		// 子链需要SCS的最大数量，当前需要从如下值中选择：11，21，31，51，99
 	> thousandth = 1 ;			// 千分之几
 	> flushRound = 40 ;     	// 子链刷新周期  单位是主链block生成对应数量的时间，当前的取值范围是40-99
@@ -209,7 +209,7 @@ Example commands of deploying SubChainBase.sol:
 	> SubChainBase = SubChainBaseContract.new( proto, vnodeProtocolBaseAddr, min, max, thousandth, flushRound,{ from: chain3.mc.accounts[0],  data: '0x' + bin,  gas:'9000000'} , function (e, contract){console.log('Contract address: ' + contract.address + ' transactionHash: ' + contract.transactionHash); });
 	
 		
-部署完毕后, 获得子链合约地址  0x1195cd9769692a69220312e95192e0dcb6a4ec09
+If deployed successful, a contract address will be generated, like:  0x1195cd9769692a69220312e95192e0dcb6a4ec09
 		
 
 	
@@ -265,10 +265,6 @@ Comments:
 -  data：In sendtx, '0x5defc56c' is a constant to send with. It was
    generate from the first 4 bytes in the hash of registerOpen()
    function.
-
-验证：  访问子链合约的 registerFlag 为 1 ， 等待scs注册 (vnode 一个 flush周期后 ) ， 访问子链合约的 nodeCount
-	> chain3.mc.getStorageAt(subchainaddr,0x14)  // 注意registerFlag变量在合约中变量定义的位置（16进制）
-	> chain3.mc.getStorageAt(subchainaddr,0x0e)  // 注意nodeCount变量在合约中变量定义的位置（16进制）
 
 After registerOpen is called，DAPP developer need to wait for a VNODE block generated. Then he can use the following
 methods to check how many SCS nodes registed in the MicroChain:

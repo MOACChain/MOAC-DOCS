@@ -5,14 +5,16 @@ VNODE client is used to form the MotherChain network. It used a Proof of Work co
 
 Useful websites
 
-   6.1 `MOAC <http://www.moacfoundation.org/>`__
-   
-   6.2 `Mainnet Explorer <http://explorer.moac.io/home>`__
-   
-   6.3 `Testnet Explorer <http://testnet.moac.io/home>`__
-   
-   6.4 `MoacWalletOnline <https://moacwalletonline.com>`__
-   
-   6.5 `TokenPocket <https://www.mytokenpocket.vip/en>`__
+   1 `MOAC Foundation <http://www.moacfoundation.org/>`__
 
-   6.6 `MOACMask <https://github.com/MOACChain/MOACMask/releases>`__
+   2 `MOAC clients releases <https://github.com/MOACChain/moac-core/releasese>`__
+   
+   2 `Mainnet Explorer <http://explorer.moac.io/home>`__
+   
+   3 `Testnet Explorer <http://testnet.moac.io/home>`__
+   
+   4 `MoacWalletOnline <https://moacwalletonline.com>`__
+   
+   5 `TokenPocket <https://www.mytokenpocket.vip/en>`__
+
+   6 `MOACMask <https://github.com/MOACChain/MOACMask/releases>`__

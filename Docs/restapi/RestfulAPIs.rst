@@ -9,14 +9,14 @@ auth
 
 API authorization
 
-请求访问token，提供权限调用API的其他接口
+Request to access the token of calling other APIs.
 
 Method: auth
 
 Parameters:
 ::
-	account:  授权账号
-	pwd:  授权账号密码
+	account:  The account to be authorized
+	pwd:  The account password
 	
 Example：
 ::
@@ -38,14 +38,14 @@ Accounts
 register
 =====================
 
-Account Registration
-
 Method: register
+
+Account Registration.
 
 Parameters:
 ::
-	pwd:  账户密码
-	token:  auth返回的授权token
+	pwd:  Account password
+	token:  Return token by the auto command
 	
 	
 Example：
@@ -58,10 +58,10 @@ Results
 	{
 		"success": true,
 		"message": "",
-		"address": 账户地址,
-		"encode": 账户加密串,
-		"keystore": 账户keystore信息,
-		"privateKey": 账户私钥
+		"address": Account public address,
+		"encode": Encoded Account,
+		"keystore": Account keystore,
+		"privateKey": Account private key,
 	}
 	
 login
@@ -73,9 +73,9 @@ Method: login
 
 Parameters:
 ::
-	address:  账户地址
-	pwd:  账户密码
-	encode:  账户加密串
+	address:  Account public address,
+	pwd:  Account password,
+	encode:  Encoded Account
 	token:  auth返回的授权token
 	
 	
@@ -129,16 +129,16 @@ MotherChain
 getBalance
 =====================
 
-Get Account Balance of moac
-
 Method: getBalance
+
+Get the Account Balance in moac
 
 Parameters:
 ::
-	vnodeip:  vnode节点地址
-	vnodeport:  vnode节点端口
-	address:  账号地址
-	token:  auth返回的授权token
+	vnodeip:  vnode server IP address
+	vnodeport:  vnode server port
+	address:  Account address
+	token:  token used to access the API, returned by Auto command.
 	
 	
 Example：
@@ -151,7 +151,7 @@ Results
 	{
 		"success": true,
 		"message": "",
-		"data": 账户余额 (单位 moac)	
+		"data": balance of Addcount in moac	
 	}
 	
 getBlockNumber
@@ -850,5 +850,5 @@ Results:
 	{
 		"success": true,
 		"message": "",
-		"data": 交易hash
+		"data": transaction hash
 	}	

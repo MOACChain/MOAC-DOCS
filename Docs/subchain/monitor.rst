@@ -19,13 +19,14 @@ need to call the "registerAsMonitor" method in MicroChain contract to
 register it. 
 
 
-子链启动的方式与scs区别在于参数不同，主要定义了rpc接口的访问控制
+SCS monitor need to start with rpc port enabled, use either "rpc" or "rpcdebug" to allow the access of SCS:
 ::	
 	scsserver-windows-4.0-amd64 --password "123456" --rpcdebug --rpcaddr 0.0.0.0 --rpcport 2345 --rpccorsdomain "*"
 
+
 子链运行后，Monitor可以调用子链控制合约subchainbase中的registerAsMonitor方法进行注册
 
-调用registerAsMonitor参数说明:	
+registerAsMonitor parameters:	
 ::	
 	根据ABI chain3.sha3("registerAsMonitor(address)") = 0x4e592e2f6fc52405522577d357d824c923989a62e4916d9b689311d8b2a6192c 
 		取前4个字节 0x4e592e2f  

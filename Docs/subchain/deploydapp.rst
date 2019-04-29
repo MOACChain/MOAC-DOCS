@@ -56,17 +56,17 @@ STEP3：Deploy the dapp2.sol using the same command as Step1;
 Interact with the DAPP
 ----------------------
 
-DAPP智能合约的调用也通过主链的sendTransaction发送交易到 proxy vnode 的方式进行。
+The call of the DAPPs on the MicroChain should be done by using MotherChain's sendTransaction operation.
 
 在多合约版本中，调用dapp方法前，需要先调用dappbase中的registerDapp方法来注册每一个dapp，具体方式如下：
 
-**请注意，与母链调用不同，子链的任何调用需要在data前加上dapp的合约地址！！**
+**Alert, all the calls of DAPPs need to put the DAPPs address before the dataload !!!**
 
-dappbase.sol有个方法 registerDapp(address,address,string)
+dappbase.sol has a method registerDapp(address,address,string) to be used to register a new Dapp.
 
 Parameters：
 ::
-	to: 子链控制合约subchainbase的地址
+	to: address of the deployed subchainbase contract;
 	nonce：调用monitor的rpc接口ScsRPCMethod.GetNonce获得
 	gas: 0 不需要消耗gas费用
 	shardingflag： 0x1  表示子链调用操作
@@ -84,9 +84,9 @@ Example：
 	> chain3.personal.unlockAccount(chain3.mc.accounts[0], '123456');
 	> chain3.mc.sendTransaction( { nonce: nonce, from: chain3.mc.accounts[0], value:0, to: subchainaddr, gas:0, shardingFlag:'0x1', data: data, via: via,});
 	
-验证：
-	每次操作成功后，Nonce会自动增加1
-	或者直接调用monitor的rpc接口ScsRPCMethod.GetContractInfo获得合约变量的方式进行验证。
+To check if the operation is successful:
+1. The account nonce will increase by 1 if the operation is successful;
+2. Call ScsRPCMethod.GetContractInfo() with proper parameters to get the contract info;
 
 以部署dapp1和dapp2为例，需要将这两个业务逻辑合约注册到dappbase中去：
 

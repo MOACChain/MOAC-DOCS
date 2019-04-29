@@ -37,6 +37,11 @@ their value in Sha. Following a common pattern, mc also designates a unit (of 1e
 MOAC supply
 =========================
 
+The initial supply of MOAC coin is 150 million. The MOAC foundation holds about 53 million coins and the rest is in circulation. The value of MOAC coin ﬂuctuates daily, and can be found at CoinMarketcap.com (https://coinmarketcap.com/currencies/moac).
+The MOAC coins first issued as ERC20 token on Ethereum in July 2017. After MOAC mainnet was successfully launched in April 2018, all the MOAC coins on the Ethereum were exchanged to MOAC native token with a 1:1 ratio. The ERC20 contract of MOAC was closed in 2018 and there is no ERC20 token of MOAC on Ethereum platform anymore. 
+
+Six million additional coins per year will be generated during mining, further increasing the supply in circulation. After 4 years, the production will halve to 3 million, then will halve again the following 4 years. The total supply will be 210 million coins by 2058.
+
 Current supply can be found at:
 * http://explorer.moac.io/home
 

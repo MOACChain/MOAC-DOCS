@@ -3,7 +3,7 @@ SCS Client
 
 Smart Contract Server(SCS) clients are the key components of the MicroChain in MOAC network. 
 
-The most recent client version is v1.0.8, which 
+The most recent client version is v1.0.9, which 
 We have some video instructions for developers to setup MicroChains. 
 
 **English tutorials:**
