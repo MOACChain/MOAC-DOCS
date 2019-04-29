@@ -1,7 +1,9 @@
 Atomic Swap of MicroChain tokens
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-MOAC MicroChain can have their own tokens and these tokens can be swapped with MotherChain native token moac or other ERC20 token. MOAC supports three types of Atomic Swaps.
+MOAC MicroChain can have their own tokens and these tokens can be swapped with MotherChain native token moac or other ERC20 token. 
+
+MOAC supports two types of Atomic Swaps
 
 Atomic Swap of moac (ASM)
 ------------------------
