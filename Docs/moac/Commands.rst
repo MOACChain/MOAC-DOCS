@@ -2,7 +2,7 @@ Commands
 ========
 
 Most Commonly Used Commands：
-----------
+------------------------------
 
 ::
 
@@ -21,7 +21,7 @@ Most Commonly Used Commands：
     --jspath loadScript: default value is ".", the main directory of loadScript when installing javascript file；
 
 As shown below：
-~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
 Initiate MOAC VNODEs and connect to mainnet (network ID = 99)
 
@@ -72,7 +72,7 @@ Initiate MOAC testnet nodes which is nonlocally accessible; personal and debug s
     ./moac --testnet --rpc --rpcaddr=0.0.0.0 --rpcapi="db,mc,net,chain3,personal,debug" --rpccorsdomain=""                  
 
 All command line parameters
---------------
+----------------------------
 
 On the command line, type：
 
@@ -103,7 +103,7 @@ USAGE:
 
 VERSION:
 
-0.8.3-release-f84b7d91
+1.0.9-release-f84b7d91
 
 COMMANDS:
 ^^^^^^^^^

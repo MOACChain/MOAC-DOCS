@@ -21,9 +21,9 @@ Mother Of All Chains (MOAC) is to design a scalable and resilient Blockchain tha
    dapps/index
    restapi/index
    sdk/index
-   Terms
    moac/FAQs
-
+   intro/glossary
+   
 Indices and tables
 ******************
 

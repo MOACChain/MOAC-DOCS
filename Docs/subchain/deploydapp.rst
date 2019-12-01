@@ -1,8 +1,8 @@
 Deploy DApp contracts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Since nuwa 1.0.8, deploy DAPP on MicroChain changed to support multiple contracts.
-First, user need to deploy a Dappbase.sol to support all other DAPP contracts.
+Since nuwa 1.0.8, deploy DAPP on MicroChain changed to support multiple Dapps.
+To support First, user need to deploy a Dappbase.sol to support all other DAPP contracts.
 
 
 Requirements

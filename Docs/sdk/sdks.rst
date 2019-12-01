@@ -11,12 +11,12 @@ Node.JS Example
 
 Parameters:
 ::
-	psd: Account password, get from the registration on API 
+  psd: Account password, get from the registration on API 
 
 Example:
 ::
-	var account = require("moac-api").account;
-	var wallet = account.register(psd);
+  var account = require("moac-api").account;
+  var wallet = account.register(psd);
 
 Results:
 ::

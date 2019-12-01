@@ -18,4 +18,5 @@ Introduction
    MicroChain
    MOACtoken
    Versions
+   glossary
 
