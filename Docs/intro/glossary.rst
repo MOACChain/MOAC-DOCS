@@ -426,7 +426,7 @@ A peer is responsible for maintaining the integrity and identity of the ledger.
 
 .. _Proof-of-Stake:
 
-**PoS (Proof-of_State)** |br| 
+**PoS (Proof-of-Stake)** |br| 
 An alternative to the proof-of-work_ system, in which your existing stake in a cryptocurrency (the amount of that currency that you hold) is used to calculate the amount of that currency that you can mine. |br|
 *→ See also*: `Consensus Algorithm`_
 
