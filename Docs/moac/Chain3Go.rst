@@ -1,5 +1,6 @@
+==================
 Chain3 GO Library
-~~~~~~~~~~~~~~~~~~~~~
+==================
 
 MOAC Go API was built for MOAC chain. It was developed from MOAC RPC API, which can be used to develop Ðapp on MOAC chain. It supports both VNODE and SCS JSON RPC API methods in MOAC network.
 

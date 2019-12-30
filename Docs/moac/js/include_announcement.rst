@@ -1,0 +1,1 @@
+.. note:: This documentation is under construction and the chain3.js 1.0 stable version isn't released. If you're using a version v0.1.x of chain3.js then please have a look at :ref:`chain3js 0.1.x <chain3js0.1>` or `https://github.com/MOACChain/moac-core/wiki/Chain3 <https://github.com/MOACChain/moac-core/wiki/Chain3>`_.

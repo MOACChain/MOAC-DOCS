@@ -1,5 +1,8 @@
+.. _chain3js01x:
+
+==========================
 Chain3 JavaScript library
-=========================
+==========================
 
 Chain3 JavaScript API was built for MOAC chain. It followed the Ethereum
 web3.js API routines so the users can easily move their Ðapp to MOAC
@@ -172,10 +175,16 @@ Chain3 Javascript Ðapp API Reference
    -  `address <#chain3mcibanaddress>`__
    -  `toString <#chain3mcibantostring>`__
 
+-  vnode
+
+   -  :ref:`address <vnode_address>`
+   -  :ref:`scsService <vnode_scsservice>`
+   -  :ref:`serviceCfg <vnode_servicecfg>`
+   -  :ref:`showToPublic <vnode_showtopublic>`
+   -  :ref:`vnodeIP <vnode_vnodeip>`
+
 Usage
 ~~~~~
-
-
 
 .. raw:: html
 
@@ -2870,3 +2879,140 @@ chain3.mc.iban.toString
 
     var i = new chain3.mc.iban('XE72P8O19KRSWXUGDY294PZ66T4ZGF89INT');
     console.log(i.toString()); // 'XE72P8O19KRSWXUGDY294PZ66T4ZGF89INT'
+
+--------------
+
+VNODE
+~~~~~
+
+**chain3.vnode.address**
+
+.. _vnode_address:
+
+Returns the VNODE benificial address. This is needed for SCS to use in
+the communication.
+
+*Parameters*
+
+none
+
+*Returns*
+
+
+``address``: ``DATA``, 20 Bytes - address from which the VNODE settings
+in the vnodeconfig.json file.
+
+Example
+
+.. code:: js
+
+    // Request
+    console.log(chain3.vnode.address); // '0xa8863fc8ce3816411378685223c03daae9770ebb'
+
+--------------
+
+**chain3.vnode.scsService**
+
+.. _vnode_scsService:
+
+Returns if the VNODE enable the service for SCS servers.
+
+*Parameters*
+
+
+none
+
+*Returns*
+
+
+``Bool`` - true, enable the SCS service; false, not open.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    console.log(chain3.vnode.address()); // true/false
+
+
+--------------
+
+**chain3.vnode.serviceCfg**
+
+.. _vnode_serviceCfg:
+
+Returns the VNODE SCS service ports for connecting with.
+
+*Parameters*
+
+none
+
+*Returns*
+
+
+``String`` - The current service port set in the vnodeconfig.json.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    console.log("VNODE serviceCfg:", chain3.vnode.serviceCfg);//
+
+--------------
+
+**chain3.vnode.showToPublic**
+
+.. _vnode_showToPublic:
+
+Returns if the VNODE enable the public view.
+
+*Parameters*
+
+none
+
+*Returns*
+
+
+``Bool`` - true, open to the public; false, not open.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    console.log("VNODE showtoPublic:", chain3.vnode.showToPublic);
+
+--------------
+
+**chain3.vnode.ip**
+
+.. _vnode_vnodeIP:
+
+Returns VNODE IP for users to access. Note for cloud servers, this could
+be different from the cloud server IP.
+
+*Parameters*
+
+
+none
+
+*Returns*
+
+
+``String`` - The current IP that can be used to access. This is set in
+the vnodeconfig.json.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    console.log("VNODE IP:", chain3.vnode.ip);// return null for local host
+
+--------------
+

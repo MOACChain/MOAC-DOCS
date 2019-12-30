@@ -1,33 +1,26 @@
+.. MOACdocs-en documentation master file, created by
+   sphinx-quickstart on Wed Dec 12 13:34:25 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
 
-.. figure:: image/MOACnewTitle256.png
-   :alt: moaclogo
-
-
-
-Welcome to MOAC documentation
-#############################
-
-Mother Of All Chains (MOAC) is to design a scalable and resilient Blockchain that supports transactions, data access, control flow in a layered structure. It creates the framework to allow users to execute Smart Contract in an efficient way. It also provides the architecture to spawn sub blockchains using underlying infrastructure quickly and easily. It is a Blockchain platform with necessary plumbing parts available to sub blockchains, providing solution for idea test, private chain deployment, complex task processing, decentralized applications etc.
-
-
+Welcome to MOAC
+========================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption:  Contents:
 
    intro/index
    moac/index
-   subchain/index
+   appchain/index
    dapps/index
-   restapi/index
-   sdk/index
-   moac/FAQs
-   intro/glossary
-   
+
+
+
+
 Indices and tables
-******************
+==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

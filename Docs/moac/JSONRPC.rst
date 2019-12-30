@@ -26,6 +26,8 @@ MOAC JSON-RPC has some compatibility with ETHEREUM JSON-RPC,
 +------------+------------+
 | admin      | admin      |
 +------------+------------+
+| txpool     | txpool     |
++------------+------------+
 | personal   | personal   |
 +------------+------------+
 | vnode      | n/a        |
@@ -200,6 +202,21 @@ JSON-RPC methods
    -  :ref:`mc\_getLogs <mc_getlogs>`
    -  :ref:`mc\_getWork <mc_getwork>`
    -  :ref:`mc\_submitWork <mc_submitwork>`
+
+-  admin
+
+   -  :ref:`admin\_addPeer <admin_addPeer>`
+   -  :ref:`admin\_datadir <admin_datadir>`
+   -  :ref:`admin\_lnodeInfo <admin_nodeInfo>`
+   -  :ref:`admin\_peers <admin_peers>`
+   -  :ref:`admin\_stopRPC <admin_stopRPC>`
+   -  :ref:`admin\_startRPC <admin_startRPC>`
+
+-  txpool
+
+   -  :ref:`txpool\_content <txpool_content>`
+   -  :ref:`txpool\_status <txpool_status>`
+   -  :ref:`txpool\_inspec <txpool_inspect>`
 
 -  vnode
 
@@ -2171,6 +2188,288 @@ Example
 
 --------------
 
+ADMIN
+'''''
+
+**admin\_addPeer**
+
+.. _admin_addPeer:
+
+The addPeer administrative method requests adding a new remote node to the list of tracked static nodes. The node will try to maintain connectivity to these nodes at all times, reconnecting every once in a while if the remote connection goes down.
+
+The method accepts a single argument, the enode URL of the remote peer to start tracking and returns a BOOL indicating whether the peer was accepted for tracking or some error occurred.
+
+*Parameters*
+
+``string``: ``url``, 20 Bytes - address from which the VNODE settings
+in the vnodeconfig.json file.
+
+*Returns*
+
+``Boolean`` - returns ``true`` if the operation is successfully, otherwise ``false``.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"method": "admin_addPeer", "params": ["enode://a979fb575495b8d6db44f750317d0f4622bf4c2aa3365d6af7c284339968eef29b69ad0dce72a4d8db5ebb4968de0e3bec910127f134779fbcb0cb6d3331163c@2.1.188.187:30333"]}' localhost:8545
+
+    // Result
+    true
+
+--------------
+
+**admin\_datadir**
+
+.. _admin_datadir:
+
+The datadir administrative property can be queried for the absolute path the running MOAC VNODE node currently uses to store all its databases.
+
+*Parameters*
+
+none
+
+*Returns*
+
+``string`` - returns the absolute path running the MOAC VNODE.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"method": "admin_datadir", "params": [],"id":106}' localhost:8545
+
+    // Result
+    {"jsonrpc":"2.0","id":101,"result":"/Users/moac/src/github.com/innowells/moac-vnode/test101"}
+
+--------------
+
+**admin\_nodeInfo**
+
+.. _admin_nodeInfo:
+
+The nodeInfo administrative property can be queried for all the information known about the running MOAC VNODE at the networking granularity. These include general information about the node itself as a participant of the ÐΞVp2p P2P overlay protocol, as well as specialized information added by each of the running application protocols.
+
+*Parameters*
+
+none
+
+*Returns*
+
+``object`` - returns ``true`` if the operation is successfully, otherwise ``false``.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"method": "admin_nodeInfo", "params": [],"id":101}' localhost:8545
+
+    // Result
+    {"jsonrpc":"2.0","id":101,"result":{"id":"a6f486af99679e00ec1a2bf77304e8c7f183987c8138a7c515a08ee42c5bebbda9f01474d43ba7176f891989dbdb78a6cbade67a941e6c2d5a83751039adba36","name":"Moac/v1.0.11-rc-2b24668f/darwin-amd64/go1.13.1","enode":"enode://a6f486af99679e00ec1a2bf77304e8c7f183987c8138a7c515a08ee42c5bebbda9f01474d43ba7176f891989dbdb78a6cbade67a941e6c2d5a83751039adba36@71.166.46.131:30336?servicecfgport=:50062\u0026showtopublic=true\u0026beneficialaddress=0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9\u0026ip=","ip":"71.166.46.131","ports":{"discovery":30336,"listener":30336},"listenAddr":"[::]:30336","protocols":{"mc":{"network":101,"difficulty":1476985363965,"genesis":"0x4e2972df43453f5b658656de1f2af40866b6d86b4e11b0c49eb1fc1a854d9796","head":"0x941bb3a1c9a8a26e0bc2f747c2a7ea805135e1e995464957aa7e09814a1575d7"}}}}
+
+--------------
+**admin\_peers**
+
+.. _admin_peers:
+
+The addPeer administrative method requests adding a new remote node to the list of tracked static nodes. The node will try to maintain connectivity to these nodes at all times, reconnecting every once in a while if the remote connection goes down.
+
+The method accepts a single argument, the enode URL of the remote peer to start tracking and returns a BOOL indicating whether the peer was accepted for tracking or some error occurred.
+
+*Parameters*
+
+none
+
+*Returns*
+
+``Boolean`` - returns ``true`` if the operation is successfully, otherwise ``false``.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"method": "admin_addPeer", "params": ["enode://a979fb575495b8d6db44f750317d0f4622bf4c2aa3365d6af7c284339968eef29b69ad0dce72a4d8db5ebb4968de0e3bec910127f134779fbcb0cb6d3331163c@2.1.188.187:30333"]}' localhost:8545
+
+    // Result
+    true
+
+--------------
+**admin\_startRPC**
+
+.. _admin_startRPC:
+
+The startRPC administrative method starts an HTTP based JSON RPC API webserver to handle client requests. All the parameters are optional:
+
+host: network interface to open the listener socket on (defaults to "localhost")
+port: network port to open the listener socket on (defaults to 8545)
+cors: cross-origin resource sharing header to use (defaults to "")
+apis: API modules to offer over this interface (defaults to "mc,net,chain3")
+
+*Parameters*
+
+``string``: ``url``, 20 Bytes - address from which the VNODE settings
+in the vnodeconfig.json file.
+
+*Returns*
+
+``Boolean`` - returns ``true`` if the HTTP RPC listener was opened successfully, otherwise ``false``. Please note, only one HTTP endpoint is allowed to be active at any time. So this is a dump method, you can't use it :).
+
+Example
+
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"method": "admin_startRPC", "params": ["127.0.0.1",8546], "id":101}' localhost:8545
+
+    // Result
+    {"jsonrpc":"2.0","id":106,"error":{"code":-32000,"message":"HTTP RPC already running on 127.0.0.1:8545"}}
+
+--------------
+
+**admin\_stopRPC**
+
+.. _admin_stopRPC:
+
+The stopRPC administrative method closes the currently open HTTP RPC endpoint. As the node can only have a single HTTP endpoint running, this method takes no parameters, returning a boolean whether the endpoint was closed or not.
+
+*Parameters*
+
+``string``: ``url``, 20 Bytes - address from which the VNODE settings
+in the vnodeconfig.json file.
+
+*Returns*
+
+``Boolean`` - returns ``true`` if the operation is successfully, otherwise ``false``.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"method": "admin_stopRPC", }' localhost:8545
+
+    // Result
+    true
+
+--------------
+
+TXPOOL
+'''''
+
+**txpool\_content**
+
+.. _txpool_content:
+
+The content inspection property can be queried to list the exact details of all the transactions currently pending for inclusion in the next block(s), as well as the ones that are being scheduled for future execution only.
+
+The result is an object with two fields pending and queued. Each of these fields are associative arrays, in which each entry maps an origin-address to a batch of scheduled transactions. These batches themselves are maps associating nonces with actual transactions.
+
+Please note, there may be multiple transactions associated with the same account and nonce. This can happen if the user broadcast mutliple ones with varying gas allowances (or even complerely different transactions).
+
+*Parameters*
+
+none
+
+*Returns*
+
+
+``result``: Object with two fields pending and queued. Each of these fields are associative arrays, in which each entry maps an origin-address to a batch of scheduled transactions. These batches themselves are maps associating nonces with actual transactions.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_content","params":[],"id":106}' localhost:8545
+
+    // Result
+    {
+    "jsonrpc":"2.0",
+    "id":101,
+    "result":{"pending":{"0xf6a36118751C50F8932d31d6d092B11Cc28f2258":{"349":{"blockHash":"0x0000000000000000000000000000000000000000000000000000000000000000","blockNumber":null,"from":"0xf6a36118751c50f8932d31d6d092b11cc28f2258","gas":"0x1e8480","gasPrice":"0x4a817c800","hash":"0xdf81d14a6857549d11a82aba6471874af6410e04e73eac003161fabc9220f953","input":"0x6bbded70","nonce":"0x15d","syscnt":"0x0","to":"0x7097302333beef4813eef53d12dff987241e3c3c","transactionIndex":"0x0","value":"0xde0b6b3a7640000","v":"0xf8","r":"0xfbafb9051495c3b8f8626bb50f0b17b1bf4d611ce12403940765a74e0f2c96e2","s":"0x4c8d2b5f6dc014edfed908c8ca5149bd7dd4270753b44edc55f1693aff589866","shardingFlag":"0x0"}}},"queued":{}}
+    }
+
+--------------
+
+**txpool\_status**
+
+.. _txpool_status:
+
+The status inspection property can be queried for the number of transactions currently pending for inclusion in the next block(s), as well as the ones that are being scheduled for future execution only.
+
+The result is an object with two fields pending and queued, each of which is a counter representing the number of transactions in that particular state.
+
+*Parameters*
+
+none
+
+*Returns*
+
+``result``: Object with two fields pending and queued. Each of which is a counter representing the number of transactions in that particular state.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_status","params":[],"id":106}' localhost:8545
+
+    // Result
+    {
+    "jsonrpc":"2.0",
+    "id":101,
+    "result":{"pending":"0x1","queued":"0x0"}
+    }
+
+--------------
+
+**txpool\_inspect**
+
+.. _txpool_inspect:
+
+The inspect inspection property can be queried to list a textual summary of all the transactions currently pending for inclusion in the next block(s), as well as the ones that are being scheduled for future execution only. This is a method specifically tailored to developers to quickly see the transactions in the pool and find any potential issues.
+
+The result is an object with two fields pending and queued. Each of these fields are associative arrays, in which each entry maps an origin-address to a batch of scheduled transactions. These batches themselves are maps associating nonces with transactions summary strings.
+
+Please note, there may be multiple transactions associated with the same account and nonce. This can happen if the user broadcast mutliple ones with varying gas allowances (or even complerely different transactions).
+
+*Parameters*
+
+none
+
+*Returns*
+
+``result``: Object with two fields pending and queued. Each of these fields are associative arrays, in which each entry maps an origin-address to a batch of scheduled transactions. These batches themselves are maps associating nonces with transactions summary strings.
+
+Example
+
+
+.. code:: js
+
+    // Request
+    curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_inspect","params":[],"id":106}' localhost:8545
+
+    // Result
+    {
+    "jsonrpc":"2.0",
+    "id":101,
+    "result":{"pending":{"0xf6a36118751C50F8932d31d6d092B11Cc28f2258":{"349":"0x7097302333Beef4813EEf53d12dfF987241E3C3C: 1000000000000000000 sha + 2000000 × 20000000000 gas"}},"queued":{}
+    }
+
+--------------
+
 VNODE
 ~~~~~~
 
@@ -2347,9 +2646,9 @@ SCS
 
 **scs_directCall**
 
-Executes a new constant call of the MicroChain Dapp function without
-creating a transaction on the MicroChain. This RPC call is used by
-API/lib to call MicroChain Dapp functions.
+Executes a new constant call of the AppChain Dapp function without
+creating a transaction on the AppChain. This RPC call is used by
+API/lib to call AppChain Dapp functions.
 
 *Parameters*
 
@@ -2357,7 +2656,7 @@ API/lib to call MicroChain Dapp functions.
 ``Object`` - The transaction call object 
 - ``from``: ``DATA``, 20 Bytes - (optional) The address the transaction is sent from. 
 - ``to``: ``DATA``, 20 Bytes - The address the transaction is directed to. This
-parameter is the MicroChain address. 
+parameter is the AppChain address. 
 - ``data``: ``DATA`` - (optional) Hash of the method signature and encoded parameters. For details see
 `Ethereum Contract ABI <https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI>`
 
@@ -2387,12 +2686,12 @@ Example
 
 .. _scs_getblock:
 
-Returns information about a block on the MicroChain by block number.
+Returns information about a block on the AppChain by block number.
 
 *Parameters*
 
 
-1. ``String`` - the address of the MicroChain that Dapp is on.
+1. ``String`` - the address of the AppChain that Dapp is on.
 2. ``QUANTITY|TAG`` - integer of a block number, or the string
    ``"earliest"`` or ``"latest"``, as in the `default block
    parameter <#the-default-block-parameter>`. Note, scs\_getBlock does
@@ -2401,7 +2700,7 @@ Returns information about a block on the MicroChain by block number.
 *Returns*
 
 
-``DATA`` - Data in the block on the MicroChain.
+``DATA`` - Data in the block on the AppChain.
 
 Example
 
@@ -2420,19 +2719,19 @@ Example
 
 .. _scs_getblocklist:
 
-Returns information about multiple MicroChain blocks by block number.
+Returns information about multiple AppChain blocks by block number.
 
 *Parameters*
 
 
-1. ``String`` - the address of the MicroChain that Dapp is on.
+1. ``String`` - the address of the AppChain that Dapp is on.
 2. ``QUANTITY`` - integer of the start block number.
 3. ``QUANTITY`` - integer of the end block number, need to be larger or equal the start block number.
 
 *Returns*
 
 
-``ARRAY`` - Array of the block infromation on the MicroChain.
+``ARRAY`` - Array of the block infromation on the AppChain.
 
 Example
 
@@ -2455,7 +2754,7 @@ Returns the number of most recent block .
 
 *Parameters*
 
-1. ``String`` - the address of the MicroChain that Dapp is on.
+1. ``String`` - the address of the AppChain that Dapp is on.
 
 *Returns*
 
@@ -2481,15 +2780,15 @@ Example
 
 .. _scs_getdapplist:
 
-Returns the Dapp addresses on the MicroChain. For nuwa 1.0.8 and later version only, 
+Returns the Dapp addresses on the AppChain. For nuwa 1.0.8 and later version only, 
 
 *Parameters*
 
-1. ``String`` - the address of the MicroChain that has Dapps.
+1. ``String`` - the address of the AppChain that has Dapps.
 
 *Returns*
 
-``ARRAY`` - Array of the DAPP addresses on the MicroChain.
+``ARRAY`` - Array of the DAPP addresses on the AppChain.
 
 Example
 
@@ -2511,16 +2810,16 @@ Example
 
 .. _scs_getdappstate:
 
-Returns the Dapp state on the MicroChain.
+Returns the Dapp state on the AppChain.
 
 *Parameters*
 
-1. ``String`` - the address of the MicroChain that Dapp is on.
+1. ``String`` - the address of the AppChain that Dapp is on.
 
 *Returns*
 
-``QUANTITY`` - 0, no DAPP is deployed on the MicroChain; 1, DAPP is
-deployed on the MicroChain.
+``QUANTITY`` - 0, no DAPP is deployed on the AppChain; 1, DAPP is
+deployed on the AppChain.
 
 Example
 
@@ -2541,16 +2840,16 @@ Example
 
 .. _scs_getmicrochaininfo:
 
-Returns the requested MicroChain information on the connecting SCS. This information is the same as the information defined in the MicroChain contract.
+Returns the requested AppChain information on the connecting SCS. This information is the same as the information defined in the AppChain contract.
 
 *Parameters*
 
-1. `String` - the address of the MicroChain on the SCS.
+1. `String` - the address of the AppChain on the SCS.
 
 *Returns*
 
 
-``Object`` A Micro Chain information object as defined in the MicroChain contract.
+``Object`` A Micro Chain information object as defined in the AppChain contract.
 
 Example
 
@@ -2602,18 +2901,18 @@ Example
 
 .. _scs_getNonce:
 
-Returns the account nonce on the MicroChain. 
+Returns the account nonce on the AppChain. 
 
 *Parameters*
 
 
-1. ``String`` - the address of the MicroChain that Dapp is on.
+1. ``String`` - the address of the AppChain that Dapp is on.
 2. ``String`` - the address of the accountn.
 
 *Returns*
 
 
-``QUANTITY`` integer of the number of transactions send from this address on the MicroChain; 
+``QUANTITY`` integer of the number of transactions send from this address on the AppChain; 
 
 Example
 
@@ -2645,7 +2944,7 @@ None
 
 
 1. ``String`` - SCS id in the scskeystore directory, used for SCS
-identification to send deposit and receive MicroChain mining rewards.
+identification to send deposit and receive AppChain mining rewards.
 
 Example
 
@@ -2672,7 +2971,7 @@ receipt is not available for pending transactions.
 
 *Parameters*
 
-1. ``String`` - The MicroChain address. 
+1. ``String`` - The AppChain address. 
 2. ``String`` - The transaction hash.
 
 *Returns*
@@ -2703,12 +3002,12 @@ Example
 
 .. _scs_getReceiptByNonce:
 
-Returns the transaction result by address and nonce on the MicroChain. Note That the nonce is the nonce on the MicroChain. This nonce can be checked using scs_getNonce. 
+Returns the transaction result by address and nonce on the AppChain. Note That the nonce is the nonce on the AppChain. This nonce can be checked using scs_getNonce. 
 
 *Parameters*
 
 
-1. ``String`` - The MicroChain address. 
+1. ``String`` - The AppChain address. 
 1. ``String`` - The transaction nonce.
 1. ``QUANTITY`` - The nonce of the transaction.
 
@@ -2743,7 +3042,7 @@ receipt is not available for pending transactions.
 
 *Parameters*
 
-1. ``String`` - The MicroChain address. 
+1. ``String`` - The AppChain address. 
 2. ``String`` - The transaction hash.
 
 *Returns*
@@ -2778,7 +3077,7 @@ receipt is not available for pending transactions.
 
 *Parameters*
 
-1. ``String`` - The MicroChain address. 
+1. ``String`` - The AppChain address. 
 1. ``String`` - The transaction nonce.
 1. ``QUANTITY`` - The nonce of the transaction.
 
@@ -2809,12 +3108,12 @@ Example
 
 .. _scs_getExchangeByAddress:
 
-Returns the Withdraw/Deposit exchange records between MicroChain and MotherChain for a certain address. This command returns both the ongoing exchanges and processed exchanges. To check all the ongoing exchanges, please use scs_getExchangeInfo. 
+Returns the Withdraw/Deposit exchange records between AppChain and MotherChain for a certain address. This command returns both the ongoing exchanges and processed exchanges. To check all the ongoing exchanges, please use scs_getExchangeInfo. 
 
 
 *Parameters*
 
-1. `String` - The MicroChain address.
+1. `String` - The AppChain address.
 1. `String` - The address to be checked.
 1. `Int` - Index of Deposit records >= 0.
 1. `Int` - Number of Deposit records extracted.
@@ -2849,12 +3148,12 @@ Example
 
 .. _scs_getExchangeInfo:
 
-Returns the Withdraw/Deposit exchange records between MicroChain and MotherChain for a certain address. This command returns both the ongoing exchanges and processed exchanges. To check all the ongoing exchanges, please use scs_getExchangeInfo. 
+Returns the Withdraw/Deposit exchange records between AppChain and MotherChain for a certain address. This command returns both the ongoing exchanges and processed exchanges. To check all the ongoing exchanges, please use scs_getExchangeInfo. 
 
 
 *Parameters*
 
-1. `String` - The MicroChain address.
+1. `String` - The AppChain address.
 1. `String` - The transaction hash.
 1. `Int` - Index of Depositing records >= 0.
 1. `Int` - Number of Depositing records extracted.
@@ -2885,11 +3184,11 @@ Example
 
 .. _scs_gettxpool:
 
-Returns the ongoing transactions in the MicroChain. 
+Returns the ongoing transactions in the AppChain. 
 
 *Parameters*
 
-1. `String` - The MicroChain address.
+1. `String` - The AppChain address.
 
 *Returns*
 

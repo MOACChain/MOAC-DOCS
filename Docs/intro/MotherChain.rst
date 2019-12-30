@@ -1,4 +1,4 @@
-MotherChain
+BaseChain
 ^^^^^^^^^^^
 
 In MOAC network, MotherChain is an intersystem Proof of Work(POW) blockchain that handles data storage and compute processing for Smart Contracts and DApps.

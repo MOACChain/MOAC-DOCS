@@ -21,7 +21,7 @@
 
 project = u'moac-core-master'
 copyright = u'2018-2019, MOAC foundation'
-author = u'Wenhan Jin'
+author = u'MOAC Tech'
 
 # The short X.Y version
 version = u''

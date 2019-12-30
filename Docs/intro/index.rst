@@ -8,15 +8,13 @@ Introduction
 
 .. toctree::
    :maxdepth: 2
-   :caption: Content:
+   :caption: Contents:
 
    Introduction
    MOACnetwork
-   VNODE
-   SCS
    MotherChain
-   MicroChain
+   AppChain
    MOACtoken
-   Versions
    glossary
+   Versions
 

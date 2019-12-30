@@ -7,13 +7,13 @@ By separating balance transfer and Smart Contracts, the platform’s advanced la
    :alt: moac\_key\_person
 
 
-MotherChain
+BaseChain
 ~~~~~~~~~~~
 
 MotherChain is the public blockchain layer that processes balance transfers, blockchain operation, consensus, and data access. It is an intersystem Proof of Work blockchain that handles data storage and compute processing for Smart Contracts and DApps.
 
 
-MicroChain
+AppChain
 ~~~~~~~~~~
 MOAC is one of the first blockchain solutions to implement a unique MicroChain per Smart Contract, providing for efficiency and scalability beyond existing solutions.
 
