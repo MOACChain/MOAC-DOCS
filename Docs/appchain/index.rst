@@ -3,21 +3,21 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-MOAC BaseChain
+AppChain
 ========================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Content:
 
-   Design
+   Introduction
    Setup
-   Commands
-   Console
    JSONRPC
    Chain3Js
-   js/index
-   Chain3Java
-   Chain3Python
-   Chain3Go
+   VnodePool
+   ScsPool
+   ProcWind
+   FileStorm
+   glossary
+   FAQs  
 

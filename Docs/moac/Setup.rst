@@ -178,7 +178,7 @@ It should contains two subdirectories ：moac和keystore。
 
 ::
 
-    D:\ moacPangu0.8.2-win>moac attach
+    D:\ moac-win>moac attach
 
 .. figure:: ../image/moac_install_win_1.png
    :alt: moac\_install\_win\_1
@@ -187,11 +187,11 @@ It should contains two subdirectories ：moac和keystore。
 
 该命令行不会主动滚屏，而是等待命令。
 
-3. 挖矿
-^^^^^^^
+3. Mining
+^^^^^^^^^^^
 
-3.1 建立新账户
-''''''''''''''
+3.1 Create New Account
+''''''''''''''''''''''''''''
 
 挖矿前必须建立一个自己的账户。
 
