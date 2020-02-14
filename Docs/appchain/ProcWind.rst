@@ -62,6 +62,65 @@ ProcWind setup
 
 To setup ProcWind AppChain, user needs to have certain resources, and deploy the ProcWind AppChain contract. 
 
+There are two type of ProcWind AppChain:ASM and AST.
+The content of the contracts can be downloaded from 
+`MOAC ProcWind contracts <https://github.com/MOACChain/moac-core/tree/master/procwind>`__
+
+In the ASM contract, the constructor is as the following:
+:: 
+    function ChainBaseASM(
+    address proto, 
+    address vnodeProtocolBaseAddr, 
+    uint min, 
+    uint max, 
+    uint thousandth, 
+    uint flushRound, 
+    uint256 tokensupply, 
+    uint256 exchangerate)
+
+* address proto - SCS pool base contract address on the BaseChain;
+* address vnodeProtocolBaseAddr - Vnode pool contract address;
+* uint min - Min number of SCS required by the ProcWind AppChain, need to choose one of [1，3，5，7];
+* uint max - Max number of SCS required by the ProcWind AppChain, need to choose one of [11，21，31，51，99;
+* uint thousandth - Ratio to choose the SCS，suggested value = 1;
+* uint flushRound - Number of blocks on BaseChain between two flush action, range should be 40-99;  
+* uint256 tokensupply - AppChain token amount；
+* uint256 exchangerate - Exchange ratio between moac and AppChain token;
+
+注意，这里输入参数tokensupply和应用链的BALANCE相对映，
+BALANCE = tokensupply * 1e18
+例如，tokensupply = 1000，结果的BALANCE应该是10的21次方。
+
+AST的合约构建函数为：
+:: 
+    function ChainBaseAST(
+    address proto, 
+    address vnodeProtocolBaseAddr, 
+    address ercAddr,  
+    uint ercRate,
+    uint min, 
+    uint max, 
+    uint thousandth, 
+    uint flushRound)
+
+其中的参数含义为：
+
+* address proto - SCS节点池地址；
+* address vnodeProtocolBaseAddr - Vnode节点池合约地址；
+* address ercAddr - 基础链ERC20合约地址；
+* uint ercRate - 应用链原生货币和基础链ERC20 token的兑换比例；
+* uint min - 应用链需要SCS的最小数量，需要从如下值中选择：1，3，5，7；
+* uint max - 应用链需要SCS的最大数量，需要从如下值中选择：11，21，31，51，99
+* uint thousandth - 控制选择scs的概率，建议设为1，对于大型应用链节点池才有效；
+* uint flushRound - 应用链刷新周期  单位是主链block生成对应数量的时间，当前的取值范围是40-99；
+* uint256 tokensupply - 应用链的原生货币数量；
+* uint256 exchangerate - 应用链原生货币和母链moac的兑换比例；
+
+注意，AST应用链的BALANCE是由ERC20 token里面totalSupply相对映，
+BALANCE = tokenSupply * ERCRate * (10 ** (ERCDecimals));
+
+用户可以根据需要调试输入参数，之后的应用链部署步骤请参考：
+
 More details can be seen in:
 
 :doc:`ProcWindSetup`

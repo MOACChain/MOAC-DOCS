@@ -47,15 +47,15 @@ Beneficiary address the SCS used
 		
 After setup the correct parameters, start the SCS:
 
-scsserver-windows-4.0-amd64 --password "123456"   （生成scs keystore的密码）
+scsserver-windows-4.0-amd64 --password "123456"   （default scs keystore password）
 		
-然后在scskeystore目录内生成的keystore文件中分别获得 scs 地址  
+The address of the SCS can be found in the keystore file under the scskeystore directory.  
 ::
 	0xd4057328a35f34507dbcd295d43ed0cccf9c368a 
 	0x3e21ba36b396936c6cc9adc3674655b912e5fa54
 	0x03c74ecc8ad9493a6a3d14f4e48d5eb551fe1be5
 
-最后给scs转入moac以支付必要的交易费用
+Transfer some moac to SCS address to enable SCS pay the fee to join the SCS pool and AppChain:
 ::		
 	> amount = 20;
 	> scsaddr = '0xd4057328a35f34507dbcd295d43ed0cccf9c368a';
@@ -76,24 +76,25 @@ Check the balances on the SCS accounts:
 SCS join SCS pool
 ----------------------
 
-调用应用链节点池合约register方法加入节点池
+After the SCS pool contract is created, SCS need to call the register method to join the SCS pool. SCS can only be selected by the AppChain if it joins the SCS pool that the AppChain used.
 			
 参数:
 ::
-	from： 应用链测试账号    
-	value：押金，必须大于节点池合约的设置值  
-	to: 应用链节点池合约地址  
-	data: register(address) 
+	from： An Account has some moac balance larger than the deposit;    
+	value：value in moac, needs to be larger than the deposit value required by the SCS pool contract; 
+	to: SCS pool address; 
+	data: register(SCS address) 
 	
-关于data传递调用register参数说明:	
+The data is formed by the following method:	
 ::	
-	根据ABI chain3.sha3("register(address)") = 0x4420e4869750c98a56ac621854d2d00e598698ac87193cdfcbb6ed1164e9cbcd 
-		取前4个字节 0x4420e486  
-	参数address传scs 地址    d4057328a35f34507dbcd295d43ed0cccf9c368a  （前面补24个0， 凑足32个字节）  
-		000000000000000000000000d4057328a35f34507dbcd295d43ed0cccf9c368a
+	Method ABI chain3.sha3("register(address)") = 0x4420e4869750c98a56ac621854d2d00e598698ac87193cdfcbb6ed1164e9cbcd 
+    Use the first 4 bytes: 0x4420e486  
+	The SCS address is passed after the 4 bytes:
+	    0xd4057328a35f34507dbcd295d43ed0cccf9c368a
+	=>	000000000000000000000000d4057328a35f34507dbcd295d43ed0cccf9c368a  (fill 24 0s to make the 32 bytes）
 	data = '0x4420e486000000000000000000000000d4057328a35f34507dbcd295d43ed0cccf9c368a'		
 
-调用示例:
+Example:
 ::
 	> amount = chain3.toSha(5,'mc')
 	> data = '0x4420e486000000000000000000000000d4057328a35f34507dbcd295d43ed0cccf9c368a';
@@ -107,14 +108,15 @@ Repeat the steps to join the other scs in the pool.
 
 .. _scs-join-appchain:
 
-SCS节点添加
-----------
+Add SCS client after AppChain is running
+----------------------------------------
 
-应用链合约提供了registerAdd方法来支持应用链添加，必须由应用链部署账号来发送交易请求。
+If the AppChain contract provides the method 'registerAdd', then the owner of the AppChain can add a SCS address by calling 'registerAdd'. 
 
-需要对应SubChainProtocolBase节点池合约有等待加入的scs节点。
-
-应用链收到请求后，在节点池合约选取scs，开始同步应用链区块，等一轮flush后生效，正式加入应用链。
+First need to make sure the SCS address is already registered in the SCS pool.
+Then the AppChain owner calls the 'registerAdd' method using direct call.
+When AppChain receives the request, it will choose the SCS address and syncing the blocks automatically.
+After one flush round, the SCS will join the AppChain.
 
 registerAdd参数:
 ::
